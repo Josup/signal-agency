@@ -1,0 +1,41 @@
+{
+  "task": "Design the positioning strategy and critical copy decisions for Signal, a premium agency website for local SEO + GEO (Generative Engine Optimization) in Brooklyn, NY. Core question: should the site lead with the technical solution (Schema.org markup, GEO optimization methodology) or lead with the business outcome (your competitors are already showing up when customers ask ChatGPT 'best dentist in Brooklyn' — you're not)? What is the single most important design and copy decision that will determine whether this site converts non-technical local business owners into booked discovery calls? Provide a concrete, actionable recommendation covering: hero headline, above-the-fold structure, primary CTA strategy, and the psychological trigger that should drive the entire site narrative. Frame your output as a complete strategy plan.",
+  "constraints": [
+    "Target audience: non-technical local business owners (dentists, plumbers, optometrists, contractors) in NYC — they do not know what Schema.org is",
+    "Primary conversion goal: visitor books a 30-minute discovery call",
+    "Differentiator: GEO = optimizing websites to appear in ChatGPT answers and Google AI Overviews, not just Google Search blue links",
+    "Case studies: (1) Nostrand Optical — Brooklyn optometrist, 4 valid rich results on Google Rich Results Test on launch day, targeting 'optometrist Crown Heights' in AI Overviews; (2) Brooklyn BJJ — showing up in AI search for 'BJJ private lessons Brooklyn', automated SEO blog with 10+ posts live",
+    "Solo founder agency — real technical expertise must come through, NOT corporate marketing fluff",
+    "Site must communicate the AI search problem in under 5 seconds to someone who has never heard of Schema.org or GEO",
+    "Design reference: Linear.app, Vercel.com, Stripe.com — dark, premium, typographically strong",
+    "The core fear to activate: 'My competitors are being recommended by ChatGPT. Customers ask AI who to call and I am invisible.'"
+  ],
+  "agents": {
+    "planners": [
+      {
+        "name": "haiku-strategist",
+        "kind": "custom",
+        "command": "python3 C:/Users/Josh/projects/signal-agency/claude-wrapper.py --model claude-haiku-4-5-20251001 --max-turns 1 --no-session-persistence --dangerously-skip-permissions --disable-slash-commands --output-format json",
+        "prompt_mode": "stdin"
+      },
+      {
+        "name": "sonnet-strategist",
+        "kind": "custom",
+        "command": "python3 C:/Users/Josh/projects/signal-agency/claude-wrapper.py --model claude-sonnet-4-6 --max-turns 1 --no-session-persistence --dangerously-skip-permissions --disable-slash-commands --output-format json",
+        "prompt_mode": "stdin"
+      },
+      {
+        "name": "opus-strategist",
+        "kind": "custom",
+        "command": "python3 C:/Users/Josh/projects/signal-agency/claude-wrapper.py --model claude-opus-4-7 --max-turns 1 --no-session-persistence --dangerously-skip-permissions --disable-slash-commands --output-format json",
+        "prompt_mode": "stdin"
+      }
+    ],
+    "judge": {
+      "name": "opus-judge",
+      "kind": "custom",
+      "command": "python3 C:/Users/Josh/projects/signal-agency/claude-wrapper.py --model claude-opus-4-7 --max-turns 1 --no-session-persistence --dangerously-skip-permissions --disable-slash-commands --output-format json",
+      "prompt_mode": "stdin"
+    }
+  }
+}

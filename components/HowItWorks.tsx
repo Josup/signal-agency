@@ -48,7 +48,7 @@ export default function HowItWorks() {
           y: 0,
           transition: {
             duration: 0.8,
-            ease: [0.23, 1, 0.32, 1],
+            ease: [0.23, 1, 0.32, 1] as [number, number, number, number],
           },
         },
   };
@@ -111,12 +111,12 @@ export default function HowItWorks() {
           <motion.h2
             initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
             whileInView={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] as [number, number, number, number] }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-instrument text-white"
             style={{ fontFamily: 'var(--font-instrument), Georgia, serif' }}
           >
-            Three things. That's it.
+            Three things. That&rsquo;s it.
           </motion.h2>
         </div>
 

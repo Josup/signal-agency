@@ -1,13 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { MagneticButton } from '@/components/MagneticButton';
+import { motion, useReducedMotion } from 'framer-motion';
+import MagneticButton from '@/components/MagneticButton';
 
-export function FinalCTA() {
-  // Check for prefers-reduced-motion
-  const prefersReducedMotion = typeof window !== 'undefined'
-    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    : false;
+export default function FinalCTA() {
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <section id="contact" className="relative overflow-hidden bg-[#0A0A0A] py-32 md:py-48">
@@ -60,7 +57,7 @@ export function FinalCTA() {
           viewport={{ once: true }}
           className="mb-12 font-[var(--font-inter)] text-lg leading-relaxed text-gray-300 md:text-xl"
         >
-          Book a 30-minute call. I'll run your business through an AI search audit live — no pitch, no pressure. You'll leave knowing exactly where you stand.
+          Book a 30-minute call. I&rsquo;ll run your business through an AI search audit live — no pitch, no pressure. You&rsquo;ll leave knowing exactly where you stand.
         </motion.p>
 
         {/* CTA Button with pulse animation */}
@@ -69,13 +66,17 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
           viewport={{ once: true }}
-          animate={prefersReducedMotion ? undefined : { scale: [1, 1.02, 1] }}
-          transition={prefersReducedMotion ? undefined : { duration: 3, repeat: Infinity, ease: 'easeInOut' }}
           className="mb-6"
         >
-          <MagneticButton href="/audit" variant="primary">
-            See if AI is recommending your competitors
-          </MagneticButton>
+          <motion.div
+            animate={prefersReducedMotion ? undefined : { scale: [1, 1.02, 1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            className="inline-block"
+          >
+            <MagneticButton href="/audit" variant="primary">
+              See if AI is recommending your competitors
+            </MagneticButton>
+          </motion.div>
         </motion.div>
 
         {/* Trust line */}

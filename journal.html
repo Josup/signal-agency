@@ -1,0 +1,380 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Journal — Signal · Brooklyn AI Search Quarterly</title>
+<meta name="description" content="Field notes from inside the AI search shift. What Signal sees in Brooklyn, what we publish for clients, and the experiments we're running in real time.">
+<link rel="canonical" href="https://signalai.agency/journal.html">
+<meta property="og:title" content="The Journal — Signal · Brooklyn AI Search Quarterly">
+<meta property="og:description" content="Field notes from inside the AI search shift. What we're seeing in Brooklyn, what we publish for clients, and the experiments we're running in real time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://signalai.agency/journal.html">
+<meta property="og:site_name" content="Signal">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Journal — Signal · Brooklyn AI Search">
+<meta name="twitter:description" content="Field notes from inside the AI search shift. Weekly dispatches on what's working in ChatGPT, Perplexity, and Google AI Overviews for Brooklyn businesses.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="signal.css">
+
+<style>
+  /* journal page-only adjustments */
+  .journal-page{padding:90px 0 140px;border-top:0}
+  .journal-page .head-row{align-items:flex-end}
+  .journal-page .head-row h2{font-size:148px;line-height:1.0;letter-spacing:-.04em;padding-bottom:.05em}
+  .journal-page .head-row h2 em{display:inline-block;line-height:1.05}
+  .journal-page .lede-rule{margin-bottom:0}
+  .journal-page .by{grid-template-columns:1fr auto}
+  .journal-page .by .av{display:none}
+
+  .featured-row{display:grid;grid-template-columns:1.4fr 1fr;gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  @media (max-width:900px){
+    .journal-page .head-row{grid-template-columns:1fr !important}
+    .journal-page .head-row h2{font-size:96px}
+    .featured-row{grid-template-columns:1fr !important}
+    .featured-row .post{border-right:0;border-bottom:1px solid var(--rule)}
+    .featured-row .post:last-child{border-bottom:0}
+  }
+
+  /* Editor's strap above grid */
+  .editor-strap{display:flex;justify-content:space-between;align-items:flex-end;padding:40px 0 18px;border-bottom:3px double var(--ink);font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink-soft)}
+  .editor-strap h3{font-family:var(--display);font-size:32px;font-style:italic;font-weight:400;color:var(--ink);letter-spacing:-.01em;text-transform:none;font-variation-settings:"SOFT" 100;line-height:1.1}
+  .editor-strap .right{display:flex;gap:24px;align-items:baseline}
+  .editor-strap .right b{color:var(--red)}
+
+  /* Categories chip row */
+  .cat-row{display:flex;gap:0;flex-wrap:wrap;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:0}
+  .cat-row a{flex:1;padding:18px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink);text-decoration:none;border-right:1px solid var(--rule-soft);text-align:center;transition:background .2s,color .2s}
+  .cat-row a:last-child{border-right:0}
+  .cat-row a:hover{background:var(--ink);color:var(--paper)}
+  .cat-row a.is-active{background:var(--red);color:#fff}
+  .cat-row a .ct{display:block;font-family:var(--display);font-style:italic;font-weight:400;font-size:18px;letter-spacing:0;text-transform:none;font-variation-settings:"SOFT" 100;color:var(--red);margin-top:2px}
+  .cat-row a:hover .ct,.cat-row a.is-active .ct{color:inherit}
+
+  .arch-pagination{display:flex;justify-content:space-between;align-items:center;padding:36px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink-soft);border-top:1px solid var(--rule-soft);margin-top:36px}
+  .arch-pagination a{color:var(--ink);border-bottom:1.5px solid var(--ink);padding-bottom:3px;text-decoration:none}
+  .arch-pagination a:hover{color:var(--red);border-bottom-color:var(--red)}
+  .arch-pagination .center{font-family:var(--display);font-style:italic;font-weight:400;font-size:20px;letter-spacing:0;text-transform:none;color:var(--ink)}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+</head>
+
+<body class="accent-italic">
+
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>Vol. 01 · No. 14</span>
+      <span>Brooklyn, NY</span>
+      <span>Sunday, April 26, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="index.html#problem">Problem</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="journal.html" class="is-active" style="color:var(--red)">Journal</a>
+    </div>
+    <a href="index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="index.html#process">Process</a>
+      <a href="index.html#audit">Audit</a>
+      <a href="index.html#audit">Book</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ JOURNAL HERO ============ -->
+<section class="journal journal-page sec">
+  <div class="num-margin">§ Journal · The Archive</div>
+  <div class="wrap">
+
+    <div class="head-row">
+      <div>
+        <div class="label">§ Issue 04</div>
+        <h2 class="reveal">The<br/><em>Journal.</em></h2>
+      </div>
+      <div>
+        <p class="reveal" style="transition-delay:.1s;font-family:var(--serif);font-size:20px;line-height:1.5;color:var(--ink-soft);max-width:520px">
+          Field notes from inside the AI search shift. What we're seeing in <em style="color:var(--red);font-style:italic">Brooklyn</em>, what we publish for clients, and the <em style="color:var(--red);font-style:italic">experiments</em> we're running in real time.
+        </p>
+        <p class="reveal" style="transition-delay:.2s;font-family:var(--display);font-style:italic;font-size:28px;line-height:1.2;color:var(--red);max-width:520px;margin-top:18px;font-variation-settings:'SOFT' 100">
+          "Read by ChatGPT before it's read by you."
+        </p>
+      </div>
+    </div>
+
+    <div class="lede-rule">
+      <span>Weekly · Issue 04</span>
+      <span>14 posts in archive</span>
+      <span style="color:var(--red)">4 new this week</span>
+    </div>
+
+    <!-- ============ CATEGORIES ============ -->
+    <div class="cat-row" style="margin-top:48px">
+      <a href="#" class="is-active">All<span class="ct">14</span></a>
+      <a href="#">Field Notes<span class="ct">4</span></a>
+      <a href="#">Playbooks<span class="ct">3</span></a>
+      <a href="#">Case Studies<span class="ct">2</span></a>
+      <a href="#">Schema<span class="ct">2</span></a>
+      <a href="#">AI Search<span class="ct">2</span></a>
+      <a href="#">Brooklyn<span class="ct">1</span></a>
+    </div>
+
+    <!-- ============ EDITOR STRAP ============ -->
+    <div class="editor-strap">
+      <h3>This week's issue.</h3>
+      <div class="right">
+        <span>Updated <b>2 hr ago</b></span>
+        <span>Issue 04 · Apr 26, 2026</span>
+      </div>
+    </div>
+
+    <!-- ============ FEATURED ROW (2 posts) ============ -->
+    <div class="featured-row">
+      <a href="posts/journal/brooklyn-bjj-lessons-chatgpt-citation-41-days.html" class="post feature reveal">
+        <div class="meta"><span class="cat">Case Study</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>Brooklyn BJJ Lessons: Cited First in ChatGPT in 41 Days. Here Is the Playbook.</h3>
+        <p class="dek">Brooklyn BJJ Lessons ranked #1 in ChatGPT for 'BJJ private lessons Brooklyn' in 41 days. Here's the exact sequence that made it happen.</p>
+        <div class="by"><div>Case Study · Citations</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <a href="posts/journal/crown-heights-vs-williamsburg-ai-search-gap.html" class="post reveal" style="transition-delay:.1s">
+        <div class="meta"><span class="cat">Brooklyn</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>Crown Heights vs. Williamsburg: Why the Same Business Ranks Differently in Each Neighborhood</h3>
+        <p class="dek">Signal tested identical business profiles in Crown Heights and Williamsburg. AI search cites them at different rates. Here's why neighborhood context decides rank.</p>
+        <div class="by"><div>Brooklyn · Geo</div><div class="read-time">6 min →</div></div>
+      </a>
+    </div>
+
+        <!-- ============ EDITOR STRAP — RECENT ============ -->
+    <div class="editor-strap">
+      <h3>Recent posts.</h3>
+      <div class="right">
+        <span>Sorted <b>newest first</b></span>
+        <span>9 of 14</span>
+      </div>
+    </div>
+
+    <!-- ============ ARCHIVE GRID ============ -->
+    <div class="journal-grid" style="grid-template-columns:1fr 1fr 1fr">
+      <!-- POST -->
+      <a href="posts/journal/death-of-page-two-ai-search.html" class="post">
+        <div class="meta"><span class="cat">AI Search</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>The Death of Page Two: What Replaces It in AI Search</h3>
+        <p class="dek">Page two of Google results is functionally dead in 2026. AI-generated answers now absorb the queries that used to drive clicks to positions 1120.</p>
+        <div class="by"><div>AI Search · Strategy</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <!-- POST -->
+      <a href="posts/journal/faqpage-schema-citation-cheat-code.html" class="post" style="transition-delay:.05s">
+        <div class="meta"><span class="cat">Schema</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>FAQPage Schema Is the Citation Cheat Code Nobody Is Using</h3>
+        <p class="dek">FAQPage schema gets local business content pulled directly into ChatGPT, Perplexity, and Google AI Overviews. Most Brooklyn sites have zero FAQ markup.</p>
+        <div class="by"><div>Schema · Citations</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <!-- POST -->
+      <a href="posts/journal/five-step-schema-audit-brooklyn.html" class="post" style="transition-delay:.1s">
+        <div class="meta"><span class="cat">Playbook</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>The Five-Step Schema Audit Every Brooklyn Local Business Can Do in an Afternoon</h3>
+        <p class="dek">A five-step schema audit process for Brooklyn local businesses to improve AI search visibility, rich results, and citations in ChatGPT and Google AI Overviews.</p>
+        <div class="by"><div>Playbook · Citations</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <!-- POST -->
+      <a href="posts/journal/local-search-prompt-vocabulary-2026.html" class="post" style="transition-delay:.15s">
+        <div class="meta"><span class="cat">Field Notes</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>Local Search Prompt Vocabulary Changed Shape in 2026: What We're Seeing Across Brooklyn Clients</h3>
+        <p class="dek">Local search prompts shifted from location triggers to intent and quality signals in 2026. Signal tracked 300+ queries across Brooklyn clients to map the change.</p>
+        <div class="by"><div>Field Notes · AI Search</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <!-- POST -->
+      <a href="posts/journal/near-me-dying-ai-search-prompt-patterns.html" class="post">
+        <div class="meta"><span class="cat">Field Notes</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>Why 'Near Me' Is Dying: The Prompt Patterns That Replaced It in AI Search</h3>
+        <p class="dek">Near me' searches dropped 61% since 2023. AI search users now ask 'best for X in [neighborhood].' Here's what replaced it and how to rank.</p>
+        <div class="by"><div>Field Notes · AI Search</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <!-- POST -->
+      <a href="posts/journal/neighborhood-landing-page-ai-citations.html" class="post" style="transition-delay:.1s">
+        <div class="meta"><span class="cat">Playbook</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>How to Write a Neighborhood Landing Page That Gets Cited by AI</h3>
+        <p class="dek">AI search cites neighborhood landing pages that answer specific local queries with named entities, structured facts, and retrieval-grade content. Here's the exact playbook.</p>
+        <div class="by"><div>Playbook · Local SEO</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <!-- POST -->
+      <a href="posts/journal/neighborhood-landing-page-ai-retrieval.html" class="post" style="transition-delay:.15s">
+        <div class="meta"><span class="cat">Playbook</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>The Neighborhood Landing Page Rebuilt for AI Retrieval</h3>
+        <p class="dek">AI search answers at neighborhood resolution. Here's how to rebuild your location pages so ChatGPT, Perplexity, and Google cite them first.</p>
+        <div class="by"><div>Playbook · Local SEO</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <!-- POST -->
+      <a href="posts/journal/nostrand-optical-zero-to-rich-results.html" class="post">
+        <div class="meta"><span class="cat">Case Study</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>Nostrand Optical: From Zero Citations to Four Rich Results on Launch Day</h3>
+        <p class="dek">Nostrand Optical launched with four valid Google rich results on day one. Here's what structured data, retrieval-grade content, and citation architecture produced.</p>
+        <div class="by"><div>Case Study · Citations</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <!-- POST -->
+      <a href="posts/journal/perplexity-second-traffic-source-brooklyn.html" class="post" style="transition-delay:.05s">
+        <div class="meta"><span class="cat">Field Notes</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>Perplexity Is Now Our Second-Best Traffic Source: Data from 12 Brooklyn Clients</h3>
+        <p class="dek">Perplexity overtook organic Google as the #2 referral source across 12 Brooklyn client sites in Q1 2026. Here's what the traffic data shows.</p>
+        <div class="by"><div>Field Notes · Citations</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <!-- POST -->
+      <a href="posts/journal/same-prompt-four-ai-engines-spread.html" class="post" style="transition-delay:.1s">
+        <div class="meta"><span class="cat">Field Notes</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread</h3>
+        <p class="dek">Signal tested identical local search prompts across ChatGPT, Perplexity, Google AI Overviews, and Gemini. The citation sources, confidence levels, and named businesses differed sharply.</p>
+        <div class="by"><div>Field Notes · Citations</div><div class="read-time">6 min →</div></div>
+      </a>
+
+      <!-- POST -->
+      <a href="posts/journal/seven-schema-types-local-business-2026.html" class="post" style="transition-delay:.15s">
+        <div class="meta"><span class="cat">Schema</span><span>Apr 26, 2026 · 6 min</span></div>
+        <h3>The Seven Schema Types Every Local Business Is Missing in 2026</h3>
+        <p class="dek">Seven schema types most local businesses skip in 2026, and why each one determines whether ChatGPT, Perplexity, or Google AI Overviews cites you first.</p>
+        <div class="by"><div>Schema · Architecture</div><div class="read-time">6 min →</div></div>
+      </a>
+    </div>
+
+        <!-- ============ PAGINATION ============ -->
+    <div class="arch-pagination">
+      <a href="#">← Older posts</a>
+      <span class="center">Page <em style="color:var(--red)">01</em> of 2</span>
+      <a href="#">Newer posts →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ MID-CTA STRIP ============ -->
+<section style="background:var(--ink);color:var(--paper);padding:80px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:16px">§ The Subscription</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:56px;line-height:1.0;letter-spacing:-.025em;font-variation-settings:'SOFT' 30;margin-bottom:14px">See if AI is missing <em style="color:var(--red);font-weight:400;font-style:italic;font-variation-settings:'SOFT' 100">your business.</em></h3>
+      <p style="font-family:var(--serif);font-size:18px;line-height:1.5;color:rgba(245,242,237,.78);max-width:520px">20-minute live audit. I'll run your business through ChatGPT, Perplexity, Google AI, and Claude and show you exactly what AI says — and doesn't say — about you. Free. No pitch.</p>
+    </div>
+    <a href="index.html#audit" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book your free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose, since 2025.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#pricing">Basic — $799 + $299/mo</a></li>
+          <li><a href="index.html#pricing">Standard — $1,499 + $449/mo</a></li>
+          <li><a href="index.html#pricing">Premium — $2,499 + $699/mo</a></li>
+          <li><a href="index.html#pricing">Rebuild (GEO layer) — $499 one-time</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Work</h4>
+        <ul>
+          <li><a href="index.html#work">Nostrand Optical</a></li>
+          <li><a href="index.html#work">Brooklyn BJJ Lessons</a></li>
+          <li><a href="index.html#audit">Become a case study</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+          <li><a href="index.html#audit">Book the audit →</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mega" id="megaFooter">
+      <span class="phrase">Be the<br/><em data-text="answer.">answer.</em></span>
+      <span class="small">© MMXXVI<br/>Signal AI LLC<br/>All rights reserved · v2.0</span>
+    </div>
+
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>End of issue · 11 / 11</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // simple reveal-in for posts (already-visible ones unaffected)
+  if(!('IntersectionObserver' in window)) return;
+  document.querySelectorAll('.reveal').forEach(function(el){
+    var r = el.getBoundingClientRect();
+    if(r.top > window.innerHeight * 0.9) el.classList.add('pending');
+  });
+  var io = new IntersectionObserver(function(ents){
+    ents.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  },{threshold:.15});
+  document.querySelectorAll('.reveal.pending').forEach(function(el){io.observe(el);});
+
+  // footer mega "Be the answer." reveal
+  var mega=document.getElementById('megaFooter');
+  if(mega){
+    var fired=false;
+    new IntersectionObserver(function(ents){
+      ents.forEach(function(e){if(e.isIntersecting && !fired){fired=true;mega.classList.add('lit');}});
+    },{threshold:.4}).observe(mega);
+  }
+
+  // Category filter — shows/hides posts by category
+  document.querySelectorAll('.cat-row a').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      document.querySelectorAll('.cat-row a').forEach(function(x){x.classList.remove('is-active');});
+      a.classList.add('is-active');
+      var label = a.childNodes[0] ? a.childNodes[0].textContent.trim() : '';
+      var catMap = {'Playbooks':'Playbook','Case Studies':'Case Study'};
+      var target = catMap[label] || label;
+      document.querySelectorAll('.post').forEach(function(post){
+        if(label === 'All'){
+          post.style.display = '';
+        } else {
+          var catEl = post.querySelector('.cat');
+          post.style.display = (catEl && catEl.textContent.trim() === target) ? '' : 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

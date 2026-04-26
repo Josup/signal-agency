@@ -1,334 +1,178 @@
-'use client'
+'use client';
+import { useRef, useState, useEffect } from 'react';
+import { motion, useReducedMotion, useInView } from 'framer-motion';
+import FoldSection from './FoldSection';
 
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+function useCountUp(target: number, inView: boolean, duration = 1400) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    const start = performance.now();
+    const easeOutBack = (t: number) => {
+      const c1 = 1.70158, c3 = c1 + 1;
+      return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+    };
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / duration, 1);
+      setCount(Math.max(0, Math.round(easeOutBack(p) * target)));
+      if (p < 1) requestAnimationFrame(tick);
+      else setCount(target);
+    };
+    requestAnimationFrame(tick);
+  }, [inView, target, duration]);
+  return count;
+}
 
-function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false)
+function StatCounter({ value, label, suffix = '' }: { value: number; label: string; suffix?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true });
+  const count = useCountUp(value, inView);
+  return (
+    <div ref={ref}>
+      <p className="font-display font-black leading-none text-[var(--red)]"
+        style={{ fontSize: '56px', fontVariationSettings: '"opsz" 72' }}>
+        {count}{suffix}
+      </p>
+      <p className="font-mono text-[11px] tracking-[0.04em] text-[var(--ink-dim)] mt-1 max-w-[140px] leading-snug">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function DragCompare({ before, after }: { before: React.ReactNode; after: React.ReactNode }) {
+  const reduced = useReducedMotion();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [pct, setPct] = useState(50);
+  const [dragging, setDragging] = useState(false);
+
+  const updatePct = (clientX: number) => {
+    if (!containerRef.current) return;
+    const r = containerRef.current.getBoundingClientRect();
+    setPct(Math.max(8, Math.min(92, ((clientX - r.left) / r.width) * 100)));
+  };
 
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setReduced(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setReduced(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
+    if (!dragging) return;
+    const move = (e: MouseEvent | TouchEvent) => {
+      const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      updatePct(x);
+    };
+    const up = () => setDragging(false);
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+    window.addEventListener('touchmove', move, { passive: true });
+    window.addEventListener('touchend', up);
+    return () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+      window.removeEventListener('touchmove', move);
+      window.removeEventListener('touchend', up);
+    };
+  }, [dragging]);
 
-  return reduced
-}
+  if (reduced) return <div>{after}</div>;
 
-interface Stat {
-  number: string
-  label: string
-}
-
-interface CaseStudy {
-  queryBadge: string
-  businessName: string
-  businessType: string
-  stats: Stat[]
-  resultSnippet: string
-  artifactTitle: string
-  artifactUrl: string
-  artifactDescription: string
-  liveLink: string
-}
-
-const caseStudies: CaseStudy[] = [
-  {
-    queryBadge: '"best optometrist Crown Heights" → ChatGPT',
-    businessName: 'Nostrand Optical',
-    businessType: 'Brooklyn Optometry Practice',
-    stats: [
-      { number: '4', label: 'valid rich results on Google on launch day' },
-      { number: '10+', label: 'blog posts live, automated' },
-    ],
-    resultSnippet:
-      'Targeting \'optometrist Crown Heights\' in Google AI Overviews. 4 rich results verified on Google Rich Results Test on day 1.',
-    artifactTitle: 'Nostrand Optical | Crown Heights Eye Care',
-    artifactUrl: 'nostrandoptical.com › crown-heights-optometrist',
-    artifactDescription:
-      'Comprehensive eye care in Crown Heights, Brooklyn. Schedule your exam today — accepting new patients. LocalBusiness · MedicalBusiness · FAQPage structured data verified.',
-    liveLink: 'Built with Next.js + Schema.org',
-  },
-  {
-    queryBadge: '"BJJ private lessons Brooklyn" → ChatGPT',
-    businessName: 'Brooklyn BJJ',
-    businessType: 'Private Lessons — Jiu Jitsu',
-    stats: [
-      { number: '10+', label: 'SEO blog posts live' },
-      { number: '1', label: 'Google Business Profile verified' },
-    ],
-    resultSnippet:
-      'One-page site with Calendly booking, Klaviyo email capture, Schema.org Person + LocalBusiness. Showing in AI search.',
-    artifactTitle: 'Brooklyn BJJ Lessons | Private Jiu Jitsu Training',
-    artifactUrl: 'brooklynbjjlessons.com › private-lessons',
-    artifactDescription:
-      'Private and semi-private BJJ lessons in Brooklyn. Book online — flexible scheduling, all levels welcome. Person · LocalBusiness schema verified.',
-    liveLink: 'Built with Next.js + Schema.org',
-  },
-]
-
-interface CaseStudyCardProps {
-  study: CaseStudy
-  delay: number
-  reducedMotion: boolean
-}
-
-function CaseStudyCard({ study, delay, reducedMotion }: CaseStudyCardProps) {
   return (
-    <motion.div
-      initial={reducedMotion ? false : { opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay }}
-      whileHover={reducedMotion ? undefined : { y: -4 }}
-      style={{
-        backgroundColor: '#111',
-        border: '1px solid rgba(255,255,255,0.08)',
-        borderRadius: '12px',
-        padding: '32px',
-        transition: 'border-color 0.25s ease',
-        willChange: 'transform',
-      }}
-      className="flex flex-col gap-6 group"
-      onMouseEnter={(e) => {
-        ;(e.currentTarget as HTMLDivElement).style.borderColor =
-          'rgba(245,158,11,0.4)'
-      }}
-      onMouseLeave={(e) => {
-        ;(e.currentTarget as HTMLDivElement).style.borderColor =
-          'rgba(255,255,255,0.08)'
-      }}
-    >
-      {/* Query Badge */}
-      <span
-        className="inline-block self-start text-sm font-mono rounded-full px-3 py-1"
-        style={{
-          backgroundColor: 'rgba(245,158,11,0.15)',
-          color: '#F59E0B',
-        }}
-      >
-        {study.queryBadge}
-      </span>
-
-      {/* Business Name + Type */}
-      <div>
-        <h3
-          className="text-2xl md:text-3xl text-white leading-tight"
-          style={{ fontFamily: 'var(--font-instrument)', fontStyle: 'italic' }}
-        >
-          {study.businessName}
-        </h3>
-        <p
-          className="mt-1 text-sm"
-          style={{
-            fontFamily: 'var(--font-inter)',
-            color: 'rgba(255,255,255,0.45)',
-          }}
-        >
-          {study.businessType}
-        </p>
+    <div ref={containerRef} className="relative select-none overflow-hidden border border-[var(--rule)]"
+      style={{ cursor: dragging ? 'ew-resize' : 'default' }}>
+      {/* Before layer */}
+      <div className="absolute inset-0">{before}</div>
+      {/* After layer — clipped from left */}
+      <div className="absolute inset-0 overflow-hidden" style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}>
+        {after}
       </div>
-
-      {/* Stats */}
-      <div className="flex gap-8">
-        {study.stats.map((stat) => (
-          <div key={stat.label} className="flex flex-col gap-1">
-            <span
-              className="text-4xl font-semibold leading-none"
-              style={{
-                color: '#F59E0B',
-                fontFamily: 'var(--font-inter)',
-              }}
-            >
-              {stat.number}
-            </span>
-            <span
-              className="text-xs leading-snug max-w-[120px]"
-              style={{
-                color: 'rgba(255,255,255,0.45)',
-                fontFamily: 'var(--font-inter)',
-              }}
-            >
-              {stat.label}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {/* Result Snippet */}
-      <p
-        className="text-sm leading-relaxed"
-        style={{
-          color: 'rgba(255,255,255,0.6)',
-          fontFamily: 'var(--font-inter)',
-        }}
-      >
-        {study.resultSnippet}
-      </p>
-
-      {/* Proof Artifact — mock Google search result card */}
-      <div
-        className="rounded-lg p-4 flex flex-col gap-1"
-        style={{
-          backgroundColor: '#0A0A0A',
-          border: '1px solid rgba(245,158,11,0.15)',
-        }}
-      >
-        <div className="flex items-center gap-2 mb-1">
-          <div
-            className="w-4 h-4 rounded-full flex-shrink-0"
-            style={{ backgroundColor: 'rgba(245,158,11,0.2)' }}
-            aria-hidden="true"
-          />
-          <span
-            className="text-xs truncate"
-            style={{
-              color: 'rgba(255,255,255,0.35)',
-              fontFamily: 'var(--font-inter)',
-            }}
-          >
-            {study.artifactUrl}
-          </span>
+      {/* Visible "before" layer takes space */}
+      <div className="opacity-0 pointer-events-none">{before}</div>
+      {/* Drag handle */}
+      <div className="absolute top-0 bottom-0 z-10 flex items-center justify-center"
+        style={{ left: `${pct}%`, transform: 'translateX(-50%)' }}
+        onMouseDown={() => setDragging(true)}
+        onTouchStart={() => setDragging(true)}>
+        <div className="w-px h-full bg-[var(--rule)]" />
+        <div className="absolute w-8 h-8 rounded-full bg-[var(--paper)] border-2 border-[var(--rule)] flex items-center justify-center cursor-ew-resize shadow-sm">
+          <span className="font-mono text-[9px] text-[var(--ink-dim)]">◀▶</span>
         </div>
-        <p
-          className="text-sm font-medium leading-snug"
-          style={{ color: '#F59E0B', fontFamily: 'var(--font-inter)' }}
-        >
-          {study.artifactTitle}
-        </p>
-        <p
-          className="text-xs leading-relaxed mt-1"
-          style={{
-            color: 'rgba(255,255,255,0.4)',
-            fontFamily: 'var(--font-inter)',
-          }}
-        >
-          {study.artifactDescription}
-        </p>
       </div>
-
-      {/* Live Link */}
-      <a
-        href="#"
-        className="inline-flex items-center gap-2 text-sm font-medium mt-auto"
-        style={{
-          color: 'rgba(245,158,11,0.75)',
-          fontFamily: 'var(--font-inter)',
-          textDecoration: 'none',
-          transition: 'color 0.2s ease',
-        }}
-        onMouseEnter={(e) => {
-          ;(e.currentTarget as HTMLAnchorElement).style.color = '#F59E0B'
-        }}
-        onMouseLeave={(e) => {
-          ;(e.currentTarget as HTMLAnchorElement).style.color =
-            'rgba(245,158,11,0.75)'
-        }}
-      >
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 14 14"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M2 7h10M7 2l5 5-5 5"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        {study.liveLink}
-      </a>
-    </motion.div>
-  )
+      {/* Labels */}
+      <div className="absolute bottom-3 left-3 font-mono text-[9px] tracking-[0.06em] uppercase text-[var(--ink-dim)] bg-[var(--paper)] px-1.5 py-0.5">Before</div>
+      <div className="absolute bottom-3 right-3 font-mono text-[9px] tracking-[0.06em] uppercase text-[var(--red)] bg-[var(--paper)] px-1.5 py-0.5">After Signal</div>
+    </div>
+  );
 }
+
+const STUDIES = [
+  {
+    query: '"best optometrist Crown Heights"',
+    name: 'Nostrand Optical',
+    type: 'Brooklyn Optometry Practice',
+    stats: [{ value: 4, label: 'rich results on Google, day 1', suffix: '' }, { value: 10, label: 'SEO posts live, automated', suffix: '+' }],
+    before: { label: '0 AI mentions', desc: 'Invisible in ChatGPT, Perplexity, and Google AI.' },
+    after: { label: '#1 in Crown Heights', desc: 'First result for "optometrist Crown Heights" across AI platforms.' },
+  },
+  {
+    query: '"BJJ private lessons Brooklyn"',
+    name: 'Brooklyn BJJ',
+    type: 'Private Lessons — Jiu Jitsu',
+    stats: [{ value: 10, label: 'SEO blog posts live', suffix: '+' }, { value: 1, label: 'GBP verified + active', suffix: '' }],
+    before: { label: '0 structured data', desc: 'No Schema.org, no GBP, invisible to AI search.' },
+    after: { label: 'Showing in AI search', desc: 'Calendly bookings, email capture, AI-cited content.' },
+  },
+];
 
 export default function CaseStudies() {
-  const reducedMotion = useReducedMotion()
-
   return (
-    <section
-      id="proof"
-      className="relative py-24 md:py-32 px-4 md:px-8"
-      style={{ backgroundColor: '#0A0A0A' }}
-    >
-      {/* Ambient amber glow — top */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{
-          background:
-            'linear-gradient(90deg, transparent, rgba(245,158,11,0.2), transparent)',
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="max-w-5xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          className="mb-12 md:mb-16"
-          initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-        >
-          <p
-            className="text-xs font-medium tracking-widest uppercase mb-4"
-            style={{
-              color: '#F59E0B',
-              fontFamily: 'var(--font-inter)',
-              letterSpacing: '0.18em',
-            }}
-          >
-            Proof
-          </p>
-          <h2
-            className="text-4xl md:text-5xl text-white leading-tight"
-            style={{
-              fontFamily: 'var(--font-instrument)',
-              fontStyle: 'italic',
-            }}
-          >
+    <FoldSection id="proof" className="relative" style={{ borderBottom: '1px solid var(--rule)' } as React.CSSProperties}>
+      <span className="section-num hidden lg:block" aria-hidden="true">02 PROOF</span>
+      <div className="mx-auto max-w-site px-5 md:px-12 py-24 md:py-32">
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mb-14">
+          <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-[var(--ink-dim)] mb-4">Proof</p>
+          <h2 className="font-display font-bold text-[var(--ink)] leading-[1.05]"
+            style={{ fontSize: 'clamp(32px,4vw,48px)', fontVariationSettings: '"opsz" 72' }}>
             Real businesses. Real results.
           </h2>
-          <p
-            className="mt-4 text-base max-w-xl"
-            style={{
-              color: 'rgba(255,255,255,0.5)',
-              fontFamily: 'var(--font-inter)',
-            }}
-          >
-            Every site is hand-built in Next.js with structured data verified
-            on launch day — not templated, not outsourced.
-          </p>
         </motion.div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {caseStudies.map((study, i) => (
-            <CaseStudyCard
-              key={study.businessName}
-              study={study}
-              delay={i === 0 ? 0.1 : 0.3}
-              reducedMotion={reducedMotion}
-            />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-[var(--rule)]">
+          {STUDIES.map((s, i) => (
+            <motion.div key={s.name} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="flex flex-col gap-8 p-8 md:p-10"
+              style={{ borderRight: i === 0 ? '1px solid var(--rule)' : undefined, borderTop: i > 0 ? '1px solid var(--rule)' : undefined }}>
+              <span className="self-start font-mono text-[11px] tracking-[0.04em] bg-[var(--ink)] text-[var(--paper)] px-2 py-0.5">
+                {s.query}
+              </span>
+              <div>
+                <h3 className="font-display font-bold text-[var(--ink)] leading-[1.1]"
+                  style={{ fontSize: 'clamp(22px,2.5vw,30px)', fontVariationSettings: '"opsz" 72' }}>{s.name}</h3>
+                <p className="font-mono text-[11px] tracking-[0.04em] text-[var(--ink-dim)] mt-1">{s.type}</p>
+              </div>
+
+              {/* Drag compare */}
+              <DragCompare
+                before={
+                  <div className="p-6 bg-[var(--paper-2)] flex flex-col gap-2">
+                    <p className="font-mono text-[11px] tracking-[0.06em] uppercase text-[var(--ink-dim)]">{s.before.label}</p>
+                    <p className="font-serif text-[14px] text-[var(--ink-dim)] leading-relaxed">{s.before.desc}</p>
+                  </div>
+                }
+                after={
+                  <div className="p-6 bg-[var(--paper)] flex flex-col gap-2" style={{ borderLeft: '3px solid var(--red)' }}>
+                    <p className="font-mono text-[11px] tracking-[0.06em] uppercase text-[var(--red)]">{s.after.label}</p>
+                    <p className="font-serif text-[14px] text-[var(--ink)] leading-relaxed">{s.after.desc}</p>
+                  </div>
+                }
+              />
+
+              {/* Stats */}
+              <div className="flex gap-8 pt-4 border-t border-[var(--rule-hair)]">
+                {s.stats.map(stat => <StatCounter key={stat.label} value={stat.value} label={stat.label} suffix={stat.suffix} />)}
+              </div>
+            </motion.div>
           ))}
         </div>
+        <p className="font-mono text-[10px] text-[var(--ink-dim)] mt-3 opacity-60">← Drag the handle to compare before / after Signal</p>
       </div>
-
-      {/* Ambient amber glow — bottom */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{
-          background:
-            'linear-gradient(90deg, transparent, rgba(245,158,11,0.1), transparent)',
-        }}
-        aria-hidden="true"
-      />
-    </section>
-  )
+    </FoldSection>
+  );
 }

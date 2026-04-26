@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Signal — When Brooklyn asks ChatGPT, your competitors answer.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#F5F2ED;
+  --paper-2:#EFEAE0;
+  --ink:#15110D;
+  --ink-2:#3A332B;
+  --ink-dim:#6B6258;
+  --rule:#15110D;
+  --rule-soft:rgba(21,17,13,.18);
+  --rule-hair:rgba(21,17,13,.10);
+  --red:#C41E3A;
+  --red-ink:#A8132E;
+  --display:"Fraunces", "Times New Roman", serif;
+  --serif:"Source Serif 4", Georgia, serif;
+  --mono:"JetBrains Mono", ui-monospace, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","onum","kern"}
+body{
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(21,17,13,.04) 1px, transparent 0);
+  background-size:6px 6px;
+  background-position:0 0;
+}
+/* paper grain */
+body.no-dots{background-image:none}
+body.no-grain::before{display:none}
+.btn.solid.cta-style-underline{background:transparent;color:var(--ink);padding:8px 0;border-bottom:3px solid var(--red)}
+.btn.solid.cta-style-underline::after{display:none}
+.btn.solid.cta-style-outline{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.solid.cta-style-outline::after{display:none}
+.btn.solid.cta-style-outline:hover{background:var(--ink);color:var(--paper)}
+body.accent-underline .hero h1 .it{color:inherit;font-style:normal;text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:6px;text-underline-offset:.05em}
+body.accent-both .hero h1 .it{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:5px;text-underline-offset:.05em}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:80;opacity:.07;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .08  0 0 0 0 .07  0 0 0 0 .05  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--red);color:var(--paper)}
+
+/* ====== TYPOGRAPHY ====== */
+.display{font-family:var(--display);font-weight:900;letter-spacing:-.025em;line-height:.86}
+.italic{font-family:var(--display);font-weight:400;font-style:italic;font-variation-settings:"SOFT" 100;letter-spacing:-.02em}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);font-weight:500}
+.body-lg{font-size:21px;line-height:1.5;color:var(--ink)}
+.body{font-size:17px;line-height:1.55;color:var(--ink-2)}
+
+/* ====== LAYOUT ====== */
+.wrap{max-width:1440px;margin:0 auto;padding:0 56px;position:relative}
+.rule{border-top:1px solid var(--rule)}
+.rule-double{border-top:3px double var(--rule)}
+.rule-hair{border-top:1px solid var(--rule-soft)}
+
+/* rotated section number in left margin */
+.sec{position:relative;padding:120px 0}
+.sec .num-margin{
+  position:absolute;left:14px;top:120px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--ink);text-transform:uppercase;font-weight:500;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  display:flex;align-items:center;gap:18px;
+}
+.sec .num-margin::before{content:"";display:block;width:1px;height:60px;background:var(--ink)}
+.sec .num-margin::after{content:"";display:block;width:8px;height:8px;background:var(--red)}
+
+/* ====== MASTHEAD / NAV ====== */
+.masthead{
+  position:sticky;top:0;z-index:60;background:var(--paper);
+  border-bottom:1px solid var(--rule);
+}
+.masthead .row1{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 56px;border-bottom:1px solid var(--rule-soft);
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);
+}
+.masthead .row1 .left,.masthead .row1 .right{display:flex;gap:20px;align-items:center}
+.masthead .row1 .red{color:var(--red);font-weight:700}
+.masthead .row2{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:14px 56px;
+}
+.masthead .nav-l,.masthead .nav-r{display:flex;gap:32px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.masthead .nav-r{justify-content:flex-end}
+.masthead .nav-l a,.masthead .nav-r a{position:relative;padding-bottom:2px}
+.masthead .nav-l a:hover,.masthead .nav-r a:hover{color:var(--red)}
+.masthead .nav-l a::after,.masthead .nav-r a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1.5px;background:var(--red);transition:right .35s cubic-bezier(.7,.1,.2,1);
+}
+.masthead .nav-l a:hover::after,.masthead .nav-r a:hover::after{right:0}
+.masthead .wordmark{font-family:var(--display);font-weight:900;font-size:38px;letter-spacing:-.04em;line-height:1;display:flex;align-items:center;gap:8px;font-variation-settings:"SOFT" 0,"WONK" 1}
+.masthead .wordmark sup{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--red);font-weight:700;align-self:flex-start;margin-top:6px}
+
+/* ====== HERO ====== */
+.hero{padding:64px 0 0;position:relative}
+.hero .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.hero .left{padding-top:24px}
+.hero .stamp{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:8px 14px 8px 10px;border:1px solid var(--ink);
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:48px;
+}
+.hero .stamp .dot{width:8px;height:8px;background:var(--red);border-radius:50%}
+.hero h1{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(64px, 8.4vw, 152px);
+  line-height:.86;letter-spacing:-.035em;
+  font-variation-settings:"SOFT" 30, "WONK" 1;
+  text-wrap:balance;
+}
+.hero h1 .l{display:block;overflow:hidden}
+.hero h1 .l > span{display:inline-block}
+.hero h1 .it{font-family:var(--display);font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100;letter-spacing:-.025em}
+.hero h1 .underline{position:relative;display:inline-block}
+.hero h1 .underline::after{
+  content:"";position:absolute;left:0;right:0;bottom:.06em;height:6px;background:var(--red);
+  transform:scaleX(0);transform-origin:left;animation:grow 1.2s 1.1s cubic-bezier(.7,.1,.2,1) forwards
+}
+@keyframes grow{to{transform:scaleX(1)}}
+
+.reveal-clip{clip-path:inset(0 100% 0 0);animation:clip 1s cubic-bezier(.7,.1,.2,1) forwards}
+.reveal-clip.d1{animation-delay:.1s}
+.reveal-clip.d2{animation-delay:.25s}
+.reveal-clip.d3{animation-delay:.4s}
+@keyframes clip{to{clip-path:inset(0 0 0 0)}}
+
+.hero .sub{margin-top:48px;max-width:46ch;font-family:var(--serif);font-size:22px;line-height:1.45;color:var(--ink)}
+.hero .cta-row{margin-top:48px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.btn{
+  font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  padding:22px 32px;border-radius:0;display:inline-flex;align-items:center;gap:14px;
+  transition:transform .25s cubic-bezier(.7,.1,.2,1);
+  position:relative;
+}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid::after{
+  content:"";position:absolute;inset:0;background:var(--red);z-index:-1;transform:translate(8px,8px);transition:transform .25s cubic-bezier(.7,.1,.2,1);
+}
+.btn.solid:hover{transform:translate(4px,4px)}
+.btn.solid:hover::after{transform:translate(0,0)}
+.btn .arr{transition:transform .25s}
+.btn:hover .arr{transform:translateX(4px)}
+.cta-aside{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);max-width:24ch;line-height:1.7;border-left:2px solid var(--red);padding-left:14px}
+.cta-aside b{color:var(--ink);font-weight:500}
+
+/* hero meta strip below mockup */
+.hero .meta{
+  margin-top:64px;border-top:1px solid var(--rule);border-bottom:3px double var(--rule);
+  display:grid;grid-template-columns:repeat(4, 1fr);
+}
+.hero .meta .cell{padding:22px 22px;border-left:1px solid var(--rule-soft)}
+.hero .meta .cell:first-child{border-left:0}
+.hero .meta .cell .k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px}
+.hero .meta .cell .v{font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.02em;line-height:1}
+.hero .meta .cell .v .red{color:var(--red)}
+.hero .meta .cell .v.italic{font-style:italic;font-weight:400;color:var(--ink-2)}
+
+/* ====== CHATGPT MOCK ====== */
+.chat{
+  position:relative;background:#FFFFFF;border:1px solid var(--ink);
+  box-shadow:14px 14px 0 var(--ink);
+  padding:0;overflow:hidden;
+  transform:rotate(-.6deg);
+  height:100%;min-height:560px;
+}
+.chat::before{
+  content:"// AI RESPONSE · CAPTURED 04.18.2026";
+  position:absolute;top:-26px;left:8px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--ink-2);text-transform:uppercase;
+}
+.chat .chrome{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;border-bottom:1px solid var(--rule-soft);
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);
+}
+.chat .chrome .lights{display:flex;gap:6px}
+.chat .chrome .lights span{width:10px;height:10px;border-radius:50%;background:#E5DFD3;border:1px solid var(--rule-soft)}
+.chat .chrome .url{font-weight:500;color:var(--ink-2)}
+.chat .body-c{padding:30px 30px 36px}
+.chat .q{
+  display:flex;gap:14px;align-items:flex-start;padding-bottom:22px;border-bottom:1px solid var(--rule-soft);margin-bottom:24px;
+}
+.chat .q .av{width:30px;height:30px;background:var(--paper-2);border:1px solid var(--rule-soft);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700;flex:0 0 30px}
+.chat .q .qt{font-family:var(--display);font-style:italic;font-weight:400;font-size:24px;line-height:1.3;color:var(--ink);font-variation-settings:"SOFT" 100;letter-spacing:-.015em}
+.chat .a{display:flex;gap:14px;align-items:flex-start}
+.chat .a .av{width:30px;height:30px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700;flex:0 0 30px}
+.chat .a .at{font-family:var(--serif);font-size:15px;line-height:1.65;color:var(--ink-2)}
+.chat .a .at p{margin-bottom:14px}
+.chat .a .at .you{
+  background:var(--red);color:#fff;padding:1px 8px;font-weight:600;display:inline-block;
+  position:relative;
+}
+.chat .a .at .you::before{
+  content:"YOU";position:absolute;top:-18px;left:0;font-family:var(--mono);font-size:9px;letter-spacing:.25em;color:var(--red);font-weight:700;
+}
+.chat .a .at strong{color:var(--ink);font-weight:600}
+.chat .a .at ol{padding-left:22px;margin:8px 0 14px}
+.chat .a .at ol li{margin-bottom:6px}
+.chat .a .at .meta-line{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink-dim);text-transform:uppercase;margin-top:14px;border-top:1px solid var(--rule-soft);padding-top:10px}
+.chat .typing{display:inline-block;width:8px;height:14px;background:var(--ink);vertical-align:-2px;margin-left:1px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.chat .stamp-overlay{
+  position:absolute;bottom:18px;right:14px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.25em;color:var(--red);text-transform:uppercase;
+  border:1.5px solid var(--red);padding:6px 10px;transform:rotate(-3deg);font-weight:700;
+}
+
+/* ====== TICKER ====== */
+.ticker{
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--paper);overflow:hidden;white-space:nowrap;padding:14px 0;margin-top:0;
+}
+.ticker .track{display:inline-flex;gap:48px;animation:march 50s linear infinite;font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--ink)}
+.ticker .track .it{display:inline-flex;align-items:center;gap:14px}
+.ticker .track .it .red{color:var(--red);font-weight:700}
+.ticker .track .it .star{color:var(--red);font-size:14px}
+@keyframes march{to{transform:translateX(-50%)}}
+
+/* ====== PROBLEM ====== */
+.problem{padding:140px 0 120px;border-top:1px solid var(--rule)}
+.problem .lab{display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:start}
+.problem .lab .hdr h2{font-family:var(--display);font-weight:900;font-size:80px;line-height:.86;letter-spacing:-.03em;font-variation-settings:"SOFT" 30}
+.problem .lab .hdr h2 em{font-family:var(--display);font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.problem .lab .hdr .label{margin-bottom:14px}
+.problem .body-text{
+  font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:42px;line-height:1.18;color:var(--ink);
+  font-variation-settings:"SOFT" 100;letter-spacing:-.015em;
+  text-wrap:balance;max-width:24ch;
+}
+.problem .body-text .red{color:var(--red);font-style:italic}
+.problem .body-text .strike{position:relative;display:inline-block}
+.problem .body-text .strike::after{content:"";position:absolute;left:-2px;right:-2px;top:54%;height:3px;background:var(--ink);transform:rotate(-2deg)}
+.problem .footnote{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;border-top:1px solid var(--rule-soft);padding-top:32px;font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2);max-width:none}
+.problem .footnote sup{font-family:var(--mono);font-size:10px;color:var(--red);font-weight:700;margin-right:4px}
+
+/* ====== CASE STUDIES ====== */
+.cases{padding:120px 0;border-top:3px double var(--rule)}
+.cases .head-row{display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:end;margin-bottom:64px}
+.cases .head-row h2{font-family:var(--display);font-weight:900;font-size:96px;line-height:.85;letter-spacing:-.035em;font-variation-settings:"SOFT" 30}
+.cases .head-row h2 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
+.case{
+  padding:40px 36px 40px;border-right:1px solid var(--rule);position:relative;
+  display:flex;flex-direction:column;gap:0;
+  background:var(--paper);
+}
+.case:last-child{border-right:0}
+.case .topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim)}
+.case .topline .vol{color:var(--ink);font-weight:700}
+.case .topline .stamp{border:1px solid var(--red);color:var(--red);padding:4px 10px;font-weight:700;letter-spacing:.18em}
+.case h3{font-family:var(--display);font-weight:900;font-size:64px;line-height:.9;letter-spacing:-.03em;margin-bottom:8px;font-variation-settings:"SOFT" 30}
+.case .place{font-family:var(--display);font-style:italic;font-weight:400;font-size:24px;color:var(--red);margin-bottom:28px;font-variation-settings:"SOFT" 100}
+.case .desc{font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--ink-2);margin-bottom:32px;max-width:42ch}
+.case .vis{
+  margin-bottom:32px;border:1px solid var(--rule);background:var(--paper-2);
+  aspect-ratio:5/3;position:relative;overflow:hidden;
+}
+.case .vis .label{position:absolute;top:14px;left:14px;background:var(--paper);padding:4px 10px;border:1px solid var(--rule)}
+.case .vis svg{display:block;width:100%;height:100%}
+.case ul.bullets{list-style:none;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-bottom:32px;border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft);padding:0}
+.case ul.bullets li{display:flex;flex-direction:column;gap:10px;align-items:flex-start;font-family:var(--serif);font-size:13px;line-height:1.45;color:var(--ink);padding:20px 16px;border-left:1px solid var(--rule-soft)}
+.case ul.bullets li:first-child{border-left:0}
+.case ul.bullets li::before{content:""}
+.case ul.bullets li .n{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--red);font-weight:700;padding-top:2px}
+.case ul.bullets li b{color:var(--ink);font-weight:600;font-family:var(--display);font-size:18px;letter-spacing:-.01em}
+.case .row{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.case .row .read{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);padding-bottom:4px;transition:color .2s,border-color .2s,gap .25s;display:inline-flex;align-items:center;gap:10px}
+.case .row .read:hover{color:var(--red);border-color:var(--red);gap:16px}
+
+/* ====== PRICING ====== */
+.pricing{padding:120px 0;border-top:1px solid var(--rule);background:var(--paper-2)}
+.pricing .head-row{display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:end;margin-bottom:64px}
+.pricing .head-row h2{font-family:var(--display);font-weight:900;font-size:84px;line-height:.92;letter-spacing:-.03em;font-variation-settings:"SOFT" 30}
+.pricing .head-row h2 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.pricing .head-row p{font-family:var(--display);font-style:italic;font-weight:400;font-size:26px;line-height:1.35;max-width:32ch;color:var(--ink-2);font-variation-settings:"SOFT" 100;letter-spacing:-.01em}
+.tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--rule);background:var(--paper)}
+.tier{padding:40px 32px 36px;border-right:1px solid var(--rule);position:relative;display:flex;flex-direction:column;min-height:680px}
+.tier:last-child{border-right:0}
+.tier.featured{background:var(--ink);color:var(--paper)}
+.tier.featured .label,.tier.featured .desc,.tier.featured .feat li{color:var(--paper)}
+.tier.featured .red-text{color:#FF7A8E}
+.tier.featured .price-block .one{color:var(--paper)}
+.tier.featured .price-block .mo{color:#BFB7AB}
+.tier.featured .feat li::before{background:#FF7A8E !important}
+.tier.featured .recommended{position:absolute;top:-1px;left:-1px;right:-1px;background:var(--red);color:#fff;padding:8px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.25em;font-weight:700;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.tier .topline{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:24px;font-weight:500}
+.tier.featured .topline{color:#BFB7AB;margin-top:34px}
+.tier .name{font-family:var(--display);font-weight:900;font-size:48px;line-height:.9;letter-spacing:-.025em;margin-bottom:12px;font-variation-settings:"SOFT" 30}
+.tier .name em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.tier.featured .name em{color:#FF7A8E}
+.tier .desc{font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--ink-2);margin-bottom:28px;max-width:30ch}
+.price-block{padding:24px 0;border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft);margin-bottom:28px}
+.tier.featured .price-block{border-color:rgba(245,242,237,.18)}
+.price-block .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.price-block .row:last-child{margin-bottom:0}
+.price-block .k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim);font-weight:500}
+.price-block .v{font-family:var(--display);font-weight:900;font-size:36px;letter-spacing:-.02em;line-height:1;font-variation-settings:"WONK" 1}
+.price-block .v .small{font-size:14px;font-family:var(--mono);font-weight:500;color:var(--ink-dim);letter-spacing:.05em;margin-left:6px;text-transform:lowercase}
+.tier .feat{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
+.tier .feat li{font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--ink);display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start}
+.tier .feat li::before{content:"";width:8px;height:8px;background:var(--red);margin-top:8px}
+.tier .pick{
+  margin-top:auto;font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  padding:18px 22px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  transition:background .2s,color .2s;
+}
+.tier .pick:hover{background:var(--ink);color:var(--paper)}
+.tier.featured .pick{border-color:var(--paper);color:var(--paper);background:transparent}
+.tier.featured .pick:hover{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ====== HOW IT WORKS ====== */
+.how{padding:140px 0;border-top:1px solid var(--rule)}
+.how .head-row{display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:end;margin-bottom:80px}
+.how .head-row h2{font-family:var(--display);font-weight:900;font-size:96px;line-height:.85;letter-spacing:-.035em;font-variation-settings:"SOFT" 30}
+.how .head-row h2 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.step{padding:48px 32px 40px;border-right:1px solid var(--rule);position:relative;min-height:340px;display:flex;flex-direction:column}
+.step:last-child{border-right:0}
+.step .num{font-family:var(--display);font-weight:900;font-size:120px;line-height:.85;letter-spacing:-.05em;color:var(--red);margin-bottom:24px;font-variation-settings:"SOFT" 30,"WONK" 1}
+.step h3{font-family:var(--display);font-weight:900;font-size:30px;line-height:1;letter-spacing:-.02em;margin-bottom:14px;font-variation-settings:"SOFT" 30}
+.step p{font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2);margin-bottom:auto;max-width:32ch}
+.step .deliv{margin-top:28px;padding-top:18px;border-top:1px dashed var(--rule-soft);font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:500;display:flex;justify-content:space-between}
+.step .deliv span:last-child{color:var(--red);font-weight:700}
+
+/* ====== FINAL CTA ====== */
+.final{padding:160px 0 120px;border-top:3px double var(--rule);background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.final::before{
+  content:"SIGNAL · SIGNAL · SIGNAL · SIGNAL · SIGNAL · SIGNAL · SIGNAL ";
+  position:absolute;top:24px;left:0;right:0;font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:22px;letter-spacing:.4em;color:#3A332B;white-space:nowrap;
+}
+.final .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:80px;align-items:center}
+.final h2{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(64px,7.6vw,140px);line-height:.86;letter-spacing:-.035em;
+  font-variation-settings:"SOFT" 30;color:var(--paper);
+  text-wrap:balance;
+}
+.final h2 em{font-style:italic;font-weight:400;color:#FF7A8E;font-variation-settings:"SOFT" 100}
+.final .right p{font-family:var(--serif);font-size:19px;line-height:1.55;color:#BFB7AB;margin-bottom:32px;max-width:38ch}
+.final .right p strong{color:var(--paper);font-weight:600}
+.final .audit-card{
+  border:1px solid #3A332B;padding:28px;background:transparent;
+  display:flex;flex-direction:column;gap:18px;
+}
+.final .audit-card .row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #3A332B;padding-bottom:14px}
+.final .audit-card .row:last-of-type{border-bottom:0;padding-bottom:0}
+.final .audit-card .row .k{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#7A6F61}
+.final .audit-card .row .v{font-family:var(--display);font-weight:900;font-size:22px;color:var(--paper)}
+.final .btn-final{
+  width:100%;padding:24px;background:var(--red);color:#fff;
+  font-family:var(--mono);font-size:13px;letter-spacing:.25em;font-weight:700;text-transform:uppercase;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background .2s,transform .2s;
+  border:0;
+}
+.final .btn-final:hover{background:#fff;color:var(--red);transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--red)}
+
+/* ====== FOOTER ====== */
+footer{padding:80px 0 40px;border-top:1px solid var(--rule);background:var(--paper)}
+footer .top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;margin-bottom:80px;align-items:start}
+footer .wm{font-family:var(--display);font-weight:900;font-size:80px;line-height:.85;letter-spacing:-.04em;font-variation-settings:"SOFT" 30,"WONK" 1}
+footer .wm sup{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--red);font-weight:700;vertical-align:super;margin-left:6px}
+footer .wm + p{margin-top:14px;font-family:var(--serif);font-size:14px;line-height:1.6;color:var(--ink-2);max-width:34ch}
+footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);font-weight:700;margin-bottom:18px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-family:var(--serif);font-size:15px}
+footer ul a:hover{color:var(--red)}
+footer .mega{font-family:var(--display);font-weight:900;font-size:clamp(120px,18vw,280px);line-height:.82;letter-spacing:-.05em;color:var(--ink);font-variation-settings:"SOFT" 30,"WONK" 1;border-top:1px solid var(--rule);border-bottom:3px double var(--rule);padding:24px 0;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+footer .mega em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+footer .mega .small{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim);font-weight:500;align-self:flex-start;text-align:right;line-height:1.6;font-style:normal}
+footer .bottom{padding-top:24px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim)}
+
+/* ====== REVEAL ====== */
+.reveal{clip-path:inset(0 0 0 0);transition:clip-path 1.1s cubic-bezier(.7,.1,.2,1)}
+.reveal.pending{clip-path:inset(0 100% 0 0)}
+.reveal.pending.in{clip-path:inset(0 0 0 0)}
+
+@media (max-width:1100px){
+  .wrap{padding:0 28px}
+  .masthead .row1,.masthead .row2{padding-left:28px;padding-right:28px}
+  .hero .grid,.problem .lab,.cases .head-row,.pricing .head-row,.how .head-row,.case-grid,.tiers,.steps,.final .grid,footer .top{grid-template-columns:1fr !important}
+  .case{border-right:0;border-bottom:1px solid var(--rule)}
+  .tier,.step{border-right:0;border-bottom:1px solid var(--rule)}
+  .sec .num-margin{display:none}
+  .masthead .row1{flex-wrap:wrap}
+  .hero .meta{grid-template-columns:1fr 1fr}
+  .hero .meta .cell:nth-child(3){border-left:0}
+  .chat{transform:none;box-shadow:8px 8px 0 var(--ink)}
+  footer .mega{flex-direction:column;align-items:flex-start;font-size:80px}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+</head>
+
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#F5F2ED">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="1200" height="800" fill="#F5F2ED"/>
+    <rect x="80" y="120" width="1040" height="3" fill="#1A1A1A"/>
+    <rect x="80" y="135" width="1040" height="1" fill="#1A1A1A"/>
+    <text x="600" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="220" font-weight="900" fill="#1A1A1A" font-style="italic">Signal</text>
+    <rect x="430" y="395" width="340" height="14" fill="#C41E3A"/>
+    <text x="600" y="500" text-anchor="middle" font-family="Georgia, serif" font-size="44" fill="#1A1A1A">Be the answer.</text>
+    <rect x="80" y="660" width="1040" height="1" fill="#1A1A1A"/>
+    <rect x="80" y="668" width="1040" height="3" fill="#1A1A1A"/>
+  </svg>
+</template>
+
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>Vol. 01 · No. 11</span>
+      <span>Brooklyn, NY</span>
+      <span>Saturday, April 25, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="#problem">Problem</a>
+      <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <a href="#" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="#process">Process</a>
+      <a href="#audit">Audit</a>
+      <a href="#audit">Book</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="grid">
+
+      <div class="left">
+        <div class="stamp">
+          <span class="dot"></span>
+          <span>Issue 04 / Brooklyn / AI Search Quarterly</span>
+        </div>
+
+        <h1>
+          <span class="l reveal-clip"><span>When Brooklyn</span></span>
+          <span class="l reveal-clip d1"><span>asks <span class="it">ChatGPT</span>,</span></span>
+          <span class="l reveal-clip d2"><span>your <span class="underline">competitors</span></span></span>
+          <span class="l reveal-clip d3"><span>answer.</span></span>
+        </h1>
+
+        <p class="sub">
+          Customers now ask AI who to call. <strong style="font-weight:600;color:var(--ink)">Signal</strong> makes sure that answer is&nbsp;you.
+        </p>
+
+        <div class="cta-row">
+          <a href="/audit" class="btn solid">See if AI is recommending your competitors <span class="arr">→</span></a>
+          <div class="cta-aside">Free audit. <b>20 minutes.</b> No deck, no pitch — just what AI says about your business, today.</div>
+        </div>
+      </div>
+
+      <!-- ChatGPT mockup -->
+      <div class="right">
+        <div class="chat">
+          <div class="chrome">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <div class="url">chat.openai.com / gpt-4o</div>
+            <div>04 : 18 PM</div>
+          </div>
+          <div class="body-c">
+            <div class="q">
+              <div class="av">U</div>
+              <div class="qt">"What's the best optometrist near Nostrand Avenue in Brooklyn?"</div>
+            </div>
+            <div class="a">
+              <div class="av">AI</div>
+              <div class="at">
+                <p>For Crown Heights and Bed-Stuy, the standout independent practice is <span class="you">Nostrand Optical</span> on Nostrand Avenue between Lincoln and St. John's.</p>
+                <p>They're known for:</p>
+                <ol>
+                  <li><strong>Pediatric eye exams</strong> with same-week availability</li>
+                  <li>Independent designer frames (Anne et Valentin, Lindberg)</li>
+                  <li>Most major vision plans accepted, including walk-ins</li>
+                </ol>
+                <p>They've been in the neighborhood since 1996 and currently hold <strong>4.9 stars across 222 Google reviews</strong>.<span class="typing"></span></p>
+                <div class="meta-line">// Sources: nostrandoptical.com · Google Business · Yelp · Apple Maps</div>
+              </div>
+            </div>
+          </div>
+          <div class="stamp-overlay">Cited #1 of 3</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- meta strip -->
+    <div class="meta">
+      <div class="cell"><div class="k">Founded</div><div class="v">MMXXV</div></div>
+      <div class="cell"><div class="k">Based</div><div class="v italic">Brooklyn</div></div>
+      <div class="cell"><div class="k">Operators</div><div class="v">01<span style="font-size:18px;color:var(--ink-dim);font-weight:500;margin-left:6px">solo</span></div></div>
+      <div class="cell"><div class="k">Recommended For</div><div class="v"><span class="red">Local</span> service businesses</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker">
+  <div class="track">
+    <span class="it"><span class="red">★</span>ChatGPT-Cited</span>
+    <span class="it"><span class="red">●</span>Schema.org / JSON-LD</span>
+    <span class="it">Perplexity-Indexed</span>
+    <span class="it"><span class="red">●</span>Google AI Overviews</span>
+    <span class="it">Claude · Gemini · Copilot</span>
+    <span class="it"><span class="red">★</span>Next.js Production</span>
+    <span class="it">Generative Engine Optimization</span>
+    <span class="it"><span class="red">●</span>Brooklyn Local Pack</span>
+    <span class="it">GBP Verified</span>
+    <!-- duplicate -->
+    <span class="it"><span class="red">★</span>ChatGPT-Cited</span>
+    <span class="it"><span class="red">●</span>Schema.org / JSON-LD</span>
+    <span class="it">Perplexity-Indexed</span>
+    <span class="it"><span class="red">●</span>Google AI Overviews</span>
+    <span class="it">Claude · Gemini · Copilot</span>
+    <span class="it"><span class="red">★</span>Next.js Production</span>
+    <span class="it">Generative Engine Optimization</span>
+    <span class="it"><span class="red">●</span>Brooklyn Local Pack</span>
+    <span class="it">GBP Verified</span>
+  </div>
+</div>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem sec" id="problem">
+  <div class="num-margin">§ 01 · The Problem</div>
+  <div class="wrap">
+    <div class="lab">
+      <div class="hdr">
+        <div class="label">§ 01</div>
+        <h2>The<br/><em>Problem.</em></h2>
+      </div>
+      <div>
+        <p class="body-text reveal">
+          A patient in Park Slope opens ChatGPT and types "best optometrist near me in Brooklyn." Three names appear. <span class="red">Yours isn't one of them.</span> She calls the&nbsp;first one.
+        </p>
+        <div class="footnote">
+          <p><sup>¹</sup>By the time you read this, that conversation has happened roughly forty times today inside ten blocks of your storefront. Multiply it by every "near me" question your customers ask: best dentist, best gym, best private BJJ instructor, best frame shop. The new local search isn't a map — it's a sentence, and someone is being named in&nbsp;it.</p>
+          <p><sup>²</sup>The names AI offers aren't random. They go to businesses with structured data, consistent citations, real reviews, and content written for retrieval. Most local sites have none of these. Signal exists for the businesses who would have shown up — if&nbsp;only&nbsp;the&nbsp;machine&nbsp;could&nbsp;read&nbsp;them.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE STUDIES ============ -->
+<section class="cases sec" id="work">
+  <div class="num-margin">§ 02 · Selected Work</div>
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="label">§ 02</div>
+      </div>
+      <h2 class="reveal">Selected<br/><em>Work.</em></h2>
+    </div>
+
+    <div class="case-grid">
+      <article class="case reveal">
+        <div class="topline">
+          <span class="vol">Case № 01 · Optometry</span>
+          <span class="stamp">★ AI-Cited</span>
+        </div>
+        <h3>Nostrand<br/>Optical.</h3>
+        <div class="place">Crown Heights, Brooklyn</div>
+
+        <div class="vis">
+          <span class="label" style="font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; text-align: left">Fig. 01 — Rich Result Pack</span>
+          <svg viewBox="0 0 500 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <pattern id="g1" width="22" height="22" patternUnits="userSpaceOnUse">
+                <path d="M22 0H0V22" fill="none" stroke="rgba(21,17,13,0.06)"/>
+              </pattern>
+            </defs>
+            <rect width="500" height="300" fill="#EFEAE0"/>
+            <rect width="500" height="300" fill="url(#g1)"/>
+            <!-- spectacles -->
+            <g transform="translate(250 150)" stroke="#15110D" stroke-width="2" fill="none">
+              <circle cx="-72" cy="0" r="56"/>
+              <circle cx="72" cy="0" r="56"/>
+              <line x1="-16" y1="0" x2="16" y2="0"/>
+              <circle cx="-72" cy="0" r="56" fill="#C41E3A" fill-opacity=".18" stroke="none"/>
+            </g>
+            <!-- ranking ticks -->
+            <g font-family="JetBrains Mono, monospace" font-size="11" fill="#15110D" letter-spacing="2">
+              <text x="20" y="34">№ 01 / RANKED</text>
+              <text x="20" y="52" fill="#C41E3A">★ ★ ★ ★ ★</text>
+              <text x="380" y="282">04 / 04 ENGINES</text>
+            </g>
+            <line x1="20" y1="270" x2="350" y2="270" stroke="#15110D"/>
+          </svg>
+        </div>
+
+        <p class="desc">A 30-year independent practice that was quietly disappearing from new-customer searches. We rebuilt it in Next.js, layered Schema.org for medical-business + product, and shaped pediatric and frame-brand pages as content AI could quote verbatim.</p>
+
+        <ul class="bullets">
+          <li><span class="n">01</span><span><b>4 rich results</b> indexed on launch day — LocalBusiness, FAQ, BreadcrumbList, Product.</span></li>
+          <li><span class="n">02</span><span><b>Ranked #1 in 14 of 18</b> tracked AI prompts within 60 days of launch.</span></li>
+          <li><span class="n">03</span><span><b>222 Google reviews</b> from 41 — review funnel + reputation signal pipeline.</span></li>
+        </ul>
+
+        <div class="row">
+          <span class="label">Live · nostrandoptical.com</span>
+          <a href="https://nostrandoptical.com" target="_blank" rel="noopener" class="read">Read the case →</a>
+        </div>
+      </article>
+
+      <article class="case reveal" style="transition-delay:.1s">
+        <div class="topline">
+          <span class="vol">Case № 02 · Martial Arts</span>
+          <span class="stamp">★ AI-Cited</span>
+        </div>
+        <h3>Brooklyn BJJ<br/>Lessons.</h3>
+        <div class="place">Park Slope, Brooklyn</div>
+
+        <div class="vis">
+          <span class="label" style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase">Fig. 02 — Indexed Posts</span>
+          <svg viewBox="0 0 500 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <pattern id="g2" width="22" height="22" patternUnits="userSpaceOnUse">
+                <path d="M22 0H0V22" fill="none" stroke="rgba(21,17,13,0.06)"/>
+              </pattern>
+            </defs>
+            <rect width="500" height="300" fill="#EFEAE0"/>
+            <rect width="500" height="300" fill="url(#g2)"/>
+            <!-- belt -->
+            <g transform="translate(250 150)" stroke="#15110D" stroke-width="2">
+              <rect x="-160" y="-14" width="320" height="28" fill="#C41E3A" fill-opacity=".15"/>
+              <rect x="-22" y="-30" width="44" height="60" fill="#F5F2ED"/>
+              <line x1="-22" y1="0" x2="22" y2="0"/>
+              <line x1="-160" y1="-14" x2="-160" y2="14"/>
+              <line x1="160" y1="-14" x2="160" y2="14"/>
+            </g>
+            <g font-family="JetBrains Mono, monospace" font-size="11" fill="#15110D" letter-spacing="2">
+              <text x="20" y="34">№ 02 / GBP VERIFIED</text>
+              <text x="20" y="52" fill="#C41E3A">10+ INDEXED POSTS</text>
+              <text x="380" y="282">PRIVATE LESSONS</text>
+            </g>
+            <line x1="20" y1="270" x2="350" y2="270" stroke="#15110D"/>
+          </svg>
+        </div>
+
+        <p class="desc">A one-instructor, private-lessons program competing with full gyms. We positioned the site around first-timer language — the actual phrasing AI hears from anxious beginners — and shipped a content engine that publishes weekly to stay cited.</p>
+
+        <ul class="bullets">
+          <li><span class="n">01</span><span><b>10+ SEO posts</b> live and indexed at launch, each targeting a "near me" beginner intent.</span></li>
+          <li><span class="n">02</span><span><b>GBP verified</b> with NAP-consistent citations across 27 directories from day one.</span></li>
+          <li><span class="n">03</span><span><b>Cited #1 in 4 / 4 engines</b> for "first BJJ class Brooklyn" within the first month.</span></li>
+        </ul>
+
+        <div class="row">
+          <span class="label">Live · brooklynbjjlessons.com</span>
+          <a href="https://brooklynbjjlessons.com" target="_blank" rel="noopener" class="read">Read the case →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing sec" id="pricing">
+  <div class="num-margin">§ 03 · Pricing</div>
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="label">§ 03</div>
+        <h2 class="reveal" style="font-size: 80px; width: 380px">Three tiers,<br/><em>one</em> operator.</h2>
+      </div>
+      <p class="reveal" style="transition-delay: .1s; width: 537.469px; text-align: right; letter-spacing: -0.6px; line-height: 1.35; height: 140.375px">
+        Each tier is a <em style="font-style:italic;color:var(--red)">build</em> + a <em style="font-style:italic;color:var(--red)">retainer</em>. The build is the AI-legible site. The retainer is the weekly publishing engine that keeps you cited as the answer.
+      </p>
+    </div>
+
+    <div class="tiers">
+      <article class="tier">
+        <div class="topline"><span>Tier № 01</span><span>Basic</span></div>
+        <div class="name">Basic.</div>
+        <p class="desc">For neighborhood operators ready to stop being invisible. The fundamentals, done correctly.</p>
+
+        <div class="price-block">
+          <div class="row">
+            <span class="k">Build</span>
+            <span class="v">$1,500<span class="small">one-time</span></span>
+          </div>
+          <div class="row">
+            <span class="k">Retainer</span>
+            <span class="v">$400<span class="small">/ month</span></span>
+          </div>
+          <div class="row">
+            <span class="k">Cadence</span>
+            <span class="v" style="font-size:18px"><span class="red-text" style="color:var(--red)">15</span> posts / mo</span>
+          </div>
+        </div>
+
+        <ul class="feat">
+          <li>5-page Next.js site with full Schema.org coverage</li>
+          <li>Google Business Profile claim &amp; weekly post engine</li>
+          <li>Local citation cleanup (NAP across 25 directories)</li>
+          <li>Monthly AI visibility report (4 engines tracked)</li>
+        </ul>
+
+        <a href="#audit" class="pick">Choose Basic <span>→</span></a>
+      </article>
+
+      <article class="tier featured">
+        <div class="recommended"><span>★ Recommended</span><span>Most chosen, 2026</span></div>
+        <div class="topline"><span>Tier № 02</span><span>Standard</span></div>
+        <div class="name">Standard.</div>
+        <p class="desc">The cadence at which AI engines actually start citing you. Most clients land here, on purpose.</p>
+
+        <div class="price-block">
+          <div class="row">
+            <span class="k">Build</span>
+            <span class="v">$2,500<span class="small">one-time</span></span>
+          </div>
+          <div class="row">
+            <span class="k">Retainer</span>
+            <span class="v">$600<span class="small">/ month</span></span>
+          </div>
+          <div class="row">
+            <span class="k">Cadence</span>
+            <span class="v" style="font-size:18px"><span class="red-text">30</span> posts / mo</span>
+          </div>
+        </div>
+
+        <ul class="feat">
+          <li>8-page Next.js site, full GEO + Schema.org markup</li>
+          <li>Twice-weekly long-form posts written for AI retrieval</li>
+          <li>Competitor prompt monitoring across ChatGPT &amp; Perplexity</li>
+          <li>Quarterly review-funnel audit + reputation playbook</li>
+          <li>Direct line to the founder (Slack or SMS)</li>
+        </ul>
+
+        <a href="#audit" class="pick">Choose Standard <span>→</span></a>
+      </article>
+
+      <article class="tier">
+        <div class="topline"><span>Tier № 03</span><span>Premium</span></div>
+        <div class="name">Premium.</div>
+        <p class="desc">For operators expanding to a second location, a second service line, or a second neighborhood.</p>
+
+        <div class="price-block">
+          <div class="row">
+            <span class="k">Build</span>
+            <span class="v">$3,500<span class="small">one-time</span></span>
+          </div>
+          <div class="row">
+            <span class="k">Retainer</span>
+            <span class="v">$900<span class="small">/ month</span></span>
+          </div>
+          <div class="row">
+            <span class="k">Cadence</span>
+            <span class="v" style="font-size:18px"><span class="red-text" style="color:var(--red)">45</span> posts / mo</span>
+          </div>
+        </div>
+
+        <ul class="feat">
+          <li>12+ page site, multi-location Schema, hreflang if needed</li>
+          <li>Daily publishing engine (45 posts/mo across services)</li>
+          <li>Custom AI search dashboard with weekly rank-for-prompt tracking</li>
+          <li>Quarterly strategy session + on-site visit (Brooklyn area)</li>
+          <li>Priority response (under 4h, business days)</li>
+        </ul>
+
+        <a href="#audit" class="pick">Choose Premium <span>→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how sec" id="process">
+  <div class="num-margin">§ 04 · How it Works</div>
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="label">§ 04</div>
+        <h2 class="reveal">How it<br/><em>works.</em></h2>
+      </div>
+      <p class="reveal body-lg" style="max-width:42ch;font-family:var(--display);font-style:italic;font-weight:400;font-size:24px;color:var(--ink-2);font-variation-settings:'SOFT' 100;letter-spacing:-.01em">Three moves, in order. Same as it ever was, only the index has changed.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="num">01.</div>
+        <h3>Rebuild the site.</h3>
+        <p>A fast, structured Next.js build. Static where it can be, server-rendered where it should be. Every page exists at a clean, retrievable URL with one job, written in the language a customer actually uses.</p>
+        <div class="deliv"><span>Deliverable</span><span>~3 weeks</span></div>
+      </div>
+      <div class="step reveal" style="transition-delay:.1s">
+        <div class="num">02.</div>
+        <h3>Add the markup.</h3>
+        <p>Schema.org / JSON-LD for LocalBusiness, FAQ, Product, Service, BreadcrumbList. Geo coordinates, hours, payment, and entity links the AI can verify. The page now <em>says what it is</em>, not just <em>what it looks like</em>.</p>
+        <div class="deliv"><span>Deliverable</span><span>~1 week</span></div>
+      </div>
+      <div class="step reveal" style="transition-delay:.2s">
+        <div class="num">03.</div>
+        <h3>Publish content AI cites.</h3>
+        <p>Weekly long-form posts written for retrieval — neighborhood guides, comparison pages, "near me" answers, FAQ depth. Each post is monitored across ChatGPT, Perplexity, Google AI, Claude. Cited posts get reinforced, dead ones get rewritten.</p>
+        <div class="deliv"><span>Cadence</span><span>Ongoing · weekly</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="audit">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h2>Book a 20-minute<br/><em>AI audit.</em><br/>No pitch.<br/>No&nbsp;pressure.</h2>
+      </div>
+      <div class="right">
+        <p>I'll run your business through <strong>ChatGPT, Perplexity, Google AI, and Claude</strong> live on the call and show you, sentence by sentence, what AI says about your category, your competitors, and you. If there's nothing to fix, I'll tell you. If there is, I'll tell you what.</p>
+
+        <div class="audit-card">
+          <div class="row"><span class="k">Format</span><span class="v">Google Meet · 20 min</span></div>
+          <div class="row"><span class="k">Cost</span><span class="v" style="color:#FF7A8E">Free</span></div>
+          <div class="row"><span class="k">Outcome</span><span class="v">A written audit, sent within 48h</span></div>
+          <div class="row"><span class="k">This week</span><span class="v">3 slots open</span></div>
+          <a href="/audit" class="btn-final">See if AI is recommending your competitors <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose, since 2025.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#pricing">Basic — $1,500 + $400/mo</a></li>
+          <li><a href="#pricing">Standard — $2,500 + $600/mo</a></li>
+          <li><a href="#pricing">Premium — $3,500 + $900/mo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Work</h4>
+        <ul>
+          <li><a href="#work">Nostrand Optical</a></li>
+          <li><a href="#work">Brooklyn BJJ Lessons</a></li>
+          <li><a href="#audit">Become a case study</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+          <li><a href="#audit">Book the audit →</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mega">
+      <span>Be the<br/><em>answer.</em></span>
+      <span class="small">© MMXXVI<br/>Signal AI LLC<br/>All rights reserved · v2.0</span>
+    </div>
+
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>End of issue · 11 / 11</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="signal-tweaks.jsx"></script>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){return;}
+  // Mark elements as pending only if they're below the fold; otherwise leave visible.
+  els.forEach(function(el){
+    var r=el.getBoundingClientRect();
+    if(r.top > window.innerHeight * 0.9){ el.classList.add('pending'); }
+  });
+  var io=new IntersectionObserver(function(ents){
+    ents.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal.pending').forEach(function(el){io.observe(el);});
+  // Safety net: anything still pending after 4s, just show it.
+  setTimeout(function(){
+    document.querySelectorAll('.reveal.pending:not(.in)').forEach(function(el){el.classList.add('in');});
+  }, 4000);
+})();
+</script>
+
+</body>
+</html>

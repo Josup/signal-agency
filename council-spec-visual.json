@@ -1,0 +1,44 @@
+{
+  "task": "You are a world-class creative director with deep knowledge of avant-garde design, cultural branding, and conversion-focused web design. Your task: design 3 completely distinct visual directions for Signal — a local SEO and AI search agency website based in Brooklyn, NY. Then recommend which direction is most likely to convert Brooklyn business owners (dentists, plumbers, optometrists, gym owners) into booked discovery calls, while also being the kind of site a designer would screenshot and share.\n\nThe design philosophy guiding this session: Virgil Abloh's spirit — NOT his literal motifs (no OFF-WHITE quotation marks, no Helvetica labels). The feeling: walking into Dover Street Market. Anti-safe. Culturally aware. Raw but refined. The kind of site that makes a designer stop and say 'who built this?' A cultural statement, not a portfolio.\n\nFor each of the 3 directions, provide ALL of the following with extreme specificity:\n\n1. CONCEPT NAME + ONE-LINE PHILOSOPHY (what is this design saying?)\n2. TYPOGRAPHY SYSTEM: exact font names (Google Fonts or system fonts), sizes, weights, leading, tracking. Pair display + body + mono. Justify why these fonts feel unexpected and right.\n3. COLOR PALETTE: exact hex values, names, usage rules. Max 3 colors. Explain the psychological and cultural logic of this palette for a Brooklyn AI agency targeting local business owners.\n4. LAYOUT ARCHITECTURE: grid system, section structure, use of whitespace vs. density, any unconventional structural choices (asymmetry, bleeds, overlapping elements, full-bleed type, etc.)\n5. ANIMATION PHILOSOPHY: what moves, how it moves, what the motion language communicates. Specific easing curves, durations, interaction models. What would a first-time visitor feel in the first 3 seconds?\n6. HERO SECTION DESIGN: describe exactly what the hero looks like — every element, its position, size, color, and behavior. The hero copy is locked: 'When Brooklyn asks ChatGPT, your competitors answer.' — render it in your chosen typographic system.\n7. ONE SIGNATURE DETAIL: the single design move that would make this site unforgettable. The thing someone would try to steal.\n8. CONVERSION RISK: honestly assess whether this direction might alienate the target audience (non-technical Brooklyn business owners) and how to mitigate it.\n\nThen: RECOMMENDATION — which of the 3 directions is most likely to (a) stop a designer mid-scroll, and (b) make a Brooklyn dentist or gym owner feel enough trust and urgency to book a call? Explain the tension and how your recommended direction resolves it.\n\nConstraints you MUST respect:\n- Amber color is ELIMINATED. Do not use amber, gold, or yellow as a primary accent.\n- The following copy is LOCKED and must be preserved exactly: Hero H1: 'When Brooklyn asks ChatGPT, your competitors answer.' | Subhead: 'Customers now ask AI who to call. Signal makes sure that answer is you — in ChatGPT, Google AI Overviews, and Perplexity.' | Primary CTA: 'See if AI is recommending your competitors' (links to /audit page)\n- No real photography — placeholder mockups only\n- The site must include: Hero, The Invisible Business (agitation), Case Studies (proof), Pricing (3 tiers), How It Works (3 steps), Final CTA\n- Solo founder agency — must feel like a person, not a corporation\n- Must be buildable in Next.js 14 + Tailwind CSS + Framer Motion\n\nDo NOT ask clarifying questions. Produce the full 3-direction creative brief as your output. This is your one shot — make it extraordinary.",
+  "constraints": [
+    "3 completely distinct visual directions — no two should feel related",
+    "Each direction must be specific enough to hand directly to a developer (exact fonts, exact hex codes, exact layout rules)",
+    "Typography must be unexpected — not Inter, not Space Grotesk, not the usual agency stack",
+    "Color must be bold — no safe dark+amber, no purple gradient, no generic SaaS palette",
+    "Layout must have at least one structural surprise per direction",
+    "Animation must serve conversion, not just decoration",
+    "Every direction must be buildable in Next.js 14 + Framer Motion",
+    "The recommendation must honestly address the tension between designer appeal and business-owner conversion",
+    "Target primary audience: Brooklyn local business owners (dentists, gym owners, optometrists, plumbers, lawyers) — non-technical, trust-driven, results-oriented",
+    "Target secondary audience: designers and agency owners who might screenshot and refer",
+    "Dover Street Market as the emotional reference point — not a visual one"
+  ],
+  "agents": {
+    "planners": [
+      {
+        "name": "haiku-strategist",
+        "kind": "custom",
+        "command": "python3 C:/Users/Josh/projects/signal-agency/claude-wrapper.py --model claude-haiku-4-5-20251001 --max-turns 1 --no-session-persistence --dangerously-skip-permissions --disable-slash-commands --output-format json",
+        "prompt_mode": "stdin"
+      },
+      {
+        "name": "sonnet-strategist",
+        "kind": "custom",
+        "command": "python3 C:/Users/Josh/projects/signal-agency/claude-wrapper.py --model claude-sonnet-4-6 --max-turns 1 --no-session-persistence --dangerously-skip-permissions --disable-slash-commands --output-format json",
+        "prompt_mode": "stdin"
+      },
+      {
+        "name": "opus-strategist",
+        "kind": "custom",
+        "command": "python3 C:/Users/Josh/projects/signal-agency/claude-wrapper.py --model claude-opus-4-7 --max-turns 1 --no-session-persistence --dangerously-skip-permissions --disable-slash-commands --output-format json",
+        "prompt_mode": "stdin"
+      }
+    ],
+    "judge": {
+      "name": "opus-judge",
+      "kind": "custom",
+      "command": "python3 C:/Users/Josh/projects/signal-agency/claude-wrapper.py --model claude-opus-4-7 --max-turns 1 --no-session-persistence --dangerously-skip-permissions --disable-slash-commands --output-format json",
+      "prompt_mode": "stdin"
+    }
+  }
+}

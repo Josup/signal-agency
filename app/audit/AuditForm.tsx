@@ -12,9 +12,9 @@ interface Answers {
 }
 
 const stepVariants = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
+  exit: { opacity: 0, y: -16 },
 };
 
 export default function AuditForm() {
@@ -26,7 +26,6 @@ export default function AuditForm() {
     websiteUrl: '',
   });
 
-  // Append Calendly widget script when on "done" step
   useEffect(() => {
     if (step !== 'done') return;
     const script = document.createElement('script');
@@ -34,9 +33,7 @@ export default function AuditForm() {
     script.async = true;
     document.body.appendChild(script);
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
+      if (document.body.contains(script)) document.body.removeChild(script);
     };
   }, [step]);
 
@@ -69,51 +66,53 @@ export default function AuditForm() {
     answers.websiteUrl
   )}`;
 
-  const inputClass =
-    'w-full text-lg p-4 rounded-lg text-white placeholder-white/30 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400';
-  const inputStyle = {
-    backgroundColor: '#111',
-    border: '1px solid rgba(255,255,255,0.15)',
-  };
-  const buttonClass =
-    'mt-4 w-full py-4 rounded-full font-semibold text-black bg-amber-400 hover:bg-amber-300 transition-colors disabled:opacity-40 disabled:cursor-not-allowed';
-
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-start px-4 py-16"
-      style={{ backgroundColor: '#0A0A0A', color: '#fff' }}
+      className="min-h-screen flex flex-col items-center justify-start px-5 py-20"
+      style={{ backgroundColor: '#F5F2ED', color: '#0D0D0D' }}
     >
-      {/* Page Header — always visible */}
-      <div className="text-center mb-12 max-w-lg w-full">
-        <p className="text-amber-400 text-xs font-mono tracking-widest uppercase mb-4">
-          FREE AUDIT
+      {/* Header */}
+      <div className="text-center mb-14 max-w-lg w-full">
+        <p
+          className="text-[11px] tracking-[0.06em] uppercase mb-5"
+          style={{ fontFamily: 'var(--font-dm-mono)', color: 'rgba(13,13,13,0.4)' }}
+        >
+          Free Audit
         </p>
         <h1
-          className="text-4xl sm:text-5xl mb-4 leading-tight"
-          style={{ fontFamily: "'Instrument Serif', serif", fontStyle: 'italic' }}
+          className="leading-[1.05] mb-5"
+          style={{
+            fontFamily: 'var(--font-fraunces)',
+            fontSize: 'clamp(32px, 5vw, 52px)',
+            fontWeight: 900,
+            fontVariationSettings: '"opsz" 144',
+            color: '#0D0D0D',
+          }}
         >
           Is AI recommending your competitors?
         </h1>
-        <p className="text-white/60 text-base leading-relaxed">
-          Answer 3 quick questions and book a call. I&apos;ll show you exactly
-          where you stand.
+        <p
+          className="text-base leading-[1.65]"
+          style={{ fontFamily: 'var(--font-syne)', color: 'rgba(13,13,13,0.6)' }}
+        >
+          Answer 3 quick questions and book a call. I&apos;ll show you exactly where you stand.
         </p>
       </div>
 
-      {/* Form area */}
+      {/* Form */}
       <div className="w-full max-w-lg">
-        {/* Step counter + progress bar (hidden on done) */}
         {step !== 'done' && (
           <>
-            <p className="text-amber-400 text-xs font-mono tracking-widest uppercase mb-3">
+            <p
+              className="text-[11px] tracking-[0.06em] uppercase mb-3"
+              style={{ fontFamily: 'var(--font-dm-mono)', color: '#C41E3A' }}
+            >
               Step {stepNumber} of 3
             </p>
-            <div
-              className="w-full h-px mb-8"
-              style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
-            >
+            <div className="w-full h-px mb-10" style={{ backgroundColor: 'rgba(13,13,13,0.1)' }}>
               <motion.div
-                className="h-full bg-amber-400"
+                className="h-full"
+                style={{ backgroundColor: '#C41E3A' }}
                 initial={false}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -123,7 +122,6 @@ export default function AuditForm() {
         )}
 
         <AnimatePresence mode="wait">
-          {/* ── Step 1 ── */}
           {step === 1 && (
             <motion.div
               key="step1"
@@ -133,7 +131,10 @@ export default function AuditForm() {
               exit="exit"
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
-              <label className="block text-xl font-semibold mb-6">
+              <label
+                className="block text-xl font-semibold mb-6"
+                style={{ fontFamily: 'var(--font-syne)' }}
+              >
                 What type of business do you run?
               </label>
               <input
@@ -143,20 +144,32 @@ export default function AuditForm() {
                 onChange={(e) => setValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="e.g. dental practice, gym, law firm..."
-                className={inputClass}
-                style={inputStyle}
+                className="w-full text-base p-4 focus:outline-none"
+                style={{
+                  fontFamily: 'var(--font-syne)',
+                  backgroundColor: 'transparent',
+                  border: '1px solid #0D0D0D',
+                  color: '#0D0D0D',
+                  borderRadius: 0,
+                }}
               />
               <button
                 onClick={handleNext}
                 disabled={!value.trim()}
-                className={buttonClass}
+                className="btn-ledger mt-4 w-full py-4 font-semibold text-sm tracking-[0.02em] disabled:opacity-30 disabled:cursor-not-allowed"
+                style={{
+                  fontFamily: 'var(--font-syne)',
+                  backgroundColor: '#C41E3A',
+                  color: '#F5F2ED',
+                  borderRadius: 0,
+                  border: 'none',
+                }}
               >
                 Next →
               </button>
             </motion.div>
           )}
 
-          {/* ── Step 2 ── */}
           {step === 2 && (
             <motion.div
               key="step2"
@@ -166,7 +179,10 @@ export default function AuditForm() {
               exit="exit"
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
-              <label className="block text-xl font-semibold mb-6">
+              <label
+                className="block text-xl font-semibold mb-6"
+                style={{ fontFamily: 'var(--font-syne)' }}
+              >
                 What neighborhood are you in?
               </label>
               <input
@@ -176,20 +192,32 @@ export default function AuditForm() {
                 onChange={(e) => setValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="e.g. Park Slope, Astoria, Crown Heights..."
-                className={inputClass}
-                style={inputStyle}
+                className="w-full text-base p-4 focus:outline-none"
+                style={{
+                  fontFamily: 'var(--font-syne)',
+                  backgroundColor: 'transparent',
+                  border: '1px solid #0D0D0D',
+                  color: '#0D0D0D',
+                  borderRadius: 0,
+                }}
               />
               <button
                 onClick={handleNext}
                 disabled={!value.trim()}
-                className={buttonClass}
+                className="btn-ledger mt-4 w-full py-4 font-semibold text-sm tracking-[0.02em] disabled:opacity-30 disabled:cursor-not-allowed"
+                style={{
+                  fontFamily: 'var(--font-syne)',
+                  backgroundColor: '#C41E3A',
+                  color: '#F5F2ED',
+                  borderRadius: 0,
+                  border: 'none',
+                }}
               >
                 Next →
               </button>
             </motion.div>
           )}
 
-          {/* ── Step 3 ── */}
           {step === 3 && (
             <motion.div
               key="step3"
@@ -199,7 +227,10 @@ export default function AuditForm() {
               exit="exit"
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
-              <label className="block text-xl font-semibold mb-6">
+              <label
+                className="block text-xl font-semibold mb-6"
+                style={{ fontFamily: 'var(--font-syne)' }}
+              >
                 What&apos;s your website URL?
               </label>
               <input
@@ -209,20 +240,32 @@ export default function AuditForm() {
                 onChange={(e) => setValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="https://yourbusiness.com"
-                className={inputClass}
-                style={inputStyle}
+                className="w-full text-base p-4 focus:outline-none"
+                style={{
+                  fontFamily: 'var(--font-syne)',
+                  backgroundColor: 'transparent',
+                  border: '1px solid #0D0D0D',
+                  color: '#0D0D0D',
+                  borderRadius: 0,
+                }}
               />
               <button
                 onClick={handleNext}
                 disabled={!value.trim()}
-                className={buttonClass}
+                className="btn-ledger mt-4 w-full py-4 font-semibold text-sm tracking-[0.02em] disabled:opacity-30 disabled:cursor-not-allowed"
+                style={{
+                  fontFamily: 'var(--font-syne)',
+                  backgroundColor: '#C41E3A',
+                  color: '#F5F2ED',
+                  borderRadius: 0,
+                  border: 'none',
+                }}
               >
                 Show me my audit →
               </button>
             </motion.div>
           )}
 
-          {/* ── Done — Calendly ── */}
           {step === 'done' && (
             <motion.div
               key="done"
@@ -234,37 +277,35 @@ export default function AuditForm() {
               className="text-center"
             >
               <h2
-                className="text-3xl sm:text-4xl mb-4"
+                className="leading-[1.05] mb-5"
                 style={{
-                  fontFamily: "'Instrument Serif', serif",
-                  fontStyle: 'italic',
+                  fontFamily: 'var(--font-fraunces)',
+                  fontSize: 'clamp(26px, 4vw, 36px)',
+                  fontWeight: 700,
+                  fontVariationSettings: '"opsz" 72',
                 }}
               >
                 Book your free AI visibility audit
               </h2>
 
-              {/* Collected answers summary */}
               <div
-                className="inline-flex flex-col items-start gap-1 mb-8 px-5 py-3 rounded-xl text-sm text-white/60"
-                style={{ backgroundColor: 'rgba(255,255,255,0.04)' }}
+                className="inline-flex flex-col items-start gap-1 mb-10 px-5 py-4 text-sm text-left"
+                style={{ border: '1px solid rgba(13,13,13,0.15)' }}
               >
-                <span>
-                  <span className="text-amber-400 font-mono">Business:</span>{' '}
-                  {answers.businessType}
-                </span>
-                <span>
-                  <span className="text-amber-400 font-mono">Location:</span>{' '}
-                  {answers.neighborhood}
-                </span>
-                <span>
-                  <span className="text-amber-400 font-mono">Website:</span>{' '}
-                  {answers.websiteUrl}
-                </span>
+                {[
+                  ['Business', answers.businessType],
+                  ['Location', answers.neighborhood],
+                  ['Website', answers.websiteUrl],
+                ].map(([label, val]) => (
+                  <span key={label} style={{ fontFamily: 'var(--font-syne)', color: 'rgba(13,13,13,0.7)' }}>
+                    <span style={{ fontFamily: 'var(--font-dm-mono)', color: '#C41E3A', fontSize: '11px', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{label}:</span>{' '}
+                    {val}
+                  </span>
+                ))}
               </div>
 
-              {/* Calendly inline widget */}
               <div
-                className="calendly-inline-widget w-full rounded-xl overflow-hidden"
+                className="calendly-inline-widget w-full overflow-hidden"
                 data-url={calendlyUrl}
                 style={{ minWidth: '320px', height: '700px' }}
               />

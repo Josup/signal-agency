@@ -1,393 +1,110 @@
 'use client';
+import { motion, useReducedMotion } from 'framer-motion';
+import FoldSection from './FoldSection';
+import { InkBleedButton } from './Hero';
 
-import { useRef } from 'react';
-import {
-  motion,
-  useSpring,
-  useReducedMotion,
-} from 'framer-motion';
-import MagneticButton from '@/components/MagneticButton';
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-interface Feature {
-  text: string;
-}
-
-interface Tier {
-  name: string;
-  buildPrice: string;
-  monthlyPrice: string;
-  features: Feature[];
-  recommended?: boolean;
-  cta: string;
-  ctaHref: string;
-}
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
-const TIERS: Tier[] = [
+const TIERS = [
   {
-    name: 'Basic',
-    buildPrice: '$1,500',
-    monthlyPrice: '$400',
-    features: [
-      { text: '1-page website, custom-built in Next.js' },
-      { text: 'Schema.org structured data setup' },
-      { text: 'Google Search Console integration' },
-      { text: '15 SEO blog posts/month (automated)' },
-    ],
-    cta: 'Get Started',
-    ctaHref: '/audit',
+    name: 'Basic', build: '$1,500', monthly: '$400',
+    features: ['1-page Next.js website', 'Schema.org setup', 'Google Search Console', '15 blog posts/month'],
+    recommended: false,
   },
   {
-    name: 'Standard',
-    buildPrice: '$2,500',
-    monthlyPrice: '$600',
+    name: 'Standard', build: '$2,500', monthly: '$600',
+    features: ['Multi-page website', 'Full Schema.org + AI optimization', 'Search Console + GBP setup', '30 blog posts/month', 'Monthly performance report'],
     recommended: true,
-    features: [
-      { text: 'Multi-page website' },
-      { text: 'Full Schema.org + AI search optimization' },
-      { text: 'Google Search Console + Google Business Profile setup' },
-      { text: '30 SEO blog posts/month (automated)' },
-      { text: 'Monthly performance report' },
-    ],
-    cta: 'Get Started',
-    ctaHref: '/audit',
   },
   {
-    name: 'Premium',
-    buildPrice: '$3,500',
-    monthlyPrice: '$900',
-    features: [
-      { text: 'Everything in Standard' },
-      { text: '45 SEO blog posts/month (automated)' },
-      { text: 'Schema.org updates as AI search evolves' },
-      { text: 'Quarterly site audit + improvements' },
-      { text: 'Priority support (24-hour response)' },
-    ],
-    cta: 'Get Started',
-    ctaHref: '/audit',
+    name: 'Premium', build: '$3,500', monthly: '$900',
+    features: ['Everything in Standard', '45 blog posts/month', 'Schema.org updates as AI evolves', 'Quarterly site audit', 'Priority 24h support'],
+    recommended: false,
   },
 ];
 
-// ─── Checkmark icon ────────────────────────────────────────────────────────────
-
-function CheckIcon() {
-  return (
-    <span
-      aria-hidden="true"
-      className="flex-shrink-0 inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold"
-      style={{
-        background: 'rgba(245,158,11,0.12)',
-        color: '#F59E0B',
-        border: '1px solid rgba(245,158,11,0.25)',
-      }}
-    >
-      ✓
-    </span>
-  );
-}
-
-// ─── Tilt card ────────────────────────────────────────────────────────────────
-
-function TiltCard({
-  tier,
-  index,
-  prefersReducedMotion,
-}: {
-  tier: Tier;
-  index: number;
-  prefersReducedMotion: boolean | null;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  // Springs for smooth tilt
-  const rotateX = useSpring(0, { stiffness: 200, damping: 20 });
-  const rotateY = useSpring(0, { stiffness: 200, damping: 20 });
-  const scale = useSpring(1, { stiffness: 250, damping: 20 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (prefersReducedMotion || !cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const dx = e.clientX - centerX;
-    const dy = e.clientY - centerY;
-    // ±8 deg max
-    rotateX.set(-(dy / rect.height) * 8 * 2);
-    rotateY.set((dx / rect.width) * 8 * 2);
-    scale.set(1.015);
-  };
-
-  const handleMouseLeave = () => {
-    rotateX.set(0);
-    rotateY.set(0);
-    scale.set(1);
-  };
-
-  const isRecommended = tier.recommended === true;
-
-  // Card border style
-  const borderStyle = isRecommended
-    ? '2px solid #F59E0B'
-    : '1px solid rgba(255,255,255,0.08)';
-
-  // Scroll-in animation per card
-  const cardVariants = {
-    hidden: prefersReducedMotion
-      ? { opacity: 0 }
-      : { opacity: 0, y: 40 },
-    visible: prefersReducedMotion
-      ? { opacity: 1, transition: { duration: 0.35, delay: index * 0.15 } }
-      : {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: 0.65,
-            delay: index * 0.15,
-            ease: [0.23, 1, 0.32, 1] as [number, number, number, number],
-          },
-        },
-  };
-
-  return (
-    <motion.div
-      ref={cardRef}
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-60px' }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX: prefersReducedMotion ? 0 : rotateX,
-        rotateY: prefersReducedMotion ? 0 : rotateY,
-        scale: prefersReducedMotion ? 1 : scale,
-        perspective: 800,
-        transformStyle: 'preserve-3d',
-      }}
-      className="relative flex flex-col rounded-2xl"
-      // Recommended card sits slightly higher on desktop
-    >
-      {/* Outer wrapper — handles border + glow */}
-      <div
-        className="relative flex flex-col h-full rounded-2xl"
-        style={{
-          background: '#111111',
-          border: borderStyle,
-          borderRadius: 16,
-          padding: 32,
-          boxShadow: isRecommended
-            ? '0 0 0 1px rgba(245,158,11,0.15), 0 24px 64px rgba(245,158,11,0.12)'
-            : '0 8px 32px rgba(0,0,0,0.4)',
-          transition: 'box-shadow 0.35s ease',
-        }}
-      >
-        {/* "Most Popular" badge */}
-        {isRecommended && (
-          <div className="flex items-center mb-4">
-            <span
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide"
-              style={{
-                background: 'rgba(245,158,11,0.15)',
-                border: '1px solid rgba(245,158,11,0.4)',
-                color: '#F59E0B',
-                fontFamily: 'var(--font-inter), ui-sans-serif, sans-serif',
-              }}
-            >
-              ★ Most Popular
-            </span>
-          </div>
-        )}
-
-        {/* Tier name */}
-        <p
-          className="text-xs font-mono tracking-widest uppercase mb-3"
-          style={{
-            color: isRecommended ? '#F59E0B' : 'rgba(255,255,255,0.35)',
-            fontFamily: 'var(--font-inter), ui-monospace, monospace',
-          }}
-        >
-          {tier.name}
-        </p>
-
-        {/* Build price */}
-        <p
-          className="text-sm mb-1"
-          style={{
-            color: 'rgba(255,255,255,0.4)',
-            fontFamily: 'var(--font-inter), ui-sans-serif, sans-serif',
-          }}
-        >
-          {tier.buildPrice}{' '}
-          <span style={{ color: 'rgba(255,255,255,0.25)' }}>build</span>
-        </p>
-
-        {/* Monthly price */}
-        <div className="flex items-baseline gap-1.5 mb-6">
-          <span
-            className="text-4xl font-bold"
-            style={{ color: '#F59E0B', fontFamily: 'var(--font-inter), ui-sans-serif, sans-serif' }}
-          >
-            {tier.monthlyPrice}
-          </span>
-          <span
-            className="text-sm"
-            style={{
-              color: 'rgba(255,255,255,0.35)',
-              fontFamily: 'var(--font-inter), ui-sans-serif, sans-serif',
-            }}
-          >
-            /mo
-          </span>
-        </div>
-
-        {/* Divider */}
-        <div
-          className="mb-6"
-          style={{ height: 1, background: 'rgba(255,255,255,0.07)' }}
-        />
-
-        {/* Feature list */}
-        <ul className="flex flex-col gap-3 flex-1 mb-8">
-          {tier.features.map((feat, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <CheckIcon />
-              <span
-                className="text-sm leading-relaxed"
-                style={{
-                  color: 'rgba(255,255,255,0.65)',
-                  fontFamily: 'var(--font-inter), ui-sans-serif, sans-serif',
-                }}
-              >
-                {feat.text}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        {/* CTA */}
-        <div className="mt-auto">
-          <MagneticButton
-            href={tier.ctaHref}
-            variant={isRecommended ? 'primary' : 'secondary'}
-          >
-            {tier.cta}
-          </MagneticButton>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-// ─── Section ──────────────────────────────────────────────────────────────────
-
 export default function Services() {
-  const prefersReducedMotion = useReducedMotion();
-
-  const headerVariants = {
-    hidden: prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 24 },
-    visible: (delay: number) =>
-      prefersReducedMotion
-        ? { opacity: 1, transition: { duration: 0.3, delay } }
-        : {
-            opacity: 1,
-            y: 0,
-            transition: {
-              duration: 0.7,
-              delay,
-              ease: [0.23, 1, 0.32, 1] as [number, number, number, number],
-            },
-          },
-  };
-
+  const reduced = useReducedMotion();
   return (
-    <section
-      id="pricing"
-      className="relative py-24 md:py-32 overflow-hidden"
-      style={{ background: '#0A0A0A' }}
-    >
-      {/* Subtle radial ambient */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(ellipse 80% 40% at 50% 100%, rgba(245,158,11,0.04) 0%, transparent 70%)',
-        }}
-      />
+    <FoldSection id="pricing" className="relative" style={{ borderBottom: '1px solid var(--rule)' } as React.CSSProperties}>
+      <span className="section-num hidden lg:block" aria-hidden="true">03 PRICING</span>
+      <div className="mx-auto max-w-site px-5 md:px-12 py-24 md:py-32">
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mb-14">
+          <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-[var(--ink-dim)] mb-4">Pricing</p>
+          <h2 className="font-display font-bold text-[var(--ink)] leading-[1.05]"
+            style={{ fontSize: 'clamp(32px,4vw,48px)', fontVariationSettings: '"opsz" 72' }}>
+            Straightforward pricing.
+          </h2>
+          <p className="font-serif text-[17px] text-[var(--ink-dim)] leading-[1.65] mt-3 max-w-lg">
+            No lock-in. No surprises. A website that works while you sleep.
+          </p>
+        </motion.div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-12">
-        {/* ── Section header ── */}
-        <div className="mb-16 text-center max-w-2xl mx-auto">
-          <motion.p
-            variants={headerVariants}
-            initial="hidden"
-            whileInView={headerVariants.visible(0)}
-            viewport={{ once: true, margin: '-60px' }}
-            className="font-mono text-xs tracking-widest uppercase mb-4"
-            style={{
-              color: '#F59E0B',
-              fontFamily: 'var(--font-inter), ui-monospace, monospace',
-            }}
-          >
-            PRICING
-          </motion.p>
-
-          <motion.h2
-            variants={headerVariants}
-            initial="hidden"
-            whileInView={headerVariants.visible(0.1)}
-            viewport={{ once: true, margin: '-60px' }}
-            className="text-4xl md:text-5xl text-white mb-4 leading-tight tracking-tight"
-            style={{ fontFamily: 'var(--font-instrument), Georgia, serif' }}
-          >
-            Straightforward pricing for real results.
-          </motion.h2>
-
-          <motion.p
-            variants={headerVariants}
-            initial="hidden"
-            whileInView={headerVariants.visible(0.2)}
-            viewport={{ once: true, margin: '-60px' }}
-            className="text-base md:text-lg leading-relaxed"
-            style={{
-              color: 'rgba(255,255,255,0.45)',
-              fontFamily: 'var(--font-inter), ui-sans-serif, sans-serif',
-            }}
-          >
-            No lock-in. No surprises. Just a website that works while you sleep.
-          </motion.p>
+        {/* Desktop table */}
+        <div className="hidden md:block border border-[var(--rule)] overflow-hidden">
+          <div className="grid grid-cols-3" style={{ borderBottom: '1px solid var(--rule)' }}>
+            {TIERS.map((t, i) => (
+              <motion.div key={t.name}
+                initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
+                whileInView={reduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.55, ease: [0.25,0,0,1] }}
+                className="p-8 flex flex-col gap-4"
+                style={{
+                  borderLeft: i > 0 ? '1px solid var(--rule)' : undefined,
+                  borderTop: t.recommended ? '3px solid var(--red)' : '3px solid transparent',
+                }}>
+                {t.recommended && (
+                  <span className="font-mono text-[10px] tracking-[0.08em] uppercase text-[var(--red)]">Most Popular</span>
+                )}
+                <p className="font-mono text-[11px] tracking-[0.06em] uppercase text-[var(--ink-dim)]">{t.name}</p>
+                <div>
+                  <p className="font-display font-black text-[var(--ink)] leading-none"
+                    style={{ fontSize: '42px', fontVariationSettings: '"opsz" 72' }}>
+                    {t.monthly}<span className="font-serif font-normal text-[17px] text-[var(--ink-dim)]">/mo</span>
+                  </p>
+                  <p className="font-mono text-[11px] text-[var(--ink-dim)] mt-1">+ {t.build} to build</p>
+                </div>
+                <ul className="flex flex-col gap-2 flex-1 mt-2">
+                  {t.features.map(f => (
+                    <li key={f} className="flex items-start gap-2">
+                      <span className="text-[var(--red)] font-mono text-[11px] mt-0.5">✓</span>
+                      <span className="font-serif text-[14px] leading-snug text-[var(--ink-dim)]">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4">
+                  <InkBleedButton href="/audit" primary={t.recommended} className="w-full text-center">
+                    Get Started
+                  </InkBleedButton>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* ── Pricing cards ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          {TIERS.map((tier, i) => (
-            <TiltCard
-              key={tier.name}
-              tier={tier}
-              index={i}
-              prefersReducedMotion={prefersReducedMotion ?? false}
-            />
+        {/* Mobile stacked */}
+        <div className="md:hidden flex flex-col border border-[var(--rule)]">
+          {TIERS.map((t, i) => (
+            <div key={t.name} className="p-7 flex flex-col gap-4"
+              style={{ borderTop: i > 0 ? '1px solid var(--rule)' : undefined, borderLeft: t.recommended ? '3px solid var(--red)' : '3px solid transparent' }}>
+              {t.recommended && <span className="font-mono text-[10px] tracking-[0.08em] uppercase text-[var(--red)]">Most Popular</span>}
+              <p className="font-mono text-[11px] tracking-[0.06em] uppercase text-[var(--ink-dim)]">{t.name}</p>
+              <p className="font-display font-black leading-none text-[var(--ink)]"
+                style={{ fontSize: '38px', fontVariationSettings: '"opsz" 72' }}>
+                {t.monthly}<span className="font-serif font-normal text-[16px] text-[var(--ink-dim)]">/mo</span>
+              </p>
+              <ul className="flex flex-col gap-1.5">
+                {t.features.map(f => (
+                  <li key={f} className="flex items-start gap-2">
+                    <span className="text-[var(--red)] font-mono text-[11px] mt-0.5">✓</span>
+                    <span className="font-serif text-[13px] leading-snug text-[var(--ink-dim)]">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <InkBleedButton href="/audit" primary={t.recommended}>Get Started</InkBleedButton>
+            </div>
           ))}
         </div>
-
-        {/* ── Footer note ── */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center text-xs mt-12"
-          style={{
-            color: 'rgba(255,255,255,0.25)',
-            fontFamily: 'var(--font-inter), ui-sans-serif, sans-serif',
-          }}
-        >
-          All plans include hosting setup guidance. Month-to-month — cancel any time.
-        </motion.p>
+        <p className="font-mono text-[10px] text-[var(--ink-dim)] mt-4 opacity-60">Month-to-month. Cancel any time.</p>
       </div>
-    </section>
+    </FoldSection>
   );
 }

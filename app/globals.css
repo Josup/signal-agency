@@ -2,111 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Design Tokens ─────────────────────────────────────────────── */
+/* ─── THE LEDGER — Design Tokens ──────────────────────────────── */
 :root {
-  --bg: #0A0A0A;
-  --amber: #F59E0B;
-  --amber-dim: rgba(245, 158, 11, 0.6);
-
-  /* Spacing scale */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-24: 6rem;
-
-  /* Border radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1.5rem;
-  --radius-full: 9999px;
+  --paper:     #F5F2ED;
+  --paper-2:   #E5DFD3;
+  --ink:       #15110D;
+  --ink-dim:   #6B6258;
+  --red:       #C41E3A;
+  --red-ink:   #A8132E;
+  --rule:      #15110D;
+  --rule-soft: rgba(21,17,13,.18);
+  --rule-hair: rgba(21,17,13,.10);
+  --display:   'Fraunces', Georgia, serif;
+  --serif:     'Source Serif 4', Georgia, serif;
+  --mono:      'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* ─── Grain Keyframe ─────────────────────────────────────────────── */
-@keyframes grain {
-  0%   { transform: translate(0, 0); }
-  10%  { transform: translate(-5%, -10%); }
-  20%  { transform: translate(-15%, 5%); }
-  30%  { transform: translate(7%, -25%); }
-  40%  { transform: translate(-5%, 25%); }
-  50%  { transform: translate(-15%, 10%); }
-  60%  { transform: translate(15%, 0%); }
-  70%  { transform: translate(0%, 15%); }
-  80%  { transform: translate(3%, 35%); }
-  90%  { transform: translate(-10%, 10%); }
-  100% { transform: translate(0, 0); }
-}
-
-/* ─── Base Styles ────────────────────────────────────────────────── */
-html {
-  scroll-behavior: smooth;
-}
+/* ─── Base ────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--bg);
-  color: white;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--paper);
+  background-image: radial-gradient(circle at 1px 1px, rgba(21,17,13,.04) 1px, transparent 0);
+  background-size: 6px 6px;
+  color: var(--ink);
+  font-family: var(--serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Custom Cursor ──────────────────────────────────────────────── */
-@media (hover: hover) and (pointer: fine) {
-  /* Hide default cursor on desktop — CursorFollower component replaces it */
-  * {
-    cursor: none !important;
-  }
+/* ─── Selection ───────────────────────────────────────────────── */
+::selection { background: var(--red); color: var(--paper); }
+
+/* ─── Ink-Bleed CTA ───────────────────────────────────────────── */
+/* Radial ink spreads from cursor position on hover */
+.btn-ink {
+  position: relative;
+  display: inline-block;
+  background: var(--red);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0;
+  padding: 18px 40px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.2s;
+  --mx: 50%;
+  --my: 50%;
 }
 
-@media (hover: none) {
-  /* Restore default cursor on touch devices */
-  * {
-    cursor: auto !important;
-  }
+.btn-ink::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 120px at var(--mx) var(--my),
+    var(--red-ink) 0%,
+    var(--red) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* ─── Selection ──────────────────────────────────────────────────── */
-::selection {
-  background-color: var(--amber);
-  color: #000000;
+.btn-ink:hover::before { opacity: 1; }
+
+.btn-ink span { position: relative; z-index: 1; }
+
+/* Outline variant */
+.btn-ink-outline {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+}
+.btn-ink-outline::before {
+  background: radial-gradient(
+    circle 120px at var(--mx) var(--my),
+    var(--rule-soft) 0%,
+    transparent 70%
+  );
 }
 
-::-moz-selection {
-  background-color: var(--amber);
-  color: #000000;
+/* ─── Ledger Rule ─────────────────────────────────────────────── */
+.ledger-rule { border-top: 1px solid var(--rule); }
+.ledger-rule-soft { border-top: 1px solid var(--rule-soft); }
+.ledger-rule-hair { border-top: 1px solid var(--rule-hair); }
+
+/* ─── Section Number (rotated left margin) ────────────────────── */
+.section-num {
+  position: absolute;
+  left: 16px;
+  top: 28px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  opacity: 0.5;
+  user-select: none;
+  pointer-events: none;
 }
 
-/* ─── Reduced Motion ─────────────────────────────────────────────── */
-.reduced-motion,
-.reduced-motion * {
-  transform: none !important;
-  animation: none !important;
-  transition: opacity 0.2s ease !important;
+/* ─── Marginalia ──────────────────────────────────────────────── */
+.marginalia {
+  position: absolute;
+  left: -180px;
+  width: 160px;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--ink-dim);
+  border-left: 2px solid var(--red);
+  padding-left: 10px;
 }
 
+/* ─── Typewriter cursor ───────────────────────────────────────── */
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--red);
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ─── Reduced Motion ──────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-    transform: none !important;
   }
 }
 
-/* ─── Utility Layer Additions ────────────────────────────────────── */
+/* ─── Utilities ───────────────────────────────────────────────── */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .font-instrument {
-    font-family: var(--font-instrument), Georgia, serif;
-  }
+  .font-display { font-family: var(--display); }
+  .font-serif   { font-family: var(--serif); }
+  .font-mono    { font-family: var(--mono); }
+  .text-ink     { color: var(--ink); }
+  .text-ink-dim { color: var(--ink-dim); }
+  .text-red     { color: var(--red); }
+  .bg-paper     { background-color: var(--paper); }
+  .bg-paper-2   { background-color: var(--paper-2); }
 }

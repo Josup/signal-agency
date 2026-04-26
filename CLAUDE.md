@@ -12,18 +12,21 @@ Premium agency website for Signal, a local SEO and AI search agency based in Bro
 - Deployed on Vercel
 - Schema.org structured data (Organization, Service, FAQPage)
 
-## Design Direction
-- Reference sites: Linear.app, Vercel.com, Stripe.com
-- Dark background: #0A0A0A
-- Accent: warm amber
-- Typography: Instrument Serif (display) + Inter (body)
-- Film grain overlay
-- Premium, minimal, typographically strong
-- Over-the-top entrance animation when site loads
-- Scroll-triggered animations on every section
-- Magnetic hover effects on buttons
-- Smooth cursor follower
-- Counter animations on stats
+## Design Direction — THE LEDGER (Council verdict 2026-04-25)
+- Full spec: `docs/superpowers/specs/2026-04-25-signal-agency-the-ledger.md`
+- Concept: authority without arrogance — institutional editorial, not startup SaaS
+- Background (surface): `#F5F2ED` (Bone — off-white, warm)
+- Ink (type + borders): `#0D0D0D` (near-black)
+- Accent (CTAs + stats): `#C41E3A` (Cardinal red) — NO amber, NO gold, NO yellow
+- Display font: Fraunces 900 variable (editorial serif — unexpected on an agency site)
+- Body font: Syne 400/600 (geometric, warm)
+- Mono font: DM Mono 400 (labels, query badges, eyebrows)
+- Layout: 12-column, 24px gutters, every section has a 1px #0D0D0D ruled top border (ledger structure)
+- CTA button: 0px border-radius (flat rectangle — the signature move)
+- Hero: 65/35 split — left column H1+subhead+CTA, right column sticky proof card
+- Animations: slow and confident (cubic-bezier(0.25,0,0,1)), no bounce, no decoration
+- Hero entrance: clip-path line-by-line reveal per H1 line, 800ms/line, 120ms stagger
+- Removed from old direction: grain overlay, cursor follower, dark background, amber, Instrument Serif, Inter
 
 ## Sections
 
@@ -161,4 +164,12 @@ Form styled to match the dark premium aesthetic. Amber CTA button. Same film gra
 3. Use Framer Motion for all animations
 4. Every animation must feel premium — not cheap or generic
 5. Mobile responsive — looks great on phone
-6. Run `npx vercel --prod` when complete
+6. Deploy using the command in the Deploy section below — NOT `npx vercel --prod` (Vercel's Next.js detection breaks it).
+
+## Deploy
+
+Run this from the project root every time you deploy:
+
+```bash
+cat tweaks-panel.jsx signal-tweaks.jsx > _combined.jsx && node_modules/.bin/esbuild _combined.jsx --outfile=bundle.js --define:process.env.NODE_ENV='"production"' --minify && rm _combined.jsx && cp index.html signal.css journal.html bundle.js 404.html robots.txt sitemap.xml .vercel/output/static/ && npx vercel deploy --prebuilt --prod
+```

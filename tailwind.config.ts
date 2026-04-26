@@ -9,9 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        paper:    "#F5F2ED",
+        "paper-2":"#E5DFD3",
+        ink:      "#15110D",
+        "ink-dim":"#6B6258",
+        signal:   "#C41E3A",
+        "signal-dark": "#A8132E",
       },
+      fontFamily: {
+        display: ["var(--font-fraunces)", "Georgia", "serif"],
+        serif:   ["var(--font-source-serif)", "Georgia", "serif"],
+        mono:    ["var(--font-jetbrains)", "ui-monospace", "monospace"],
+      },
+      maxWidth: { site: "1440px" },
     },
   },
   plugins: [],

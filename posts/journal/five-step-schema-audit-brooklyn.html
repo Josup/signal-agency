@@ -27,8 +27,11 @@
 .post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
 .post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
 .post-body blockquote p{margin-bottom:6px;font-size:16px}
-.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
-.post-body li{margin-bottom:6px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--ink-2);margin:0 0 24px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.post-body ul li,.post-body ol li{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+.post-body ul li::before{content:"—";font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700;padding-top:3px}
+.post-body ol{counter-reset:oli}
+.post-body ol li::before{counter-increment:oli;content:counter(oli,decimal-leading-zero);font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--red);font-weight:700;padding-top:5px}
 .post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
 .post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
 .post-body pre code{background:none;border:none;color:inherit;font-size:12px}

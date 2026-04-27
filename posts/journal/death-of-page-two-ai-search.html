@@ -27,8 +27,11 @@
 .post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
 .post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
 .post-body blockquote p{margin-bottom:6px;font-size:16px}
-.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
-.post-body li{margin-bottom:6px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--ink-2);margin:0 0 24px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.post-body ul li,.post-body ol li{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+.post-body ul li::before{content:"—";font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700;padding-top:3px}
+.post-body ol{counter-reset:oli}
+.post-body ol li::before{counter-increment:oli;content:counter(oli,decimal-leading-zero);font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--red);font-weight:700;padding-top:5px}
 .post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
 .post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
 .post-body pre code{background:none;border:none;color:inherit;font-size:12px}
@@ -78,13 +81,13 @@
     <div class="post-body">
       <p>Page two of Google is gone. Not declining. Gone. AI Overviews, ChatGPT, and Perplexity now intercept the informational and local queries that used to generate clicks to positions 11 through 20. For Brooklyn independent businesses, this changes the math on what "ranking" even means.</p>
 <h2>What the Traffic Data Actually Shows</h2>
-<p>We track organic traffic across 12 active Brooklyn clients. In Q1 2026, clicks from positions 11-20 dropped 73% compared to Q1 2024. Impressions in those positions stayed roughly flat. The search engine is still showing page two. Almost nobody is clicking it.</p>
+<p>The pattern is visible in organic traffic data: clicks from positions 11–20 have dropped sharply since AI Overviews became default behavior, while impressions in those positions have stayed roughly flat. The search engine is still showing page two. Almost nobody is clicking it.</p>
 <p>The cause is mechanical. When a user types "best optometrist Crown Heights" or "BJJ private lessons Brooklyn," Google surfaces an AI Overview before any blue links. ChatGPT returns a cited answer. Perplexity names three businesses and moves on. The user gets what they need without scrolling past position 5, let alone to page two.</p>
 <p>This isn't a traffic dip. It's a structural change in how queries resolve.</p>
 <h2>The Layer That Replaced Page Two</h2>
 <p>Page two existed to catch demand that position 1 through 10 couldn't fully satisfy. That demand still exists. It now routes into AI-generated answers instead.</p>
 <p>Three surfaces absorb it:</p>
-<p><strong>AI Overviews.</strong> Google's generated summaries appear on 46% of local commercial queries we tracked in March 2026. They cite between two and five sources. The sources are almost never from page two. They pull from position 1 through 3, or from highly structured content Google can parse confidently.</p>
+<p><strong>AI Overviews.</strong> Google's generated summaries now appear on a large share of local commercial queries — and that share continues to grow. They cite between two and five sources. The sources are almost never from page two. They pull from position 1 through 3, or from highly structured content Google can parse confidently.</p>
 <p><strong>ChatGPT Search.</strong> For "best X in Brooklyn" queries, ChatGPT cites an average of four businesses per response. Brooklyn BJJ Lessons ranks first for "BJJ private lessons Brooklyn" in ChatGPT. They've held that position since day 41 after launch. No page two equivalent exists in that interface. You're either cited or you're invisible.</p>
 <p><strong>Perplexity.</strong> Perplexity is now our second-largest AI referral source across client sites. Its local answers are tighter than ChatGPT's. It cites fewer sources and updates more frequently. Getting cited on Perplexity requires the same inputs as Google: clean structured data, consistent NAP, and content that states facts in retrievable sentences.</p>
 <h2>Your Site Is Probably Optimized for a Format That No Longer Exists</h2>
@@ -95,7 +98,7 @@
 <p>AI systems cite sources they can quote with confidence. That sentence is the whole strategy.</p>
 <p>A page that says "we offer high-quality eye care services to the Crown Heights community" is unquotable. An AI can't extract a fact from it. A page that says "Nostrand Optical is located at 675 Nostrand Avenue in Crown Heights, Brooklyn, and offers same-week appointments for comprehensive eye exams" is quotable. Every clause is a verifiable statement.</p>
 <p>The difference between page two and AI citation is precision. AI search rewards the same signals Google rich results reward: schema markup, factual density, geographic specificity, and consistent entity data across directories. A business with 25 consistent directory listings, a verified Google Business Profile, and clean FAQ content on its site is positioned for citation. A business with a page two ranking and no structured data is not.</p>
-<p>The content cadence matters too. We've tracked citation frequency across clients posting weekly versus monthly. Weekly posting clients receive AI citations at 3.4 times the rate of monthly posters. Freshness is a citation factor.</p>
+<p>The content cadence matters too. Freshness is a documented citation factor — AI systems weight recency in their retrieval models. A site that publishes weekly signals active authority in ways a monthly or quarterly site cannot match.</p>
 <h2>The New Ranking Positions Are Citation Slots</h2>
 <p>Here's the reframe. Page one had 10 positions. AI search has citation slots. Google AI Overviews cite 2-5 sources. ChatGPT cites 3-6. Perplexity cites 3-5. The total addressable citation inventory for any given Brooklyn query is between 8 and 16 slots across the three major AI surfaces.</p>
 <p>Those slots are not evenly distributed. A business that earns a citation in Google AI Overviews is likely structured well enough to earn one in Perplexity too. The inputs are correlated. Get the structure right once and it compounds across surfaces.</p>

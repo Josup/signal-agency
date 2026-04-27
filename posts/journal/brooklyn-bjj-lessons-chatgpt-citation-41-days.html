@@ -27,8 +27,11 @@
 .post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
 .post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
 .post-body blockquote p{margin-bottom:6px;font-size:16px}
-.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
-.post-body li{margin-bottom:6px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--ink-2);margin:0 0 24px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.post-body ul li,.post-body ol li{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+.post-body ul li::before{content:"—";font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700;padding-top:3px}
+.post-body ol{counter-reset:oli}
+.post-body ol li::before{counter-increment:oli;content:counter(oli,decimal-leading-zero);font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--red);font-weight:700;padding-top:5px}
 .post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
 .post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
 .post-body pre code{background:none;border:none;color:inherit;font-size:12px}
@@ -99,7 +102,7 @@
 <h2>What Actually Drove the Citation</h2>
 <p>Three factors converged. Remove any one of them and the timeline extends significantly.</p>
 <p><strong>Citation consistency.</strong> Twenty-five directories with identical NAP data. AI systems cross-reference these sources. When the data matches everywhere, confidence in the entity goes up. When it conflicts, AI hedges or skips the citation entirely.</p>
-<p><strong>Structured content with named entities.</strong> Every post named the neighborhood, the service, and the city. "Williamsburg" appeared more often than "Brooklyn" in body copy because AI search is resolving at neighborhood resolution now, not city level. We've documented this pattern across 12 clients.</p>
+<p><strong>Structured content with named entities.</strong> Every post named the neighborhood, the service, and the city. "Williamsburg" appeared more often than "Brooklyn" in body copy because AI search is resolving at neighborhood resolution now, not city level. It's a pattern we see consistently across client work.</p>
 <p><strong>GBP as the anchor.</strong> Google Business Profile is where AI Overviews pulls its local entity data. A fully completed, verified GBP with consistent categories and service area is the single highest-ROI action for any Brooklyn business targeting AI search. This one action alone accelerates citation timelines across all AI platforms.</p>
 <h2>What This Means for Your Business</h2>
 <p>If you're running an independent business in Brooklyn and you're not appearing in AI search results, the cause is almost always one of three things: no structured presence, inconsistent citations, or content that doesn't give AI anything to quote.</p>

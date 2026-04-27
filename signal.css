@@ -15,7 +15,7 @@
   --mono:"JetBrains Mono", ui-monospace, monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{overflow-x:hidden;overscroll-behavior:none}
+html{overflow-x:hidden;overscroll-behavior:none;-webkit-overflow-scrolling:touch}
 html,body{background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","onum","kern"}
 body{
   overflow-x:hidden;
@@ -240,7 +240,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 @media (max-width:900px){
   .prompt-ticker .pt-inner{grid-template-columns:1fr;gap:8px}
-  .prompt-ticker .pt-prompt{font-size:18px;white-space:normal}
+  .prompt-ticker .pt-prompt{font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 }
 
 /* ====== HERO LIVE-CITATION THEATRE additions ====== */

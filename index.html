@@ -902,7 +902,10 @@
   }
 
   var sceneIdx=0;
+  var sceneActive=false;
   async function playScene(){
+    if(sceneActive) return;
+    sceneActive=true;
     var s=SCENES[sceneIdx];
     reset();
     if(urlEl) urlEl.textContent=s.url;
@@ -925,6 +928,7 @@
     stampEl.classList.add('show');
     await wait(4200);
     sceneIdx=(sceneIdx+1)%SCENES.length;
+    sceneActive=false;
     playScene();
   }
 
@@ -987,17 +991,17 @@
       var suf=el.dataset.suffix||'';
       var dur=1600;
       var start=performance.now();
+      var rafId;
       function step(now){
         var t=Math.min(1,(now-start)/dur);
         var ease=1-Math.pow(1-t,3);
         var v=target*ease;
-        // slight overshoot near end
         if(t>0.92){var o=Math.sin((t-.92)*40)*0.02*(1-t)*target;v+=o;}
         el.textContent=pre+v.toFixed(dec)+suf;
-        if(t<1)requestAnimationFrame(step);
-        else el.textContent=pre+target.toFixed(dec)+suf;
+        if(t<1){rafId=requestAnimationFrame(step);}
+        else{cancelAnimationFrame(rafId);el.textContent=pre+target.toFixed(dec)+suf;}
       }
-      requestAnimationFrame(step);
+      rafId=requestAnimationFrame(step);
       cio.unobserve(el);
     });
   },{threshold:.4});
@@ -1021,10 +1025,10 @@
       var x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
       setPos((x/rect.width)*100);
     }
-    function onDown(e){dragging=true;onMove(e);e.preventDefault();}
+    function onDown(e){dragging=true;onMove(e);}
     function onUp(){dragging=false;}
     c.addEventListener('mousedown',onDown);
-    c.addEventListener('touchstart',onDown,{passive:false});
+    c.addEventListener('touchstart',onDown,{passive:true});
     window.addEventListener('mousemove',onMove);
     window.addEventListener('touchmove',onMove,{passive:true});
     window.addEventListener('mouseup',onUp);

@@ -15,11 +15,12 @@
   --mono:"JetBrains Mono", ui-monospace, monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{overflow-x:hidden}
+html{overflow-x:hidden;overscroll-behavior:none}
 html,body{background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","onum","kern"}
 body{
   overflow-x:hidden;
   -webkit-overflow-scrolling:touch;
+  overscroll-behavior:none;
   background-image:
     radial-gradient(circle at 1px 1px, rgba(21,17,13,.04) 1px, transparent 0);
   background-size:6px 6px;
@@ -93,6 +94,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .masthead .nav-l a:hover::after,.masthead .nav-r a:hover::after{right:0}
 .masthead .wordmark{font-family:var(--display);font-weight:900;font-size:38px;letter-spacing:-.04em;line-height:1;display:flex;align-items:center;gap:8px;font-variation-settings:"SOFT" 0,"WONK" 1}
 .masthead .wordmark sup{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--red);font-weight:700;align-self:flex-start;margin-top:6px}
+/* mobile nav — hidden on desktop */
+.mob-menu-btn{display:none}
+.mob-menu{display:none}
 
 /* ====== HERO ====== */
 .hero{padding:64px 0 0;position:relative}
@@ -729,17 +733,39 @@ footer .bottom{padding-top:24px;display:flex;justify-content:space-between;font-
   /* Hide metadata strip — too dense for phone */
   .masthead .row1{display:none}
 
-  /* Collapsed nav: wordmark left, single Book CTA right */
+  /* Collapsed nav: wordmark left, hamburger right */
   .masthead .row2{grid-template-columns:1fr auto;gap:0;padding:10px 20px}
   .masthead .nav-l{display:none}
-  .masthead .nav-r{gap:0}
-  .masthead .nav-r a:not(:last-child){display:none}
-  .masthead .nav-r a:last-child{
-    background:var(--red);color:#fff;
-    padding:10px 18px;
-    font-family:var(--mono);font-size:11px;letter-spacing:.15em;font-weight:700;text-transform:uppercase;
-  }
+  .masthead .nav-r{display:none}
   .masthead .wordmark{font-size:26px}
+  /* disable position:fixed grain overlay on mobile — kills scroll jank */
+  body::before{display:none}
+  /* hamburger button */
+  .mob-menu-btn{
+    display:flex;flex-direction:column;justify-content:center;gap:5px;
+    padding:8px;width:40px;height:40px;background:none;border:0;cursor:pointer;
+  }
+  .mob-menu-btn span{display:block;width:22px;height:2px;background:var(--ink);transition:transform .25s cubic-bezier(.7,.1,.2,1),opacity .2s}
+  .mob-menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .mob-menu-btn.open span:nth-child(2){opacity:0}
+  .mob-menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  /* mobile dropdown menu */
+  .mob-menu{
+    display:flex;flex-direction:column;
+    max-height:0;overflow:hidden;
+    transition:max-height .38s cubic-bezier(.7,.1,.2,1);
+    background:var(--paper);
+  }
+  .mob-menu.open{max-height:400px}
+  .mob-menu-link{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;
+    padding:16px 20px;border-bottom:1px solid var(--rule-soft);color:var(--ink);display:block;
+  }
+  .mob-menu-link:active{color:var(--red)}
+  .mob-menu-cta{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+    background:var(--red);color:#fff;display:block;padding:16px 20px;margin:16px 20px 20px;text-align:center;
+  }
 
   /* Hero */
   .hero{padding:36px 0 0}

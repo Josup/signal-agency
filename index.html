@@ -191,7 +191,18 @@
       <a href="#" onclick="openAuditModal(); return false;">Audit</a>
       <a href="#" onclick="openAuditModal(); return false;">Book</a>
     </div>
+    <button class="mob-menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <nav class="mob-menu" aria-hidden="true">
+    <a href="#problem" class="mob-menu-link">Problem</a>
+    <a href="#work" class="mob-menu-link">Work</a>
+    <a href="#pricing" class="mob-menu-link">Pricing</a>
+    <a href="#process" class="mob-menu-link">Process</a>
+    <a href="journal.html" class="mob-menu-link">Journal</a>
+    <a href="#" onclick="openAuditModal(); return false;" class="mob-menu-cta">Book the audit →</a>
+  </nav>
 </header>
 
 <!-- ============ HERO ============ -->
@@ -1015,7 +1026,7 @@
     c.addEventListener('mousedown',onDown);
     c.addEventListener('touchstart',onDown,{passive:false});
     window.addEventListener('mousemove',onMove);
-    window.addEventListener('touchmove',onMove,{passive:false});
+    window.addEventListener('touchmove',onMove,{passive:true});
     window.addEventListener('mouseup',onUp);
     window.addEventListener('touchend',onUp);
     // auto-demo on first scroll-into-view
@@ -1300,5 +1311,38 @@ section.sec.fold-in::before{height:140px}
 section.sec.fold-in::after{transform:scaleX(1)}
 </style>
 
+
+<script>
+(function(){
+  var btn=document.querySelector('.mob-menu-btn');
+  var menu=document.querySelector('.mob-menu');
+  if(!btn||!menu)return;
+  function close(){
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+    menu.setAttribute('aria-hidden','true');
+  }
+  btn.addEventListener('click',function(){
+    var opening=!menu.classList.contains('open');
+    if(opening){
+      menu.classList.add('open');
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+      menu.setAttribute('aria-hidden','false');
+    } else {
+      close();
+    }
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){close();});
+  });
+  document.addEventListener('click',function(e){
+    if(menu.classList.contains('open')&&!btn.contains(e.target)&&!menu.contains(e.target)){
+      close();
+    }
+  });
+})();
+</script>
 </body>
 </html>

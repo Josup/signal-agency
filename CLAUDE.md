@@ -166,10 +166,33 @@ Form styled to match the dark premium aesthetic. Amber CTA button. Same film gra
 5. Mobile responsive — looks great on phone
 6. Deploy using the command in the Deploy section below — NOT `npx vercel --prod` (Vercel's Next.js detection breaks it).
 
+## Journal Article Generation Rules
+
+These rules apply any time Claude generates or edits journal articles in `posts/journal/`.
+
+### Content — Hard Rules
+1. **No fabricated statistics.** Never invent numbers, percentages, multipliers, or counts (e.g. "73% drop", "3.4× citation rate", "340% QoQ"). If a stat is needed, cite a real public source (Semrush, BrightLocal, SparkToro, Yext, Google blog, etc.) and attribute it inline.
+2. **No invented client counts.** Signal has two named clients: Nostrand Optical and Brooklyn BJJ Lessons. Never write "12 clients", "across the portfolio", or any aggregate that implies more.
+3. **No proprietary process exposure.** Do not describe Signal's internal workflow, pricing mechanics, outreach methods, or operational specifics. The reader learns WHAT works, not HOW Signal does it internally.
+4. **No made-up case study data.** Only use Nostrand Optical and Brooklyn BJJ results that are already documented in existing articles. Do not invent new before/after numbers.
+5. **Educational voice only.** Articles teach the reader how AI search works. They do not position Signal as having secret insider data or exclusive client research.
+
+### What IS allowed
+- First-person observations grounded in named clients: "The Nostrand Optical site has seen consistent Perplexity referrals since launch"
+- General behavioral observations about AI engines (how ChatGPT cites, how Perplexity retrieves, etc.)
+- Publicly sourced industry stats with attribution
+- Specific Nostrand Optical and Brooklyn BJJ results already published (41 days to first citation, 4 rich results on launch day, etc.)
+
+### CSS Template
+All new articles must use the new-style post template (see `how-ai-engines-decide-who-to-cite.html` for reference). Key requirements:
+- `list-style:none` on `ul/ol` with `display:flex;flex-direction:column;gap:10px`
+- `display:grid;grid-template-columns:28px 1fr` on `li` with `::before` dash markers
+- Never use `margin-left:22px` with default bullet markers (causes stacking bug)
+
 ## Deploy
 
-Run this from the project root every time you deploy:
+Run this from the project root every time you deploy (includes posts/ subdirectory):
 
 ```bash
-cat tweaks-panel.jsx signal-tweaks.jsx > _combined.jsx && node_modules/.bin/esbuild _combined.jsx --outfile=bundle.js --define:process.env.NODE_ENV='"production"' --minify && rm _combined.jsx && cp index.html signal.css journal.html bundle.js 404.html robots.txt sitemap.xml .vercel/output/static/ && npx vercel deploy --prebuilt --prod
+cp -r posts/ .vercel/output/static/ && cat tweaks-panel.jsx signal-tweaks.jsx > _combined.jsx && node_modules/.bin/esbuild _combined.jsx --outfile=bundle.js --define:process.env.NODE_ENV='"production"' --minify && rm _combined.jsx && cp index.html signal.css journal.html bundle.js 404.html robots.txt sitemap.xml .vercel/output/static/ && npx vercel deploy --prebuilt --prod
 ```

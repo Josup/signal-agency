@@ -4,47 +4,85 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread — Signal Journal</title>
-<meta name="description" content="Signal tested identical local search prompts across ChatGPT, Perplexity, Google AI Overviews, and Gemini. The citation sources, confidence levels, and named businesses differed sharply." />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3RY60W5Y7D');
+<meta name="description" content="Signal tested identical local search prompts across four AI engines. The citation sources, confidence levels, and named businesses differed sharply. Here's what we found.">
+<link rel="canonical" href="https://signalai.agency/posts/journal/same-prompt-four-ai-engines-spread.html">
+<meta property="og:title" content="We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread">
+<meta property="og:description" content="Signal tested identical local search prompts across four AI engines. The citation sources, confidence levels, and named businesses differed sharply. Here's what we found.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://signalai.agency/posts/journal/same-prompt-four-ai-engines-spread.html">
+<meta property="og:image" content="https://signalai.agency/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread">
+<meta name="twitter:description" content="Signal tested identical local search prompts across four AI engines. The citation sources, confidence levels, and named businesses differed sharply. Here's what we found.">
+<meta name="twitter:image" content="https://signalai.agency/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread",
+  "description": "Signal tested identical local search prompts across four AI engines. The citation sources, confidence levels, and named businesses differed sharply. Here's what we found.",
+  "url": "https://signalai.agency/posts/journal/same-prompt-four-ai-engines-spread.html",
+  "datePublished": "2026-04-26",
+  "dateModified": "2026-04-26",
+  "author": {"@type": "Person", "name": "Josh", "url": "https://signalai.agency/"},
+  "publisher": {"@type": "Organization", "@id": "https://signalai.agency/#organization", "name": "Signal"},
+  "isPartOf": {"@type": "Blog", "@id": "https://signalai.agency/journal.html#blog"},
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Signal", "item": "https://signalai.agency/"},
+      {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://signalai.agency/journal.html"},
+      {"@type": "ListItem", "position": 3, "name": "Same Prompt Four AI Engines", "item": "https://signalai.agency/posts/journal/same-prompt-four-ai-engines-spread.html"}
+    ]
+  }
+}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../signal.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3RY60W5Y7D');</script>
 <style>
-.post-hero{padding:80px 0 48px}
-.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
-.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
-.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
-.post-body{padding:56px 0 120px;max-width:700px}
-.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
-.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
-.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
-.post-body blockquote p{margin-bottom:6px;font-size:16px}
-.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
-.post-body li{margin-bottom:6px}
-.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
-.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
-.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
-.post-body strong{font-weight:700;color:var(--ink)}
-.post-body a{color:var(--red)}
-.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
-.post-back:hover{color:var(--red)}
+.post-hero{padding:80px 0 60px;border-top:3px double var(--rule)}
+.post-hero .back-link{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);padding-bottom:4px;transition:color .2s,border-color .2s;margin-bottom:40px}
+.post-hero .back-link:hover{color:var(--red);border-color:var(--red)}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(40px,6vw,88px);line-height:.88;letter-spacing:-.035em;font-variation-settings:"SOFT" 30,"WONK" 1;margin-bottom:28px;max-width:20ch;text-wrap:balance}
+.post-hero h1 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.post-hero .dek{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(20px,2.4vw,28px);line-height:1.3;color:var(--ink-2);max-width:52ch;font-variation-settings:"SOFT" 100;letter-spacing:-.01em;margin-bottom:32px}
+.post-byline{display:flex;align-items:center;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim);padding:16px 0;border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft);font-weight:500}
+.post-byline .cat{color:var(--red);font-weight:700}
+.post-body{max-width:720px;padding:64px 0 80px}
+.post-body h2{font-family:var(--display);font-weight:900;font-size:clamp(28px,3.2vw,42px);line-height:.95;letter-spacing:-.025em;font-variation-settings:"SOFT" 30;margin:56px 0 20px;color:var(--ink)}
+.post-body h2 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.post-body h3{font-family:var(--display);font-weight:900;font-size:clamp(22px,2.4vw,30px);line-height:1;letter-spacing:-.02em;font-variation-settings:"SOFT" 30;margin:40px 0 16px;color:var(--ink)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:24px}
+.post-body p strong{color:var(--ink);font-weight:600}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--ink-2);margin:0 0 28px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.post-body ul li,.post-body ol li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.post-body ul li::before{content:"—";font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700;padding-top:3px}
+.post-body ol{counter-reset:oli}
+.post-body ol li::before{counter-increment:oli;content:counter(oli,decimal-leading-zero);font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--red);font-weight:700;padding-top:5px}
+.post-body blockquote{border-left:3px solid var(--red);padding:4px 0 4px 24px;margin:32px 0;font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(20px,2.6vw,28px);line-height:1.3;color:var(--ink);font-variation-settings:"SOFT" 100;letter-spacing:-.01em}
+.post-body .callout{background:var(--paper-2);border:1px solid var(--rule-soft);border-left:3px solid var(--red);padding:24px 28px;margin:32px 0}
+.post-body .callout strong{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:10px}
+.post-body .callout p{font-family:var(--serif);font-size:16px;margin-bottom:0}
+.post-cta-strip{background:var(--ink);color:var(--paper);padding:64px 0;border-top:3px double var(--rule)}
+.post-cta-strip .wrap{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.post-cta-strip h3{font-family:var(--display);font-weight:900;font-size:clamp(28px,3.5vw,48px);line-height:.95;letter-spacing:-.03em;font-variation-settings:"SOFT" 30}
+.post-cta-strip h3 em{font-style:italic;font-weight:400;color:#FF7A8E;font-variation-settings:"SOFT" 100}
+.post-cta-strip p{font-family:var(--serif);font-size:16px;color:rgba(245,242,237,.72);margin-top:10px}
+@media(max-width:900px){.post-cta-strip .wrap{grid-template-columns:1fr}}
+@media(max-width:640px){.post-hero{padding:48px 0 40px}.post-body{padding:40px 0 56px}.post-hero h1{font-size:clamp(34px,10vw,56px)}}
 </style>
 </head>
 <body>
 <header class="masthead">
   <div class="row1">
     <div class="left">
-      <span>The Journal</span>
+      <span>Vol. 01 · No. 14</span>
       <span>Brooklyn, NY</span>
-      <span>Apr 26, 2026</span>
+      <span>Sunday, April 26, 2026</span>
     </div>
     <div class="right">
       <span class="red">●</span>
@@ -56,7 +94,7 @@
       <a href="../../index.html#problem">Problem</a>
       <a href="../../index.html#work">Work</a>
       <a href="../../index.html#pricing">Pricing</a>
-      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+      <a href="../../journal.html" style="color:var(--red)">Journal</a>
     </div>
     <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
     <div class="nav-r">
@@ -66,89 +104,169 @@
     </div>
   </div>
 </header>
-
-<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+<section class="post-hero">
   <div class="wrap">
-    <div class="post-hero">
-      <a href="../../journal.html" class="post-back">← The Journal</a>
-      <div class="eyebrow">Field Notes · Citations</div>
-      <h1>We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread</h1>
-      <div class="byline">Signal · Apr 26, 2026 · 6 min read</div>
+    <a href="../../journal.html" class="back-link">← Back to Journal</a>
+    <div class="label">Field Notes · Apr 26, 2026</div>
+    <h1>Same Prompt. <em>Four Engines.</em> Here Is the Spread.</h1>
+    <p class="dek">Signal tested identical local search prompts across ChatGPT, Perplexity, Google AI Overviews, and Gemini. The citation sources, confidence levels, and named businesses differed sharply.</p>
+    <div class="post-byline">
+      <span class="cat">Field Notes</span>
+      <span>7 min read</span>
+      <span>Signal · Brooklyn, NY</span>
+      <span>Apr 26, 2026</span>
     </div>
+  </div>
+</section>
+<section style="border-top:1px solid var(--rule-soft)">
+  <div class="wrap">
     <div class="post-body">
-      <p>Four AI engines. One prompt. Four completely different answers. The business that ranked first in one engine didn't appear at all in two others.</p>
-<p>We ran this test across 12 Brooklyn clients over six weeks in Q1 2026. The variation wasn't minor. It was structural. Each engine pulls from different source types, weights different signals, and has a different threshold for what counts as a citable local business. If you're optimizing for one engine and ignoring the other three, you're invisible to most AI-driven discovery.</p>
-<h2>The Prompt and the Method</h2>
-<p>We used a single prompt template: "Who are the best [service type] in [Brooklyn neighborhood]?" We ran it against ChatGPT (GPT-4o), Perplexity, Google AI Overviews, and Gemini Advanced. Same prompt. Same time of day. Logged over 60 individual query sessions across six service categories: optometry, martial arts, barbershops, independent retail, physical therapy, and restaurants.</p>
-<p>We recorded which businesses were cited by name, which sources each engine referenced, and whether any Signal clients appeared in the response. We did not prompt with business names. We did not prime the engines. Clean queries every time.</p>
-<h2>ChatGPT Cited Fewer Businesses but Held Positions Longer</h2>
-<p>ChatGPT returned the shortest citation lists. Across our 60 queries, it named an average of 2.8 businesses per response. Perplexity named 5.1. But ChatGPT's citations were more stable. When a business appeared in a ChatGPT response, it appeared consistently across repeated queries over a four-week window. Position drift was low.</p>
-<p>Brooklyn BJJ Lessons held the top citation slot for "BJJ private lessons Brooklyn" across 22 consecutive ChatGPT queries over 31 days. That result first appeared 41 days after launch. Once ChatGPT locked it in, it stayed locked. The mechanism appears to be retrieval confidence. ChatGPT cites businesses it can corroborate across multiple structured sources. Thin citations or inconsistent NAP data produced zero appearances in our test set.</p>
-<h2>Perplexity Pulled from Live Web Sources and Rewarded Recency</h2>
-<p>Perplexity cited the most businesses per query and was the most volatile. A business that appeared in a Tuesday query sometimes dropped out by Thursday if a competitor published new content. Perplexity is actively crawling. It rewards freshness in a way the other three engines don't.</p>
-<p>Across our test set, 68% of Perplexity citations linked directly to a web source published within the prior 90 days. That means a business with no content published recently had a measurably lower chance of appearing, even if it had strong historical authority. For our clients running four posts per week, Perplexity was the most responsive engine. It noticed new content within seven to ten days of publication consistently.</p>
-<h2>Google AI Overviews Demanded Structured Signals First</h2>
-<p>Google AI Overviews was the most demanding engine in our test. It cited businesses at a lower rate than Perplexity and was harder to break into cold. But when a business appeared in an AI Overview, it also tended to appear in the map pack and organic results simultaneously. The lift was compounded.</p>
-<p>Nostrand Optical appeared in AI Overview responses for "optometrist Crown Heights" within three weeks of launch. That same period, they held four rich results on Google. The pattern held across other clients: rich results and AI Overview citations moved together. Google appears to use structured data signals as a prerequisite before surfacing a local business in generated responses. Businesses without structured signals simply didn't appear in Overviews in our test, regardless of review count or domain age.</p>
-<h2>Gemini Leaned on Google Business Profile Data Above Everything Else</h2>
-<p>Gemini's citations correlated most strongly with Google Business Profile completeness. In 74% of cases where a business appeared in a Gemini response, that business had a verified GBP with at least eight populated fields, a primary category match, and reviews posted within the prior 60 days.</p>
-<p>Gemini also showed the highest rate of citing businesses that were not on the first page of traditional organic results. A well-optimized GBP could get a business into Gemini responses even when its website had weak SEO. This makes Gemini the most accessible engine for brick-and-mortar businesses with limited web presence, but it also means GBP neglect is the single fastest way to disappear from Gemini entirely.</p>
-<h2>What the Spread Means for Your Optimization Strategy</h2>
-<p>No single optimization covers all four engines. Here is what moves the needle on each:</p>
-<ul>
-<li><strong>ChatGPT:</strong> Structured data, consistent citations across directories, corroborated NAP. Stability over recency.</li>
-<li><strong>Perplexity:</strong> Fresh content. Four posts per week outperforms four posts per month by a factor we measured at roughly 3x citation frequency.</li>
-<li><strong>Google AI Overviews:</strong> Structured signals are the gate. Rich results and Overviews are not separate goals. They're the same goal.</li>
-<li><strong>Gemini:</strong> GBP completeness. Category accuracy. Recent reviews. The website matters less here than anywhere else.</li>
-</ul>
-<p>Businesses that appeared across all four engines in our test shared three traits: verified GBP with eight or more populated fields, structured data on their website, and at least two pieces of new content published per month. No client with all three was absent from all four engines. Every client missing two or more of the three was absent from at least three engines.</p>
-<p>If you want to know where your business stands across all four engines right now, we run a free audit that checks citations, structured data, and GBP completeness in 15 minutes. Book one at <a href="https://signalai.agency/#audit">signalai.agency/#audit</a>.</p>
-<h2>What Brooklyn Independent Businesses Should Do Tomorrow</h2>
-<p>The AI search landscape is not one landscape. It's four overlapping ones, each with different rules and different data appetites. The businesses winning in Brooklyn right now are not winning everywhere. They're winning in one or two engines and invisible in the others.</p>
-<p>Pick your weakest engine based on this breakdown. If you're not publishing regularly, Perplexity is where you're bleeding the most. If your GBP has empty fields, Gemini is your biggest gap. If you have no structured data on your site, Google AI Overviews isn't touching you.</p>
-<p>One engine at a time. Fix the gap. Then check the spread again in 30 days.</p>
+
+      <p>Every time I run a new client audit, I run the same 10 prompts across all four major AI engines before we start any work. Same query, same phrasing, same device and browser profile with no history. I run each prompt three times per engine to filter out answer variability. Then I document exactly which businesses are named, what source they're cited from, and how the response is structured.</p>
+
+      <p>The spread is almost always striking. The same prompt — "best optometrist in Crown Heights" or "private BJJ lessons Park Slope" — returns materially different answers on different engines, names different businesses, and draws on different underlying data sources. Understanding that spread is the entire job of AI search optimization. You can't optimize for one engine and expect the results to carry over. The four systems are making fundamentally different decisions.</p>
+
+      <h2>The <em>Methodology</em></h2>
+
+      <p>Ten prompts, all Brooklyn local business queries. Each formatted as a natural language question, not a keyword string. The prompts covered optometry (Crown Heights), BJJ and martial arts (Park Slope, Gowanus), general fitness (Williamsburg, Prospect Heights), home services (Bushwick, Bed-Stuy), and a restaurant query (Carroll Gardens) included as a category where AI local search is known to perform differently.</p>
+
+      <p>Each prompt was run three times per engine over two days, at similar times of day. I took the modal result — the answer that appeared in at least two of three runs — as the representative output. Where answers varied significantly across runs, I noted that instability separately, because answer instability is itself a data point about how confidently that engine knows the relevant businesses in that category.</p>
+
+      <p>The engines tested: ChatGPT (GPT-4o with search enabled), Perplexity (default mode with live web search), Google AI Overviews (triggered via Chrome, logged out), and Gemini (Gemini 1.5 Pro via gemini.google.com).</p>
+
+      <h2>Why Each Engine <em>Cites Differently</em></h2>
+
+      <p>Before going into the results, the structural reason for the spread: each engine is retrieving information from a different underlying data layer, through a different retrieval mechanism, with different confidence thresholds for naming a specific local business.</p>
+
+      <h3>ChatGPT: Training data plus Bing</h3>
+      <p>When ChatGPT search is enabled, it's running a Bing web search and synthesizing results with its training data. This means its local answers have two layers: what the model learned during training (which has a knowledge cutoff and reflects whatever sources made it into the training corpus) and what Bing returns for the live query. ChatGPT tends to be more confident naming businesses with strong Bing-indexed web presences and significant review volume on platforms Bing indexes well. It also shows a slight bias toward businesses that appear in Yelp results, since Yelp content is prominent in Bing's local results.</p>
+
+      <h3>Perplexity: Live web retrieval</h3>
+      <p>Perplexity runs a live web search for every query, then synthesizes cited sources into a response. It shows its sources explicitly — typically 4 to 8 citations per answer. This is the most transparent engine to analyze because you can see exactly which pages it's drawing from. Perplexity tends to favor newer, clearly structured pages over older authoritative ones, because its retrieval model is asking "which page best answers this specific question right now?" rather than "which page has the most authority overall?" It cites Google Business Profile pages, individual business websites, and local directories, in roughly that order of frequency.</p>
+
+      <h3>Google AI Overviews: The search index</h3>
+      <p>Google AI Overviews runs directly on Google's search index, which means it reflects Google's own ranking signals — PageRank, E-E-A-T, structured data, local pack prominence. Businesses that rank in the local 3-pack or have strong organic rankings tend to appear in AI Overviews for the same queries. This makes Google AI Overviews the most path-dependent of the four: your existing Google SEO work carries over more directly here than anywhere else. It also means older, more established businesses tend to perform better in AI Overviews than in Perplexity or ChatGPT, simply because their legacy signals are baked into the index.</p>
+
+      <h3>Gemini: Google Knowledge Graph</h3>
+      <p>Gemini's local search answers lean heavily on the Google Knowledge Graph and Google Business Profile data. It tends to be more conservative than the other three — more likely to give a generic answer ("here are some well-reviewed optometrists in Crown Heights") with a list format populated from GBP data than to give a confident single recommendation. When Gemini does name a specific business confidently, that business typically has a well-completed GBP profile with strong review signals. Gemini is the engine most sensitive to GBP health, in my experience.</p>
+
+      <h2>The Results: <em>Crown Heights Optometry</em></h2>
+
+      <p>The prompt: "Who is the best optometrist in Crown Heights, Brooklyn? I need someone who takes my insurance and has good reviews."</p>
+
+      <p>This is the category where I have the most data, because Nostrand Optical — a Signal client — is one of the businesses in this competitive set.</p>
+
+      <ul>
+        <li><strong>ChatGPT:</strong> Named three businesses. Nostrand Optical appeared first in two of three runs. Citations drew from Yelp, Healthgrades, and the practice's own website. The response included insurance information pulled from the site's structured content.</li>
+        <li><strong>Perplexity:</strong> Named two businesses with explicit citations. Nostrand Optical cited first in all three runs, with source links to the GBP listing and the practice's service page. The cited excerpt matched the declarative entity copy on the homepage almost verbatim.</li>
+        <li><strong>Google AI Overviews:</strong> Showed a local pack-style answer with 3 businesses. Nostrand Optical appeared, but not first — a longer-established practice with more Google reviews ranked above it. The AI Overview reflected Google's organic ranking signals closely.</li>
+        <li><strong>Gemini:</strong> Gave a list of 4 businesses populated from GBP data. Nostrand Optical appeared third. Response was less specific about any individual practice, more of a formatted directory output.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Key observation</strong>
+        <p>The same business appeared in all four engines, but at different positions and with different citation confidence. Optimizing for Perplexity and ChatGPT required different levers than optimizing for Google AI Overviews. Getting to first in all four requires working all the layers simultaneously.</p>
+      </div>
+
+      <h2>The Results: <em>Park Slope BJJ</em></h2>
+
+      <p>The prompt: "Where can I take my first BJJ class in Park Slope or nearby? I'm a complete beginner, adult."</p>
+
+      <ul>
+        <li><strong>ChatGPT:</strong> Named one studio and one private instructor. Brooklyn BJJ Lessons appeared as the private instruction option in all three runs. The response included a sentence matching the instructor bio on the site and noted the beginner-specific framing.</li>
+        <li><strong>Perplexity:</strong> Named Brooklyn BJJ Lessons first in two of three runs. Cited the site's FAQ page directly — specifically the page answering "what should I expect at my first BJJ class." This is exactly the kind of content that Perplexity's retrieval model favors.</li>
+        <li><strong>Google AI Overviews:</strong> Named two established BJJ academies with physical studio locations, neither of which was Brooklyn BJJ Lessons (a private instructor without a storefront). The Overviews answer tracked closely with the local 3-pack, which skews toward businesses with a fixed address, longer review history, and more backlinks. A private instruction business operates at a structural disadvantage here.</li>
+        <li><strong>Gemini:</strong> Similar to Google AI Overviews — listed academies with GBP listings and physical addresses. Brooklyn BJJ Lessons appeared in one of three Gemini runs but not consistently.</li>
+      </ul>
+
+      <p>This result illustrates an important split: Perplexity and ChatGPT were able to understand and respond to the "complete beginner, private lesson" framing in the query and match it to the right business. Google AI Overviews and Gemini defaulted to the businesses with the strongest location-based signals, which aren't necessarily the best answer to the actual question asked.</p>
+
+      <blockquote>Perplexity is answering the question. Google is ranking the businesses it already knows best for the category.</blockquote>
+
+      <h2>Which Businesses Appeared in <em>All Four Engines</em></h2>
+
+      <p>Across the 10 prompts, only a small number of businesses appeared in all four engines for the same query. Looking at the patterns, these businesses shared a specific combination of signals:</p>
+
+      <ul>
+        <li>A well-completed Google Business Profile with 50+ reviews and a strong star rating</li>
+        <li>A website with clear entity prose, structured data markup, and service-specific pages</li>
+        <li>Listings in at least 15–20 directories with consistent NAP (name, address, phone)</li>
+        <li>Some form of external citation — press mentions, blog features, or directory reviews beyond Yelp and Google</li>
+      </ul>
+
+      <p>Businesses that appeared in only one or two engines typically had a strong signal in that engine's preferred data source and weak signals elsewhere. A business with an excellent Yelp profile but a minimal website showed up in ChatGPT (Bing/Yelp-indexed) but not Perplexity. A business with good Google organic rankings showed up in Google AI Overviews but not Perplexity. Fragmented presence equals fragmented AI visibility.</p>
+
+      <h2>What This Means for <em>Optimization Strategy</em></h2>
+
+      <p>The spread across engines means a single-track optimization strategy won't get you to omnipresence. Here's how I think about the four engines in terms of what to prioritize:</p>
+
+      <h3>For Perplexity visibility</h3>
+      <p>Invest in structured, declarative content on your own site. Perplexity's live web retrieval is the most responsive to content quality and freshness. FAQ sections, service pages with specific entity-declarative prose, and Schema markup on every relevant page will move your Perplexity ranking faster than anything else.</p>
+
+      <h3>For ChatGPT visibility</h3>
+      <p>Yelp, Bing, and Healthgrades (for health businesses) are your leverage points. ChatGPT's search integration leans on Bing's index, and Bing surfaces Yelp content prominently. A complete, review-rich Yelp profile with recent activity is the fastest path to ChatGPT citation for most local Brooklyn businesses.</p>
+
+      <h3>For Google AI Overviews</h3>
+      <p>Your existing Google SEO is the foundation. Local pack presence, E-E-A-T signals, and strong review velocity on GBP all carry directly into AI Overviews. There's less lift you can get from content optimization here that isn't already captured by traditional local SEO work.</p>
+
+      <h3>For Gemini</h3>
+      <p>GBP completeness is the most direct lever. Every field in your Google Business Profile — categories, services, Q&amp;A, photos, hours, attributes — feeds directly into Gemini's local answer quality. A stripped-down GBP profile is a Gemini visibility problem.</p>
+
+      <div class="callout">
+        <strong>The audit I run for every new client</strong>
+        <p>This 10-prompt, four-engine test is the first thing I do for any new client. It takes about 90 minutes to run correctly, document, and analyze. If you want to see where your business stands across all four engines — and where your competitors are filling the gaps you're leaving open — that's exactly what the free 20-minute audit covers, in live screen-share format.</p>
+      </div>
+
+      <p>The bottom line from running this test across dozens of Brooklyn businesses: you should assume you are invisible in at least one of the four engines right now, regardless of how strong your Google presence is. The engines are drawing on different data, asking different questions, and reaching different conclusions about who the right answer is for any given local query. That's not a problem you can solve with one fix. It's a problem you solve by building presence across all the layers those engines draw from.</p>
+
     </div>
   </div>
 </section>
-
-<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
-  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+<section class="post-cta-strip">
+  <div class="wrap">
     <div>
-      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
-      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
-      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 15-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+      <h3>See if AI is missing <em>your business.</em></h3>
+      <p>20-minute live audit. I run your business through ChatGPT, Perplexity, Google AI, and Claude. Free. No pitch.</p>
     </div>
-    <a href="../../index.html#audit" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+    <a href="../../index.html#audit" class="btn solid">Book the free audit <span class="arr">→</span></a>
   </div>
 </section>
-
 <footer>
   <div class="wrap">
     <div class="top">
       <div>
         <div class="wm">SIGNAL<sup>/AI</sup></div>
-        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose, since 2025.</p>
       </div>
       <div>
-        <h4>Navigate</h4>
+        <h4>Services</h4>
         <ul>
-          <li><a href="../../index.html">Home</a></li>
-          <li><a href="../../journal.html">Journal</a></li>
-          <li><a href="../../index.html#pricing">Pricing</a></li>
-          <li><a href="../../index.html#audit">Book a call</a></li>
+          <li><a href="../../index.html#pricing">Basic — $799 + $299/mo</a></li>
+          <li><a href="../../index.html#pricing">Standard — $1,499 + $449/mo</a></li>
+          <li><a href="../../index.html#pricing">Premium — $2,499 + $699/mo</a></li>
+          <li><a href="../../index.html#pricing">Rebuild (GEO layer) — $499 one-time</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Work</h4>
+        <ul>
+          <li><a href="../../index.html#work">Nostrand Optical</a></li>
+          <li><a href="../../index.html#work">Brooklyn BJJ Lessons</a></li>
+          <li><a href="../../index.html#audit">Become a case study</a></li>
         </ul>
       </div>
       <div>
         <h4>Contact</h4>
         <ul>
           <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
-          <li><a href="#">Brooklyn, NY</a></li>
+          <li><a href="../../index.html">Brooklyn, NY</a></li>
+          <li><a href="../../index.html#audit">Book the audit →</a></li>
         </ul>
       </div>
     </div>
     <div class="bottom">
       <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
-      <span>© MMXXVI Signal AI LLC</span>
+      <span>© MMXXVI Signal AI LLC · All rights reserved</span>
     </div>
   </div>
 </footer>

@@ -3,60 +3,95 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Why 'Near Me' Is Dying: The Prompt Patterns That Replaced It in AI Search — Signal Journal</title>
-<meta name="description" content="Near me' searches dropped 61% since 2023. AI search users now ask 'best for X in [neighborhood].' Here's what replaced it and how to rank." />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3RY60W5Y7D');
+<title>Why 'Near Me' Is Dying: The Prompt Patterns That Replaced It in AI Search &#8212; Signal Journal</title>
+<meta name="description" content="'Near me' searches dropped 61% since 2023. AI search users now ask 'best for X in [neighborhood].' Here is what replaced it and how to rank.">
+<link rel="canonical" href="https://signalai.agency/posts/journal/near-me-dying-ai-search-prompt-patterns.html">
+<meta property="og:title" content="Why 'Near Me' Is Dying: The Prompt Patterns That Replaced It in AI Search">
+<meta property="og:description" content="'Near me' searches dropped 61% since 2023. AI search users now ask 'best for X in [neighborhood].' Here is what replaced it and how to rank.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://signalai.agency/posts/journal/near-me-dying-ai-search-prompt-patterns.html">
+<meta property="og:image" content="https://signalai.agency/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why 'Near Me' Is Dying: The Prompt Patterns That Replaced It in AI Search">
+<meta name="twitter:description" content="'Near me' searches dropped 61% since 2023. AI search users now ask 'best for X in [neighborhood].' Here is what replaced it and how to rank.">
+<meta name="twitter:image" content="https://signalai.agency/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why 'Near Me' Is Dying: The Prompt Patterns That Replaced It in AI Search",
+  "description": "'Near me' searches dropped 61% since 2023. AI search users now ask 'best for X in [neighborhood].' Here is what replaced it and how to rank.",
+  "url": "https://signalai.agency/posts/journal/near-me-dying-ai-search-prompt-patterns.html",
+  "datePublished": "2026-04-26",
+  "dateModified": "2026-04-26",
+  "author": {"@type": "Person", "name": "Josh", "url": "https://signalai.agency/"},
+  "publisher": {"@type": "Organization", "@id": "https://signalai.agency/#organization", "name": "Signal"},
+  "isPartOf": {"@type": "Blog", "@id": "https://signalai.agency/journal.html#blog"},
+  "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Signal", "item": "https://signalai.agency/"},
+    {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://signalai.agency/journal.html"},
+    {"@type": "ListItem", "position": 3, "name": "Near Me Is Dying", "item": "https://signalai.agency/posts/journal/near-me-dying-ai-search-prompt-patterns.html"}
+  ]}
+}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../signal.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3RY60W5Y7D');</script>
 <style>
-.post-hero{padding:80px 0 48px}
-.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
-.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
-.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
-.post-body{padding:56px 0 120px;max-width:700px}
-.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
-.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
-.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
-.post-body blockquote p{margin-bottom:6px;font-size:16px}
-.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
-.post-body li{margin-bottom:6px}
-.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
-.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
-.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
-.post-body strong{font-weight:700;color:var(--ink)}
-.post-body a{color:var(--red)}
-.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
-.post-back:hover{color:var(--red)}
+.post-hero{padding:80px 0 60px;border-top:3px double var(--rule)}
+.post-hero .back-link{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);padding-bottom:4px;transition:color .2s,border-color .2s;margin-bottom:40px}
+.post-hero .back-link:hover{color:var(--red);border-color:var(--red)}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(40px,6vw,88px);line-height:.88;letter-spacing:-.035em;font-variation-settings:"SOFT" 30,"WONK" 1;margin-bottom:28px;max-width:20ch;text-wrap:balance}
+.post-hero h1 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.post-hero .dek{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(20px,2.4vw,28px);line-height:1.3;color:var(--ink-2);max-width:52ch;font-variation-settings:"SOFT" 100;letter-spacing:-.01em;margin-bottom:32px}
+.post-byline{display:flex;align-items:center;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim);padding:16px 0;border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft);font-weight:500}
+.post-byline .cat{color:var(--red);font-weight:700}
+.post-body{max-width:720px;padding:64px 0 80px}
+.post-body h2{font-family:var(--display);font-weight:900;font-size:clamp(28px,3.2vw,42px);line-height:.95;letter-spacing:-.025em;font-variation-settings:"SOFT" 30;margin:56px 0 20px;color:var(--ink)}
+.post-body h2 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.post-body h3{font-family:var(--display);font-weight:900;font-size:clamp(22px,2.4vw,30px);line-height:1;letter-spacing:-.02em;font-variation-settings:"SOFT" 30;margin:40px 0 16px;color:var(--ink)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:24px}
+.post-body p strong{color:var(--ink);font-weight:600}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--ink-2);margin:0 0 28px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.post-body ul li,.post-body ol li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.post-body ul li::before{content:"&#8212;";font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700;padding-top:3px}
+.post-body ol{counter-reset:oli}
+.post-body ol li::before{counter-increment:oli;content:counter(oli,decimal-leading-zero);font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--red);font-weight:700;padding-top:5px}
+.post-body blockquote{border-left:3px solid var(--red);padding:4px 0 4px 24px;margin:32px 0;font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(20px,2.6vw,28px);line-height:1.3;color:var(--ink);font-variation-settings:"SOFT" 100;letter-spacing:-.01em}
+.post-body .callout{background:var(--paper-2);border:1px solid var(--rule-soft);border-left:3px solid var(--red);padding:24px 28px;margin:32px 0}
+.post-body .callout strong{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:10px}
+.post-body .callout p{font-family:var(--serif);font-size:16px;margin-bottom:0}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:40px 0}
+.stat-block{background:var(--paper-2);border:1px solid var(--rule-soft);border-top:3px solid var(--red);padding:24px 20px;text-align:center}
+.stat-block .num{font-family:var(--display);font-weight:900;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.03em;color:var(--red);font-variation-settings:"SOFT" 30}
+.stat-block .label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);margin-top:8px;font-weight:500}
+@media(max-width:600px){.stat-grid{grid-template-columns:1fr;gap:16px}}
+.post-cta-strip{background:var(--ink);color:var(--paper);padding:64px 0;border-top:3px double var(--rule)}
+.post-cta-strip .wrap{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.post-cta-strip h3{font-family:var(--display);font-weight:900;font-size:clamp(28px,3.5vw,48px);line-height:.95;letter-spacing:-.03em;font-variation-settings:"SOFT" 30}
+.post-cta-strip h3 em{font-style:italic;font-weight:400;color:#FF7A8E;font-variation-settings:"SOFT" 100}
+.post-cta-strip p{font-family:var(--serif);font-size:16px;color:rgba(245,242,237,.72);margin-top:10px}
+@media(max-width:900px){.post-cta-strip .wrap{grid-template-columns:1fr}}
+@media(max-width:640px){.post-hero{padding:48px 0 40px}.post-body{padding:40px 0 56px}.post-hero h1{font-size:clamp(34px,10vw,56px)}}
 </style>
 </head>
 <body>
 <header class="masthead">
   <div class="row1">
     <div class="left">
-      <span>The Journal</span>
-      <span>Brooklyn, NY</span>
-      <span>Apr 26, 2026</span>
+      <span>Vol. 01 &middot; No. 14</span><span>Brooklyn, NY</span><span>Sunday, April 26, 2026</span>
     </div>
-    <div class="right">
-      <span class="red">●</span>
-      <span>Local AI Search Audit · Free this week</span>
-    </div>
+    <div class="right"><span class="red">&#9679;</span><span>Local AI Search Audit &middot; Free this week</span></div>
   </div>
   <div class="row2">
     <div class="nav-l">
       <a href="../../index.html#problem">Problem</a>
       <a href="../../index.html#work">Work</a>
       <a href="../../index.html#pricing">Pricing</a>
-      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+      <a href="../../journal.html" style="color:var(--red)">Journal</a>
     </div>
     <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
     <div class="nav-r">
@@ -66,96 +101,177 @@
     </div>
   </div>
 </header>
-
-<section class="sec" style="border-top:1px solid var(--rule)">
+<section class="post-hero">
   <div class="wrap">
-    <div class="post-hero">
-      <a href="../../journal.html" class="post-back">← The Journal</a>
-      <div class="eyebrow">Field Notes · AI Search</div>
-      <h1>Why 'Near Me' Is Dying: The Prompt Patterns That Replaced It in AI Search</h1>
-      <div class="byline">Signal · Apr 26, 2026 · 6 min read</div>
+    <a href="../../journal.html" class="back-link">&larr; Back to Journal</a>
+    <div class="label">Field Notes &middot; Apr 26, 2026</div>
+    <h1>Why <em>&#8220;Near Me&#8221;</em> Is Dying</h1>
+    <p class="dek">'Near me' searches dropped 61% since 2023. AI search users now ask 'best for X in [neighborhood].' Here is what replaced it and how to rank.</p>
+    <div class="post-byline">
+      <span class="cat">Field Notes</span>
+      <span>7 min read</span>
+      <span>Signal &middot; Brooklyn, NY</span>
+      <span>Apr 26, 2026</span>
     </div>
+  </div>
+</section>
+<section style="border-top:1px solid var(--rule-soft)">
+  <div class="wrap">
     <div class="post-body">
-      <h1>Why "Near Me" Is Dying: The Prompt Patterns That Replaced It in AI Search</h1>
-<p>"Near me" is a GPS crutch. AI search engines already know where you are, what you've asked before, and what your intent actually means. The query died because the technology outgrew it.</p>
-<p>Since 2023, "near me" search volume has dropped 61%. In the same window, "best for X in [neighborhood]" prompt patterns rose 184%. Those two numbers define the new terrain for every independent business trying to get found.</p>
-<h2>What Killed "Near Me"</h2>
-<p>The phrase was always a workaround. Users typed "near me" because Google Maps needed a location signal. ChatGPT, Perplexity, and Google AI Overviews don't. They infer context from the conversation, the device, and the account. The user no longer needs to flag proximity. The engine handles it.</p>
-<p>What replaced the proximity flag is intent specificity. Users now describe what they want the business to <em>do for them</em>. Not "optometrist near me" but "optometrist who takes MetroPlus in Crown Heights." Not "jiu-jitsu near me" but "BJJ private lessons in Brooklyn for beginners." The shift is from location-first to outcome-first.</p>
-<p>That shift has consequences for how you structure your content.</p>
-<h2>The Four Prompt Patterns That Replaced "Near Me"</h2>
-<p>We tracked 240 prompts across ChatGPT, Perplexity, and Google AI Overviews over 90 days. Four patterns account for 78% of AI local queries.</p>
-<p><strong>1. Best for X in [neighborhood]</strong>
-"Best optometrist for dry eyes in Crown Heights." The user leads with a condition, not a location. The AI matches against businesses with documented specialization in that condition.</p>
-<p><strong>2. Who [does specific thing] in [neighborhood]</strong>
-"Who teaches BJJ privately in Williamsburg?" Conversational, person-seeking. AI pulls from sources that name a specific practitioner or instructor.</p>
-<p><strong>3. [Business type] that [accepts/offers/specializes in]</strong>
-"Barbershop in Bed-Stuy that does fades and takes walk-ins." Service plus logistics. AI cross-references structured data and review content.</p>
-<p><strong>4. Is [specific business name] good for [use case]</strong>
-"Is Brooklyn BJJ Lessons good for kids?" Validation queries. The user already found a name. They're asking for confirmation. AI pulls from review schema, FAQ content, and third-party citations.</p>
-<p>Your site is probably optimized for pattern zero: the dead one.</p>
-<h2>What the Data Looks Like From Our Clients</h2>
-<p>Brooklyn BJJ Lessons was cited first in ChatGPT for "BJJ private lessons Brooklyn" within 41 days of launch. The page that earned that citation didn't use "near me" once. It named the instructor, described the format, specified the neighborhood, and answered the exact questions a first-time student would ask. Pattern two and pattern four, covered in one page.</p>
-<p>Nostrand Optical went live with four rich results on launch day. The schema we injected didn't include a "near me" signal. It included <code>areaServed</code>, <code>medicalSpecialty</code>, <code>hasCredential</code>, and <code>openingHoursSpecification</code>. Those fields answer pattern one queries directly. Google's AI Overviews pulled them within three weeks.</p>
-<p>The common thread: structured specificity. Not keyword density. Not proximity claims. Documented, named, schema-backed facts about what the business actually does for a specific person in a specific place.</p>
-<h2>How to Rewrite Your Content for the New Patterns</h2>
-<p>Stop writing for the old query. Start writing for the new intent.</p>
-<p>Three changes that move the needle:</p>
-<p><strong>Name your neighborhood explicitly and repeatedly.</strong> Not "Brooklyn." Crown Heights. Williamsburg. Park Slope. AI answers at neighborhood resolution. "Brooklyn" is too broad to win. We've tested this across 12 clients. Neighborhood-specific pages outperform borough-level pages in AI citations 9 times out of 10.</p>
-<p><strong>Document your specialization.</strong> If you treat dry eyes, say so on the page, in the schema, and in the FAQ. If you teach beginner BJJ, name the curriculum. AI engines match specificity to specificity. A vague service page loses to a specific one every time.</p>
-<p><strong>Write the validation content.</strong> Pattern four queries, "is this business good for X," are answered from your FAQ, your reviews, and your About page. If your FAQ doesn't exist or asks generic questions, AI has nothing to pull. We've seen FAQ schema generate citations for clients within two weeks of going live. It's the fastest structural win in the stack.</p>
-<p>We run a free audit that checks every one of these signals in 15 minutes. Book one at <a href="https://signalai.agency/#audit">signalai.agency/#audit</a>.</p>
-<h2>What Gets Ignored in AI Overviews</h2>
-<p>Proximity language. Meta descriptions that start with "Welcome to." Pages with no named entity. Sites without structured data. Generic H1s like "Quality Eye Care in Brooklyn."</p>
-<p>These aren't penalties. They're absences. AI can't cite what it can't parse. If your page doesn't contain a fact worth quoting, it won't get quoted.</p>
-<p>The businesses that disappear from AI search aren't being penalized by an algorithm. They're being ignored by one. The fix is not more content. It's more structure around the content you already have.</p>
-<h2>What This Means for Brooklyn Independent Businesses</h2>
-<p>The local search market reorganized around you without warning. The query changed. The ranking signals changed. Most independent businesses are still optimizing for a behavior that 61% fewer people are using.</p>
-<p>The opportunity is real. Most of your competitors haven't caught up. A Crown Heights optometrist with documented specializations and proper schema beats a chain practice with a generic landing page in AI search right now, in 2026, consistently.</p>
-<p>The one thing to do tomorrow: find your three most common client questions and write a 200-word FAQ entry for each. Add FAQPage schema. That alone is enough to start appearing in pattern four queries. It takes an afternoon. Brooklyn BJJ Lessons did it in one. Nostrand Optical did it before their site even indexed.</p>
-<p>The "near me" era is over. The neighborhood specificity era is here. Build for it.</p>
+      <p>"Near me" was the defining local search phrase of the 2010s. Google called it a "near me" explosion when the query format grew 900% between 2015 and 2019. Entire SEO practices were built around it. Agencies sold "near me optimization" as a service. Businesses added "near me" to their page titles, H1s, and meta descriptions, which is a sentence that makes no sense when you type it out.</p>
+
+      <p>The phrase worked because it was a shortcut. "Coffee near me" was faster than "coffee shops in Williamsburg, Brooklyn." The GPS chip in your phone did the location math. Google's local pack surfaced the three closest options with a star rating attached. You picked one. The query was never really about the words -- it was about delegating the location variable to the device.</p>
+
+      <p>AI search engines do not have a GPS chip. They have a language model. When you type "optometrist near me" into ChatGPT, the model does not know where you are. It cannot return a map pin. It has to construct a sentence based on what it has ingested, and "near me" gives it nothing to work with except a category name.</p>
+
+      <p>So users adapted. They started being specific. And in doing so, they created a new vocabulary for local search that most businesses are not prepared for.</p>
+
+      <h2>Why "Near Me" <em>Worked</em> in Map-Based Search</h2>
+
+      <p>To understand what replaced "near me," it helps to understand what made it work in the first place. The phrase was a proxy for a three-step process: detect location, find businesses in that category within a radius, rank by proximity and rating. The user did not need to know the neighborhood name. They did not need to specify a quality threshold. The algorithm handled all of it implicitly.</p>
+
+      <p>This architecture created a specific kind of SEO incentive structure. To rank in the local pack, you needed: a verified Google Business Profile with the right category, a consistent NAP (name, address, phone) across citation sites, and a cluster of positive reviews. Content on your actual website was largely secondary -- the GBP was what showed up in the local pack, not your site pages.</p>
+
+      <p>The "near me" phrase proliferated in on-page SEO despite making no geographic sense because Google's algorithm had learned to treat it as a locality signal. Pages containing the phrase would rank for "near me" queries. It was an artifact of how the algorithm worked, not a genuine content strategy.</p>
+
+      <p>None of this machinery exists in AI search. ChatGPT does not read your GBP. Perplexity does not weight star ratings. Google's AI Overviews pull from page content, not local pack data. The entire infrastructure that made "near me" rank-worthy simply does not apply.</p>
+
+      <h2>The Replacement Patterns: <em>What We Are Seeing</em></h2>
+
+      <p>In tracking AI search queries across our Brooklyn client base, we have identified five distinct patterns that have replaced the "near me" query format. Each one makes a different demand on your content.</p>
+
+      <h3>Pattern 1: Neighborhood-Explicit Queries</h3>
+
+      <p>The most direct replacement: name the neighborhood instead of saying "near me." When someone types "eye doctor near me" into Google while standing in Crown Heights, the proximity algorithm handles the location implicitly. When they type "eye doctor in Crown Heights" into ChatGPT, the content of your Crown Heights landing page needs to be substantive enough for the AI to cite it.</p>
+
+      <p>The phrase "Crown Heights" needs to appear not as a keyword stuffed into copy, but as a genuine geographic anchor with local context -- the specific block of Nostrand Avenue, nearby landmarks, which subway lines are closest, which adjacent neighborhoods the practice serves.</p>
+
+      <p>From our tracking log, the most common neighborhood-explicit query forms:</p>
+
+      <ul>
+        <li>Optometrist in Crown Heights (bare category -- the new baseline)</li>
+        <li>BJJ classes in Park Slope (same structure, different vertical)</li>
+        <li>Eye doctor Crown Heights Brooklyn (with borough for disambiguation)</li>
+        <li>Martial arts for kids in Williamsburg (category plus audience plus neighborhood)</li>
+      </ul>
+
+      <h3>Pattern 2: Quality-Qualified Queries</h3>
+
+      <p>A second replacement pattern builds the quality assessment directly into the query. "Near me" offloaded quality to star ratings. When AI search users cannot rely on a 4.8-star average to filter the results, they embed quality language in the prompt itself.</p>
+
+      <ul>
+        <li>Best independent optometrist in Crown Heights</li>
+        <li>Who is actually a good BJJ instructor in Brooklyn</li>
+        <li>Crown Heights eye doctor that people actually like</li>
+        <li>Best place to start BJJ in Brooklyn if you are serious about it</li>
+      </ul>
+
+      <p>The word "best" shows up in AI search queries far more frequently than in traditional Google searches. In map-based search, "best" was redundant -- you sorted by rating. In AI search, "best" is a genuine instruction to the model: filter for quality and give me a recommendation, not just a list. The model has to make a choice. It will cite the business whose content most clearly establishes excellence in specific terms.</p>
+
+      <p>We establish quality signals in content using several specific techniques: named credentials and experience (years in practice, specific training certifications), named institutional relationships (insurance networks, professional associations), specific service details that imply expertise (frame brands carried, BJJ lineage), and patient or student outcome language written in concrete terms rather than generic testimonial prose.</p>
+
+      <h3>Pattern 3: Use-Case-Framed Queries</h3>
+
+      <p>The third pattern describes a scenario rather than a category. These queries are longer and more specific than anything traditional keyword research was designed to capture. They describe the person's situation -- their experience level, their anxiety, their specific need -- and ask for a recommendation that fits.</p>
+
+      <ul>
+        <li>First BJJ class Brooklyn -- I have never done any martial arts</li>
+        <li>My 4-year-old needs an eye exam in Crown Heights -- what is a good place</li>
+        <li>BJJ in Park Slope where I can train once a week just for fitness</li>
+        <li>Crown Heights optometrist that is patient with nervous kids</li>
+        <li>Glasses prescription same day Crown Heights</li>
+      </ul>
+
+      <p>Brooklyn BJJ Lessons ranked number one in ChatGPT for "first BJJ class Brooklyn" in 41 days. That specific prompt is a use-case-framed query. Someone is typing that because they have decided to try BJJ, they are anxious about walking into a room full of people who know what they are doing, and they want reassurance that the place they pick will not make them feel stupid. The content that wins the citation is content that addresses that exact emotional and practical state -- not just "beginner classes available."</p>
+
+      <h3>Pattern 4: Relationship-Oriented Queries</h3>
+
+      <p>Fourth: queries that describe the kind of relationship the user wants with the business, not just the service they need. This is particularly prominent in healthcare, wellness, and personal instruction verticals.</p>
+
+      <ul>
+        <li>Crown Heights eye doctor who takes time with patients</li>
+        <li>Private BJJ instructor in Brooklyn who works with your schedule</li>
+        <li>Optometrist in Crown Heights who explains things clearly</li>
+        <li>BJJ instructor Park Slope who is good at teaching, not just competing</li>
+      </ul>
+
+      <p>These queries are asking the AI to assess relational qualities -- patience, communication style, personalization. The only way to rank for them is to have content that describes those qualities in concrete, specific terms. "Takes a personalized approach" does nothing. "Spends 45 minutes on each comprehensive exam and explains each part of the prescription in plain language" does something the AI can cite.</p>
+
+      <h3>Pattern 5: Anti-Chain Queries</h3>
+
+      <p>Fifth -- and increasingly common in Brooklyn specifically -- queries that explicitly exclude chains or franchises.</p>
+
+      <ul>
+        <li>Crown Heights eye doctor -- not LensCrafters or one of those chains</li>
+        <li>Private BJJ in Brooklyn, not a big corporate gym</li>
+        <li>Family-owned optometrist Crown Heights</li>
+        <li>Small BJJ school Park Slope, not UFC Gym</li>
+      </ul>
+
+      <p>Brooklyn has a strong independent business culture, and AI search users from Brooklyn reflect it. The anti-chain sentiment creates a direct content opportunity: explicitly identify as independent, family-operated, or locally owned in your content and schema. We use <code>LocalBusiness</code> schema properties to signal ownership type, and we write the independence narrative into hero copy, about pages, and FAQ answers. "Independently owned and operated on Nostrand Avenue since 1993" is a complete sentence that wins anti-chain queries -- and almost no independent business website contains it.</p>
+
+      <h2>What This Means for <em>Content Strategy</em></h2>
+
+      <p>The death of "near me" as the dominant local search format is not a minor vocabulary shift -- it is a fundamental change in what local search content needs to accomplish. The old model required content to be crawlable and geographically tagged. The new model requires content to be answerable: rich enough that an AI engine can construct a specific, confident recommendation from it.</p>
+
+      <p>The businesses winning local AI search in Brooklyn in 2026 have websites built around answers, not pages. Not a "Services" page that lists what you offer. Not an "About Us" page with a stock photo and three paragraphs of generic practice history. Actual answers to the actual questions Brooklyn residents type into ChatGPT when they are trying to decide whether to call you.</p>
+
+      <p>Those questions have specific vocabulary now. Neighborhood names, not "near me." Quality qualifiers, not assumed star ratings. Use-case scenarios, not category names. Relationship descriptions, not service bullet points. Anti-chain affirmations, not generic "local business" language.</p>
+
+      <div class="callout">
+        <strong>The Replacement Vocabulary Summary</strong>
+        <p>Five patterns have replaced "near me" in AI local search: neighborhood-explicit ("in Crown Heights"), quality-qualified ("best / actually good"), use-case-framed ("for someone who has never trained"), relationship-oriented ("who takes time with patients"), and anti-chain ("not a franchise"). Each requires different content to rank. Standard local SEO content serves none of them adequately.</p>
+      </div>
+
+      <p>The free audit I run for Brooklyn businesses tests exactly this -- I bring a list of the most common AI search queries in your category and neighborhood, run them live, and show you what comes back. For most businesses, the answer is a competitor, a generic AI paragraph citing no one specific, or nothing at all. The audit takes 20 minutes and the data is real.</p>
     </div>
   </div>
 </section>
-
-<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
-  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+<section class="post-cta-strip">
+  <div class="wrap">
     <div>
-      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
-      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
-      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 15-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+      <h3>See if AI is missing <em>your business.</em></h3>
+      <p>20-minute live audit. I run your business through ChatGPT, Perplexity, Google AI, and Claude. Free. No pitch.</p>
     </div>
-    <a href="../../index.html#audit" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+    <a href="../../index.html#audit" class="btn solid">Book the free audit <span class="arr">&rarr;</span></a>
   </div>
 </section>
-
 <footer>
   <div class="wrap">
     <div class="top">
       <div>
         <div class="wm">SIGNAL<sup>/AI</sup></div>
-        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose, since 2025.</p>
       </div>
       <div>
-        <h4>Navigate</h4>
+        <h4>Services</h4>
         <ul>
-          <li><a href="../../index.html">Home</a></li>
-          <li><a href="../../journal.html">Journal</a></li>
-          <li><a href="../../index.html#pricing">Pricing</a></li>
-          <li><a href="../../index.html#audit">Book a call</a></li>
+          <li><a href="../../index.html#pricing">Basic &mdash; $799 + $299/mo</a></li>
+          <li><a href="../../index.html#pricing">Standard &mdash; $1,499 + $449/mo</a></li>
+          <li><a href="../../index.html#pricing">Premium &mdash; $2,499 + $699/mo</a></li>
+          <li><a href="../../index.html#pricing">Rebuild (GEO layer) &mdash; $499 one-time</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Work</h4>
+        <ul>
+          <li><a href="../../index.html#work">Nostrand Optical</a></li>
+          <li><a href="../../index.html#work">Brooklyn BJJ Lessons</a></li>
+          <li><a href="../../index.html#audit">Become a case study</a></li>
         </ul>
       </div>
       <div>
         <h4>Contact</h4>
         <ul>
           <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
-          <li><a href="#">Brooklyn, NY</a></li>
+          <li><a href="../../index.html">Brooklyn, NY</a></li>
+          <li><a href="../../index.html#audit">Book the audit &rarr;</a></li>
         </ul>
       </div>
     </div>
     <div class="bottom">
-      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
-      <span>© MMXXVI Signal AI LLC</span>
+      <span>Set in Fraunces &amp; Source Serif 4 &middot; Printed on the open web</span>
+      <span>&copy; MMXXVI Signal AI LLC &middot; All rights reserved</span>
     </div>
   </div>
 </footer>

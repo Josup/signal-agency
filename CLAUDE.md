@@ -189,6 +189,17 @@ All new articles must use the new-style post template (see `how-ai-engines-decid
 - `display:grid;grid-template-columns:28px 1fr` on `li` with `::before` dash markers
 - Never use `margin-left:22px` with default bullet markers (causes stacking bug)
 
+## GEO Audit
+
+To run a full GEO audit on this site:
+/geo audit signalai.agency
+
+To check content quality before publishing journal posts:
+/seo:content-quality-auditor <post-file>
+
+To run technical SEO check:
+/seo:technical-seo-checker signalai.agency
+
 ## Deploy
 
 Run this from the project root every time you deploy (includes posts/ subdirectory):

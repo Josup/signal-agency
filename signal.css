@@ -15,11 +15,10 @@
   --mono:"JetBrains Mono", ui-monospace, monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none}
+html{-webkit-overflow-scrolling:touch}
 html,body{background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","onum","kern"}
 body{
   overflow-x:hidden;
-  overflow-y:auto;
   -webkit-overflow-scrolling:touch;
   overscroll-behavior-y:none;
   background-image:

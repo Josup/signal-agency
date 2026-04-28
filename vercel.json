@@ -3,6 +3,14 @@
   "framework": null,
   "buildCommand": "echo done",
   "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "signalai.agency" }],
+      "destination": "https://www.signalai.agency/:path*",
+      "permanent": true
+    }
+  ],
   "routes": [
     { "src": "/journal", "dest": "/journal.html" },
     { "handle": "filesystem" },

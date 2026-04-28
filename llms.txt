@@ -1,0 +1,20 @@
+# Signal AI Agency
+> Signal AI Agency helps independent Brooklyn businesses get cited by AI search engines. We build GEO-optimized websites with Schema.org markup and run weekly content engines.
+
+## Services
+- GEO-optimized website builds
+- Schema.org / JSON-LD implementation
+- Google Business Profile optimization
+- Weekly AI-search content publishing
+- Monthly AI visibility reporting
+
+## Case Studies
+- Nostrand Optical: nostrandoptical.com
+- Brooklyn BJJ Lessons: brooklynbjjlessons.com
+
+## Journal
+- https://www.signalai.agency/journal.html
+
+## Contact
+- https://www.signalai.agency
+- josh@signalai.agency

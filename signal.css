@@ -860,3 +860,36 @@ footer .bottom{padding-top:24px;display:flex;justify-content:space-between;font-
   footer .mega{font-size:clamp(44px,14vw,72px)}
   .btn{padding:16px 18px;font-size:10px}
 }
+
+/* ====== ABOUT + PRIVACY PAGE LISTS ====== */
+.about-content ul,
+.about-content ol,
+.privacy-content ul,
+.privacy-content ol {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about-content ul li,
+.about-content ol li,
+.privacy-content ul li,
+.privacy-content ol li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: start;
+  word-break: normal;
+  white-space: normal;
+  overflow-wrap: normal;
+  width: 100%;
+  max-width: 100%;
+}
+
+.about-content ul li::before,
+.privacy-content ul li::before {
+  content: '—';
+  color: var(--red);
+}

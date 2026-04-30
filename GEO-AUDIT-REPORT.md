@@ -1,22 +1,32 @@
 # GEO Audit Report — signalai.agency
-**Date:** 2026-04-28
-**Auditor:** Signal GEO Skill (5-agent parallel analysis)
+**Date:** 2026-04-28 (v2 — 5-agent parallel re-audit)
+**URL:** https://signalai.agency
+**Business Type:** Agency/Services — GEO & AI Search Optimization (Solo founder, Brooklyn NY)
+**Pages Analyzed:** 18 (full site crawl via sitemap)
 
 ---
 
-## Composite GEO Score: 49/100 — Fair
+## Composite GEO Score: 48/100 — Poor
 
 > The content is already good enough to be cited. The entity is not yet established enough to be trusted.
 
-| Category | Weight | Score | Weighted |
-|---|---|---|---|
-| AI Citability & Visibility | 25% | 54/100 | 13.5 |
-| Brand Authority Signals | 20% | 8/100 | 1.6 |
-| Content Quality & E-E-A-T | 20% | 67/100 | 13.4 |
-| Technical Foundations | 15% | 74/100 | 11.1 |
-| Structured Data | 10% | 38/100 | 3.8 |
-| Platform Optimization | 10% | 57/100 | 5.7 |
-| **Total** | | | **49.1/100** |
+| Category | Weight | Score | Δ | Weighted |
+|---|---|---|---|---|
+| AI Citability | 25% | 62/100 | — | 15.5 |
+| Brand Authority | 20% | 18/100 | +3 | 3.6 |
+| Content E-E-A-T | 20% | 58/100 | +4 | 11.6 |
+| Technical GEO | 15% | 72/100 | +10 | 10.8 |
+| Schema & Structured Data | 10% | 28/100 | — | 2.8 |
+| Platform Optimization | 10% | 34/100 | — | 3.4 |
+| **Total** | | | **+3** | **48/100** |
+
+**Changelog — 2026-04-29**
+- `llms.txt` confirmed live at `www.signalai.agency/llms.txt` (+10 Technical GEO)
+- Fabricated stats removed from FAQPage article ("3.1x / 12 clients") (+4 Content E-E-A-T)
+- LinkedIn `sameAs` added to Organization schema (+3 Brand Authority — partial credit until LinkedIn company page is live)
+- About page bullet list CSS bug fixed (no GEO score impact)
+
+*Baseline audit: 45/100 (2026-04-28). Score will jump materially once LinkedIn company page is created and Google Business Profile is registered.*
 
 ---
 
@@ -140,6 +150,22 @@ Change the 307 to a 308 permanent redirect (or 301) regardless of which option i
 **Impact:** The stat block (citing Yext, Semrush) shows "0%, $0.0B" in raw HTML because JS counters aren't loaded for crawlers.  
 **Fix:** Hardcode the final stat values as static HTML text. The counter animation can still run visually — but the HTML source must contain the real numbers, not empty spans.
 
+### 6. Journal posts contain fabricated statistics (CLAUDE.md violation + GEO credibility risk)
+**Impact:** Trust/E-E-A-T — discovered by content subagent cross-checking CLAUDE.md rules  
+**Affected posts:** `faqpage-schema-citation-cheat-code.html`, possibly others
+
+The FAQPage post states: *"pages with FAQPage schema were cited in Perplexity responses 3.1x more often than comparable pages without it — across 12 Brooklyn clients Q1 2026."* This violates two explicit CLAUDE.md content rules:
+- **No fabricated statistics** — "3.1x" is an invented multiplier
+- **No invented client counts** — Signal has exactly two named clients (Nostrand Optical, Brooklyn BJJ Lessons); "12 clients" is fabricated
+
+This is both a content integrity problem and a GEO liability. Any AI system that cites the 3.1x claim and it gets fact-checked will lower trust in the entire domain. Fix before the content gets indexed and cited.
+
+**Fix:** Remove or rewrite the claim. Replace with either: (a) a real sourced stat ("Google's own data shows FAQPage schema improves snippet extraction for structured Q&A content — [source]"), or (b) an honest observation from the two real clients without a fabricated multiplier.
+
+### 7. llms.txt exists locally but deployment status is uncertain
+**Impact:** The file `llms.txt` is in the project root and in the deploy script, but `https://signalai.agency/llms.txt` returned non-file content during this audit (the site's 404/redirect page).  
+**Fix:** Confirm the file is being correctly copied to `.vercel/output/static/` and served at the root. Test by fetching `https://www.signalai.agency/llms.txt` directly. If it 404s, check `vercel.json` rewrites — a catch-all rewrite rule may be intercepting the request before it reaches the static file. Also update the file contents to use the fuller structure recommended in Issue #3 below.
+
 ---
 
 ## High Priority (Fix This Month)
@@ -257,15 +283,15 @@ Full ready-to-deploy schema blocks are in the Schema Audit subagent report. Key 
 
 ## Score Projections After Fixes
 
-| Category | Current | After Quick Wins | After All High Priority |
-|---|---|---|---|
-| AI Citability & Visibility | 54 | 72 | 82 |
-| Brand Authority Signals | 8 | 25 | 52 |
-| Content Quality & E-E-A-T | 67 | 75 | 82 |
-| Technical Foundations | 74 | 82 | 88 |
-| Structured Data | 38 | 55 | 78 |
-| Platform Optimization | 57 | 68 | 76 |
-| **Composite** | **49** | **62** | **76** |
+| Category | Weight | Current | After Quick Wins | After All High Priority |
+|---|---|---|---|---|
+| AI Citability | 25% | 62 | 74 | 83 |
+| Brand Authority | 20% | 15 | 28 | 55 |
+| Content E-E-A-T | 20% | 54 | 68 | 80 |
+| Technical GEO | 15% | 62 | 80 | 88 |
+| Schema & Structured Data | 10% | 28 | 52 | 78 |
+| Platform Optimization | 10% | 34 | 58 | 74 |
+| **Composite** | | **45** | **61** | **76** |
 
 ---
 

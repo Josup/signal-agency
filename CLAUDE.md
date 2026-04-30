@@ -205,5 +205,5 @@ To run technical SEO check:
 Run this from the project root every time you deploy (includes posts/ subdirectory):
 
 ```bash
-cp -r posts/ .vercel/output/static/ && cat tweaks-panel.jsx signal-tweaks.jsx > _combined.jsx && node_modules/.bin/esbuild _combined.jsx --outfile=bundle.js --define:process.env.NODE_ENV='"production"' --minify && rm _combined.jsx && cp index.html signal.css journal.html about.html privacy.html bundle.js 404.html robots.txt sitemap.xml llms.txt .vercel/output/static/ && npx vercel deploy --prebuilt --prod
+cp -r posts/ .vercel/output/static/ && cat tweaks-panel.jsx signal-tweaks.jsx > _combined.jsx && node_modules/.bin/esbuild _combined.jsx --outfile=bundle.js --define:process.env.NODE_ENV='"production"' --minify && rm _combined.jsx && cp index.html signal.css journal.html bundle.js 404.html robots.txt sitemap.xml llms.txt about.html privacy.html .vercel/output/static/ && npx vercel deploy --prebuilt --prod
 ```

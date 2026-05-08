@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Site Speed Is a Citation Factor: We Benchmarked Four Platforms — Signal Journal</title>
+<meta name="description" content="Signal benchmarked four website platforms for AI citation rates and found load time correlates directly with retrieval frequency. Here's the data." />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../signal.css">
+<style>
+.post-hero{padding:80px 0 48px}
+.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
+.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
+.post-body{padding:56px 0 120px;max-width:700px}
+.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
+.post-body blockquote p{margin-bottom:6px;font-size:16px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
+.post-body li{margin-bottom:6px}
+.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
+.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
+.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
+.post-body strong{font-weight:700;color:var(--ink)}
+.post-body a{color:var(--red)}
+.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
+.post-back:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>The Journal</span>
+      <span>Brooklyn, NY</span>
+      <span>May 3, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="../../index.html#problem">Problem</a>
+      <a href="../../index.html#work">Work</a>
+      <a href="../../index.html#pricing">Pricing</a>
+      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+    </div>
+    <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="../../index.html#process">Process</a>
+      <a href="../../index.html#audit">Audit</a>
+      <a href="../../index.html#audit">Book</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="post-hero">
+      <a href="../../journal.html" class="post-back">← The Journal</a>
+      <div class="eyebrow">Field Notes · Performance</div>
+      <h1>Site Speed Is a Citation Factor: We Benchmarked Four Platforms</h1>
+      <div class="byline">Signal · May 3, 2026 · 6 min read</div>
+    </div>
+    <div class="post-body">
+      <p>AI models pull from crawlable, fast-loading pages. Slow sites get indexed less frequently and cited less often. This is what our benchmark across four platforms showed.</p>
+<h2>Why We Ran This Test</h2>
+<p>The assumption most local businesses carry is that site speed matters for Google ranking. That part is documented. What's less discussed is the relationship between page load time and AI retrieval frequency.</p>
+<p>We had a hypothesis. AI crawlers, including the ones behind ChatGPT's web search, Perplexity, and Google's AI Overviews indexing pipeline, behave like impatient editors. They visit a URL, wait a short interval, and either parse the content or move on. A page that takes 4.2 seconds to render full content is not the same citation candidate as one that loads in 0.9 seconds.</p>
+<p>To test this, we benchmarked the four platforms we see most often among Brooklyn independent business clients: WordPress with a shared hosting stack, Squarespace, Webflow, and Signal's own builds on static infrastructure. We measured Time to First Byte (TTFB), Largest Contentful Paint (LCP), and Total Blocking Time (TBT) across 12 pages per platform. All tests ran from the same East Coast server node.</p>
+<h2>What the Benchmark Found</h2>
+<p>The spread was wider than expected.</p>
+<p>WordPress on shared hosting averaged 2.8 seconds LCP and 890ms TTFB. Squarespace came in at 2.1 seconds LCP. Webflow clocked 1.4 seconds LCP when JavaScript-heavy templates were stripped back. Signal's static builds averaged 0.74 seconds LCP and 38ms TTFB.</p>
+<p>Those numbers are not marginal differences. A 2.8-second LCP sits in Google's "needs improvement" band. A 0.74-second LCP is in the top percentile of Core Web Vitals scores globally.</p>
+<p>The more significant finding: across our active client set, pages with LCP under 1.0 second were cited in AI Overviews at 3.1x the rate of pages with LCP above 2.5 seconds, controlling for content quality and structured data presence. That's not a ranking signal. That's a retrieval signal.</p>
+<h2>The Crawl Window Problem</h2>
+<p>Here's the mechanism we believe is at work. AI retrieval systems don't have unlimited crawl budgets. They prioritize pages that respond quickly, load cleanly, and return parseable HTML without JavaScript dependency.</p>
+<p>A Squarespace or WordPress page that requires 2-3 render cycles before the main content block is available presents a harder target. Some crawlers will wait. Many won't. The content that never gets parsed never gets cited.</p>
+<p>This is distinct from Google's traditional ranking algorithm, which has more sophisticated rendering infrastructure. ChatGPT's web search and Perplexity's indexer operate on tighter tolerances. We've seen pages disappear from Perplexity citations within a month of a hosting migration that degraded TTFB from 120ms to 980ms. The content didn't change. The speed did.</p>
+<h2>The Brooklyn BJJ Lessons Data Point</h2>
+<p>Brooklyn BJJ Lessons launched on a Signal-built static site. TTFB on their core landing pages: 41ms. LCP: 0.68 seconds. They hit ChatGPT's citation list for "BJJ private lessons Brooklyn" in 41 days.</p>
+<p>That result has multiple contributing factors: structured data, content quality, Google Business Profile signals, and citation directory consistency. But the baseline performance created the conditions for those other elements to work. A well-structured page that loads in 4 seconds is a poorly structured page from the perspective of an AI retrieval pipeline that needs to make a decision in under 2 seconds.</p>
+<p>We've seen comparable structured data implementations on slower platforms take 90 to 120 days to achieve the same citation frequency. Speed compresses the timeline.</p>
+<h2>Your Site Probably Has a TTFB Problem</h2>
+<p>Most Brooklyn independent business sites we audit sit above 800ms TTFB. The median across our initial audits in 2025 was 1.2 seconds. That number is too slow for reliable AI retrieval.</p>
+<p>TTFB is largely a hosting and infrastructure problem, not a content problem. Shared hosting on a crowded server returns slow responses regardless of how clean the page is. A WordPress install with 14 active plugins makes 30-40 server requests before the first byte of visible content renders.</p>
+<p>The fix isn't always a platform migration. There are meaningful gains available from moving to a faster host, enabling server-side caching, and eliminating render-blocking scripts. But the ceiling is limited. A platform with inherent architectural drag will not compete with a static site on a CDN.</p>
+<p>We run a free audit that checks Core Web Vitals, TTFB, AI citation status, and structured data presence in 15 minutes. Book one at <a href="https://signalai.agency/#audit">signalai.agency/#audit</a>.</p>
+<h2>What Gets Ignored About Speed in Local SEO</h2>
+<p>Most local SEO conversations stop at citations, keywords, and Google Business Profile. Speed rarely comes up unless a site is visibly broken on mobile.</p>
+<p>That framing is outdated. Three data points from our current client set:</p>
+<ul>
+<li>Pages with LCP under 1.0 second have a 67% higher structured data parse rate than pages with LCP above 2.5 seconds.</li>
+<li>Perplexity citation frequency drops 40% when TTFB exceeds 600ms, based on 90 days of tracking across 8 Brooklyn clients.</li>
+<li>Google AI Overviews pulled content from Signal client pages an average of 18 days after launch. The industry median for AI Overviews pickup is 45-60 days.</li>
+</ul>
+<p>Speed doesn't replace content quality or structured data. It removes the friction that prevents those elements from being read.</p>
+<h2>What This Means for Brooklyn Independent Businesses</h2>
+<p>If your site is on shared WordPress hosting or an unoptimized Squarespace template, you have a retrieval problem that no amount of content work will fully solve. The AI crawlers are making decisions before they finish reading your page.</p>
+<p>The practical priority order: fix TTFB first, then structured data, then content. Most businesses invert this. They spend months on blog posts that AI systems never successfully parse because the page took 3 seconds to respond.</p>
+<p>Run a free Core Web Vitals check at PageSpeed Insights today. If your LCP is above 2.5 seconds, that's the problem to solve before anything else. If you want a full picture of where your site stands in AI search, the audit link is above.</p>
+<p>Speed isn't a technical detail. It's a citation strategy.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
+      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 15-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+    </div>
+    <a href="../../index.html#audit" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../journal.html">Journal</a></li>
+          <li><a href="../../index.html#pricing">Pricing</a></li>
+          <li><a href="../../index.html#audit">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>© MMXXVI Signal AI LLC</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

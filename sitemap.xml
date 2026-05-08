@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.signalai.agency/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://www.signalai.agency/journal.html</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -25,31 +25,43 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.signalai.agency/posts/journal/nostrand-optical-zero-to-rich-results.html</loc>
-    <lastmod>2026-04-26</lastmod>
+    <loc>https://www.signalai.agency/posts/journal/brooklyn-wrong-keyword-neighborhood-resolution.html</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.signalai.agency/posts/journal/google-ai-overviews-what-gets-cited.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.signalai.agency/posts/journal/schema-business-hours-markup.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.signalai.agency/posts/journal/site-speed-citation-factor-platform-benchmark.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.signalai.agency/posts/journal/brooklyn-bjj-lessons-chatgpt-citation-41-days.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.signalai.agency/posts/journal/how-ai-engines-decide-who-to-cite.html</loc>
+    <loc>https://www.signalai.agency/posts/journal/crown-heights-vs-williamsburg-ai-search-gap.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.signalai.agency/posts/journal/seven-schema-types-local-business-2026.html</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.signalai.agency/posts/journal/five-step-schema-audit-brooklyn.html</loc>
+    <loc>https://www.signalai.agency/posts/journal/death-of-page-two-ai-search.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -61,25 +73,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.signalai.agency/posts/journal/neighborhood-landing-page-ai-retrieval.html</loc>
+    <loc>https://www.signalai.agency/posts/journal/five-step-schema-audit-brooklyn.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.signalai.agency/posts/journal/neighborhood-landing-page-ai-citations.html</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.signalai.agency/posts/journal/perplexity-second-traffic-source-brooklyn.html</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.signalai.agency/posts/journal/same-prompt-four-ai-engines-spread.html</loc>
+    <loc>https://www.signalai.agency/posts/journal/how-ai-engines-decide-who-to-cite.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -97,13 +97,37 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.signalai.agency/posts/journal/death-of-page-two-ai-search.html</loc>
+    <loc>https://www.signalai.agency/posts/journal/neighborhood-landing-page-ai-citations.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.signalai.agency/posts/journal/crown-heights-vs-williamsburg-ai-search-gap.html</loc>
+    <loc>https://www.signalai.agency/posts/journal/neighborhood-landing-page-ai-retrieval.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.signalai.agency/posts/journal/nostrand-optical-zero-to-rich-results.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.signalai.agency/posts/journal/perplexity-second-traffic-source-brooklyn.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.signalai.agency/posts/journal/same-prompt-four-ai-engines-spread.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.signalai.agency/posts/journal/seven-schema-types-local-business-2026.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -18,3 +18,23 @@
 ## Contact
 - https://www.signalai.agency
 - josh@signalai.agency
+
+## Latest Articles
+- [Why 'Brooklyn' Is the Wrong Keyword: AI Answers at Neighborhood Resolution](https://www.signalai.agency/posts/journal/brooklyn-wrong-keyword-neighborhood-resolution.html)
+- [What Google AI Overviews Actually Pull From: And What Gets Ignored](https://www.signalai.agency/posts/journal/google-ai-overviews-what-gets-cited.html)
+- [How to Mark Up Your Google Business Profile Hours in Schema.org](https://www.signalai.agency/posts/journal/schema-business-hours-markup.html)
+- [Site Speed Is a Citation Factor: We Benchmarked Four Platforms](https://www.signalai.agency/posts/journal/site-speed-citation-factor-platform-benchmark.html)
+- [Brooklyn BJJ Lessons: Cited First in ChatGPT in 41 Days. Here Is the Playbook.](https://www.signalai.agency/posts/journal/brooklyn-bjj-lessons-chatgpt-citation-41-days.html)
+- [Crown Heights vs. Williamsburg: Why the Same Business Ranks Differently in Each Neighborhood](https://www.signalai.agency/posts/journal/crown-heights-vs-williamsburg-ai-search-gap.html)
+- [The Death of Page Two: What Replaces It in AI Search](https://www.signalai.agency/posts/journal/death-of-page-two-ai-search.html)
+- [FAQPage Schema Is the Citation Cheat Code Nobody Is Using](https://www.signalai.agency/posts/journal/faqpage-schema-citation-cheat-code.html)
+- [The Five-Step Schema Audit Every Brooklyn Local Business Can Do in an Afternoon](https://www.signalai.agency/posts/journal/five-step-schema-audit-brooklyn.html)
+- [How AI Engines Decide Who to Cite: The Four Signals That Determine Local Rank](https://www.signalai.agency/posts/journal/how-ai-engines-decide-who-to-cite.html)
+- [Local Search Prompt Vocabulary Changed Shape in 2026](https://www.signalai.agency/posts/journal/local-search-prompt-vocabulary-2026.html)
+- [Why 'Near Me' Is Dying: The Prompt Patterns That Replaced It in AI Search](https://www.signalai.agency/posts/journal/near-me-dying-ai-search-prompt-patterns.html)
+- [How to Write a Neighborhood Landing Page That Gets Cited by AI](https://www.signalai.agency/posts/journal/neighborhood-landing-page-ai-citations.html)
+- [The Neighborhood Landing Page Rebuilt for AI Retrieval](https://www.signalai.agency/posts/journal/neighborhood-landing-page-ai-retrieval.html)
+- [Nostrand Optical: From Zero Citations to Four Rich Results on Launch Day](https://www.signalai.agency/posts/journal/nostrand-optical-zero-to-rich-results.html)
+- [Perplexity Is Becoming a Real Traffic Source for Brooklyn Businesses](https://www.signalai.agency/posts/journal/perplexity-second-traffic-source-brooklyn.html)
+- [We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread](https://www.signalai.agency/posts/journal/same-prompt-four-ai-engines-spread.html)
+- [The Seven Schema Types Every Local Business Is Missing in 2026](https://www.signalai.agency/posts/journal/seven-schema-types-local-business-2026.html)

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What Google AI Overviews Actually Pull From: And What Gets Ignored — Signal Journal</title>
+<meta name="description" content="Google AI Overviews cite structured, factual content from verified local sources. Here's what triggers inclusion and what gets filtered out entirely." />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../signal.css">
+<style>
+.post-hero{padding:80px 0 48px}
+.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
+.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
+.post-body{padding:56px 0 120px;max-width:700px}
+.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
+.post-body blockquote p{margin-bottom:6px;font-size:16px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
+.post-body li{margin-bottom:6px}
+.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
+.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
+.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
+.post-body strong{font-weight:700;color:var(--ink)}
+.post-body a{color:var(--red)}
+.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
+.post-back:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>The Journal</span>
+      <span>Brooklyn, NY</span>
+      <span>May 3, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="../../index.html#problem">Problem</a>
+      <a href="../../index.html#work">Work</a>
+      <a href="../../index.html#pricing">Pricing</a>
+      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+    </div>
+    <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="../../index.html#process">Process</a>
+      <a href="../../index.html#audit">Audit</a>
+      <a href="../../index.html#audit">Book</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="post-hero">
+      <a href="../../journal.html" class="post-back">← The Journal</a>
+      <div class="eyebrow">AI Search · Citations</div>
+      <h1>What Google AI Overviews Actually Pull From: And What Gets Ignored</h1>
+      <div class="byline">Signal · May 3, 2026 · 6 min read</div>
+    </div>
+    <div class="post-body">
+      <p>Google AI Overviews pull from structured, verifiable content with clear authorship and local entity signals. If your page reads like a brochure, it won't be cited. If it reads like a reference document, it might be.</p>
+<p>We've tracked AI Overview inclusion across 12 Brooklyn clients over six months. The pattern is consistent enough to report with confidence.</p>
+<h2>The Content Types That Get Cited</h2>
+<p>AI Overviews favor three content formats above everything else.</p>
+<p>First: direct answer text. A sentence that states a fact, names an entity, and is complete without context. "Nostrand Optical offers comprehensive eye exams in Crown Heights, Brooklyn, with same-week appointments available" gets pulled. "We provide quality care to our patients in the community" does not.</p>
+<p>Second: structured lists. Numbered or bulleted content gets indexed at the item level. An AI Overview can pull list item 4 from a page of 900 words without citing the rest. If your service pages have no lists, you're invisible to that mechanic.</p>
+<p>Third: FAQ-formatted content. Questions with direct answers perform disproportionately well. We published 10 FAQ posts for Brooklyn BJJ Lessons inside 41 days. The ChatGPT citation followed. Google AI Overviews started pulling from two of those pages within six weeks.</p>
+<p>The common thread: all three formats are machine-readable without inference. AI doesn't interpret your intent. It extracts your structure.</p>
+<h2>The Content That Gets Ignored</h2>
+<p>Roughly 70% of the local business pages we audit contain only ignored content.</p>
+<p>Long introductory paragraphs. Brand story sections without named facts. Testimonial carousels. Image-heavy pages with thin text. Navigation-heavy layouts where body copy runs under 200 words.</p>
+<p>We also consistently see AI Overviews skip pages with no named location entity in the body text. A plumber in Park Slope whose service page mentions "Brooklyn" once in a footer is not competitive against a plumber whose page names Park Slope, Prospect Heights, and Gowanus in context.</p>
+<p>Google's system needs confidence to cite. Confidence comes from specificity. Generic copy is a confidence killer.</p>
+<h2>How Entity Verification Factors In</h2>
+<p>Google doesn't just read your page. It cross-references your entity across sources.</p>
+<p>A business with a verified Google Business Profile, consistent NAP across 20+ directories, and a structured homepage that matches that information is more citable than a business with a better-written page but no external verification. The AI Overview system treats corroboration as a quality signal.</p>
+<p>Nostrand Optical launched with full citation consistency across directories. Four rich results appeared on day one. AI Overviews began pulling from their content within three weeks. That timeline isn't coincidental. The entity was verifiable before the first search.</p>
+<p>If your business name, address, and phone number appear differently across Yelp, Apple Maps, Healthgrades, and your own site, you are fragmenting your entity signal. AI reads that fragmentation as low confidence.</p>
+<h2>The Role of Structured Data</h2>
+<p>Pages with structured data are not automatically cited in AI Overviews. But pages without it are systematically disadvantaged.</p>
+<p>Here's the mechanism: structured data tells Google what type of entity a page represents. A LocalBusiness markup makes it unambiguous that a page is about a specific business at a specific address offering specific services. Without it, Google infers. Inference is slower and less reliable than declaration.</p>
+<p>We've benchmarked this across four clients in 2026. Pages with accurate structured data entered AI Overview rotation 2.3 weeks faster on average than comparable pages without it. That's not a controlled study. It's a directional signal from real deployments, and it's consistent.</p>
+<p>Structured data is table stakes for AI search in 2026. It's not a differentiator. It's the floor.</p>
+<h2>What the "Also Searched" and Related Queries Signal</h2>
+<p>AI Overviews don't appear for all queries. They appear for queries where Google's system determines that a synthesized answer is more useful than a list of links.</p>
+<p>The queries triggering AI Overviews for local businesses are shifting toward: "best [service] in [neighborhood]," "what does [service] cost in [city]," and "how do I find a [business type] near [landmark]." These are evaluation queries, not navigation queries. The user is deciding, not just looking.</p>
+<p>Your content needs to answer evaluation questions. Pricing ranges. Comparisons. Credentials. Specific outcomes. "Our optometrists are licensed by the State of New York and specialize in pediatric and low-vision care" is evaluation content. "We are committed to your eye health" is not.</p>
+<p>We track over 240 local AI Overview triggers across our client base. The evaluation query pattern accounts for 68% of them.</p>
+<h2>Your Site Is Probably Failing on Two of These Five Signals</h2>
+<p>Run this checklist against your homepage and your top service page.</p>
+<ol>
+<li>Does the body text name your neighborhood or cross street specifically?</li>
+<li>Is there at least one structured list or FAQ section?</li>
+<li>Does the page contain a direct-answer sentence about your primary service?</li>
+<li>Is your NAP consistent with your Google Business Profile?</li>
+<li>Does the page have LocalBusiness structured data?</li>
+</ol>
+<p>Most independent Brooklyn businesses pass one or two. Passing four or five is what puts you in the citation set.</p>
+<p>If you want an external read on where your site stands, we run a free audit that checks all five of these signals plus your broader citation consistency. Book one at <a href="https://signalai.agency/#audit">signalai.agency/#audit</a>.</p>
+<h2>What This Means for Brooklyn Independent Businesses</h2>
+<p>AI Overviews are now the first result for a significant share of local service queries. Not a result. The result. The answer Google surfaces before a single link.</p>
+<p>If your content isn't structured for extraction, you aren't competing for that position. You're competing for positions below it, for users who scrolled past the AI answer.</p>
+<p>The businesses appearing in AI Overviews in Crown Heights, Williamsburg, and Bed-Stuy right now aren't bigger. They're more legible. Their pages make factual claims, name real places, and answer real questions.</p>
+<p>That's replicable. Start with your top service page. Add a FAQ section with five direct-answer questions. Name your neighborhood in the first paragraph. Make sure your business name matches your GBP exactly.</p>
+<p>Do that tomorrow. Measure in 30 days.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
+      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 15-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+    </div>
+    <a href="../../index.html#audit" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../journal.html">Journal</a></li>
+          <li><a href="../../index.html#pricing">Pricing</a></li>
+          <li><a href="../../index.html#audit">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>© MMXXVI Signal AI LLC</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

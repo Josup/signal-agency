@@ -116,7 +116,7 @@ Fixing this isn't just a GEO win — it's a credibility win. Any GEO-literate pr
 
 ## Services
 
-- [AI Search Audit](https://signalai.agency/#pricing): Free 20-minute audit. Three service tiers from $299/month.
+- [AI Search Audit](https://signalai.agency/#pricing): Free 20-minute audit. Website build from $2,500 + $500/month retainer.
 
 ## Case Studies
 

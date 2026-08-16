@@ -1,209 +1,185 @@
 # Signal — Agency Website
 
 ## Project Overview
-Premium agency website for Signal, a local SEO and AI search agency based in Brooklyn, NY. Helps local businesses show up when customers ask ChatGPT or Google AI "best [service] near me."
+Website for Signal AI Agency, a local SEO and AI search agency in Brooklyn, NY.
+Helps local businesses show up when customers ask ChatGPT or Google AI
+"best [service] near me."
 
 ## Core Positioning
 "Your customers are asking AI who to call. We make sure they find you."
 
-## Tech Stack
-- Next.js 14, TypeScript, Tailwind CSS
-- Framer Motion for animations
-- Deployed on Vercel
-- Schema.org structured data (Organization, Service, FAQPage)
+## What is actually deployed — read this first
+
+**This site is static HTML, not Next.js.** `vercel.json` sets
+`"framework": null`, `"buildCommand": "echo done"`, `"outputDirectory": "."`.
+What ships is `index.html`, `journal.html`, `about.html`, `privacy.html`,
+`404.html`, `signal.css`, and an esbuild'd `bundle.js`.
+
+The `app/` directory holds a Next.js 14 scaffold (including an `/audit` route) that
+**has never been deployed and is not reachable in production**. Do not edit it
+expecting a change to go live, and do not reference `/audit` as if it exists.
+
+Open decision: finish the migration to the client stack (Next 16 + Tailwind v4) or
+delete the dead scaffold and own the static site. Until that is resolved, treat
+`app/` as dead code.
 
 ## Design Direction — THE LEDGER (Council verdict 2026-04-25)
 - Full spec: `docs/superpowers/specs/2026-04-25-signal-agency-the-ledger.md`
 - Concept: authority without arrogance — institutional editorial, not startup SaaS
-- Background (surface): `#F5F2ED` (Bone — off-white, warm)
-- Ink (type + borders): `#0D0D0D` (near-black)
-- Accent (CTAs + stats): `#C41E3A` (Cardinal red) — NO amber, NO gold, NO yellow
-- Display font: Fraunces 900 variable (editorial serif — unexpected on an agency site)
-- Body font: Syne 400/600 (geometric, warm)
-- Mono font: DM Mono 400 (labels, query badges, eyebrows)
-- Layout: 12-column, 24px gutters, every section has a 1px #0D0D0D ruled top border (ledger structure)
+- **Colour tokens are defined in `signal.css` and that file is the source of truth:**
+
+  | Token | Value |
+  |---|---|
+  | `--paper` | `#F5F2ED` |
+  | `--paper-2` | `#EFEAE0` |
+  | `--ink` | `#15110D` |
+  | `--ink-2` | `#3A332B` |
+  | `--ink-dim` | `#6B6258` |
+  | `--red` | `#C41E3A` |
+  | `--rule-soft` | `rgba(21,17,13,.18)` |
+
+- Fonts: `--display` Fraunces · `--serif` Source Serif 4 · `--mono` JetBrains Mono
+- Layout: 12-column, 24px gutters, 1px ruled top border on every section
 - CTA button: 0px border-radius (flat rectangle — the signature move)
-- Hero: 65/35 split — left column H1+subhead+CTA, right column sticky proof card
-- Animations: slow and confident (cubic-bezier(0.25,0,0,1)), no bounce, no decoration
-- Hero entrance: clip-path line-by-line reveal per H1 line, 800ms/line, 120ms stagger
-- Removed from old direction: grain overlay, cursor follower, dark background, amber, Instrument Serif, Inter
+- Animations: slow and confident, `cubic-bezier(0.25,0,0,1)`, no bounce
+- **No amber, no gold, no yellow.** Any doc or component still specifying an amber
+  CTA predates the Ledger verdict and is wrong.
 
-## Sections
+## Logo
 
-### 1. Hero
-- Dramatic entrance animation on load (text reveal, particle burst, or cinematic fade)
-- Headline: "Your customers are asking AI who to call."
-- Subheadline: "We make sure they find you."
-- Two CTAs: "See Our Work" and "Book a Call"
-- Animated background: subtle grid or particle system
+Source artwork: `Downloads/signal_ai_agency_logo.jpg`. Vector rebuild lives in
+`brand/` as `signal-logo.svg` (full lockup), `signal-logo-transparent.svg` and
+`signal-logo-mark.svg` (mark only), with type outlined to paths so no font install
+is required.
 
-### 2. The Problem
-- Most local business websites are invisible to AI search
-- When someone asks ChatGPT "best dentist in Brooklyn" — your client doesn't appear
-- Competitors are getting cited. You're not.
-- Stats: 60%+ of search journeys now touch AI, 0% of local businesses have proper Schema.org markup
+Mark geometry: six bars, three ink then three red. Ink bars are trapezoids with the
+**left** edge inset; red bars mirror them with the **right** edge inset. That
+mirroring is what produces the diamond envelope — do not rebuild it as flat bars.
 
-### 3. Services + Pricing
-Three tiers — display as cards with hover animations:
+Lockup type: a Garamond-class serif for `SIGNAL AI` with wide tracking, pale red
+hairlines flanking a light letterspaced sans `Agency`.
 
-**Basic — $1,500 build + $400/month**
-- 1-page website
-- Schema.org setup
-- Google Search Console
-- 15 blog posts/month
+## Sections (live homepage)
 
-**Standard — $2,500 build + $600/month** (highlighted as recommended)
-- Multi-page website
-- Full Schema.org + AI search optimization
-- Google Search Console + GBP setup
-- 30 blog posts/month
-- Monthly performance report
+1. **Hero** — "When Brooklyn asks ChatGPT, your competitors answer."
+2. **The Problem** — agitation, no CTA
+3. **Selected Work** — case study cards
+4. **Pricing** — one offer, one operator
+5. **How it works** — plain English, first mention of Schema.org
+6. **Final CTA** — "Book a 20-minute AI audit. No pitch. No pressure."
 
-**Premium — $3,500 build + $900/month**
-- Everything in Standard
-- 45 blog posts/month
-- Schema.org updates as AI search evolves
-- Quarterly site audit and improvements
-- Priority support
+## Pricing (must match the live page and `llms.txt`)
 
-### 4. Case Studies
-Two case studies with real results:
+- Build: from **$2,500**
+- Larger builds (multi-location, 12+ pages): up to **$5,000**
+- Retainer: **$500/month**
 
-**Nostrand Optical — Brooklyn Optometry Practice**
-- Built production Next.js website with Schema.org LocalBusiness, MedicalBusiness, FAQPage structured data
-- 4 valid rich results on Google Rich Results Test on launch day
-- Targeting "optometrist Crown Heights" in Google AI Overviews
-- Automated SEO blog generating 4 posts/week
+Any older three-tier Basic/Standard/Premium pricing is retired. If you find it in a
+doc, fix the doc.
 
-**Brooklyn BJJ Lessons**
-- One-page booking site with Calendly, Klaviyo email capture, Schema.org Person + LocalBusiness
-- Automated SEO blog with 10+ posts live
-- Google Business Profile verified and active
-- Showing up in AI search for "BJJ private lessons Brooklyn"
+## Clients — the hard rule
 
-### 5. About
-- Solo founder, Brooklyn-based
-- MS in AI & Business Analytics, Baruch College (4.0 GPA)
-- Built real production systems — not templates
-- Specializes in GEO (Generative Engine Optimization) — the emerging field of optimizing for AI search
-- Every site built with Next.js, TypeScript, Schema.org — not Wix or Squarespace
+Signal has **two** publicly nameable clients:
 
-### 6. FAQ
-- What is AI search optimization?
-- How long until I show up in ChatGPT results?
-- Do you work with any type of business?
-- What's the difference between this and regular SEO?
-- Do I need to provide content?
+- **Nostrand Optical** — Crown Heights optometry. Four valid rich results on launch
+  day. LocalBusiness + MedicalBusiness + FAQPage markup.
+- **Brooklyn BJJ Lessons** — one-page booking site, Person + LocalBusiness schema,
+  first ChatGPT citation at 41 days, GBP verified.
 
-### 7. Contact
-- Simple contact form (name, email, business name, message)
-- "Book a Discovery Call" button linking to Calendly
-- Response time: within 24 hours
+StayRnR, Vision Palace Optical and Elmira Décor are live client work but are **not**
+approved for public Signal content until the client agrees in writing to be named.
 
-## Schema.org
-Implement Organization + Service + FAQPage schemas
+**Never write an aggregate client count.** Not "12 clients", not "15 Brooklyn
+clients", not "across the portfolio", not "our clients". Between April and August
+2026 the content machine published 43 posts violating this rule; they were removed
+in the 16 August 2026 pass. The rule is now enforced in code — see below.
 
-## Animations (must have)
-- Page load: cinematic entrance sequence
-- Hero text: staggered word reveal
-- Scroll: sections fade + slide up on enter
-- Buttons: magnetic hover effect
-- Stats: count up animation when in view
-- Cursor: custom cursor follower on desktop
-- Service cards: 3D tilt on hover
+## Journal content — the gate
 
-## File Structure
-signal-agency/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── globals.css
-├── components/
-│   ├── Hero.tsx
-│   ├── Problem.tsx
-│   ├── Services.tsx
-│   ├── CaseStudies.tsx
-│   ├── About.tsx
-│   ├── FAQ.tsx
-│   └── Contact.tsx
-├── lib/
-│   └── schema.ts
-├── public/
-└── CLAUDE.md
+Journal articles are generated by `../signal-seo-machine/auto_write.py` and are
+governed by **`signal-seo-machine/context/gate-rubric.md`**, which is read at runtime
+by both the writer prompt and a deterministic publish gate.
 
-## /audit Page
-Route: `app/audit/page.tsx`
+Do not restate content rules here — they drift. The rubric is the single source of
+truth for approved clients, approved figures and forbidden claims.
 
-3-question intake form before Calendly embed renders:
-1. What type of business do you run? (text input)
-2. What neighborhood are you in? (text input)
-3. What is your website URL? (url input)
+What the gate rejects, in short: invented client counts, case studies about
+businesses that are not clients, first-party research claims Signal did not run
+("we tracked N…", "we benchmarked N…"), unsourced sample sizes, and invented
+percentages.
 
-On submit → show Calendly embed (https://calendly.com) with answers pre-filled in notes.
-Form styled to match the dark premium aesthetic. Amber CTA button. Same film grain, same fonts.
+Hand-written pages are **not** covered by the publish gate. Run
+`signal-seo-machine/audit_posts.py` before any review to check the archive against
+the same rules.
 
-## Council-Approved Copy (DO NOT CHANGE)
-- Hero headline: "When Brooklyn asks ChatGPT, your competitors answer."
-- Subhead: "Customers now ask AI who to call. Signal makes sure that answer is you — in ChatGPT, Google AI Overviews, and Perplexity."
-- Primary CTA: "See if AI is recommending your competitors"
-- CTA destination: /audit page
-- Banned above the fold: Schema.org, structured data, JSON-LD, GEO, LLM
-- Required above the fold: ChatGPT, AI, customers, competitors, Brooklyn
-
-## Section Order (Council Spec)
-1. Hero — headline + subhead + CTA + dated ChatGPT screenshot proof artifact
-2. The Invisible Business — ≤80 words agitation, no CTA, pure fear activation
-3. Proof — 2 case study cards (Nostrand Optical + Brooklyn BJJ)
-4. Pricing — 3 tiers (Basic/Standard/Premium)
-5. How it Works — 3 plain-English sentences, first mention of Schema.org
-6. Final CTA — "no pitch, no pressure" audit close
-
-## Instructions for Claude Code
-1. Read this CLAUDE.md completely before writing any code
-2. Use all installed design skills: ui-ux-pro-max, emil-design-eng, frontend-design, 21st.dev
-3. Use Framer Motion for all animations
-4. Every animation must feel premium — not cheap or generic
-5. Mobile responsive — looks great on phone
-6. Deploy using the command in the Deploy section below — NOT `npx vercel --prod` (Vercel's Next.js detection breaks it).
-
-## Journal Article Generation Rules
-
-These rules apply any time Claude generates or edits journal articles in `posts/journal/`.
-
-### Content — Hard Rules
-1. **No fabricated statistics.** Never invent numbers, percentages, multipliers, or counts (e.g. "73% drop", "3.4× citation rate", "340% QoQ"). If a stat is needed, cite a real public source (Semrush, BrightLocal, SparkToro, Yext, Google blog, etc.) and attribute it inline.
-2. **No invented client counts.** Signal has two named clients: Nostrand Optical and Brooklyn BJJ Lessons. Never write "12 clients", "across the portfolio", or any aggregate that implies more.
-3. **No proprietary process exposure.** Do not describe Signal's internal workflow, pricing mechanics, outreach methods, or operational specifics. The reader learns WHAT works, not HOW Signal does it internally.
-4. **No made-up case study data.** Only use Nostrand Optical and Brooklyn BJJ results that are already documented in existing articles. Do not invent new before/after numbers.
-5. **Educational voice only.** Articles teach the reader how AI search works. They do not position Signal as having secret insider data or exclusive client research.
-
-### What IS allowed
-- First-person observations grounded in named clients: "The Nostrand Optical site has seen consistent Perplexity referrals since launch"
-- General behavioral observations about AI engines (how ChatGPT cites, how Perplexity retrieves, etc.)
-- Publicly sourced industry stats with attribution
-- Specific Nostrand Optical and Brooklyn BJJ results already published (41 days to first citation, 4 rich results on launch day, etc.)
-
-### CSS Template
-All new articles must use the new-style post template (see `how-ai-engines-decide-who-to-cite.html` for reference). Key requirements:
+### CSS template for articles
 - `list-style:none` on `ul/ol` with `display:flex;flex-direction:column;gap:10px`
 - `display:grid;grid-template-columns:28px 1fr` on `li` with `::before` dash markers
-- Never use `margin-left:22px` with default bullet markers (causes stacking bug)
+- Never use `margin-left:22px` with default bullet markers (causes a stacking bug)
+
+## Canonical host — one decision, four places
+
+The canonical host is **`https://www.signalai.agency`**. `vercel.json` 301-redirects
+the apex to www, so every one of these must name www:
+
+| Place | Must say |
+|---|---|
+| `vercel.json` redirect target | www |
+| `<link rel="canonical">` on every page | www |
+| `sitemap.xml` `<loc>` | www |
+| `robots.txt` `Sitemap:` | www |
+
+Before every deploy:
+
+```powershell
+Select-String -Path index.html,about.html,journal.html,privacy.html,posts\journal\*.html -Pattern 'rel="canonical" href="https://[^/]+' | Select-Object -ExpandProperty Matches | Sort-Object -Unique
+```
+
+Eleven pages once declared a canonical pointing at the apex, which immediately 301s.
+That is what produced "Alternate page with proper canonical tag" and "Page with
+redirect" in Search Console.
+
+## Analytics
+
+- GA4 property **Signal AI Agency**, ID `534610334`, measurement ID `G-3RY60W5Y7D`.
+- Key events: `qualify_lead` (audit modal opened), `close_convert_lead` (intake
+  submitted, handed to booking). Both are fired by `signalTrack()` in `index.html`.
+- `404.html` fires `page_not_found` with the failed path.
+- **A CTA that only exists in JavaScript does not exist.** Every audit CTA has a real
+  `href` to the booking link, with `onclick` opening the modal for JS users. Do not
+  reintroduce `href="#"`.
+- Search Console property is a **domain** property: `sc-domain:signalai.agency`.
+
+## Booking
+
+Single booking destination, used by every CTA, the business card QR, `llms.txt`, and
+the GBP profile:
+
+```
+https://calendar.app.google/jPp55zP1iiFTU7VW9
+```
 
 ## GEO Audit
 
-To run a full GEO audit on this site:
+```
 /geo audit signalai.agency
-
-To check content quality before publishing journal posts:
 /seo:content-quality-auditor <post-file>
-
-To run technical SEO check:
 /seo:technical-seo-checker signalai.agency
+```
 
 ## Deploy
 
-Run this from the project root every time you deploy (includes posts/ subdirectory):
+Run from the project root every time (includes `posts/` and `og-image.jpg`):
 
 ```bash
-cp -r posts/ .vercel/output/static/ && cat tweaks-panel.jsx signal-tweaks.jsx > _combined.jsx && node_modules/.bin/esbuild _combined.jsx --outfile=bundle.js --define:process.env.NODE_ENV='"production"' --minify && rm _combined.jsx && cp index.html signal.css journal.html bundle.js 404.html robots.txt sitemap.xml llms.txt about.html privacy.html .vercel/output/static/ && npx vercel deploy --prebuilt --prod
+cp -r posts/ .vercel/output/static/ && cat tweaks-panel.jsx signal-tweaks.jsx > _combined.jsx && node_modules/.bin/esbuild _combined.jsx --outfile=bundle.js --define:process.env.NODE_ENV='"production"' --minify && rm _combined.jsx && cp index.html signal.css journal.html bundle.js 404.html robots.txt sitemap.xml llms.txt about.html privacy.html og-image.jpg .vercel/output/static/ && npx vercel deploy --prebuilt --prod
 ```
+
+After any deploy that changes URLs, resubmit the sitemap in Search Console.
+
+## Standing maintenance
+
+- `signal-seo-machine/audit_posts.py` — gate the whole archive. Run before any review.
+- `signal-seo-machine/relink.py` — rebuild the internal link graph. Run after publish.
+- `client-quarterly-report` skill — run it against `signalai.agency` like a paying
+  client. One run in June would have surfaced the indexing collapse two months early.

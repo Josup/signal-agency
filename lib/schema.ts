@@ -53,27 +53,11 @@ export function getSchemaMarkup(): string {
         offers: [
           {
             "@type": "Offer",
-            name: "Basic",
-            price: "400",
+            name: "Website Build — AI Search Optimization",
+            price: "2500",
             priceCurrency: "USD",
             description:
-              "1-page website, Schema.org setup, Google Search Console, 15 blog posts/month. One-time build fee: $1,500.",
-          },
-          {
-            "@type": "Offer",
-            name: "Standard",
-            price: "600",
-            priceCurrency: "USD",
-            description:
-              "Multi-page website, full Schema.org + AI search optimization, GBP setup, 30 blog posts/month. One-time build fee: $2,500.",
-          },
-          {
-            "@type": "Offer",
-            name: "Premium",
-            price: "900",
-            priceCurrency: "USD",
-            description:
-              "Everything in Standard plus 45 blog posts/month, quarterly site audits, priority support, and Schema.org updates as AI search evolves. One-time build fee: $3,500.",
+              "Custom AI-optimized website with full Schema.org coverage, GEO markup, and local citation cleanup. Scope-dependent: $2,500–$5,000. Includes $500/month retainer for ongoing SEO content, maintenance, and updates.",
           },
         ],
       },

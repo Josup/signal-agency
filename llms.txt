@@ -84,6 +84,7 @@ from a maintained approved-facts table or from a named, attributed public source
 - (718) 864-4584
 
 ## Latest Articles
+- [Service Area Radius in Schema.org. How to Declare It Without Diluting Citations Across Boroughs.](https://www.signalai.agency/posts/journal/service-area-radius-schema.html): Service area markup without borders confuses AI search. Here's how to declare your radius so engines cite you locally, not citywide.
 - [How to Mark Up Your Google Business Profile Hours in Schema.org](https://www.signalai.agency/posts/journal/schema-business-hours-markup.html): Schema.org openingHoursSpecification lets AI engines read your hours directly from your site. Here's how to mark them up correctly for local search.
 - [Brooklyn BJJ Lessons: Cited First in ChatGPT in 41 Days. Here Is the Playbook.](https://www.signalai.agency/posts/journal/brooklyn-bjj-lessons-chatgpt-citation-41-days.html): Brooklyn BJJ Lessons ranked #1 in ChatGPT for 'BJJ private lessons Brooklyn' in 41 days. Here's the exact sequence that made it happen.
 - [Crown Heights vs. Williamsburg: Why the Same Business Ranks Differently in Each Neighborhood](https://www.signalai.agency/posts/journal/crown-heights-vs-williamsburg-ai-search-gap.html): Signal tested identical business profiles in Crown Heights and Williamsburg. AI search cites them at different rates. Here's why neighborhood context decides rank.

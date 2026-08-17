@@ -206,8 +206,32 @@ Probe "$CANON/sitemap.xml"  200
 Probe "$CANON/robots.txt"   200
 Probe "$CANON/llms.txt"     200
 
-# apex must redirect to www, not serve a duplicate
-Probe 'https://signalai.agency/' 301
+# The apex must redirect to www with a PERMANENT code. vercel.json's
+# "permanent": true emits 308; 301 is equally fine. A 307 or 302 is temporary:
+# Google keeps the apex as its own indexing candidate instead of consolidating
+# on www, which is the split this whole pass exists to close.
+try {
+    $r = Invoke-WebRequest -Uri "https://signalai.agency/?$bust" -Method Head -MaximumRedirection 0 -UseBasicParsing -ErrorAction Stop
+    Bad ('apex did NOT redirect (got ' + [int]$r.StatusCode + ')')
+} catch {
+    $resp = $_.Exception.Response
+    if (-not $resp) { Bad 'apex probe failed'; }
+    else {
+        $code = [int]$resp.StatusCode
+        $loc  = $resp.Headers['Location']
+        if ($code -eq 301 -or $code -eq 308) {
+            Ok ($code.ToString() + '  apex -> ' + $loc + '  (permanent)')
+        } elseif ($code -eq 302 -or $code -eq 307) {
+            Bad ($code.ToString() + '  apex -> ' + $loc + '  TEMPORARY redirect')
+            Info 'Google treats this as temporary and may keep indexing the apex'
+            Info 'separately instead of consolidating on www. Fix in the Vercel'
+            Info 'dashboard: Project > Settings > Domains > signalai.agency,'
+            Info 'set the redirect to www as Permanent (308).'
+        } else {
+            Bad ($code.ToString() + '  apex')
+        }
+    }
+}
 
 # a pruned post must be gone, not still live
 Probe "$CANON/posts/journal/citation-velocity-rapid-growth.html" 404

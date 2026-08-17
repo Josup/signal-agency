@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Service Area Radius in Schema.org. How to Declare It Without Diluting Citations Across Boroughs. — Signal Journal</title>
+<meta name="description" content="Service area markup without borders confuses AI search. Here's how to declare your radius so engines cite you locally, not citywide." />
+<link rel="canonical" href="https://www.signalai.agency/posts/journal/service-area-radius-schema.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Service Area Radius in Schema.org. How to Declare It Without Diluting Citations Across Boroughs." />
+<meta property="og:description" content="Service area markup without borders confuses AI search. Here's how to declare your radius so engines cite you locally, not citywide." />
+<meta property="og:url" content="https://www.signalai.agency/posts/journal/service-area-radius-schema.html" />
+<meta property="og:site_name" content="Signal" />
+<meta property="og:image" content="https://www.signalai.agency/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Signal AI Agency" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.signalai.agency/og-image.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Service Area Radius in Schema.org. How to Declare It Without Diluting Citations Across Boroughs.",
+  "description": "Service area markup without borders confuses AI search. Here's how to declare your radius so engines cite you locally, not citywide.",
+  "url": "https://www.signalai.agency/posts/journal/service-area-radius-schema.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.signalai.agency/posts/journal/service-area-radius-schema.html" },
+  "datePublished": "2026-08-17",
+  "dateModified": "2026-08-17",
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "name": "Josh Supitskiy",
+    "url": "https://www.signalai.agency/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Signal AI Agency",
+    "url": "https://www.signalai.agency/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The Signal Journal",
+    "url": "https://www.signalai.agency/journal.html"
+  }
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../signal.css">
+<style>
+.post-hero{padding:80px 0 48px}
+.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
+.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
+.post-body{padding:56px 0 120px;max-width:700px}
+.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
+.post-body blockquote p{margin-bottom:6px;font-size:16px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
+.post-body li{margin-bottom:6px}
+.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
+.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
+.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
+.post-body strong{font-weight:700;color:var(--ink)}
+.post-body a{color:var(--red)}
+.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
+.post-back:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>The Journal</span>
+      <span>Brooklyn, NY</span>
+      <span>Aug 17, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="../../index.html#problem">Problem</a>
+      <a href="../../index.html#work">Work</a>
+      <a href="../../index.html#pricing">Pricing</a>
+      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+    </div>
+    <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="../../index.html#process">Process</a>
+      <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Audit</a>
+      <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="post-hero">
+      <a href="../../journal.html" class="post-back">← The Journal</a>
+      <div class="eyebrow">Schema · Local SEO</div>
+      <h1>Service Area Radius in Schema.org. How to Declare It Without Diluting Citations Across Boroughs.</h1>
+      <div class="byline">Signal · Aug 17, 2026 · 7 min read</div>
+    </div>
+    <div class="post-body">
+      <p>Most service-area businesses declare their territory too broadly in structured data. An electrician in Crown Heights who serves Brooklyn, Queens, and parts of the Bronx gets cited for "plumbers in New York City" instead of "emergency electrician in Crown Heights." The engine sees the radius, not the neighborhood. You lose local specificity and the citation that matters.</p>
+<p>The fix is precise: use <code>areaServed</code> with explicit geographic boundaries, not a radius in miles. Pair it with <code>serviceArea</code> for neighborhoods you actually serve. AI search picks the tighter geographic claim.</p>
+<h2>The Radius Problem: Why Miles Dilute Citations</h2>
+<p><code>areaServed</code> accepts two formats: a list of named locations (neighborhoods, zip codes, cities) or a <code>GeoCircle</code> object with a center point and radius in kilometers.</p>
+<p>The radius approach feels clean. You drop a pin on your shop and declare "I serve 5 miles in every direction." An engine ingests this as a citywide service area. When someone asks "electrician near me" from Manhattan, the engine sees your 5-mile radius includes upper Manhattan. You get pulled into a Manhattan answer. You're competing against Manhattan electricians in a market where you don't actually work.</p>
+<p>The named-location approach is more specific. "Crown Heights," "Prospect Heights," "Park Slope," "Bed-Stuy" are signals. An engine reads these as your actual market. When a user queries from Crown Heights, you rank higher. When they query from Astoria, you don't appear.</p>
+<p>Specificity wins in AI search because the engine is optimizing for relevance, not coverage. A citation that's accurate is worth more than a citation that's broad.</p>
+<h2>How to Structure <code>areaServed</code> for Local Strength</h2>
+<p>Use the <code>areaServed</code> field with an array of named areas. Each one should be a place you actually service—neighborhoods, not boroughs.</p>
+<pre><code class="language-json">&quot;areaServed&quot;: [
+  {
+    &quot;@type&quot;: &quot;City&quot;,
+    &quot;name&quot;: &quot;Crown Heights&quot;
+  },
+  {
+    &quot;@type&quot;: &quot;City&quot;,
+    &quot;name&quot;: &quot;Prospect Heights&quot;
+  },
+  {
+    &quot;@type&quot;: &quot;City&quot;,
+    &quot;name&quot;: &quot;Park Slope&quot;
+  },
+  {
+    &quot;@type&quot;: &quot;City&quot;,
+    &quot;name&quot;: &quot;Flatbush&quot;
+  }
+]
+</code></pre>
+<p>This is more granular than "Brooklyn." An engine sees that you serve specific neighborhoods, not the whole borough. When it assembles an answer for "electrician near me" from someone in Park Slope, it pulls you—not because you serve Park Slope, but because Park Slope is in your declared service areas and the user is in Park Slope.</p>
+<p>The same markup keeps you out of a Williamsburg answer. Williamsburg isn't in your list.</p>
+<h2>When a Radius Makes Sense (And When It Doesn't)</h2>
+<p>A <code>GeoCircle</code> radius works for delivery services or mobile services where the boundary is genuinely distance-based. A pizza place that delivers 2 miles from the shop. A plumber who responds to calls within a service territory.</p>
+<p>Even then, name the neighborhoods inside that radius in addition to the radius itself.</p>
+<pre><code class="language-json">&quot;areaServed&quot;: [
+  {
+    &quot;@type&quot;: &quot;City&quot;,
+    &quot;name&quot;: &quot;Crown Heights&quot;
+  },
+  {
+    &quot;@type&quot;: &quot;City&quot;,
+    &quot;name&quot;: &quot;Prospect Heights&quot;
+  },
+  {
+    &quot;@type&quot;: &quot;GeoCircle&quot;,
+    &quot;geoMidpoint&quot;: {
+      &quot;@type&quot;: &quot;GeoCoordinates&quot;,
+      &quot;latitude&quot;: &quot;40.6620&quot;,
+      &quot;longitude&quot;: &quot;-73.9776&quot;
+    },
+    &quot;geoRadius&quot;: &quot;3.2&quot; 
+  }
+]
+</code></pre>
+<p>The kilometers matter here. Schema uses kilometers, not miles. 5 miles is roughly 8 kilometers. Don't round up. If you serve 3 miles, declare 4.8 kilometers. Precision signals intentionality to the engine.</p>
+<p>But don't stop there. The named neighborhoods are what AI search actually cites. The radius is a fallback.</p>
+<h2>The <code>serviceArea</code> Field: Neighborhood-Level Targeting</h2>
+<p><code>serviceArea</code> is a cousin of <code>areaServed</code>. It's used less often but it's cleaner for local businesses. Where <code>areaServed</code> is "I serve these places," <code>serviceArea</code> is "I operate in these places."</p>
+<p>A therapist who runs a practice in Williamsburg but takes remote clients across New York uses <code>serviceArea</code> to declare "Williamsburg" as the physical location, then uses <code>areaServed</code> to declare the remote territories.</p>
+<p>For a brick-and-mortar service business, <code>serviceArea</code> should match your actual neighborhoods. Don't declare a 10-mile radius here. Declare where you work.</p>
+<pre><code class="language-json">&quot;serviceArea&quot;: [
+  {
+    &quot;@type&quot;: &quot;City&quot;,
+    &quot;name&quot;: &quot;Crown Heights&quot;
+  },
+  {
+    &quot;@type&quot;: &quot;City&quot;,
+    &quot;name&quot;: &quot;Prospect Heights&quot;
+  }
+]
+</code></pre>
+<p>An engine reads this as "this business operates in these neighborhoods." The citation it generates is neighborhood-specific.</p>
+<h2>Zip Codes: Precise But Less Useful</h2>
+<p>You can declare <code>areaServed</code> as a list of zip codes instead of neighborhoods.</p>
+<pre><code class="language-json">&quot;areaServed&quot;: [&quot;11213&quot;, &quot;11238&quot;, &quot;11215&quot;, &quot;11218&quot;]
+</code></pre>
+<p>This works. It's precise. But AI search doesn't cite by zip code. It cites by neighborhood or "near X." A zip-code-only declaration gives the engine the geography but not the language to cite you naturally.</p>
+<p>Zip codes belong in your GBP service areas, not in your schema.org service areas.</p>
+<h2>What You Check: Google's Rich Results Test</h2>
+<p>You can't directly validate service area markup in the Rich Results Test. But you can check that your <code>LocalBusiness</code> schema renders cleanly and includes the <code>areaServed</code> field with no syntax errors.</p>
+<p>Paste your schema into the <a href="https://search.google.com/test/rich-results">Google Rich Results Test</a>. Look for the <code>areaServed</code> array. It should list neighborhoods, not a single radius. If the test doesn't show it, check your JSON syntax.</p>
+<p>A schema that's valid but doesn't mention service areas at all is worse than silent. The engine infers your service territory from your address. If you're in Crown Heights and you declare no service areas, the engine assumes you only serve Crown Heights. That's sometimes right and sometimes wrong. Declaring your true territories is the correction.</p>
+<h2>The Borough Problem: Why Broader Isn't Better</h2>
+<p>A contractor who declares "Brooklyn" as the service area instead of specific neighborhoods gets pulled into answers that aren't local. "Contractor in Brooklyn" is a 70-square-mile answer. "Contractor in Crown Heights" is 0.7 square miles.</p>
+<p>An engine optimizes for the tighter answer because it's more likely to be useful. When it sees your markup says "I serve Crown Heights, Prospect Heights, Park Slope," it knows which of those three neighborhoods to cite you in. It doesn't cite you in all three for every query. It cites you in the neighborhood where the user is asking.</p>
+<p>The tradeoff is clear: you lose potential visibility across the broader borough, but you gain citation strength in the neighborhoods where you actually work.</p>
+<p>For most independent service businesses, that's the right tradeoff. One strong local citation beats three weak citywide ones.</p>
+<h2>What This Means for Your Site</h2>
+<p>If you're a service-area business right now and your schema says "I serve [City Name]" or "I serve [Borough]," you're diluting your citations. An engine that pulls you for Manhattan or Astoria when you don't serve there is a wasted citation.</p>
+<p>Rewrite your <code>areaServed</code> to list the neighborhoods where you actually work. Use the exact names AI search engines use: Crown Heights, Prospect Heights, Williamsburg, Park Slope, Bed-Stuy, Flatbush. Not "Brooklyn." Not "New York City."</p>
+<p>Check your markup in the Rich Results Test. Make sure it renders with no warnings.</p>
+<p><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a 20-minute AI audit</a></p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
+      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 20-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+    </div>
+    <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- RELATED:START -->
+<section class="related">
+  <div class="wrap">
+    <div class="rel-head">Related from The Ledger</div>
+    <div class="rel-grid">
+      <a class="rel-card" href="./schema-business-hours-markup.html">
+        <span class="rel-eyebrow">Schema · Citations</span>
+        <span class="rel-title">How to Mark Up Your Google Business Profile Hours in Schema.org</span>
+      </a>
+      <a class="rel-card" href="./faqpage-schema-citation-cheat-code.html">
+        <span class="rel-eyebrow">Schema · Signal</span>
+        <span class="rel-title">FAQPage Schema Is the Citation Cheat Code Nobody Is Using</span>
+      </a>
+      <a class="rel-card" href="./same-prompt-four-ai-engines-spread.html">
+        <span class="rel-eyebrow">Field Notes · Signal</span>
+        <span class="rel-title">We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread</span>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+.related{border-top:1px solid var(--rule-soft);padding:44px 0 8px}
+.rel-head{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft)}
+.rel-card{display:flex;flex-direction:column;gap:9px;padding:20px 18px;background:var(--paper);text-decoration:none;transition:background .25s cubic-bezier(.25,0,0,1)}
+.rel-card:hover{background:var(--paper-2)}
+.rel-eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.rel-title{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.22;letter-spacing:-.015em;color:var(--ink)}
+.rel-card:hover .rel-title{color:var(--red)}
+@media(max-width:760px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<!-- RELATED:END -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../journal.html">Journal</a></li>
+          <li><a href="../../index.html#pricing">Pricing</a></li>
+          <li><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>© MMXXVI Signal AI LLC</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

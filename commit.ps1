@@ -112,8 +112,16 @@ foreach ($r in $repos) {
         if ($ans -ne 'y') { Write-Host '  Skipped - nothing committed.' -ForegroundColor Yellow; continue }
     }
 
-    git commit -m $r.Msg
-    if ($LASTEXITCODE -ne 0) {
+    # PowerShell splits a multi-line string into separate arguments when passing
+    # it to a native command, so `git commit -m $multiline` reaches git as dozens
+    # of words and every one after the first is treated as a pathspec. Write the
+    # message to a file and use -F.
+    $msgFile = Join-Path ([System.IO.Path]::GetTempPath()) ("signal-commit-" + [Guid]::NewGuid().ToString('N') + ".txt")
+    Set-Content -Path $msgFile -Value $r.Msg -Encoding UTF8
+    git commit -F $msgFile
+    $commitCode = $LASTEXITCODE
+    Remove-Item $msgFile -Force -ErrorAction SilentlyContinue
+    if ($commitCode -ne 0) {
         Write-Host '  COMMIT FAILED - see the error above. Nothing was committed.' -ForegroundColor Red
         continue
     }

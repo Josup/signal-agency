@@ -139,6 +139,7 @@
       <a href="index.html#work">Work</a>
       <a href="index.html#pricing">Pricing</a>
       <a href="journal.html" class="is-active" style="color:var(--red)">Journal</a>
+      <a href="what-is-geo.html">What is GEO?</a>
     </div>
     <a href="index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
     <div class="nav-r">
@@ -456,6 +457,12 @@
     ents.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
   },{threshold:.15});
   document.querySelectorAll('.reveal.pending').forEach(function(el){io.observe(el);});
+  // Fail-safe (26 Aug 2026): index.html has this, journal.html didn't — when the
+  // observer misses, the featured cards stayed clipped and the featured row
+  // rendered as an empty box. Never leave content hidden.
+  setTimeout(function(){
+    document.querySelectorAll('.reveal.pending:not(.in)').forEach(function(el){el.classList.add('in');});
+  }, 2500);
 
   // footer mega "Be the answer." reveal
   var mega=document.getElementById('megaFooter');

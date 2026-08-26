@@ -47,7 +47,7 @@
 
 ## Clients
 
-Signal has two publicly nameable clients. Any other business described as a Signal
+Signal has four publicly nameable clients. Any other business described as a Signal
 client elsewhere is not accurate.
 
 - **Nostrand Optical** — Crown Heights, Brooklyn optometry practice.
@@ -57,6 +57,9 @@ client elsewhere is not accurate.
 - **Brooklyn BJJ Lessons** — https://brooklynbjjlessons.com — one-page booking site
   with Person and LocalBusiness schema; first ChatGPT citation at 41 days; Google
   Business Profile verified.
+- **StayRnR** — https://stayrnr.com — Signal client: site build and an automated,
+  fact-gated SEO content pipeline.
+- **Elmira Décor** — Signal client: site build and search presence.
 
 ## Editorial policy
 

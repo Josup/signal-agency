@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SameAs Is the Identity Graph Most Local Sites Never Fill In — Signal Journal</title>
+<meta name="description" content="SameAs markup tells AI engines which profiles and sites belong to the same business. Most local sites skip it. Here's why it matters." />
+<link rel="canonical" href="https://www.signalai.agency/posts/journal/sameas-schema-identity-graph.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="SameAs Is the Identity Graph Most Local Sites Never Fill In" />
+<meta property="og:description" content="SameAs markup tells AI engines which profiles and sites belong to the same business. Most local sites skip it. Here's why it matters." />
+<meta property="og:url" content="https://www.signalai.agency/posts/journal/sameas-schema-identity-graph.html" />
+<meta property="og:site_name" content="Signal" />
+<meta property="og:image" content="https://www.signalai.agency/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Signal AI Agency" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.signalai.agency/og-image.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SameAs Is the Identity Graph Most Local Sites Never Fill In",
+  "description": "SameAs markup tells AI engines which profiles and sites belong to the same business. Most local sites skip it. Here's why it matters.",
+  "url": "https://www.signalai.agency/posts/journal/sameas-schema-identity-graph.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.signalai.agency/posts/journal/sameas-schema-identity-graph.html" },
+  "datePublished": "2026-08-23",
+  "dateModified": "2026-08-23",
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "name": "Josh Supitskiy",
+    "url": "https://www.signalai.agency/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Signal AI Agency",
+    "url": "https://www.signalai.agency/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The Signal Journal",
+    "url": "https://www.signalai.agency/journal.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Signal", "item": "https://www.signalai.agency/"},
+    {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://www.signalai.agency/journal.html"},
+    {"@type": "ListItem", "position": 3, "name": "SameAs Is the Identity Graph Most Local Sites Never Fill In", "item": "https://www.signalai.agency/posts/journal/sameas-schema-identity-graph.html"}
+  ]
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../signal.css">
+<style>
+.post-hero{padding:80px 0 48px}
+.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
+.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
+.post-body{padding:56px 0 120px;max-width:700px}
+.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
+.post-body blockquote p{margin-bottom:6px;font-size:16px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
+.post-body li{margin-bottom:6px}
+.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
+.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
+.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
+.post-body strong{font-weight:700;color:var(--ink)}
+.post-body a{color:var(--red)}
+.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
+.post-back:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>The Journal</span>
+      <span>Brooklyn, NY</span>
+      <span>Aug 23, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="../../index.html#problem">Problem</a>
+      <a href="../../index.html#work">Work</a>
+      <a href="../../index.html#pricing">Pricing</a>
+      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+    </div>
+    <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="../../index.html#process">Process</a>
+      <a href="../../audit.html">Audit</a>
+      <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="post-hero">
+      <a href="../../journal.html" class="post-back">← The Journal</a>
+      <div class="eyebrow">Schema · Identity</div>
+      <h1>SameAs Is the Identity Graph Most Local Sites Never Fill In</h1>
+      <div class="byline">Signal · Aug 23, 2026 · 7 min read</div>
+    </div>
+    <div class="post-body">
+      <p>AI search engines need to know that your website, your Google Business Profile, your Instagram, and your Yelp listing are all the same business. Without <code>sameAs</code> markup, they treat them as separate entities competing for the same retrieval slot. <code>sameAs</code> is a single Schema.org property that solves this—and almost nobody uses it.</p>
+<h2>The Identity Problem</h2>
+<p>When you have a storefront in Crown Heights, a GBP listing, and a website, you've created three digital profiles. An AI engine crawling the web sees them independently. It doesn't automatically assume the "Brooklyn Optical" on your site is the same as the "Brooklyn Optical" on Google Maps. Citation engines have to guess. They often guess wrong—or they treat your profiles as separate entities, fragmenting your citation surface across platforms.</p>
+<p><code>sameAs</code> is a property that lives in your Schema.org markup and points outward. It says: "This business also exists here, and here, and here." You add it once to your site's LocalBusiness or Organization schema, and you're telling every engine that indexes you: these profiles are one entity.</p>
+<h2>How SameAs Works in Markup</h2>
+<p><code>sameAs</code> is an array of URLs. Add it to your LocalBusiness schema like this:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;LocalBusiness&quot;,
+  &quot;name&quot;: &quot;Nostrand Optical&quot;,
+  &quot;url&quot;: &quot;https://nostrandoptical.com&quot;,
+  &quot;sameAs&quot;: [
+    &quot;https://www.google.com/maps/place/nostrand-optical&quot;,
+    &quot;https://www.instagram.com/nostrandoptical&quot;,
+    &quot;https://www.yelp.com/biz/nostrand-optical-brooklyn&quot;
+  ]
+}
+</code></pre>
+<p>Each URL in the array tells the engine: this business also exists at this address. The engine uses these connections to stitch your profiles together into a single identity graph. When one profile gets a citation, the engine understands it's citing the same business that appears on your site.</p>
+<h2>Where Your Profiles Actually Live</h2>
+<p>Before you write markup, audit your actual presence. Most local businesses in Brooklyn have:</p>
+<ul>
+<li>Your website</li>
+<li>Google Business Profile</li>
+<li>Instagram or Facebook business page</li>
+<li>Yelp listing</li>
+<li>Apple Maps (auto-pulled from GBP data)</li>
+<li>Local directory listings (if you're in Yelp, you're indexed by citation aggregators)</li>
+</ul>
+<p>Not all of these need to be in <code>sameAs</code>. Include only profiles you actively control or that appear in the top 10 results when someone searches your business name. Skip the aggregator directories—they pull your data from GBP or your site anyway, and including hundreds of URLs dilutes the signal.</p>
+<p>For a Brooklyn independent business, start with four: your site, GBP, Instagram (if you use it), and Yelp (if you're there). That's enough to establish identity coherence.</p>
+<h2>Why Engines Care About Identity</h2>
+<p>AI search relies on retrieval-augmented generation. When a user asks "best optometry in Crown Heights," the engine pulls sources it trusts. If your website, GBP, and Yelp look like separate businesses because they're not connected, the engine has to evaluate them independently. It might cite your GBP but not your site, or vice versa. You lose coherence.</p>
+<p>With <code>sameAs</code> declared, the engine sees your profile strength across all platforms at once. A high-quality review on Yelp reinforces your authority on your site. Your site's structured data strengthens your GBP eligibility. Citations to any one profile become citations to all of them—because the engine knows they're one entity.</p>
+<h2>The GBP URL Problem</h2>
+<p>Getting the Google Business Profile URL right is the hardest part. GBP URLs are not always obvious. Here's how to find yours:</p>
+<ol>
+<li>Open your GBP dashboard.</li>
+<li>Click the business name at the top.</li>
+<li>Click "View Business." This opens your public GBP page.</li>
+<li>Copy the full URL from the address bar.</li>
+</ol>
+<p>That URL goes into <code>sameAs</code>. It often looks like <code>https://www.google.com/maps/place/business-name</code> or a shorter Google Maps link. Use the full path, not a shortened URL.</p>
+<h2>Testing and Validation</h2>
+<p>Once you've added <code>sameAs</code> to your LocalBusiness schema, validate it:</p>
+<ol>
+<li>Go to <a href="https://search.google.com/test/rich-results">Google's Rich Results Test</a>.</li>
+<li>Paste your site's URL.</li>
+<li>Look for the LocalBusiness structured data card.</li>
+<li>Expand the "sameAs" field—it should list every URL you added.</li>
+</ol>
+<p>If <code>sameAs</code> appears but the URLs are malformed or missing, the markup is broken. Fix the URLs and re-test.</p>
+<p>Google doesn't show a separate rich result for <code>sameAs</code> presence. It's invisible to users. But it changes how the engine indexes your business and how it decides which profile to cite when answering a local query.</p>
+<h2>What This Means for Your Business</h2>
+<p>If you're a solo operator or a small independent business in Brooklyn, <code>sameAs</code> is one of the cheapest wins in schema markup. It takes 10 minutes to audit your profiles, find the URLs, and add them to your existing LocalBusiness schema. It requires no external tools and no paid services.</p>
+<p>The payoff is coherence. Your profiles stop competing. They reinforce each other. When an AI engine retrieves your business for a neighborhood-specific query, it sees all your profiles as one entity—stronger, more authoritative, harder to confuse with a competitor.</p>
+<p><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a 20-minute AI audit</a></p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
+      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 20-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+    </div>
+    <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- RELATED:START -->
+<section class="related">
+  <div class="wrap">
+    <div class="rel-head">Related from The Ledger</div>
+    <div class="rel-grid">
+      <a class="rel-card" href="./faqpage-schema-citation-cheat-code.html">
+        <span class="rel-eyebrow">Schema · Signal</span>
+        <span class="rel-title">FAQPage Schema Is the Citation Cheat Code Nobody Is Using</span>
+      </a>
+      <a class="rel-card" href="./schema-business-hours-markup.html">
+        <span class="rel-eyebrow">Schema · Citations</span>
+        <span class="rel-title">How to Mark Up Your Google Business Profile Hours in Schema.org</span>
+      </a>
+      <a class="rel-card" href="./organization-schema-hierarchy-parent-markup.html">
+        <span class="rel-eyebrow">Schema · Architecture</span>
+        <span class="rel-title">Organization schema hierarchy. What parent company markup actually declares.</span>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+.related{border-top:1px solid var(--rule-soft);padding:44px 0 8px}
+.rel-head{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft)}
+.rel-card{display:flex;flex-direction:column;gap:9px;padding:20px 18px;background:var(--paper);text-decoration:none;transition:background .25s cubic-bezier(.25,0,0,1)}
+.rel-card:hover{background:var(--paper-2)}
+.rel-eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.rel-title{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.22;letter-spacing:-.015em;color:var(--ink)}
+.rel-card:hover .rel-title{color:var(--red)}
+@media(max-width:760px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<!-- RELATED:END -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../journal.html">Journal</a></li>
+          <li><a href="../../what-is-geo.html">What is GEO?</a></li>
+          <li><a href="../../index.html#pricing">Pricing</a></li>
+          <li><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>© MMXXVI Signal AI LLC</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

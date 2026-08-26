@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Service Schema: Making Your Offering Visible to AI Search — Signal Journal</title>
+<meta name="description" content="Service schema tells AI engines what you offer separately from page text. Here's how to mark it up so Perplexity and ChatGPT cite you as a specific solution." />
+<link rel="canonical" href="https://www.signalai.agency/posts/journal/service-schema-distinct-offering.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Service Schema: Making Your Offering Visible to AI Search" />
+<meta property="og:description" content="Service schema tells AI engines what you offer separately from page text. Here's how to mark it up so Perplexity and ChatGPT cite you as a specific solution." />
+<meta property="og:url" content="https://www.signalai.agency/posts/journal/service-schema-distinct-offering.html" />
+<meta property="og:site_name" content="Signal" />
+<meta property="og:image" content="https://www.signalai.agency/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Signal AI Agency" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.signalai.agency/og-image.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Service Schema: Making Your Offering Visible to AI Search",
+  "description": "Service schema tells AI engines what you offer separately from page text. Here's how to mark it up so Perplexity and ChatGPT cite you as a specific solution.",
+  "url": "https://www.signalai.agency/posts/journal/service-schema-distinct-offering.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.signalai.agency/posts/journal/service-schema-distinct-offering.html" },
+  "datePublished": "2026-08-23",
+  "dateModified": "2026-08-23",
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "name": "Josh Supitskiy",
+    "url": "https://www.signalai.agency/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Signal AI Agency",
+    "url": "https://www.signalai.agency/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The Signal Journal",
+    "url": "https://www.signalai.agency/journal.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Signal", "item": "https://www.signalai.agency/"},
+    {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://www.signalai.agency/journal.html"},
+    {"@type": "ListItem", "position": 3, "name": "Service Schema: Making Your Offering Visible to AI Search", "item": "https://www.signalai.agency/posts/journal/service-schema-distinct-offering.html"}
+  ]
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../signal.css">
+<style>
+.post-hero{padding:80px 0 48px}
+.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
+.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
+.post-body{padding:56px 0 120px;max-width:700px}
+.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
+.post-body blockquote p{margin-bottom:6px;font-size:16px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
+.post-body li{margin-bottom:6px}
+.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
+.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
+.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
+.post-body strong{font-weight:700;color:var(--ink)}
+.post-body a{color:var(--red)}
+.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
+.post-back:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>The Journal</span>
+      <span>Brooklyn, NY</span>
+      <span>Aug 23, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="../../index.html#problem">Problem</a>
+      <a href="../../index.html#work">Work</a>
+      <a href="../../index.html#pricing">Pricing</a>
+      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+    </div>
+    <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="../../index.html#process">Process</a>
+      <a href="../../audit.html">Audit</a>
+      <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="post-hero">
+      <a href="../../journal.html" class="post-back">← The Journal</a>
+      <div class="eyebrow">Schema · Local SEO</div>
+      <h1>Service Schema: Making Your Offering Visible to AI Search</h1>
+      <div class="byline">Signal · Aug 23, 2026 · 7 min read</div>
+    </div>
+    <div class="post-body">
+      <p>When a customer asks ChatGPT "where can I get bookkeeping for my Brooklyn salon," the engine needs to know you offer bookkeeping as a distinct service, not just infer it from reading your homepage paragraph. Service schema tells AI search engines exactly what you do — and retrieval engines cite specificity. A marked-up service is citable; unmarked text is not.</p>
+<p>Most Brooklyn businesses describe their services in prose. "We offer web design, logo work, and brand strategy." An AI engine reads that as three separate things only if you structure them separately. Without markup, the engine assembles its answer from context, guessing. With Service schema, you declare each offering explicitly. That declaration is what gets cited.</p>
+<h2>Why Service Schema Matters Now</h2>
+<p>AI search engines operate on citation. When Perplexity answers "web designers in Brooklyn," it pulls businesses with strong proof that web design is their offering. A service marked <code>http://schema.org/Service</code> with a name, description, and areaServed is proof. A paragraph is not.</p>
+<p>Nostrand Optical didn't just have "eye exams" mentioned on the homepage. We marked each service — eye exams, contact lens fitting, eyewear consultation — as discrete Service objects within their LocalBusiness schema. The engine knew exactly what Nostrand offered without assembling it from surrounding text. That clarity made citation faster and more precise.</p>
+<p>Service schema also controls eligibility. If you offer both residential and commercial plumbing, marking them separately means you'll show up for "commercial plumbing in Williamsburg" instead of diluting both queries with one unmarked description. The engine sees two distinct services and can weight which one to cite based on the prompt.</p>
+<h2>The Schema Structure</h2>
+<p>Service schema lives inside LocalBusiness. Each service gets its own object with a name, description, and areaServed field.</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;LocalBusiness&quot;,
+  &quot;name&quot;: &quot;Studio North&quot;,
+  &quot;url&quot;: &quot;https://studionorth.com&quot;,
+  &quot;hasService&quot;: [
+    {
+      &quot;@type&quot;: &quot;Service&quot;,
+      &quot;name&quot;: &quot;Logo Design&quot;,
+      &quot;description&quot;: &quot;Custom brand identity design including logo mark, wordmark, and brand guidelines.&quot;,
+      &quot;areaServed&quot;: {
+        &quot;@type&quot;: &quot;City&quot;,
+        &quot;name&quot;: &quot;Brooklyn&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;Service&quot;,
+      &quot;name&quot;: &quot;Brand Strategy&quot;,
+      &quot;description&quot;: &quot;Positioning, messaging, and visual direction for early-stage startups.&quot;,
+      &quot;areaServed&quot;: {
+        &quot;@type&quot;: &quot;City&quot;,
+        &quot;name&quot;: &quot;Brooklyn&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+<p>The name field is what the engine treats as the service offering. The description is what it can cite or pull into an AI response. The areaServed tells it where you deliver that service — critical for neighborhood-level AI search answers.</p>
+<p>Without the schema, an engine reads your homepage and infers "Studio North probably does design." With the schema, it knows "Studio North explicitly offers Logo Design and Brand Strategy in Brooklyn." That explicitness is what makes you retrievable for specific service queries.</p>
+<h2>The areaServed Field Matters</h2>
+<p>Many Brooklyn businesses offer services across the city, or even beyond it. But AI search engines increasingly resolve at neighborhood level, not borough level. When you mark areaServed as "Brooklyn" for every service, you're saying "I serve all of Brooklyn equally." That's often true, but it dilutes you.</p>
+<p>If you primarily serve Crown Heights but will travel to Williamsburg for large projects, mark two separate service areas. If you're a tutoring service and you work online with students across the tristate, mark areaServed as the larger geography. The engine will then consider you for "tutoring in New Jersey" and "online math tutor," not just Brooklyn-local answers.</p>
+<p>The areaServed field is where your service schema meets geography. Get it wrong and you're invisible to neighborhood-specific queries. Get it right and you're a candidate for both local and regional answers.</p>
+<h2>Service Type Specificity</h2>
+<p>The Service name should be specific enough that someone searching for it would find you. "Consulting" is too broad. "Small business tax consulting" is better. "Tax strategy for freelancers in Brooklyn" is what you'd write in a description, but the name should stay at service-name level: "Tax Consulting for Freelancers."</p>
+<p>An engine uses the name field to match intent. When a prompt includes "freelancer tax help in Brooklyn," it looks for Service objects with "tax" and "freelancer" nearby in the schema. A service named "Consulting" will not match as cleanly as one named "Tax Consulting."</p>
+<p>The description is where you add context and evidence. Include specifics: the problem you solve, the audience you serve, the outcome you deliver. "We help Brooklyn freelancers manage quarterly taxes, reduce liability, and keep better records" is citable. "We do tax stuff" is not.</p>
+<h2>When to Mark Services vs. Products</h2>
+<p>Service schema applies to services you deliver — work, labor, expertise, time. If you sell products, use Product schema instead. If you sell both (a salon that sells hair care products and also cuts hair), mark services with Service and products with Product separately.</p>
+<p>Confusion here causes problems. Brooklyn BJJ Lessons marked their offering with Person and LocalBusiness schema because the service is the instruction itself — the relationship between instructor and student. A product-based business would need a different approach.</p>
+<p>If you're uncertain, ask: am I selling my time and expertise, or a manufactured object? Time and expertise is Service. Objects are Product. Some businesses do both, and that's fine — mark them separately so engines understand the difference.</p>
+<h2>Testing Your Service Schema</h2>
+<p>The <a href="https://search.google.com/test/rich-results">Google Rich Results Test</a> will validate your Service schema if it's nested correctly inside LocalBusiness. Run it. If your services don't appear in the results preview, the markup is either malformed or incomplete.</p>
+<p>Common errors: forgetting areaServed entirely, or marking it as a string ("Brooklyn") instead of a proper Place object. Engines are forgiving about many schema mistakes, but areaServed matters — get it right.</p>
+<p>Your goal is simple: every service you mark up should be queryable separately. When someone asks ChatGPT "where do I find X service in Brooklyn," your business should appear because X matches your marked Service name and Brooklyn matches your areaServed. Prose cannot do that work. Schema can.</p>
+<hr />
+<p><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a 20-minute AI audit</a></p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
+      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 20-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+    </div>
+    <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- RELATED:START -->
+<section class="related">
+  <div class="wrap">
+    <div class="rel-head">Related from The Ledger</div>
+    <div class="rel-grid">
+      <a class="rel-card" href="./service-area-radius-schema.html">
+        <span class="rel-eyebrow">Schema · Local SEO</span>
+        <span class="rel-title">Service Area Radius in Schema.org. How to Declare It Without Diluting Citations Across Boroughs.</span>
+      </a>
+      <a class="rel-card" href="./how-ai-engines-decide-who-to-cite.html">
+        <span class="rel-eyebrow">AI Search · Signal</span>
+        <span class="rel-title">How AI Engines Decide Who to Cite: The Four Signals That Determine Local Rank</span>
+      </a>
+      <a class="rel-card" href="./schema-business-hours-markup.html">
+        <span class="rel-eyebrow">Schema · Citations</span>
+        <span class="rel-title">How to Mark Up Your Google Business Profile Hours in Schema.org</span>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+.related{border-top:1px solid var(--rule-soft);padding:44px 0 8px}
+.rel-head{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft)}
+.rel-card{display:flex;flex-direction:column;gap:9px;padding:20px 18px;background:var(--paper);text-decoration:none;transition:background .25s cubic-bezier(.25,0,0,1)}
+.rel-card:hover{background:var(--paper-2)}
+.rel-eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.rel-title{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.22;letter-spacing:-.015em;color:var(--ink)}
+.rel-card:hover .rel-title{color:var(--red)}
+@media(max-width:760px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<!-- RELATED:END -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../journal.html">Journal</a></li>
+          <li><a href="../../what-is-geo.html">What is GEO?</a></li>
+          <li><a href="../../index.html#pricing">Pricing</a></li>
+          <li><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>© MMXXVI Signal AI LLC</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Organization schema hierarchy. What parent company markup actually declares. — Signal Journal</title>
+<meta name="description" content="Parent company markup tells AI which business entity owns a location. Get the hierarchy wrong and you're invisible to citations." />
+<link rel="canonical" href="https://www.signalai.agency/posts/journal/organization-schema-hierarchy-parent-markup.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Organization schema hierarchy. What parent company markup actually declares." />
+<meta property="og:description" content="Parent company markup tells AI which business entity owns a location. Get the hierarchy wrong and you're invisible to citations." />
+<meta property="og:url" content="https://www.signalai.agency/posts/journal/organization-schema-hierarchy-parent-markup.html" />
+<meta property="og:site_name" content="Signal" />
+<meta property="og:image" content="https://www.signalai.agency/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Signal AI Agency" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.signalai.agency/og-image.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Organization schema hierarchy. What parent company markup actually declares.",
+  "description": "Parent company markup tells AI which business entity owns a location. Get the hierarchy wrong and you're invisible to citations.",
+  "url": "https://www.signalai.agency/posts/journal/organization-schema-hierarchy-parent-markup.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.signalai.agency/posts/journal/organization-schema-hierarchy-parent-markup.html" },
+  "datePublished": "2026-08-23",
+  "dateModified": "2026-08-23",
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "name": "Josh Supitskiy",
+    "url": "https://www.signalai.agency/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Signal AI Agency",
+    "url": "https://www.signalai.agency/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The Signal Journal",
+    "url": "https://www.signalai.agency/journal.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Signal", "item": "https://www.signalai.agency/"},
+    {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://www.signalai.agency/journal.html"},
+    {"@type": "ListItem", "position": 3, "name": "Organization schema hierarchy. What parent company markup actually declares.", "item": "https://www.signalai.agency/posts/journal/organization-schema-hierarchy-parent-markup.html"}
+  ]
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../signal.css">
+<style>
+.post-hero{padding:80px 0 48px}
+.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
+.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
+.post-body{padding:56px 0 120px;max-width:700px}
+.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
+.post-body blockquote p{margin-bottom:6px;font-size:16px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
+.post-body li{margin-bottom:6px}
+.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
+.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
+.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
+.post-body strong{font-weight:700;color:var(--ink)}
+.post-body a{color:var(--red)}
+.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
+.post-back:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>The Journal</span>
+      <span>Brooklyn, NY</span>
+      <span>Aug 23, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="../../index.html#problem">Problem</a>
+      <a href="../../index.html#work">Work</a>
+      <a href="../../index.html#pricing">Pricing</a>
+      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+    </div>
+    <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="../../index.html#process">Process</a>
+      <a href="../../audit.html">Audit</a>
+      <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="post-hero">
+      <a href="../../journal.html" class="post-back">← The Journal</a>
+      <div class="eyebrow">Schema · Architecture</div>
+      <h1>Organization schema hierarchy. What parent company markup actually declares.</h1>
+      <div class="byline">Signal · Aug 23, 2026 · 7 min read</div>
+    </div>
+    <div class="post-body">
+      <p>Parent company markup tells an AI engine whether a location is a franchise, a subsidiary, or an independent operation. Get the hierarchy wrong and you're invisible to citations. The schema difference between a single Brooklyn optometry practice and a regional chain is not cosmetic — it changes what a retrieval engine considers the authoritative entity.</p>
+<h2>Why hierarchy matters to retrieval</h2>
+<p>An AI engine needs to know what it's citing. If you run a single location in Crown Heights, your markup says "this LocalBusiness is the whole thing." If you're part of a regional chain, your markup says "this LocalBusiness belongs to an Organization that owns multiple locations." The engine uses that distinction to decide whether to cite your storefront or the parent company's national page.</p>
+<p>A retrieval system does not want to cite a location page and a parent page simultaneously. It picks one. If your hierarchy is ambiguous, you lose citations to the parent — or worse, you don't get cited at all because the engine can't resolve which entity is actually responsible for the business claim you're making.</p>
+<h2>Single location: you are the organization</h2>
+<p>If you run one storefront and you own it outright, your LocalBusiness schema does not need a parent. You declare yourself as an independent entity. The <code>name</code>, <code>address</code>, <code>telephone</code>, and <code>areaServed</code> fields define the whole business.</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;LocalBusiness&quot;,
+  &quot;name&quot;: &quot;Nostrand Optical&quot;,
+  &quot;address&quot;: {
+    &quot;@type&quot;: &quot;PostalAddress&quot;,
+    &quot;streetAddress&quot;: &quot;1234 Nostrand Avenue&quot;,
+    &quot;addressLocality&quot;: &quot;Brooklyn&quot;,
+    &quot;addressRegion&quot;: &quot;NY&quot;,
+    &quot;postalCode&quot;: &quot;11216&quot;
+  },
+  &quot;telephone&quot;: &quot;+1-718-555-0123&quot;
+}
+</code></pre>
+<p>This tells the engine: "Nostrand Optical is the business." No parent. No organizational ambiguity. When an engine retrieves an optometry query in Crown Heights, it can cite this entity directly because the schema declares it as a standalone operator.</p>
+<h2>Franchise or subsidiary: declare the parent</h2>
+<p>If you're a franchise location or a subsidiary, your LocalBusiness markup includes a <code>parentOrganization</code> field that points to the parent entity. The parent is an Organization schema object, separate from your location.</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;LocalBusiness&quot;,
+  &quot;name&quot;: &quot;Nostrand Optical Crown Heights&quot;,
+  &quot;address&quot;: {
+    &quot;@type&quot;: &quot;PostalAddress&quot;,
+    &quot;streetAddress&quot;: &quot;1234 Nostrand Avenue&quot;,
+    &quot;addressLocality&quot;: &quot;Brooklyn&quot;,
+    &quot;addressRegion&quot;: &quot;NY&quot;,
+    &quot;postalCode&quot;: &quot;11216&quot;
+  },
+  &quot;parentOrganization&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;Nostrand Optical&quot;,
+    &quot;url&quot;: &quot;https://nostrandoptical.com&quot;,
+    &quot;sameAs&quot;: [&quot;https://www.facebook.com/nostrandoptical&quot;]
+  }
+}
+</code></pre>
+<p>The engine now knows: "This location belongs to a larger entity." It can cite the location for neighborhood-specific queries ("optometry Crown Heights") and the parent for broader ones ("optical near me").</p>
+<h2>The sameAs field locks identity</h2>
+<p>A parent Organization needs a <code>sameAs</code> field to declare its canonical URL. Without it, the engine treats your parent markup as floating — it has no anchor to retrieve against. With it, the engine can resolve: "This parent Organization is the same thing as this website."</p>
+<p><code>sameAs</code> accepts an array. Use it to link to your primary domain, your social profiles, and any other canonical identity declarations.</p>
+<pre><code class="language-json">&quot;sameAs&quot;: [
+  &quot;https://nostrandoptical.com&quot;,
+  &quot;https://www.facebook.com/nostrandoptical&quot;,
+  &quot;https://www.linkedin.com/company/nostrand-optical&quot;
+]
+</code></pre>
+<p>If your location page and your parent page use different domains (a franchise location on a subdomain, for example), make sure both point to the same parent via <code>sameAs</code>. Conflicting parents confuse retrieval.</p>
+<h2>Multiple locations: use Organization, not LocalBusiness for the parent</h2>
+<p>A common mistake: declaring the parent as a LocalBusiness with multiple address fields. That's structurally wrong. The parent should be an Organization, and each location should be a separate LocalBusiness that references it.</p>
+<p>Wrong:</p>
+<pre><code class="language-json">{
+  &quot;@type&quot;: &quot;LocalBusiness&quot;,
+  &quot;name&quot;: &quot;Nostrand Optical&quot;,
+  &quot;address&quot;: [
+    { &quot;streetAddress&quot;: &quot;1234 Nostrand Avenue&quot;, &quot;addressLocality&quot;: &quot;Brooklyn&quot; },
+    { &quot;streetAddress&quot;: &quot;5678 Park Slope&quot;, &quot;addressLocality&quot;: &quot;Brooklyn&quot; }
+  ]
+}
+</code></pre>
+<p>Right:</p>
+<pre><code class="language-json">{
+  &quot;@type&quot;: &quot;Organization&quot;,
+  &quot;name&quot;: &quot;Nostrand Optical&quot;,
+  &quot;url&quot;: &quot;https://nostrandoptical.com&quot;
+}
+</code></pre>
+<p>Then create a separate LocalBusiness for each location:</p>
+<pre><code class="language-json">{
+  &quot;@type&quot;: &quot;LocalBusiness&quot;,
+  &quot;name&quot;: &quot;Nostrand Optical Brooklyn&quot;,
+  &quot;address&quot;: { &quot;streetAddress&quot;: &quot;1234 Nostrand Avenue&quot; },
+  &quot;parentOrganization&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;Nostrand Optical&quot;,
+    &quot;url&quot;: &quot;https://nostrandoptical.com&quot;
+  }
+}
+</code></pre>
+<p>The Organization is the entity. The LocalBusiness instances are the proof points. An engine retrieves and cites the location, not a confused hybrid schema.</p>
+<h2>What gets cited depends on the query</h2>
+<p>A retrieval engine uses your hierarchy to decide scope. If someone asks "optometry in Crown Heights," the engine cites the specific location. If someone asks "Nostrand Optical near me," the engine cites the location that's closest to them, but knows it's part of the Nostrand organization.</p>
+<p>If you don't declare the hierarchy clearly, the engine has to guess. It might cite the parent page instead of your location. It might refuse to cite either because the relationship is ambiguous. Clarity in hierarchy gets you citations at the right scope.</p>
+<p>The hierarchy also matters for verification. If you run a single location and you claim to be independent via LocalBusiness markup, but your parent company also claims you via their site, the engine sees the conflict. If both markup sets declare the same parent Organization, the engine trusts both.</p>
+<h2>One thing to check tomorrow</h2>
+<p>Open your site's structured data in Google's Rich Results Test. If you see a LocalBusiness, check whether it has a <code>parentOrganization</code> field. If you're a franchise or subsidiary, it should. If you're independent, it shouldn't. If you're a multi-location business and each location has its own page, make sure each location declares the same parent with <code>sameAs</code> pointing to your main domain.</p>
+<p>A single wrong hierarchical declaration costs you citations across your whole location network.</p>
+<p><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a 20-minute AI audit</a></p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
+      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 20-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+    </div>
+    <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- RELATED:START -->
+<section class="related">
+  <div class="wrap">
+    <div class="rel-head">Related from The Ledger</div>
+    <div class="rel-grid">
+      <a class="rel-card" href="./sameas-schema-identity-graph.html">
+        <span class="rel-eyebrow">Schema · Identity</span>
+        <span class="rel-title">SameAs Is the Identity Graph Most Local Sites Never Fill In</span>
+      </a>
+      <a class="rel-card" href="./schema-business-hours-markup.html">
+        <span class="rel-eyebrow">Schema · Citations</span>
+        <span class="rel-title">How to Mark Up Your Google Business Profile Hours in Schema.org</span>
+      </a>
+      <a class="rel-card" href="./service-area-radius-schema.html">
+        <span class="rel-eyebrow">Schema · Local SEO</span>
+        <span class="rel-title">Service Area Radius in Schema.org. How to Declare It Without Diluting Citations Across Boroughs.</span>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+.related{border-top:1px solid var(--rule-soft);padding:44px 0 8px}
+.rel-head{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft)}
+.rel-card{display:flex;flex-direction:column;gap:9px;padding:20px 18px;background:var(--paper);text-decoration:none;transition:background .25s cubic-bezier(.25,0,0,1)}
+.rel-card:hover{background:var(--paper-2)}
+.rel-eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.rel-title{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.22;letter-spacing:-.015em;color:var(--ink)}
+.rel-card:hover .rel-title{color:var(--red)}
+@media(max-width:760px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<!-- RELATED:END -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../journal.html">Journal</a></li>
+          <li><a href="../../what-is-geo.html">What is GEO?</a></li>
+          <li><a href="../../index.html#pricing">Pricing</a></li>
+          <li><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>© MMXXVI Signal AI LLC</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

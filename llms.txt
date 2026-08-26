@@ -76,6 +76,8 @@ from a maintained approved-facts table or from a named, attributed public source
 - https://www.signalai.agency/about.html — founder, approach
 - https://www.signalai.agency/journal.html — The Ledger, full archive
 - https://www.signalai.agency/privacy.html — privacy policy
+- https://www.signalai.agency/audit.html — the free 20-minute AI search audit: what it includes, how it runs, how to book
+- https://www.signalai.agency/what-is-geo.html — what generative engine optimization (GEO) is, GEO vs SEO, and a glossary of AI search terms
 
 ## Contact
 
@@ -84,6 +86,10 @@ from a maintained approved-facts table or from a named, attributed public source
 - (718) 864-4584
 
 ## Latest Articles
+- [Build a Citation Network Through Hyperlocal Neighborhood Pages](https://www.signalai.agency/posts/journal/hyperlocal-neighborhood-pages-citation-network.html): Create separate landing pages for each neighborhood you serve. AI engines cite hyperlocal pages more often than borough-wide ones.
+- [Organization schema hierarchy. What parent company markup actually declares.](https://www.signalai.agency/posts/journal/organization-schema-hierarchy-parent-markup.html): Parent company markup tells AI which business entity owns a location. Get the hierarchy wrong and you're invisible to citations.
+- [SameAs Is the Identity Graph Most Local Sites Never Fill In](https://www.signalai.agency/posts/journal/sameas-schema-identity-graph.html): SameAs markup tells AI engines which profiles and sites belong to the same business. Most local sites skip it. Here's why it matters.
+- [Service Schema: Making Your Offering Visible to AI Search](https://www.signalai.agency/posts/journal/service-schema-distinct-offering.html): Service schema tells AI engines what you offer separately from page text. Here's how to mark it up so Perplexity and ChatGPT cite you as a specific solution.
 - [Service Area Radius in Schema.org. How to Declare It Without Diluting Citations Across Boroughs.](https://www.signalai.agency/posts/journal/service-area-radius-schema.html): Service area markup without borders confuses AI search. Here's how to declare your radius so engines cite you locally, not citywide.
 - [How to Mark Up Your Google Business Profile Hours in Schema.org](https://www.signalai.agency/posts/journal/schema-business-hours-markup.html): Schema.org openingHoursSpecification lets AI engines read your hours directly from your site. Here's how to mark them up correctly for local search.
 - [Brooklyn BJJ Lessons: Cited First in ChatGPT in 41 Days. Here Is the Playbook.](https://www.signalai.agency/posts/journal/brooklyn-bjj-lessons-chatgpt-citation-41-days.html): Brooklyn BJJ Lessons ranked #1 in ChatGPT for 'BJJ private lessons Brooklyn' in 41 days. Here's the exact sequence that made it happen.

@@ -51,7 +51,7 @@ Set-Location $SITE
 # ------------------------------------------------------------- PRE-FLIGHT ---
 Head 'Pre-flight'
 
-$pages = @('index.html','about.html','journal.html','privacy.html','404.html') |
+$pages = @('index.html','about.html','journal.html','privacy.html','404.html','audit.html','what-is-geo.html') |
          Where-Object { Test-Path $_ }
 $posts = @(Get-ChildItem -Path 'posts\journal' -Filter '*.html' -File -ErrorAction SilentlyContinue)
 $all   = $pages + $posts.FullName
@@ -205,6 +205,8 @@ Probe "$CANON/og-image.jpg" 200
 Probe "$CANON/sitemap.xml"  200
 Probe "$CANON/robots.txt"   200
 Probe "$CANON/llms.txt"     200
+Probe "$CANON/audit.html"   200
+Probe "$CANON/what-is-geo.html" 200
 
 # The apex must redirect to www with a PERMANENT code. vercel.json's
 # "permanent": true emits 308; 301 is equally fine. A 307 or 302 is temporary:

@@ -459,6 +459,76 @@
         </div>
       </article>
     </div>
+
+    <!-- ============ THE PLATES — the builds, photographed live ============ -->
+    <style>
+      .plates-head{display:flex;justify-content:space-between;align-items:flex-end;margin-top:80px;padding:0 0 18px;border-bottom:3px double var(--ink)}
+      .plates-head h3{font-family:var(--display);font-size:32px;font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--ink);font-variation-settings:"SOFT" 100}
+      .plates-head .right{display:flex;gap:24px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink-dim)}
+      .plates-head .right b{color:var(--red)}
+      .plates-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px 32px;margin-top:36px}
+      .plate{display:block;text-decoration:none;color:inherit}
+      .plate-frame{display:block;border:1px solid var(--ink);background:#fff;padding:10px;box-shadow:6px 6px 0 rgba(21,17,13,.12);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+      .plate-frame img{display:block;width:100%;height:auto;filter:saturate(.94) contrast(1.02)}
+      .plate:hover .plate-frame{transform:translate(-3px,-3px);box-shadow:10px 10px 0 var(--red)}
+      .plate-cap{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-2);padding:12px 2px 0}
+      .plate-cap .pl-num{color:var(--red)}
+      .plate-cap .pl-live{color:var(--ink-dim);white-space:nowrap}
+      .proof-ticker{overflow:hidden;border-top:3px double var(--ink);border-bottom:1px solid var(--rule-soft);margin-top:64px;padding:14px 0;white-space:nowrap}
+      .ticker-track{display:inline-flex;gap:28px;font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink);animation:sig-ticker 40s linear infinite}
+      .ticker-track .td{color:var(--red)}
+      @keyframes sig-ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+      @media (prefers-reduced-motion: reduce){.ticker-track{animation:none}}
+      .proof-numbers{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:3px double var(--ink)}
+      .pn{padding:34px 24px 38px;border-right:1px solid var(--rule-soft)}
+      .pn:first-child{padding-left:2px}
+      .pn:last-child{border-right:0}
+      .pn-n{display:block;font-family:var(--display);font-weight:900;font-size:84px;line-height:1;letter-spacing:-.04em;color:var(--ink)}
+      .pn.red .pn-n{color:var(--red)}
+      .pn-l{display:block;margin-top:12px;font-family:var(--serif);font-size:14px;line-height:1.5;color:var(--ink-2);max-width:230px}
+      @media (max-width:900px){.plates-grid{grid-template-columns:1fr}.proof-numbers{grid-template-columns:1fr 1fr}.pn-n{font-size:52px}.plates-head{flex-direction:column;align-items:flex-start;gap:10px}}
+    </style>
+
+    <div class="plates-head">
+      <h3>The plates.</h3>
+      <div class="right">
+        <span>Every build <b>live</b></span>
+        <span>Photographed Aug 26, 2026</span>
+      </div>
+    </div>
+
+    <div class="plates-grid">
+      <a class="plate reveal" href="https://www.nostrandoptical.com" target="_blank" rel="noopener">
+        <span class="plate-frame"><img src="assets/work-nostrand.jpg" alt="Nostrand Optical website — dark editorial hero built around a tap-to-call number, for a Crown Heights optometry practice" width="1200" height="569" loading="lazy"></span>
+        <span class="plate-cap"><span><span class="pl-num">Plate I.</span> Nostrand Optical · Optometry · Crown Heights</span><span class="pl-live">● live</span></span>
+      </a>
+      <a class="plate reveal" href="https://www.brooklynbjjlessons.com" target="_blank" rel="noopener" style="transition-delay:.08s">
+        <span class="plate-frame"><img src="assets/work-bjj.jpg" alt="Brooklyn BJJ Lessons website — bold red and black type-driven one-pager for private jiu-jitsu lessons" width="1200" height="569" loading="lazy"></span>
+        <span class="plate-cap"><span><span class="pl-num">Plate II.</span> Brooklyn BJJ Lessons · Private training</span><span class="pl-live">● live</span></span>
+      </a>
+      <a class="plate reveal" href="https://stayrnr.com" target="_blank" rel="noopener">
+        <span class="plate-frame"><img src="assets/work-stayrnr.jpg" alt="StayRnR website — deep green hero for a short-term rental investment and management company" width="1200" height="569" loading="lazy"></span>
+        <span class="plate-cap"><span><span class="pl-num">Plate III.</span> StayRnR · Short-term rentals</span><span class="pl-live">● live</span></span>
+      </a>
+      <a class="plate reveal" href="https://www.elmiradecor.com" target="_blank" rel="noopener" style="transition-delay:.08s">
+        <span class="plate-frame"><img src="assets/work-elmira.jpg" alt="Elmira Décor website — airy interior design studio portfolio with full-width photography" width="1200" height="569" loading="lazy"></span>
+        <span class="plate-cap"><span><span class="pl-num">Plate IV.</span> Elmira Décor · Interior design</span><span class="pl-live">● live</span></span>
+      </a>
+    </div>
+
+    <div class="proof-ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Nostrand Optical</span><span class="td">●</span><span>Brooklyn BJJ Lessons</span><span class="td">●</span><span>StayRnR</span><span class="td">●</span><span>Elmira Décor</span><span class="td">●</span><span>AI Search Audits</span><span class="td">●</span><span>Schema.org Engineering</span><span class="td">●</span><span>Generative Engine Optimization</span><span class="td">●</span><span>Fact-Gated Content Machines</span><span class="td">●</span><span>Brooklyn, NY</span><span class="td">●</span>
+        <span>Nostrand Optical</span><span class="td">●</span><span>Brooklyn BJJ Lessons</span><span class="td">●</span><span>StayRnR</span><span class="td">●</span><span>Elmira Décor</span><span class="td">●</span><span>AI Search Audits</span><span class="td">●</span><span>Schema.org Engineering</span><span class="td">●</span><span>Generative Engine Optimization</span><span class="td">●</span><span>Fact-Gated Content Machines</span><span class="td">●</span><span>Brooklyn, NY</span><span class="td">●</span>
+      </div>
+    </div>
+
+    <div class="proof-numbers">
+      <div class="pn"><span class="pn-n">4</span><span class="pn-l">valid Google rich results on launch day — Nostrand Optical.</span></div>
+      <div class="pn red"><span class="pn-n">41</span><span class="pn-l">days from launch to first ChatGPT citation — Brooklyn BJJ Lessons.</span></div>
+      <div class="pn"><span class="pn-n">0</span><span class="pn-l">invented claims survive the publish gate. Every figure on this site is checked before it ships.</span></div>
+      <div class="pn"><span class="pn-n">5</span><span class="pn-l">live builds shipped. The four named above are shown with permission.</span></div>
+    </div>
   </div>
 </section>
 

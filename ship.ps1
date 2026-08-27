@@ -87,8 +87,23 @@ Check 'no JS-only CTAs on the homepage' ($deadCta -eq 0) ($deadCta.ToString() + 
 # 5. og:image is referenced AND exists
 Check 'og-image.jpg exists on disk' (Test-Path 'og-image.jpg')
 
-# 6. GA4 key events wired
-Check 'GA4 conversion events wired' (Select-String -Path 'index.html' -Pattern 'signalTrack' -Quiet)
+# 6. GA4 key events wired.
+#    The audit modal moved out of index.html into assets\audit-modal.js on
+#    26 Aug 2026, so grepping index.html for 'signalTrack' stopped proving
+#    anything and this check failed on a site whose tracking was fine. Verify
+#    the real thing instead: both key event names present in each file that
+#    fires them, and index.html actually loading the shared component.
+$ga4Missing = @()
+foreach ($f in @('assets\audit-modal.js', 'audit.html')) {
+    if (-not (Test-Path $f)) { $ga4Missing += "$f missing"; continue }
+    foreach ($ev in @('qualify_lead', 'close_convert_lead')) {
+        if (-not (Select-String -Path $f -Pattern $ev -Quiet)) { $ga4Missing += "$f lacks $ev" }
+    }
+}
+if (-not (Select-String -Path 'index.html' -Pattern 'assets/audit-modal\.js' -Quiet)) {
+    $ga4Missing += 'index.html does not load assets/audit-modal.js'
+}
+Check 'GA4 conversion events wired' ($ga4Missing.Count -eq 0) ($ga4Missing -join '; ')
 
 # 7. sitemap covers the posts on disk
 $smCount = @(Select-String -Path 'sitemap.xml' -Pattern '<loc>' -AllMatches |

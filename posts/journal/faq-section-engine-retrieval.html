@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How to Write an FAQ Section That an Engine Can Lift Whole — Signal Journal</title>
+<meta name="description" content="FAQPage markup turns your answers into quotable facts. Here's the structure that makes engines cite you instead of assembling text." />
+<link rel="canonical" href="https://www.signalai.agency/posts/journal/faq-section-engine-retrieval.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to Write an FAQ Section That an Engine Can Lift Whole" />
+<meta property="og:description" content="FAQPage markup turns your answers into quotable facts. Here's the structure that makes engines cite you instead of assembling text." />
+<meta property="og:url" content="https://www.signalai.agency/posts/journal/faq-section-engine-retrieval.html" />
+<meta property="og:site_name" content="Signal" />
+<meta property="og:image" content="https://www.signalai.agency/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Signal AI Agency" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.signalai.agency/og-image.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Write an FAQ Section That an Engine Can Lift Whole",
+  "description": "FAQPage markup turns your answers into quotable facts. Here's the structure that makes engines cite you instead of assembling text.",
+  "url": "https://www.signalai.agency/posts/journal/faq-section-engine-retrieval.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.signalai.agency/posts/journal/faq-section-engine-retrieval.html" },
+  "datePublished": "2026-08-30",
+  "dateModified": "2026-08-30",
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "name": "Josh Supitskiy",
+    "url": "https://www.signalai.agency/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Signal AI Agency",
+    "url": "https://www.signalai.agency/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The Signal Journal",
+    "url": "https://www.signalai.agency/journal.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Signal", "item": "https://www.signalai.agency/"},
+    {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://www.signalai.agency/journal.html"},
+    {"@type": "ListItem", "position": 3, "name": "How to Write an FAQ Section That an Engine Can Lift Whole", "item": "https://www.signalai.agency/posts/journal/faq-section-engine-retrieval.html"}
+  ]
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../signal.css">
+<style>
+.post-hero{padding:80px 0 48px}
+.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
+.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
+.post-body{padding:56px 0 120px;max-width:700px}
+.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
+.post-body blockquote p{margin-bottom:6px;font-size:16px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
+.post-body li{margin-bottom:6px}
+.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
+.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
+.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
+.post-body strong{font-weight:700;color:var(--ink)}
+.post-body a{color:var(--red)}
+.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
+.post-back:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>The Journal</span>
+      <span>Brooklyn, NY</span>
+      <span>Aug 30, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="../../index.html#problem">Problem</a>
+      <a href="../../index.html#work">Work</a>
+      <a href="../../index.html#pricing">Pricing</a>
+      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+      <a href="../../what-is-geo.html">What is GEO?</a>
+    </div>
+    <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="../../index.html#process">Process</a>
+      <a href="../../audit.html" onclick="openAuditModal(); return false;">Audit</a>
+      <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book</a>
+    </div>
+  </div>
+</header>
+<main>
+
+<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="post-hero">
+      <a href="../../journal.html" class="post-back">← The Journal</a>
+      <div class="eyebrow">Playbook · Schema</div>
+      <h1>How to Write an FAQ Section That an Engine Can Lift Whole</h1>
+      <div class="byline">Signal · Aug 30, 2026 · 8 min read</div>
+    </div>
+    <div class="post-body">
+      <p>An FAQ built for AI retrieval is not an FAQ built for humans. The difference is structure. A prose answer makes an engine work—it has to parse, infer, assemble. A marked-up question-and-answer pair gets cited as-is. This is why <a href="https://schema.org/FAQPage">FAQPage schema</a> is the citation cheat code almost nobody is using.</p>
+<p>ChatGPT, Perplexity, and Google AI Overviews all prefer retrieved facts over synthesized ones. If your answer is already formed, quotable, and factually isolated, the engine pulls it whole. It does not rewrite. It does not blend. It cites you by name and domain.</p>
+<h2>Why Prose Loses to Structure</h2>
+<p>A paragraph answering "How much does a crown cost?" looks like this:</p>
+<p>"The cost of a dental crown varies depending on the material used and the complexity of the tooth preparation. Porcelain crowns typically range from $800 to $1,500, while zirconia crowns may cost between $1,000 and $2,000. Gold crowns are more expensive, usually running $2,000 to $3,000, but they last the longest. Your insurance may cover part of the cost."</p>
+<p>An engine reading this has to:
+1. Extract the price ranges (three different ones).
+2. Decide which one to cite.
+3. Infer which answer is most relevant to the query.
+4. Attribute it or hedge it.</p>
+<p>It might cite you. It might blend your answer with three competitors' answers. It might rewrite.</p>
+<p>The same answer, marked as FAQPage, looks like this:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;FAQPage&quot;,
+  &quot;mainEntity&quot;: [
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;How much does a dental crown cost?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;A porcelain crown costs $800 to $1,500. A zirconia crown costs $1,000 to $2,000. A gold crown costs $2,000 to $3,000 and lasts the longest. Insurance may cover part of the cost.&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+<p>Now the engine has:
+1. A named question.
+2. A pre-formed, isolated answer.
+3. No ambiguity about what to cite.
+4. Permission to pull the text directly.</p>
+<p>It cites you. It does not rewrite.</p>
+<h2>One Answer Per Question</h2>
+<p>The most common mistake is nesting multiple questions into one answer block. "What does a crown cost? How long does it last? Will insurance cover it?"</p>
+<p>Do not do this. One question. One answer. One fact per block.</p>
+<p>If your actual answer is compound, break it into separate questions:</p>
+<ul>
+<li>"How much does a crown cost?"</li>
+<li>"How long does a crown last?"</li>
+<li>"Does insurance cover a crown?"</li>
+</ul>
+<p>Each gets its own FAQPage entry. Each can be cited independently. An engine retrieves the one that matches the prompt.</p>
+<h2>Answer Length and Specificity</h2>
+<p>Keep answers between one and four sentences. A sentence here means a complete statement, not a parenthetical aside or a clause.</p>
+<p>"A porcelain crown costs $800 to $1,500." — one sentence. Cite-able.</p>
+<p>"A porcelain crown, which is made of ceramic material bonded to a metal or zirconia base (depending on whether you choose high-noble gold or a tooth-colored alternative), typically costs between $800 and $1,500, though some practices charge more in high-cost-of-living areas like Brooklyn or Manhattan." — one sentence. Too many qualifiers. An engine will strip it or hedge it.</p>
+<p>The rule: if you would italicize a parenthetical, delete it.</p>
+<h2>How to Structure the Question</h2>
+<p>Write the question as the user would ask it. Not "What is the cost of a porcelain dental crown?"—that is a label. Write "How much does a porcelain crown cost?"</p>
+<p>Use the phrasing that appears in actual search behavior. If most users say "How do I schedule an appointment?" not "How do I make a booking?", use the first one. The question field is where retrieval begins.</p>
+<p>Questions should also be specific. "What services do you offer?" is weak. "Do you offer same-day crowns?" is strong. Specificity triggers retrieval on specific prompts.</p>
+<h2>The Citation Layer</h2>
+<p>Once you have marked-up FAQ sections, your content becomes retrievable at sentence level, not page level. That changes where the citation points.</p>
+<p>A prose answer gets cited as a page or a domain. A marked-up answer gets cited as a quotation with your business name attached.</p>
+<p>Brooklyn BJJ Lessons built its entire early citation strategy around Person and LocalBusiness schema, and that <a href="https://www.signalai.agency/journal.html">resulted in a ChatGPT citation within 41 days</a>. The same principle applies to FAQ. Marked structure is cheaper to cite than unmarked prose.</p>
+<h2>Testing Your FAQ Markup</h2>
+<p>Use Google's <a href="https://search.google.com/test/rich-results">Rich Results Test</a> to validate your markup. Paste your page URL. If your FAQPage markup appears in the results, it is well-formed and retrievable. If it does not, fix the JSON before publishing.</p>
+<p>The test does not guarantee retrieval—it only confirms that the markup is valid. But invalid markup guarantees you will not be retrieved. Start there.</p>
+<h2>Nesting FAQ Into Your Site Architecture</h2>
+<p>Do not create a separate FAQ page. Nest FAQPage blocks into the pages where the questions naturally belong.</p>
+<p>A dentist's crown page should have FAQ sections about cost, longevity, materials, aftercare. Those blocks live on the page itself, not on a separate <code>/faq</code> route.</p>
+<p>Why? Because the page is already the authority for that topic. Adding FAQ markup signals to the engine that specific facts on that page are retrievable. It does not dilute the page's topical weight.</p>
+<p>If you have a dedicated FAQ page, that's fine—add FAQPage markup there too. But do not treat it as your only FAQ layer.</p>
+<h2>The Maintenance Rule</h2>
+<p>FAQ markup decays if you do not update the answers. If you change your crown pricing, update the FAQ answer the same day. If you stop offering a service, delete that question entirely.</p>
+<p>Engines notice inconsistency. A marked answer that contradicts your GBP hours or your homepage text looks like bad maintenance. You lose trust.</p>
+<p>Treat FAQ markup as a living data structure, not a static content block.</p>
+<h2>What This Means for Your Business</h2>
+<p>FAQPage markup is a direct signal to an engine that your answers are quotable facts, not marketing prose. It is the fastest path to being cited by name in <a href="https://www.signalai.agency/what-is-geo.html">generative engine optimization</a> results.</p>
+<p>The investment is small. Most businesses can audit and mark up their FAQ sections in a few hours. The payoff is disproportionate: you stop competing on page ranking and start competing on citation.</p>
+<p>Start with the five questions you hear most often from customers. Mark them. Test them. Watch where they get cited. Then build from there.</p>
+<p><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a 20-minute AI audit</a></p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
+      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 20-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+    </div>
+    <a href="../../audit.html" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- RELATED:START -->
+<section class="related">
+  <div class="wrap">
+    <div class="rel-head">Related from The Ledger</div>
+    <div class="rel-grid">
+      <a class="rel-card" href="./audit-structured-data-rich-results-test.html">
+        <span class="rel-eyebrow">Playbook · Schema</span>
+        <span class="rel-title">Audit Your Structured Data in Ten Minutes With the Rich Results Test</span>
+      </a>
+      <a class="rel-card" href="./neighborhood-landing-page-ai-retrieval.html">
+        <span class="rel-eyebrow">Playbook · Signal</span>
+        <span class="rel-title">The Neighborhood Landing Page Rebuilt for AI Retrieval</span>
+      </a>
+      <a class="rel-card" href="./service-schema-distinct-offering.html">
+        <span class="rel-eyebrow">Schema · Local SEO</span>
+        <span class="rel-title">Service Schema: Making Your Offering Visible to AI Search</span>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+.related{border-top:1px solid var(--rule-soft);padding:44px 0 8px}
+.rel-head{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft)}
+.rel-card{display:flex;flex-direction:column;gap:9px;padding:20px 18px;background:var(--paper);text-decoration:none;transition:background .25s cubic-bezier(.25,0,0,1)}
+.rel-card:hover{background:var(--paper-2)}
+.rel-eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.rel-title{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.22;letter-spacing:-.015em;color:var(--ink)}
+.rel-card:hover .rel-title{color:var(--red)}
+@media(max-width:760px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<!-- RELATED:END -->
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+      </div>
+      <div>
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../journal.html">Journal</a></li>
+          <li><a href="../../what-is-geo.html">What is GEO?</a></li>
+          <li><a href="../../index.html#pricing">Pricing</a></li>
+          <li><a href="../../audit.html">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>© MMXXVI Signal AI LLC</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/audit-modal.js" defer></script>
+</body>
+</html>

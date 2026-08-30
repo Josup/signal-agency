@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reverse Engineer a Competitor's Citation Surface Without Paid Tools — Signal Journal</title>
+<meta name="description" content="Find which sources cite your competitor, how they structure their data, and what queries they rank forusing only free tools." />
+<link rel="canonical" href="https://www.signalai.agency/posts/journal/reverse-engineer-competitor-citations.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Reverse Engineer a Competitor's Citation Surface Without Paid Tools" />
+<meta property="og:description" content="Find which sources cite your competitor, how they structure their data, and what queries they rank forusing only free tools." />
+<meta property="og:url" content="https://www.signalai.agency/posts/journal/reverse-engineer-competitor-citations.html" />
+<meta property="og:site_name" content="Signal" />
+<meta property="og:image" content="https://www.signalai.agency/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Signal AI Agency" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.signalai.agency/og-image.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Reverse Engineer a Competitor's Citation Surface Without Paid Tools",
+  "description": "Find which sources cite your competitor, how they structure their data, and what queries they rank forusing only free tools.",
+  "url": "https://www.signalai.agency/posts/journal/reverse-engineer-competitor-citations.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.signalai.agency/posts/journal/reverse-engineer-competitor-citations.html" },
+  "datePublished": "2026-08-30",
+  "dateModified": "2026-08-30",
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "name": "Josh Supitskiy",
+    "url": "https://www.signalai.agency/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Signal AI Agency",
+    "url": "https://www.signalai.agency/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The Signal Journal",
+    "url": "https://www.signalai.agency/journal.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Signal", "item": "https://www.signalai.agency/"},
+    {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://www.signalai.agency/journal.html"},
+    {"@type": "ListItem", "position": 3, "name": "Reverse Engineer a Competitor's Citation Surface Without Paid Tools", "item": "https://www.signalai.agency/posts/journal/reverse-engineer-competitor-citations.html"}
+  ]
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../signal.css">
+<style>
+.post-hero{padding:80px 0 48px}
+.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
+.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
+.post-body{padding:56px 0 120px;max-width:700px}
+.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
+.post-body blockquote p{margin-bottom:6px;font-size:16px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
+.post-body li{margin-bottom:6px}
+.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
+.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
+.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
+.post-body strong{font-weight:700;color:var(--ink)}
+.post-body a{color:var(--red)}
+.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
+.post-back:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>The Journal</span>
+      <span>Brooklyn, NY</span>
+      <span>Aug 30, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="../../index.html#problem">Problem</a>
+      <a href="../../index.html#work">Work</a>
+      <a href="../../index.html#pricing">Pricing</a>
+      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+      <a href="../../what-is-geo.html">What is GEO?</a>
+    </div>
+    <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="../../index.html#process">Process</a>
+      <a href="../../audit.html" onclick="openAuditModal(); return false;">Audit</a>
+      <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book</a>
+    </div>
+  </div>
+</header>
+<main>
+
+<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="post-hero">
+      <a href="../../journal.html" class="post-back">← The Journal</a>
+      <div class="eyebrow">Playbook · Citations</div>
+      <h1>Reverse Engineer a Competitor's Citation Surface Without Paid Tools</h1>
+      <div class="byline">Signal · Aug 30, 2026 · 8 min read</div>
+    </div>
+    <div class="post-body">
+      <p>You don't need a paid citation platform to understand which sources cite your competitor and why. A free browser, a search engine, and structured thinking will show you exactly which queries they own, which sources name them, and what markup they're using to earn those citations. You can replicate the logic in an afternoon.</p>
+<h2>Start with the query they own</h2>
+<p>Open a browser. Search for the exact neighborhood + service combination your competitor dominates. For example, if they own "optometrist Crown Heights" on Google and ChatGPT, search that phrase on both. Look at the URLs cited in the first three results. Note the domain, the page type (blog, directory, local listing), and the anchor text. Do this five times with slight variations: "optometry Crown Heights," "eye doctor near Crown Heights," "vision exam Brooklyn." You'll see a pattern. Some sources appear in all five searches. Those are the citation anchors. Write them down.</p>
+<h2>Check their Google Business Profile for clues</h2>
+<p>Visit your competitor's Google Business Profile directly. You don't need their login. Search their business name on Google Maps or Google Search and click the knowledge panel on the right. Look at:
+- The "People also search for" suggestions. These reveal adjacent queries they rank for.
+- The linked website in the top-right. Visit it.
+- The "About" section. Note the description word choice—that's their keyword signal to Google.</p>
+<p>This takes three minutes and tells you what Google believes they are.</p>
+<h2>Audit their homepage markup without tools</h2>
+<p>Right-click their homepage. Select "View Page Source." Search the source code for <code>"@type": "LocalBusiness"</code> or <code>"@type": "MedicalBusiness"</code> (use Ctrl+F or Cmd+F). When you find it, select the entire JSON-LD block—everything between the opening and closing <code>&lt;script&gt;</code> tags. Paste it into a text editor. You now have their schema. Check for:
+- <code>name</code>, <code>address</code>, <code>telephone</code>, <code>url</code>, <code>image</code>
+- <code>areaServed</code>—if they have this, they're targeting specific neighborhoods
+- <code>knowsAbout</code>—medical businesses sometimes declare expertise here
+- <code>sameAs</code>—links to their social profiles or citation pages</p>
+<p>Do the same for their service pages. Are they using <code>Service</code> schema? <code>FAQPage</code>? This tells you what data structure they've chosen to emphasize.</p>
+<h2>Find their citation sources by searching their name</h2>
+<p>Go to Google Search. Type their business name in quotes: <code>"Nostrand Optical"</code>. Add each major platform one at a time:
+- <code>"Nostrand Optical" site:yelp.com</code>
+- <code>"Nostrand Optical" site:healthgrades.com</code>
+- <code>"Nostrand Optical" site:google.com/maps</code>
+- <code>"Nostrand Optical" site:apartmenttherapy.com</code>
+- <code>"Nostrand Optical" site:instagram.com</code></p>
+<p>This query structure shows you every public page that names them. Write down the URL and the context. Is it a review site? A news mention? A directory listing? A social profile? The distribution tells you where their authority comes from.</p>
+<h2>Check their blog for retrieval patterns</h2>
+<p>If they have a blog, open it. Scan the titles and publish dates. Look for:
+- How often they publish (weekly, monthly, sporadic)
+- What topics they choose (neighborhood guides, service explainers, patient FAQs)
+- Whether they write long-form or short snippets
+- The URL structure (do they use category prefixes like <code>/blog/</code> or <code>/guide/</code>)</p>
+<p>Open their three most recent posts. Check the markup in each by viewing the source again and searching for <code>"@type": "BlogPosting"</code> and <code>"articleBody"</code>. Do they mark up the content? Do they include <code>author</code>, <code>datePublished</code>, <code>image</code>? This reveals their investment in retrieval-grade content.</p>
+<h2>Test their content retrieval directly</h2>
+<p>Open ChatGPT or Perplexity. Ask a query you saw them rank for: "Who's the best optometrist in Crown Heights?" or "Where can I get an eye exam in Crown Heights?" See if they're cited. If they are, note the exact quote ChatGPT or Perplexity used. That tells you which piece of their content was retrieval-worthy and why. If they're not cited, that's also data—it means their content isn't structured in a way engines choose to extract.</p>
+<h2>Map their neighborhood footprint</h2>
+<p>If they serve multiple neighborhoods, search their name + each neighborhood: <code>"Nostrand Optical" Williamsburg</code>, <code>"Nostrand Optical" Prospect Heights</code>, <code>"Nostrand Optical" Park Slope</code>. Note which neighborhoods appear in search results and which don't. Then check their <code>areaServed</code> schema from step three. Is it <code>["Crown Heights", "Williamsburg"]</code> or is it broader? Do they have dedicated pages for each neighborhood, or do they try to rank one homepage across multiple areas? <a href="/what-is-geo.html">A generative engine optimization strategy</a> that spreads one page across five neighborhoods will lose to a competitor with five focused pages, one per neighborhood.</p>
+<h2>Document what you find</h2>
+<p>Create a simple table:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Their approach</th>
+<th>Your current approach</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary schema type</td>
+<td>MedicalBusiness + LocalBusiness</td>
+<td>LocalBusiness only</td>
+<td>Add MedicalBusiness</td>
+</tr>
+<tr>
+<td>FAQ markup</td>
+<td>Yes, 12 Q&amp;A pairs</td>
+<td>No</td>
+<td>Build FAQ section</td>
+</tr>
+<tr>
+<td>Blog frequency</td>
+<td>Weekly</td>
+<td>Monthly</td>
+<td>Increase cadence</td>
+</tr>
+<tr>
+<td>Citation sources</td>
+<td>Yelp, HealthGrades, Psychology Today</td>
+<td>Google Maps only</td>
+<td>Submit to directories</td>
+</tr>
+<tr>
+<td>areaServed</td>
+<td>3 neighborhoods</td>
+<td>1 (too broad)</td>
+<td>Create neighborhood pages</td>
+</tr>
+<tr>
+<td>First mention in ChatGPT</td>
+<td>Yes (41-day content window)</td>
+<td>No</td>
+<td>Audit content recency</td>
+</tr>
+</tbody>
+</table>
+<p>This table is your audit. It shows you exactly what they're doing that you're not.</p>
+<h2>Why this matters for your Brooklyn business</h2>
+<p>You don't need to match your competitor's moves exactly—you need to understand the logic behind them. If they're cited in ChatGPT and you're not, it's rarely because they're better. It's usually because <a href="/index.html#work">they've built a citation surface</a> that an engine can actually extract and trust: structured data, consistent naming across directories, a content rhythm that feeds the retrieval window, and neighborhood-specific pages instead of one overstuffed homepage. You now know what to build.</p>
+<p>Start with their schema. Pull it, understand it, adapt it to your business. Then audit your own markup against theirs. The gap you find is your roadmap.</p>
+<p><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a 20-minute AI audit</a></p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
+      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 20-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+    </div>
+    <a href="../../audit.html" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- RELATED:START -->
+<section class="related">
+  <div class="wrap">
+    <div class="rel-head">Related from The Ledger</div>
+    <div class="rel-grid">
+      <a class="rel-card" href="./hyperlocal-neighborhood-pages-citation-network.html">
+        <span class="rel-eyebrow">Playbook · Local SEO</span>
+        <span class="rel-title">Build a Citation Network Through Hyperlocal Neighborhood Pages</span>
+      </a>
+      <a class="rel-card" href="./faq-section-engine-retrieval.html">
+        <span class="rel-eyebrow">Playbook · Schema</span>
+        <span class="rel-title">How to Write an FAQ Section That an Engine Can Lift Whole</span>
+      </a>
+      <a class="rel-card" href="./gbp-fields-query-eligibility.html">
+        <span class="rel-eyebrow">Playbook · Local SEO</span>
+        <span class="rel-title">The Six Google Business Profile Fields That Change Which Queries You&#x27;re Eligible For</span>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+.related{border-top:1px solid var(--rule-soft);padding:44px 0 8px}
+.rel-head{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft)}
+.rel-card{display:flex;flex-direction:column;gap:9px;padding:20px 18px;background:var(--paper);text-decoration:none;transition:background .25s cubic-bezier(.25,0,0,1)}
+.rel-card:hover{background:var(--paper-2)}
+.rel-eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.rel-title{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.22;letter-spacing:-.015em;color:var(--ink)}
+.rel-card:hover .rel-title{color:var(--red)}
+@media(max-width:760px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<!-- RELATED:END -->
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+      </div>
+      <div>
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../journal.html">Journal</a></li>
+          <li><a href="../../what-is-geo.html">What is GEO?</a></li>
+          <li><a href="../../index.html#pricing">Pricing</a></li>
+          <li><a href="../../audit.html">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>© MMXXVI Signal AI LLC</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/audit-modal.js" defer></script>
+</body>
+</html>

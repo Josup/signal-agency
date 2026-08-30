@@ -52,8 +52,8 @@ client elsewhere is not accurate.
 
 - **Nostrand Optical** — Crown Heights, Brooklyn optometry practice.
   https://nostrandoptical.com — production Next.js build with LocalBusiness,
-  MedicalBusiness and FAQPage markup; four valid rich results on Google's Rich
-  Results Test on launch day.
+  MedicalBusiness and FAQPage markup; four rich-result types validated in Google's
+  Rich Results Test on launch day.
 - **Brooklyn BJJ Lessons** — https://brooklynbjjlessons.com — one-page booking site
   with Person and LocalBusiness schema; first ChatGPT citation at 41 days; Google
   Business Profile verified.
@@ -89,6 +89,10 @@ from a maintained approved-facts table or from a named, attributed public source
 - (718) 864-4584
 
 ## Latest Articles
+- [Audit Your Structured Data in Ten Minutes With the Rich Results Test](https://www.signalai.agency/posts/journal/audit-structured-data-rich-results-test.html): Use Google's Rich Results Test to check your schema markup in under ten minutes. A step-by-step guide for independent businesses.
+- [How to Write an FAQ Section That an Engine Can Lift Whole](https://www.signalai.agency/posts/journal/faq-section-engine-retrieval.html): FAQPage markup turns your answers into quotable facts. Here's the structure that makes engines cite you instead of assembling text.
+- [The Six Google Business Profile Fields That Change Which Queries You're Eligible For](https://www.signalai.agency/posts/journal/gbp-fields-query-eligibility.html): Six GBP fields determine whether your business appears in AI search results. Fill them wrong and you're invisible to entire query categories.
+- [Reverse Engineer a Competitor's Citation Surface Without Paid Tools](https://www.signalai.agency/posts/journal/reverse-engineer-competitor-citations.html): Find which sources cite your competitor, how they structure their data, and what queries they rank forusing only free tools.
 - [Build a Citation Network Through Hyperlocal Neighborhood Pages](https://www.signalai.agency/posts/journal/hyperlocal-neighborhood-pages-citation-network.html): Create separate landing pages for each neighborhood you serve. AI engines cite hyperlocal pages more often than borough-wide ones.
 - [Organization schema hierarchy. What parent company markup actually declares.](https://www.signalai.agency/posts/journal/organization-schema-hierarchy-parent-markup.html): Parent company markup tells AI which business entity owns a location. Get the hierarchy wrong and you're invisible to citations.
 - [SameAs Is the Identity Graph Most Local Sites Never Fill In](https://www.signalai.agency/posts/journal/sameas-schema-identity-graph.html): SameAs markup tells AI engines which profiles and sites belong to the same business. Most local sites skip it. Here's why it matters.

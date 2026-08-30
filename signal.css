@@ -360,10 +360,20 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .compare .cmp-label em{color:var(--red);font-style:italic;font-family:var(--display);font-weight:400}
 .compare .cmp-side{
-  position:absolute;inset:0;padding:54px 28px 24px;display:flex;flex-direction:column;gap:14px;
+  position:absolute;inset:0;padding:54px 28px 24px;display:none;flex-direction:column;gap:14px;
 }
+.compare .cmp-side.on{display:flex}
+.compare .cmp-tabs{
+  position:absolute;top:10px;right:14px;z-index:6;display:flex;border:1px solid var(--ink);background:var(--paper);
+}
+.compare .cmp-tab{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  padding:7px 16px;background:var(--paper);color:var(--ink);border:0;cursor:pointer;
+}
+.compare .cmp-tab.on{background:var(--red);color:#fff}
+.compare .cmp-divider{display:none}
 .compare .cmp-before{background:#F0EBE1}
-.compare .cmp-after{background:var(--paper);clip-path:inset(0 0 0 50%)}
+.compare .cmp-after{background:var(--paper)}
 .compare .cmp-tag{
   font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
 }
@@ -441,8 +451,8 @@ footer .mega.lit .phrase em::after{transform:scaleX(1);transition:transform 1.4s
 /* ====== CASE STUDIES ====== */
 .cases{padding:120px 0;border-top:3px double var(--rule)}
 .cases .head-row{display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:end;margin-bottom:64px}
-.cases .head-row h2{font-family:var(--display);font-weight:900;font-size:96px;line-height:.85;letter-spacing:-.035em;font-variation-settings:"SOFT" 30}
-.cases .head-row h2 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.cases .head-row h2,.cases .head-row h1{font-family:var(--display);font-weight:900;font-size:96px;line-height:.85;letter-spacing:-.035em;font-variation-settings:"SOFT" 30}
+.cases .head-row h2 em,.cases .head-row h1 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
 .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
 .case{
   padding:40px 36px 40px;border-right:1px solid var(--rule);position:relative;
@@ -478,8 +488,8 @@ footer .mega.lit .phrase em::after{transform:scaleX(1);transition:transform 1.4s
 /* ====== PRICING ====== */
 .pricing{padding:120px 0;border-top:1px solid var(--rule);background:var(--paper-2)}
 .pricing .head-row{display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:end;margin-bottom:64px}
-.pricing .head-row h2{font-family:var(--display);font-weight:900;font-size:84px;line-height:.92;letter-spacing:-.03em;font-variation-settings:"SOFT" 30}
-.pricing .head-row h2 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.pricing .head-row h2,.pricing .head-row h1{font-family:var(--display);font-weight:900;font-size:84px;line-height:.92;letter-spacing:-.03em;font-variation-settings:"SOFT" 30}
+.pricing .head-row h2 em,.pricing .head-row h1 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
 .pricing .head-row p{font-family:var(--display);font-style:italic;font-weight:400;font-size:26px;line-height:1.35;max-width:32ch;color:var(--ink-2);font-variation-settings:"SOFT" 100;letter-spacing:-.01em;text-align:right}
 .tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--rule);background:var(--paper)}
 .tier{padding:40px 32px 36px;border-right:1px solid var(--rule);position:relative;display:flex;flex-direction:column;min-height:680px}
@@ -564,15 +574,15 @@ footer .mega.lit .phrase em::after{transform:scaleX(1);transition:transform 1.4s
 /* ====== HOW IT WORKS ====== */
 .how{padding:140px 0;border-top:1px solid var(--rule)}
 .how .head-row{display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:end;margin-bottom:80px}
-.how .head-row h2{font-family:var(--display);font-weight:900;font-size:96px;line-height:.85;letter-spacing:-.035em;font-variation-settings:"SOFT" 30}
-.how .head-row h2 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.how .head-row h2,.how .head-row h1{font-family:var(--display);font-weight:900;font-size:96px;line-height:.85;letter-spacing:-.035em;font-variation-settings:"SOFT" 30}
+.how .head-row h2 em,.how .head-row h1 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
 
 /* ====== JOURNAL / BLOG ====== */
 .journal{padding:140px 0;border-top:1px solid var(--rule);background:var(--paper);position:relative}
 .journal .head-row{display:grid;grid-template-columns:420px 1fr;gap:64px;align-items:end;margin-bottom:64px}
-.journal .head-row h2{font-family:var(--display);font-weight:900;font-size:72px;line-height:1.1;letter-spacing:-.025em;font-variation-settings:"SOFT" 30;padding-bottom:.08em}
-.journal .head-row h2 em{display:inline-block;line-height:1.05}
-.journal .head-row h2 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
+.journal .head-row h2,.journal .head-row h1{font-family:var(--display);font-weight:900;font-size:72px;line-height:1.1;letter-spacing:-.025em;font-variation-settings:"SOFT" 30;padding-bottom:.08em}
+.journal .head-row h2 em,.journal .head-row h1 em{display:inline-block;line-height:1.05}
+.journal .head-row h2 em,.journal .head-row h1 em{font-style:italic;font-weight:400;color:var(--red);font-variation-settings:"SOFT" 100}
 .journal .head-row p{font-family:var(--serif);font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:520px}
 .journal .head-row p em{font-style:italic;color:var(--red)}
 .journal .lede-rule{border-top:3px double var(--ink);padding-top:14px;margin-bottom:0;display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink-soft)}
@@ -643,7 +653,7 @@ footer .mega.lit .phrase em::after{transform:scaleX(1);transition:transform 1.4s
 }
 .final .audit-card .row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #3A332B;padding-bottom:14px}
 .final .audit-card .row:last-of-type{border-bottom:0;padding-bottom:0}
-.final .audit-card .row .k{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#7A6F61}
+.final .audit-card .row .k{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,237,.72)}
 .final .audit-card .row .v{font-family:var(--display);font-weight:900;font-size:22px;color:var(--paper)}
 .final .btn-final{
   width:100%;padding:24px;background:var(--red);color:#fff;
@@ -660,7 +670,7 @@ footer .top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;margin
 footer .wm{font-family:var(--display);font-weight:900;font-size:80px;line-height:.85;letter-spacing:-.04em;font-variation-settings:"SOFT" 30,"WONK" 1}
 footer .wm sup{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--red);font-weight:700;vertical-align:super;margin-left:6px}
 footer .wm + p{margin-top:14px;font-family:var(--serif);font-size:14px;line-height:1.6;color:var(--ink-2);max-width:34ch}
-footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);font-weight:700;margin-bottom:18px}
+footer h3{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);font-weight:700;margin-bottom:18px}
 footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-family:var(--serif);font-size:15px}
 footer ul a:hover{color:var(--red)}
 footer .mega{font-family:var(--display);font-weight:900;font-size:clamp(120px,18vw,280px);line-height:.82;letter-spacing:-.05em;color:var(--ink);font-variation-settings:"SOFT" 30,"WONK" 1;border-top:1px solid var(--rule);border-bottom:3px double var(--rule);padding:24px 0;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
@@ -801,7 +811,7 @@ footer .bottom{padding-top:24px;display:flex;justify-content:space-between;font-
 
   /* Cases */
   .cases{padding:80px 0}
-  .cases .head-row h2{font-size:58px}
+  .cases .head-row h2,  .cases .head-row h1{font-size:58px}
   .case{padding:28px 20px}
   .case h3{font-size:40px}
   /* Bullet grid: 3-col inside a 1-col case → must collapse */
@@ -812,14 +822,14 @@ footer .bottom{padding-top:24px;display:flex;justify-content:space-between;font-
 
   /* Pricing */
   .pricing{padding:80px 0}
-  .pricing .head-row h2{font-size:50px}
+  .pricing .head-row h2,  .pricing .head-row h1{font-size:50px}
   .tier{min-height:auto;padding:28px 20px}
   .tier-rebuild{grid-template-columns:1fr;padding:24px 20px}
   .rebuild-section{padding-top:28px;margin-top:28px}
 
   /* How it works */
   .how{padding:80px 0}
-  .how .head-row h2{font-size:58px}
+  .how .head-row h2,  .how .head-row h1{font-size:58px}
   .step{min-height:auto;padding:32px 20px}
   .step .num{font-size:72px}
 
@@ -855,7 +865,7 @@ footer .bottom{padding-top:24px;display:flex;justify-content:space-between;font-
   .masthead .wordmark{font-size:22px}
   .hero h1{font-size:clamp(36px,11.5vw,56px)}
   .counters .counter .big{font-size:50px}
-  .cases .head-row h2,.how .head-row h2{font-size:48px}
+  .cases .head-row h2,.how .head-row h2,  .cases .head-row h1,.how .head-row h1{font-size:48px}
   .case h3{font-size:34px}
   footer .mega{font-size:clamp(44px,14vw,72px)}
   .btn{padding:16px 18px;font-size:10px}

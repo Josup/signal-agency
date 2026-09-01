@@ -227,26 +227,30 @@ Probe "$CANON/what-is-geo.html" 200
 # "permanent": true emits 308; 301 is equally fine. A 307 or 302 is temporary:
 # Google keeps the apex as its own indexing candidate instead of consolidating
 # on www, which is the split this whole pass exists to close.
+# NOTE: Windows PowerShell 5.1's web stack does not treat 308 as a redirect,
+# so a 308 response lands in the TRY branch (no exception) while 301/302/307
+# throw into CATCH. Both branches must therefore grade the status code.
+function Grade-ApexRedirect([int]$code, $loc) {
+    if ($code -eq 301 -or $code -eq 308) {
+        Ok ($code.ToString() + '  apex -> ' + $loc + '  (permanent)')
+    } elseif ($code -eq 302 -or $code -eq 307) {
+        Bad ($code.ToString() + '  apex -> ' + $loc + '  TEMPORARY redirect')
+        Info 'Google treats this as temporary and may keep indexing the apex'
+        Info 'separately instead of consolidating on www. Fix in the Vercel'
+        Info 'dashboard: Project > Settings > Domains > signalai.agency,'
+        Info 'set the redirect to www as Permanent (308).'
+    } else {
+        Bad ('apex did NOT redirect (got ' + $code + ')')
+    }
+}
 try {
     $r = Invoke-WebRequest -Uri "https://signalai.agency/?$bust" -Method Head -MaximumRedirection 0 -UseBasicParsing -ErrorAction Stop
-    Bad ('apex did NOT redirect (got ' + [int]$r.StatusCode + ')')
+    Grade-ApexRedirect ([int]$r.StatusCode) $r.Headers['Location']
 } catch {
     $resp = $_.Exception.Response
     if (-not $resp) { Bad 'apex probe failed'; }
     else {
-        $code = [int]$resp.StatusCode
-        $loc  = $resp.Headers['Location']
-        if ($code -eq 301 -or $code -eq 308) {
-            Ok ($code.ToString() + '  apex -> ' + $loc + '  (permanent)')
-        } elseif ($code -eq 302 -or $code -eq 307) {
-            Bad ($code.ToString() + '  apex -> ' + $loc + '  TEMPORARY redirect')
-            Info 'Google treats this as temporary and may keep indexing the apex'
-            Info 'separately instead of consolidating on www. Fix in the Vercel'
-            Info 'dashboard: Project > Settings > Domains > signalai.agency,'
-            Info 'set the redirect to www as Permanent (308).'
-        } else {
-            Bad ($code.ToString() + '  apex')
-        }
+        Grade-ApexRedirect ([int]$resp.StatusCode) $resp.Headers['Location']
     }
 }
 
@@ -269,28 +273,42 @@ try {
     Bad 'could not fetch the live sitemap'
 }
 
+# --------------------------------------------------------------- INDEXNOW ---
+# Bing's index feeds ChatGPT search. IndexNow tells Bing (and Yandex, Seznam)
+# about every URL in one POST the moment a deploy lands, instead of waiting
+# for a crawl. Informational only - a failed ping never fails the ship.
+Head 'IndexNow'
+$inKey = '15bad1c9f33403868009939f18dbcb89'
+try {
+    $locs = @(Select-String -Path 'sitemap.xml' -Pattern '<loc>([^<]+)</loc>' -AllMatches |
+        ForEach-Object { $_.Matches } | ForEach-Object { $_.Groups[1].Value })
+    $body = @{
+        host        = 'www.signalai.agency'
+        key         = $inKey
+        keyLocation = "$CANON/$inKey.txt"
+        urlList     = $locs
+    } | ConvertTo-Json
+    $null = Invoke-RestMethod -Uri 'https://api.indexnow.org/indexnow' -Method Post `
+        -ContentType 'application/json; charset=utf-8' -Body $body -TimeoutSec 30
+    Ok ("IndexNow pinged for " + $locs.Count + " urls")
+} catch {
+    Info ('IndexNow ping failed (non-fatal): ' + $_.Exception.Message)
+}
+
 # ------------------------------------------------------------------- NEXT ---
 Head 'Next'
 Write-Host ""
-Write-Host "  1. Search Console -> Sitemaps -> resubmit $CANON/sitemap.xml"
-Write-Host "     Google last read it 23 May. Resubmitting forces a re-crawl."
-Write-Host ""
-Write-Host "  2. Search Console -> URL Inspection -> $CANON/ -> Request Indexing"
-Write-Host ""
-Write-Host "  3. Backlinks. Four form fields, today. You currently have zero."
+Write-Host "  1. Backlinks. Two form fields, today. GSC still shows ZERO external links."
 Write-Host "       LinkedIn company page website field -> $CANON"
 Write-Host "       Clutch profile website field        -> $CANON"
-Write-Host "       GitHub profile bio                  -> $CANON"
-Write-Host "       'Designed by Signal' footer credit on both client sites"
 Write-Host ""
-Write-Host "  4. GBP appeal: support.google.com/business/workflow/13569690"
-Write-Host "     Profile is eligibility-clean. Attach EIN letter + a utility bill."
+Write-Host "  2. GBP appeal path: DBA filing at Kings County Clerk -> EIN letter ->"
+Write-Host "     appeal at support.google.com/business/workflow/13569690"
 Write-Host ""
-Write-Host "  5. Cleanup once you are happy:"
+Write-Host "  3. Tell Claude the deploy is live - it verifies the pages and spends"
+Write-Host "     the day's Search Console indexing quota (homepage + newest posts)."
+Write-Host ""
+Write-Host "  4. Cleanup once you are happy:"
 Write-Host "       Remove-Item -Recurse $SITE\_quarantine-2026-08-16"
 Write-Host "       Remove-Item -Recurse $SITE\_to_delete_stale"
-Write-Host ""
-Write-Host "  6. Resume the machine:"
-Write-Host "       Remove-Item $MACHINE\PAUSED"
-Write-Host "       & '$PY' '$MACHINE\auto_write.py' --count 1 --no-deploy"
-Write-Host ""
+Write-Host "       Remove-Item $SITE\commit-round*.ps1, $SITE\commit-and-ship.ps1"

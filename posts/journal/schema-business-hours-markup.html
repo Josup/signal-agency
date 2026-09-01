@@ -174,7 +174,7 @@
 }
 </code></pre>
 <p>Opening and closing at <code>00:00</code> on the same date signals a full-day closure. This matches Google's own GBP special hours behavior.</p>
-<p>Nostrand Optical in Crown Heights runs adjusted hours on Jewish holidays. Their schema includes date-specific override blocks that correspond exactly to the closures in their GBP. When we added that alignment on launch, their hours appeared correctly in Google's rich result preview within 48 hours. No ambiguity, no "hours may vary" caveat in the AI response.</p>
+<p><a href="nostrand-optical-zero-to-rich-results.html">Nostrand Optical</a> in Crown Heights runs adjusted hours on Jewish holidays. Their schema includes date-specific override blocks that correspond exactly to the closures in their GBP. When we added that alignment on launch, their hours appeared correctly in Google's rich result preview within 48 hours. No ambiguity, no "hours may vary" caveat in the AI response.</p>
 <h2>Validating Your Markup Before It Goes Live</h2>
 <p>Two tools catch errors before they cost you citations.</p>
 <p>Google's Rich Results Test at search.google.com/test/rich-results reads your URL or raw JSON and shows exactly what structured data Google can parse. Run it against your homepage and any page that contains your hours.</p>
@@ -187,7 +187,7 @@
 </ul>
 <p>We run a free 15-minute structured data audit that checks your hours markup, your LocalBusiness block, and six other schema types that affect AI citation rates. Book one at <a href="https://signalai.agency/#audit">signalai.agency/#audit</a>.</p>
 <h2>What Happens When You Get It Right</h2>
-<p>Brooklyn BJJ Lessons in Williamsburg had hours listed only in their GBP when we first audited the site. No schema, no machine-readable hours on the page. After adding a complete <code>openingHoursSpecification</code> block alongside their LocalBusiness schema, their class schedule started appearing in structured form in Google's knowledge panel within two weeks.</p>
+<p><a href="brooklyn-bjj-lessons-chatgpt-citation-41-days.html">Brooklyn BJJ Lessons</a> in Williamsburg had hours listed only in their GBP when we first audited the site. No schema, no machine-readable hours on the page. After adding a complete <code>openingHoursSpecification</code> block alongside their LocalBusiness schema, their class schedule started appearing in structured form in Google's knowledge panel within two weeks.</p>
 <p>More importantly, Perplexity began surfacing their hours accurately when users asked about jiu-jitsu classes in Williamsburg. Before the markup, Perplexity was either omitting hours entirely or pulling inconsistent data from a third-party directory. After, it pulled directly from their site.</p>
 <p>The mechanism is simple. AI systems prefer authoritative, machine-readable sources. Your own website, marked up correctly, outranks a Yelp page that scraped your hours six months ago.</p>
 <h2>What This Means for Brooklyn Independent Businesses</h2>

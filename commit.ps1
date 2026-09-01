@@ -116,8 +116,10 @@ foreach ($r in $repos) {
     # it to a native command, so `git commit -m $multiline` reaches git as dozens
     # of words and every one after the first is treated as a pathspec. Write the
     # message to a file and use -F.
+    # Set-Content -Encoding UTF8 writes a BOM in Windows PowerShell 5.1, and git
+    # takes it as the first character of the subject line. Write without one.
     $msgFile = Join-Path ([System.IO.Path]::GetTempPath()) ("signal-commit-" + [Guid]::NewGuid().ToString('N') + ".txt")
-    Set-Content -Path $msgFile -Value $r.Msg -Encoding UTF8
+    [System.IO.File]::WriteAllText($msgFile, $r.Msg, (New-Object System.Text.UTF8Encoding($false)))
     git commit -F $msgFile
     $commitCode = $LASTEXITCODE
     Remove-Item $msgFile -Force -ErrorAction SilentlyContinue

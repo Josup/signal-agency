@@ -2,7 +2,7 @@
 title: "How to Write a Neighborhood Landing Page That Gets Cited by AI"
 date: "2026-04-26"
 slug: neighborhood-landing-page-ai-citations
-description: "AI search cites neighborhood landing pages that answer specific local queries with named entities, structured facts, and retrieval-grade content. Here is the exact playbook."
+description: "AI search cites neighbourhood pages that answer local queries with named entities, structured facts and retrieval-grade content. Here is the playbook."
 category: "Playbook"
 subcategory: "Signal"
 read_time: 6

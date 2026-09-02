@@ -2,7 +2,7 @@
 title: "Four AI Engines, One Local Query: Why the Answers Don't Match"
 date: "2026-04-26"
 slug: same-prompt-four-ai-engines-spread
-description: "ChatGPT, Perplexity, Google AI Overviews and Gemini answer the same local question from different data. Here is how each one decides, and what that changes about your site."
+description: "ChatGPT, Perplexity, Google AI Overviews and Gemini answer the same local question from different data. Here is how each one decides, and what that changes."
 category: "Field Notes"
 subcategory: "Signal"
 read_time: 6

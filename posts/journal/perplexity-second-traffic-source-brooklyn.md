@@ -2,7 +2,7 @@
 title: "Perplexity Is Becoming a Real Traffic Source for Brooklyn Businesses"
 date: "2026-04-26"
 slug: perplexity-second-traffic-source-brooklyn
-description: "Perplexity has grown from near-zero to a meaningful referral source for Brooklyn businesses that rank in AI answers. Here's what the traffic looks like and why it converts differently."
+description: "Perplexity has grown into a real referral source for Brooklyn businesses that rank in AI answers. Here is what that traffic looks like and why it converts."
 category: "Field Notes"
 subcategory: "Signal"
 read_time: 6

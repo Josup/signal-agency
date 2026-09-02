@@ -173,7 +173,14 @@ if ($needBundle) {
 }
 
 Write-Host '  deploying...'
+# Vercel's first call in a session has twice returned a transient 'Not authorized'
+# (1 Sep, 2 Sep) and succeeded on immediate retry. One automatic retry, then fail.
 npx vercel --prod --yes
+if ($LASTEXITCODE -ne 0) {
+    Info 'vercel failed once - retrying in 8s (transient auth blip seen before)'
+    Start-Sleep -Seconds 8
+    npx vercel --prod --yes
+}
 if ($LASTEXITCODE -ne 0) {
     Bad "vercel exited $LASTEXITCODE - deploy did NOT succeed"
     exit 1

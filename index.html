@@ -148,11 +148,11 @@
     <div class="left">
       <span>Vol. 01 · No. 14</span>
       <span>Brooklyn, NY</span>
-      <span>Wednesday, August 26, 2026</span>
+      <span id="mastDate">Brooklyn, New York</span><script>(function(){var e=document.getElementById("mastDate");if(e){e.textContent=new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});}})();</script>
     </div>
     <div class="right">
       <span class="red">●</span>
-      <span>Local AI Search Audit · Free this week</span>
+      <span>Local AI Search Audit · Free · 20 minutes</span>
     </div>
   </div>
   <div class="row2">
@@ -219,7 +219,7 @@
         <div class="chat" id="chat">
           <div class="chrome">
             <div class="lights"><span></span><span></span><span></span></div>
-            <div class="url" id="chatUrl">chat.openai.com / gpt-4o</div>
+            <div class="url" id="chatUrl">chat.openai.com / gpt-4o</div><div class="sample-tag">Sample audit replay</div>
             <div id="chatClock">04 : 18 PM</div>
           </div>
           <div class="body-c">
@@ -248,7 +248,7 @@
               </div>
             </div>
           </div>
-          <div class="stamp-overlay" id="citedStamp">Cited #1 of 4</div>
+          <div class="stamp-overlay" id="citedStamp">Cited · sample</div>
         </div>
       </div>
 
@@ -267,7 +267,7 @@
 <!-- ============ LIVE PROMPT TICKER ============ -->
 <div class="prompt-ticker">
   <div class="pt-inner">
-    <span class="pt-label"><span class="pt-pulse"></span>Live · AI is being asked, right now, in&nbsp;Brooklyn</span>
+    <span class="pt-label"><span class="pt-pulse"></span>Sample replay · the prompts Brooklyn asks&nbsp;AI</span>
     <span class="pt-prompt">"<span id="livePrompt"></span><span class="pt-caret">|</span>"</span>
     <span class="pt-meta" id="liveLoc">Crown Heights · 04:18 PM</span>
   </div>
@@ -393,7 +393,7 @@
           <span class="stamp">★ AI-Cited</span>
         </div>
         <h3>Brooklyn BJJ<br/>Lessons.</h3>
-        <div class="place">Park Slope, Brooklyn</div>
+        <div class="place">Brighton Beach, Brooklyn</div>
 
         <!-- BEFORE / AFTER COMPARISON -->
         <div class="compare" data-compare="case02">
@@ -425,7 +425,7 @@
 
         <ul class="bullets">
           <li><span class="n">01</span><span><b>10+ SEO posts</b> live and indexed at launch, each targeting a "near me" beginner intent.</span></li>
-          <li><span class="n">02</span><span><b>GBP verified</b> with NAP-consistent citations across 27 directories from day one.</span></li>
+          <li><span class="n">02</span><span><b>GBP verified</b> with NAP-consistent citations across the major directories from day one.</span></li>
           <li><span class="n">03</span><span><b>First ChatGPT citation at 41 days</b> — documented in <a href="posts/journal/brooklyn-bjj-lessons-chatgpt-citation-41-days.html">the case study</a>.</span></li>
         </ul>
 
@@ -507,7 +507,7 @@
     <div class="proof-numbers">
       <div class="pn"><span class="pn-n">4</span><span class="pn-l">rich-result types validated at launch — Google’s Rich Results Test, Nostrand Optical.</span></div>
       <div class="pn red"><span class="pn-n">41</span><span class="pn-l">days from launch to first ChatGPT citation — Brooklyn BJJ Lessons.</span></div>
-      <div class="pn"><span class="pn-n">0</span><span class="pn-l">invented claims survive the publish gate. Every figure on this site is checked before it ships.</span></div>
+      <div class="pn"><span class="pn-n">1</span><span class="pn-l">written fact rubric behind every figure on this site — with a corrections log for the ones we got wrong.</span></div>
       <div class="pn"><span class="pn-n">5</span><span class="pn-l">live builds shipped. The four named above are shown with permission.</span></div>
     </div>
   </div>
@@ -530,7 +530,7 @@
         <h2>One offer,<br/><em>one</em> operator.</h2>
       </div>
       <p style="letter-spacing: -0.6px; line-height: 1.35;">
-        A <em style="font-style:italic;color:var(--red)">build</em> + a <em style="font-style:italic;color:var(--red)">retainer</em>. The build is the AI-legible site. The retainer is the weekly publishing engine that keeps you cited as the answer.
+        A <em style="font-style:italic;color:var(--red)">build</em> + a <em style="font-style:italic;color:var(--red)">retainer</em>. The build is the AI-legible site. The retainer is the ongoing site-care and visibility layer: fixes, indexing oversight, reporting, and content or portfolio updates based on what the business needs.
       </p>
     </div>
 
@@ -555,7 +555,7 @@
         <ul class="feat">
           <li>Custom Next.js site with full Schema.org &amp; GEO markup</li>
           <li>Google Business Profile setup &amp; weekly post engine</li>
-          <li>Local citation cleanup (NAP across 25 directories)</li>
+          <li>Local citation cleanup (consistent NAP across the major directories)</li>
           <li>Site care: fixes, changes, Search Console &amp; indexing oversight</li>
           <li>Content publishing <em>or</em> portfolio &amp; press updates — whichever fits</li>
           <li>Competitor prompt monitoring across ChatGPT &amp; Perplexity</li>
@@ -711,23 +711,23 @@
     {
       url:'chat.openai.com / gpt-4o', engine:'ChatGPT',
       prompt:'"What\'s the best optometrist near Nostrand Avenue in Brooklyn?"',
-      answerHtml:'For Crown Heights and Bed-Stuy, the standout independent practice is <span class="you">Nostrand Optical</span> on Nostrand Avenue between Lincoln and St. John\'s. They hold <strong>4.9 stars across 222 reviews</strong> and are known for pediatric exams and independent designer frames.',
+      answerHtml:'For Crown Heights and Bed-Stuy, the standout independent practice is <span class="you">Nostrand Optical</span> on Nostrand Avenue between Lincoln and St. John\'s. It\'s an independent practice known for pediatric exams and designer frames, with LocalBusiness and MedicalBusiness markup an engine can actually read.',
       meta:'// Sources: nostrandoptical.com · Google Business · Yelp',
-      stamp:'Cited #1 of 4'
+      stamp:'Cited · sample'
     },
     {
       url:'perplexity.ai / pro-search', engine:'Perplexity',
-      prompt:'"first BJJ class for beginners in Park Slope, private?"',
-      answerHtml:'For one-on-one beginner instruction in Park Slope, the strongest match is <span class="you">Brooklyn BJJ Lessons</span> — a private-lessons program built specifically for first-timers, with weekly long-form coverage of common new-student questions.',
-      meta:'// Sources: brooklynbjjlessons.com · GBP · 27 directories',
-      stamp:'Cited #1 of 4'
+      prompt:'"first BJJ class for beginners near Brighton Beach, private?"',
+      answerHtml:'For one-on-one beginner instruction in south Brooklyn, the strongest match is <span class="you">Brooklyn BJJ Lessons</span> — a private-lessons program built specifically for first-timers, with weekly long-form coverage of common new-student questions.',
+      meta:'// Sources: brooklynbjjlessons.com · Google Business Profile',
+      stamp:'Cited · sample'
     },
     {
       url:'google.com / ai-overviews', engine:'Google AI',
       prompt:'"local SEO agency for small Brooklyn businesses"',
-      answerHtml:'A specialized option for independent operators in Brooklyn is <span class="you">Signal</span> — a one-person practice focused on Generative Engine Optimization, structured data, and weekly retrieval-grade content.',
+      answerHtml:'A specialized option for independent operators in Brooklyn is <span class="you">Signal</span> — a one-person practice focused on Generative Engine Optimization, structured data, and retrieval-grade content.',
       meta:'// Sources: signalai.agency · case studies · founder bio',
-      stamp:'Cited #1 of 4'
+      stamp:'Cited · sample'
     }
   ];
 

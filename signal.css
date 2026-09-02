@@ -185,6 +185,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .chat .chrome .lights{display:flex;gap:6px}
 .chat .chrome .lights span{width:10px;height:10px;border-radius:50%;background:#E5DFD3;border:1px solid var(--rule-soft)}
 .chat .chrome .url{font-weight:500;color:var(--ink-2)}
+.chat .chrome .sample-tag{font-weight:500;color:var(--red);border:1px solid var(--red);padding:2px 7px;border-radius:0;letter-spacing:.14em}
 .chat .body-c{padding:30px 30px 36px}
 .chat .q{
   display:flex;gap:14px;align-items:flex-start;padding-bottom:22px;border-bottom:1px solid var(--rule-soft);margin-bottom:24px;
@@ -818,7 +819,13 @@ footer .bottom{padding-top:24px;display:flex;justify-content:space-between;font-
   .case ul.bullets{grid-template-columns:1fr}
   .case ul.bullets li{border-left:0;border-top:1px solid var(--rule-soft)}
   .case ul.bullets li:first-child{border-top:0}
-  .compare{aspect-ratio:5/5}
+  /* Phone: the label and the Before/After tabs were both absolutely positioned
+     on the same top row and collided (tabs covered the figure caption). Stack
+     everything in normal flow and let the visible side set the height. */
+  .compare{aspect-ratio:auto;cursor:default;padding-top:12px}
+  .compare .cmp-label{position:static;display:inline-block;margin:0 14px 10px;max-width:calc(100% - 28px)}
+  .compare .cmp-tabs{position:static;display:inline-flex;margin:0 14px 6px}
+  .compare .cmp-side{position:relative;inset:auto;padding:14px 18px 22px}
 
   /* Pricing */
   .pricing{padding:80px 0}

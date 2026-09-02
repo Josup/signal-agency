@@ -1,8 +1,8 @@
 ---
-title: "We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread"
+title: "Four AI Engines, One Local Query: Why the Answers Don't Match"
 date: "2026-04-26"
 slug: same-prompt-four-ai-engines-spread
-description: "Signal tested identical local search prompts across four AI engines. The citation sources, confidence levels, and named businesses differed sharply. Here's what we found."
+description: "ChatGPT, Perplexity, Google AI Overviews and Gemini answer the same local question from different data. Here is how each one decides, and what that changes about your site."
 category: "Field Notes"
 subcategory: "Signal"
 read_time: 6

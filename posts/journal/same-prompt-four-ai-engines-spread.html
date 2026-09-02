@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread — Signal Journal</title>
-<meta name="description" content="Signal tested identical local search prompts across four AI engines. The citation sources, confidence levels, and named businesses differed sharply. Here's what we found.">
+<title>Four AI Engines, One Local Query: Why the Answers Don't Match — Signal Journal</title>
+<meta name="description" content="ChatGPT, Perplexity, Google AI Overviews and Gemini answer the same local question from different data. Here is how each one decides, and what that changes about your site.">
 <link rel="canonical" href="https://www.signalai.agency/posts/journal/same-prompt-four-ai-engines-spread.html">
-<meta property="og:title" content="We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread">
-<meta property="og:description" content="Signal tested identical local search prompts across four AI engines. The citation sources, confidence levels, and named businesses differed sharply. Here's what we found.">
+<meta property="og:title" content="Four AI Engines, One Local Query: Why the Answers Don't Match">
+<meta property="og:description" content="ChatGPT, Perplexity, Google AI Overviews and Gemini answer the same local question from different data. Here is how each one decides, and what that changes about your site.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.signalai.agency/posts/journal/same-prompt-four-ai-engines-spread.html">
-<meta name="twitter:title" content="We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread">
-<meta name="twitter:description" content="Signal tested identical local search prompts across four AI engines. The citation sources, confidence levels, and named businesses differed sharply. Here's what we found.">
+<meta name="twitter:title" content="Four AI Engines, One Local Query: Why the Answers Don't Match">
+<meta name="twitter:description" content="ChatGPT, Perplexity, Google AI Overviews and Gemini answer the same local question from different data. Here is how each one decides, and what that changes about your site.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "We Ran the Same Prompt on ChatGPT, Perplexity, Google AI, and Gemini: Here Is the Spread",
-  "description": "Signal tested identical local search prompts across four AI engines. The citation sources, confidence levels, and named businesses differed sharply. Here's what we found.",
+  "headline": "Four AI Engines, One Local Query: Why the Answers Don't Match",
+  "description": "ChatGPT, Perplexity, Google AI Overviews and Gemini answer the same local question from different data. Here is how each one decides, and what that changes about your site.",
   "url": "https://signalai.agency/posts/journal/same-prompt-four-ai-engines-spread.html",
   "datePublished": "2026-04-26",
   "dateModified": "2026-04-26",
@@ -131,8 +131,8 @@
   <div class="wrap">
     <a href="../../journal.html" class="back-link">← Back to Journal</a>
     <div class="label">Field Notes · Apr 26, 2026</div>
-    <h1>Same Prompt. <em>Four Engines.</em> Here Is the Spread.</h1>
-    <p class="dek">Signal tested identical local search prompts across ChatGPT, Perplexity, Google AI Overviews, and Gemini. The citation sources, confidence levels, and named businesses differed sharply.</p>
+    <h1>Four Engines. <em>One Local Query.</em> Four Different Answers.</h1>
+    <p class="dek">ChatGPT, Perplexity, Google AI Overviews and Gemini answer the same local question from different data. Here is how each one decides, and what that changes about your site.</p>
     <div class="post-byline">
       <span class="cat">Field Notes</span>
       <span>7 min read</span>
@@ -145,17 +145,17 @@
   <div class="wrap">
     <div class="post-body">
 
-      <p>Every time I run a new client audit, I run the same 10 prompts across all four major AI engines before we start any work. Same query, same phrasing, same device and browser profile with no history. I run each prompt three times per engine to filter out answer variability. Then I document exactly which businesses are named, what source they're cited from, and how the response is structured.</p>
+      <p>Every time I run a new client audit, I run the same set of prompts across all four major AI engines before we start any work. Same query, same phrasing, same device and browser profile with no history, and more than one run per engine, because these answers move. Then I write down which businesses are named, what source each name is cited from, and how the response is put together.</p>
 
       <p>The spread is almost always striking. The same prompt — "best optometrist in Crown Heights" or "private BJJ lessons Park Slope" — returns materially different answers on different engines, names different businesses, and draws on different underlying data sources. Understanding that spread is the entire job of AI search optimization. You can't optimize for one engine and expect the results to carry over. The four systems are making fundamentally different decisions.</p>
 
-      <h2>The <em>Methodology</em></h2>
+      <h2>How I <em>Run It</em></h2>
 
-      <p>Ten prompts, all Brooklyn local business queries. Each formatted as a natural language question, not a keyword string. The prompts covered optometry (Crown Heights), BJJ and martial arts (Park Slope, Gowanus), general fitness (Williamsburg, Prospect Heights), home services (Bushwick, Bed-Stuy), and a restaurant query (Carroll Gardens) included as a category where AI local search is known to perform differently.</p>
+      <p>Every prompt is a Brooklyn local business query, written as a natural-language question rather than a keyword string — the way a customer actually types it. I spread them across categories, because AI local search behaves differently in a category with heavy consumer review coverage (restaurants, fitness) than in one without it (optometry, home services), and a business in a thin category needs a different plan than one in a crowded one.</p>
 
-      <p>Each prompt was run three times per engine over two days, at similar times of day. I took the modal result — the answer that appeared in at least two of three runs — as the representative output. Where answers varied significantly across runs, I noted that instability separately, because answer instability is itself a data point about how confidently that engine knows the relevant businesses in that category.</p>
+      <p>Repeat runs matter more than people expect. Ask the same engine the same question twice and you can get two different lists. Where the answer is unstable, that instability is the finding: it means the engine does not confidently know who the right businesses are in that category, which is exactly the situation a well-structured business can walk into and win.</p>
 
-      <p>The engines tested: ChatGPT (GPT-4o with search enabled), Perplexity (default mode with live web search), Google AI Overviews (triggered via Chrome, logged out), and Gemini (Gemini 1.5 Pro via gemini.google.com).</p>
+      <p>Four surfaces, always logged out: ChatGPT with search enabled, Perplexity in its default live-web mode, Google AI Overviews triggered in a clean Chrome profile, and Gemini. Model versions change every few months; the retrieval behaviour described below has been steadier than the version numbers.</p>
 
       <h2>Why Each Engine <em>Cites Differently</em></h2>
 
@@ -165,7 +165,7 @@
       <p>When ChatGPT search is enabled, it's running a Bing web search and synthesizing results with its training data. This means its local answers have two layers: what the model learned during training (which has a knowledge cutoff and reflects whatever sources made it into the training corpus) and what Bing returns for the live query. ChatGPT tends to be more confident naming businesses with strong Bing-indexed web presences and significant review volume on platforms Bing indexes well. It also shows a slight bias toward businesses that appear in Yelp results, since Yelp content is prominent in Bing's local results.</p>
 
       <h3>Perplexity: Live web retrieval</h3>
-      <p>Perplexity runs a live web search for every query, then synthesizes cited sources into a response. It shows its sources explicitly — typically 4 to 8 citations per answer. This is the most transparent engine to analyze because you can see exactly which pages it's drawing from. Perplexity tends to favor newer, clearly structured pages over older authoritative ones, because its retrieval model is asking "which page best answers this specific question right now?" rather than "which page has the most authority overall?" It cites Google Business Profile pages, individual business websites, and local directories, in roughly that order of frequency.</p>
+      <p>Perplexity runs a live web search for every query, then synthesizes cited sources into a response. It shows its sources explicitly, usually several per answer. This is the most transparent engine to analyze because you can see exactly which pages it's drawing from. Perplexity tends to favor newer, clearly structured pages over older authoritative ones, because its retrieval model is asking "which page best answers this specific question right now?" rather than "which page has the most authority overall?" It cites Google Business Profile pages, individual business websites, and local directories, in roughly that order of frequency.</p>
 
       <h3>Google AI Overviews: The search index</h3>
       <p>Google AI Overviews runs directly on Google's search index, which means it reflects Google's own ranking signals — PageRank, E-E-A-T, structured data, local pack prominence. Businesses that rank in the local 3-pack or have strong organic rankings tend to appear in AI Overviews for the same queries. This makes Google AI Overviews the most path-dependent of the four: your existing Google SEO work carries over more directly here than anywhere else. It also means older, more established businesses tend to perform better in AI Overviews than in Perplexity or ChatGPT, simply because their legacy signals are baked into the index.</p>
@@ -173,47 +173,29 @@
       <h3>Gemini: Google Knowledge Graph</h3>
       <p>Gemini's local search answers lean heavily on the Google Knowledge Graph and Google Business Profile data. It tends to be more conservative than the other three — more likely to give a generic answer ("here are some well-reviewed optometrists in Crown Heights") with a list format populated from GBP data than to give a confident single recommendation. When Gemini does name a specific business confidently, that business typically has a well-completed GBP profile with strong review signals. Gemini is the engine most sensitive to GBP health, in my experience.</p>
 
-      <h2>The Results: <em>Crown Heights Optometry</em></h2>
+      <h2>Where the Engines <em>Split</em></h2>
 
-      <p>The prompt: "Who is the best optometrist in Crown Heights, Brooklyn? I need someone who takes my insurance and has good reviews."</p>
+      <p>The split shows up most clearly on a question with intent baked into it — "who is the best optometrist in Crown Heights who takes my insurance", or "where can I take my first BJJ class in Park Slope as a complete beginner".</p>
 
-      <p>This is the category where I have the most data, because <a href="nostrand-optical-zero-to-rich-results.html">Nostrand Optical</a> — a Signal client — is one of the businesses in this competitive set.</p>
-
-      <ul>
-        <li><strong>ChatGPT:</strong> Named three businesses. Nostrand Optical appeared first in two of three runs. Citations drew from Yelp, Healthgrades, and the practice's own website. The response included insurance information pulled from the site's structured content.</li>
-        <li><strong>Perplexity:</strong> Named two businesses with explicit citations. Nostrand Optical cited first in all three runs, with source links to the GBP listing and the practice's service page. The cited excerpt matched the declarative entity copy on the homepage almost verbatim.</li>
-        <li><strong>Google AI Overviews:</strong> Showed a local pack-style answer with 3 businesses. Nostrand Optical appeared, but not first — a longer-established practice with more Google reviews ranked above it. The AI Overview reflected Google's organic ranking signals closely.</li>
-        <li><strong>Gemini:</strong> Gave a list of 4 businesses populated from GBP data. Nostrand Optical appeared third. Response was less specific about any individual practice, more of a formatted directory output.</li>
-      </ul>
-
-      <div class="callout">
-        <strong>Key observation</strong>
-        <p>The same business appeared in all four engines, but at different positions and with different citation confidence. Optimizing for Perplexity and ChatGPT required different levers than optimizing for Google AI Overviews. Getting to first in all four requires working all the layers simultaneously.</p>
-      </div>
-
-      <h2>The Results: <em>Park Slope BJJ</em></h2>
-
-      <p>The prompt: "Where can I take my first BJJ class in Park Slope or nearby? I'm a complete beginner, adult."</p>
-
-      <ul>
-        <li><strong>ChatGPT:</strong> Named one studio and one private instructor. Brooklyn BJJ Lessons appeared as the private instruction option in all three runs. The response included a sentence matching the instructor bio on the site and noted the beginner-specific framing.</li>
-        <li><strong>Perplexity:</strong> Named Brooklyn BJJ Lessons first in two of three runs. Cited the site's FAQ page directly — specifically the page answering "what should I expect at my first BJJ class." This is exactly the kind of content that Perplexity's retrieval model favors.</li>
-        <li><strong>Google AI Overviews:</strong> Named two established BJJ academies with physical studio locations, neither of which was Brooklyn BJJ Lessons (a private instructor without a storefront). The Overviews answer tracked closely with the local 3-pack, which skews toward businesses with a fixed address, longer review history, and more backlinks. A private instruction business operates at a structural disadvantage here.</li>
-        <li><strong>Gemini:</strong> Similar to Google AI Overviews — listed academies with GBP listings and physical addresses. Brooklyn BJJ Lessons appeared in one of three Gemini runs but not consistently.</li>
-      </ul>
-
-      <p>This result illustrates an important split: Perplexity and ChatGPT were able to understand and respond to the "complete beginner, private lesson" framing in the query and match it to the right business. Google AI Overviews and Gemini defaulted to the businesses with the strongest location-based signals, which aren't necessarily the best answer to the actual question asked.</p>
+      <p>Perplexity and ChatGPT tend to read the qualifier. Asked for a beginner's first class, they can match that to a business whose site actually answers the beginner question, even a small one. Google AI Overviews and Gemini tend to fall back on the businesses with the strongest location signals — a fixed address, a long review history, backlinks — which is to say the businesses Google already ranks.</p>
 
       <blockquote>Perplexity is answering the question. Google is ranking the businesses it already knows best for the category.</blockquote>
 
-      <h2>Which Businesses Appeared in <em>All Four Engines</em></h2>
+      <p>That difference decides who a small business is visible to. <a href="brooklyn-bjj-lessons-chatgpt-citation-41-days.html">Brooklyn BJJ Lessons</a> is private instruction with no storefront, which is a structural disadvantage on any surface that leans on the local pack — and it was cited first in ChatGPT for "BJJ private lessons Brooklyn" 41 days after launch, because the site answered the question being asked. <a href="nostrand-optical-zero-to-rich-results.html">Nostrand Optical</a> is the same story from the other direction: an independent practice in a category with thin local coverage, made citable by structure rather than by review volume.</p>
 
-      <p>Across the 10 prompts, only a small number of businesses appeared in all four engines for the same query. Looking at the patterns, these businesses shared a specific combination of signals:</p>
+      <div class="callout">
+        <strong>Key observation</strong>
+        <p>A business can be first on one engine and absent from another on the same day, for the same query. Optimising for Perplexity and ChatGPT pulls different levers than optimising for Google AI Overviews. Being found in all four means working all the layers at once.</p>
+      </div>
+
+      <h2>What the Businesses in <em>All Four Engines</em> Have in Common</h2>
+
+      <p>Only a small number of businesses turn up in all four engines for the same query. The ones that do tend to share the same combination of signals:</p>
 
       <ul>
-        <li>A well-completed Google Business Profile with 50+ reviews and a strong star rating</li>
+        <li>A Google Business Profile filled in completely, with a genuine review history behind it</li>
         <li>A website with clear entity prose, structured data markup, and service-specific pages</li>
-        <li>Listings in at least 15–20 directories with consistent NAP (name, address, phone)</li>
+        <li>Directory listings that agree with each other on name, address and phone</li>
         <li>Some form of external citation — press mentions, blog features, or directory reviews beyond Yelp and Google</li>
       </ul>
 
@@ -237,10 +219,10 @@
 
       <div class="callout">
         <strong>The audit I run for every new client</strong>
-        <p>This 10-prompt, four-engine test is the first thing I do for any new client. It takes about 90 minutes to run correctly, document, and analyze. If you want to see where your business stands across all four engines — and where your competitors are filling the gaps you're leaving open — that's exactly what the free 20-minute audit covers, in live screen-share format.</p>
+        <p>This four-engine test is the first thing I do for any new client. It takes a couple of hours to run properly, write down and read. If you want to see where your business stands across all four engines — and where your competitors are filling the gaps you're leaving open — that's exactly what the free 20-minute audit covers, in live screen-share format.</p>
       </div>
 
-      <p>The bottom line from running this test across dozens of Brooklyn businesses: you should assume you are invisible in at least one of the four engines right now, regardless of how strong your Google presence is. The engines are drawing on different data, asking different questions, and reaching different conclusions about who the right answer is for any given local query. That's not a problem you can solve with one fix. It's a problem you solve by building presence across all the layers those engines draw from.</p>
+      <p>The bottom line from running this before every build: you should assume you are invisible in at least one of the four engines right now, regardless of how strong your Google presence is. The engines are drawing on different data, asking different questions, and reaching different conclusions about who the right answer is for any given local query. That's not a problem you can solve with one fix. It's a problem you solve by building presence across all the layers those engines draw from.</p>
 
     </div>
   </div>

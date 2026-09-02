@@ -2,7 +2,7 @@
 title: "Local Search Prompt Vocabulary Changed Shape in 2026"
 date: "2026-04-26"
 slug: local-search-prompt-vocabulary-2026
-description: "Local search prompts shifted from location triggers to intent and quality signals in 2026. Signal tracked 300+ queries across Brooklyn clients to map the change."
+description: "Local search prompts shifted from location triggers to intent and quality signals. Here is the shape they took, and what it means for the pages you publish."
 category: "Field Notes"
 subcategory: "Signal"
 read_time: 6

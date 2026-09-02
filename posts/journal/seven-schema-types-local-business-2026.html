@@ -146,7 +146,7 @@
   <div class="wrap">
     <div class="post-body">
 
-      <p>When I audit a local business site, I check Schema.org markup within the first five minutes. Not because it's the most important thing — but because it's the fastest signal of whether the site was built with AI retrieval in mind or not. Roughly 85% of Brooklyn small business sites I audit have either no schema markup at all, or only the minimal LocalBusiness block that a Squarespace or Wix template auto-generates with the business name and address and nothing else.</p>
+      <p>When I audit a local business site, I check Schema.org markup within the first five minutes. Not because it's the most important thing — but because it's the fastest signal of whether the site was built with AI retrieval in mind or not. Most Brooklyn small business sites I audit have either no schema markup at all, or only the minimal LocalBusiness block that a Squarespace or Wix template auto-generates with the business name and address and nothing else.</p>
 
       <p>That minimal implementation is better than nothing. But it misses most of the fields that actually matter for AI citation, and it skips six other schema types entirely that have direct influence on whether and how AI engines include your business in their answers.</p>
 
@@ -266,16 +266,16 @@
 
       <p>Most local business sites with reviews don't expose those reviews in Schema markup at all. They exist on Yelp, on Google, on Healthgrades — but not in structured data on the business's own site. That gap means the AI engine can't attribute review data to your site's entity without fetching it from third-party sources, which is less reliable and less often done.</p>
 
-      <p>The fix is straightforward: pull your aggregate review data (total count, average rating) into an AggregateRating block on your homepage and link it to the source. If you have individual reviews you want to highlight, use Review schema with reviewer attribution. Keep the data current — an AggregateRating block showing 4.9 stars from 47 reviews is a concrete confidence signal for AI citation in competitive queries.</p>
+      <p>The fix is straightforward: pull your aggregate review data (total count, average rating) into an AggregateRating block on your homepage and link it to the source. If you have individual reviews you want to highlight, use Review schema with reviewer attribution. Keep the data current — an AggregateRating block carrying your real star average and review count is a concrete confidence signal for AI citation in competitive queries.</p>
 
       <pre>{
   "@context": "https://schema.org",
   "@type": "Optician",
-  "name": "Nostrand Optical",
+  "name": "[Your practice]",
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "84",
+    "ratingValue": "[your rating]",
+    "reviewCount": "[your review count]",
     "bestRating": "5",
     "worstRating": "1"
   }
@@ -292,15 +292,15 @@
       <pre>{
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Marcus Webb",
+  "name": "[Instructor name]",
   "jobTitle": "Brazilian Jiu-Jitsu Instructor",
-  "description": "Marcus Webb is a Brazilian Jiu-Jitsu black belt and private instructor based in Park Slope, Brooklyn, with 14 years of training and 7 years of teaching experience.",
+  "description": "[Instructor name] is a Brazilian Jiu-Jitsu black belt and private instructor in Brooklyn. Describe the belt, the lineage and the years teaching - the specifics are what an engine can cite.",
   "worksFor": {
     "@type": "LocalBusiness",
-    "name": "Brooklyn BJJ Lessons",
-    "url": "https://brooklynbjjlessons.com"
+    "name": "[Your business]",
+    "url": "https://example.com"
   },
-  "url": "https://brooklynbjjlessons.com/about"
+  "url": "https://example.com/about"
 }</pre>
 
       <h2>07. <em>WebSite with SearchAction</em> — Signaling a Retrievable Web Presence</h2>
@@ -326,7 +326,7 @@
 
       <div class="callout">
         <strong>How to check your current schema</strong>
-        <p>Paste your site URL into Google's Rich Results Test (search.google.com/test/rich-results) or Schema.org's validator (validator.schema.org). You'll see every schema block present on your page, any validation errors, and which rich result types you're eligible for. Most local business sites I audit fail on at least 4 of the 7 types listed here. The fix is an afternoon of work, not a month-long project.</p>
+        <p>Paste your site URL into Google's Rich Results Test (search.google.com/test/rich-results) or Schema.org's validator (validator.schema.org). You'll see every schema block present on your page, any validation errors, and which rich result types you're eligible for. Most local business sites I audit are missing more of these seven than they have. The fix is an afternoon of work, not a month-long project.</p>
       </div>
 
       <blockquote>Schema markup is a conversation you're having with AI in a language it understands natively. Most local businesses are staying silent.</blockquote>

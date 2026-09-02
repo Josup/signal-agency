@@ -132,7 +132,7 @@
       <p>Your Google Business Profile hours and your website hours are two separate signals. When they don't match in structured data, AI engines either skip your business or surface the wrong information. The fix is <code>openingHoursSpecification</code> on your LocalBusiness schema block.</p>
 <h2>Why Hours Markup Matters More Than Most Owners Think</h2>
 <p>Google AI Overviews, ChatGPT, and Perplexity all pull operating hours from structured data when it's present. When it's not, they fall back to whatever text appears on the page, your GBP listing, or third-party directories. That fallback chain introduces errors.</p>
-<p>We've audited over 30 Brooklyn business sites in the past eight months. Fewer than 15% had machine-readable hours on their website. The other 85% had hours buried in footer text, an image, or a table that no crawler can reliably parse. Those businesses are invisible to AI search at one of the most important query moments: "is [business] open right now?"</p>
+<p>Machine-readable hours are the exception, not the rule, on the Brooklyn sites I audit. Most have their hours buried in footer text, in an image, or in a table no crawler can reliably parse. Those businesses are invisible to AI search at one of the most important query moments: "is [business] open right now?"</p>
 <p>"Is [business name] open" queries carry high intent. Someone asking that question is ready to walk in. Getting that answer wrong costs a visit.</p>
 <h2>The Difference Between GBP Hours and Schema Hours</h2>
 <p>Your Google Business Profile hours are managed inside Google's ecosystem. Schema.org hours live on your own website. They're not the same thing, and they're not automatically synced.</p>
@@ -174,7 +174,7 @@
 }
 </code></pre>
 <p>Opening and closing at <code>00:00</code> on the same date signals a full-day closure. This matches Google's own GBP special hours behavior.</p>
-<p><a href="nostrand-optical-zero-to-rich-results.html">Nostrand Optical</a> in Crown Heights runs adjusted hours on Jewish holidays. Their schema includes date-specific override blocks that correspond exactly to the closures in their GBP. When we added that alignment on launch, their hours appeared correctly in Google's rich result preview within 48 hours. No ambiguity, no "hours may vary" caveat in the AI response.</p>
+<p><a href="nostrand-optical-zero-to-rich-results.html">Nostrand Optical</a> in Crown Heights runs adjusted hours on Jewish holidays. Their schema includes date-specific override blocks that correspond exactly to the closures in their GBP. Once that alignment was in place, the hours came through correctly in Google's rich result preview. No ambiguity, no "hours may vary" caveat in the AI response.</p>
 <h2>Validating Your Markup Before It Goes Live</h2>
 <p>Two tools catch errors before they cost you citations.</p>
 <p>Google's Rich Results Test at search.google.com/test/rich-results reads your URL or raw JSON and shows exactly what structured data Google can parse. Run it against your homepage and any page that contains your hours.</p>

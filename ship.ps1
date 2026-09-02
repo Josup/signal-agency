@@ -117,6 +117,30 @@ $strays = @(Get-ChildItem -Path 'posts' -Recurse -File -ErrorAction SilentlyCont
     Where-Object { $_.Extension -eq '.html' -and $_.Directory.FullName -ne (Join-Path $SITE 'posts\journal') })
 Check 'no stray html under posts\' ($strays.Count -eq 0) (($strays.FullName) -join '; ')
 
+# ------------------------------------------------------------ CLAIM GATE ---
+# The publish gate only ever saw generated posts. Everything written by hand -
+# the homepage, the journal index, the pre-pipeline articles - shipped ungated,
+# which is how an invented instructor, an unlogged "14 of 18" and a client-count
+# claim all sat live for months (2 Sep 2026 audit). This runs the same claim
+# rules over every page about to deploy.
+Head 'Claim gate (hand-written pages)'
+$claimScript = 'C:\Users\Josh\projects\signal-seo-machine\check_claims.py'
+if (Test-Path $claimScript) {
+    $claimOut = & 'C:\Python314\python.exe' $claimScript --root $PSScriptRoot 2>&1 | Out-String
+    $claimExit = $LASTEXITCODE
+    Write-Host $claimOut.TrimEnd()
+    if ($claimExit -ne 0) {
+        Bad 'a claim rule fired on a page about to deploy'
+        Info 'Fix the sentence, or add a fragment to signal-seo-machine\claims-allow.txt'
+        Info 'with a comment saying why it is cleared. Do not silence it blind.'
+        $script:Failures++
+    } else {
+        Ok 'no claim rules fired on the deployed pages'
+    }
+} else {
+    Info "check_claims.py not found at $claimScript - claim gate skipped"
+}
+
 Write-Host ''
 if ($script:Failures -gt 0) {
     Write-Host ('  ' + $script:Failures + ' check(s) failed.') -ForegroundColor Yellow

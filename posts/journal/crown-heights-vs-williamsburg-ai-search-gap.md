@@ -2,7 +2,7 @@
 title: "Crown Heights vs. Williamsburg: Why the Same Business Ranks Differently in Each Neighborhood"
 date: "2026-04-26"
 slug: crown-heights-vs-williamsburg-ai-search-gap
-description: "Signal tested identical business profiles in Crown Heights and Williamsburg. AI search cites them at different rates. Here's why neighborhood context decides rank."
+description: "AI search answers at neighbourhood resolution, not city resolution. Why the depth of a neighbourhood's indexed coverage decides who gets cited."
 category: "Brooklyn"
 subcategory: "Signal"
 read_time: 6

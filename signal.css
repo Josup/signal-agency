@@ -358,6 +358,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .compare .cmp-label{
   position:absolute;top:14px;left:14px;background:var(--paper);padding:4px 10px;border:1px solid var(--rule);
   font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--ink-2);z-index:5;
+  max-width:calc(100% - 224px);line-height:1.5;
 }
 .compare .cmp-label em{color:var(--red);font-style:italic;font-family:var(--display);font-weight:400}
 .compare .cmp-side{
@@ -601,7 +602,7 @@ footer .mega.lit .phrase em::after{transform:scaleX(1);transition:transform 1.4s
 .post.feature:hover{background:#0A0805}
 
 .post .vis{margin:0 -28px;height:240px;background:var(--paper);border-bottom:1px solid var(--rule);overflow:hidden;position:relative}
-.post.feature .vis{background:#1A1410;border-bottom-color:rgba(245,242,237,.12)}
+.post.feature .vis{background:var(--paper);border-bottom-color:rgba(245,242,237,.12)}
 .post .vis svg{display:block;width:100%;height:100%}
 
 .post h3{font-family:var(--display);font-weight:900;font-size:30px;line-height:1.04;letter-spacing:-.02em;font-variation-settings:"SOFT" 30;color:inherit;text-wrap:balance}

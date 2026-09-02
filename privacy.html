@@ -83,9 +83,9 @@
 <header class="masthead">
   <div class="row1">
     <div class="left">
-      <span>Vol. 01 · No. 14</span>
+      <span id="mastIssue">Vol. 01 · No. 24</span>
       <span>Brooklyn, NY</span>
-      <span>Wednesday, August 26, 2026</span>
+      <span id="mastDate">Brooklyn, New York</span><script>(function(){var d=new Date(),p=function(x){return x.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"})},e=document.getElementById("mastDate"),i=document.getElementById("mastIssue"),n=Math.floor((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())-Date.UTC(2026,2,22))/6048e5)+1;if(e)e.textContent=p(d);if(i)i.textContent="Vol. 01 \u00b7 No. "+(n>0?n:1);var u=document.getElementById("stripUpdated"),f=document.querySelector(".featured-row .post .meta span:last-child")||document.querySelector(".post .meta span:last-child");if(u&&f){var v=f.textContent.split("\u00b7")[0].trim();if(v){u.textContent=v;var q=document.getElementById("stripIssue");if(q)q.textContent="Issue "+(n>0?n:1)+" \u00b7 "+v;}}})();</script>
     </div>
     <div class="right">
       <span class="red">●</span>

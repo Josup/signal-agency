@@ -34,7 +34,11 @@ def row(e: dict) -> str:
     else:
         res_cls, res_txt = "", "—"
     ev = f'<a href="{esc(e["evidence_url"])}">{esc(e["evidence"])}</a>' if e.get("evidence_url") else esc(e.get("evidence"))
-    shot = f'<a href="{esc(e["screenshot"])}">screenshot</a>' if e.get("screenshot") else "none on file"
+    if e.get("screenshot"):
+        kind = "transcript" if str(e["screenshot"]).lower().endswith((".md", ".txt")) else "screenshot"
+        shot = f'<a href="{esc(e["screenshot"])}">{kind}</a>'
+    else:
+        shot = "none on file"
     return (
         "<tr>"
         f"<td>{esc(e['recorded'])}</td>"

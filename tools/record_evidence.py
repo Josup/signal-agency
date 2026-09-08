@@ -70,7 +70,7 @@ def main() -> int:
         "recorded": today,
         "result": a.result,
         "cited": {"yes": True, "no": False, "na": None}[a.cited],
-        "evidence": "Ledger entry" + (" with screenshot" if shot else ", no screenshot"),
+        "evidence": "Ledger entry" + ((" with transcript" if shot.lower().endswith((".md", ".txt")) else " with screenshot") if shot else ", no screenshot"),
         "evidence_url": None,
         "screenshot": shot,
         "note": a.note,

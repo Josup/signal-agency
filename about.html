@@ -125,8 +125,8 @@
   .about-grid .col-r h2{font-family:var(--display);font-style:italic;font-weight:400;font-size:38px;line-height:1.15;color:var(--ink);margin:48px 0 18px;letter-spacing:-.01em;font-variation-settings:"SOFT" 100}
   .about-grid .col-r h2:first-child{margin-top:0}
   .about-grid .col-r ul{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:10px}
-  .about-grid .col-r li{display:grid;grid-template-columns:28px 1fr;font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink)}
-  .about-grid .col-r li::before{content:"—";color:var(--red);font-weight:700}
+  .about-grid .col-r li{position:relative;padding-left:28px;font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink)}
+  .about-grid .col-r li::before{content:"—";position:absolute;left:0;top:0;color:var(--red);font-weight:700}
   .about-grid .col-r a{color:var(--red);border-bottom:1px solid var(--red);text-decoration:none}
 
   .factbox{border:1px solid var(--ink);padding:24px 22px;font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--ink);background:#FAF7F1;margin-bottom:32px}
@@ -186,6 +186,7 @@
     <a href="index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
     <div class="nav-r">
       <a href="about.html" class="is-active" style="color:var(--red)">About</a>
+      <a href="referral.html">Refer</a>
       <a href="audit.html" onclick="openAuditModal(); return false;">Audit</a>
       <a href="audit.html">Book</a>
     </div>

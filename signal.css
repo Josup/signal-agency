@@ -86,7 +86,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .masthead .nav-l,.masthead .nav-r{display:flex;gap:32px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
 .masthead .nav-r{justify-content:flex-end}
-.masthead .nav-l a,.masthead .nav-r a{position:relative;padding-bottom:2px}
+.masthead .nav-l a,.masthead .nav-r a{position:relative;padding-bottom:2px;white-space:nowrap}
 .masthead .nav-l a:hover,.masthead .nav-r a:hover{color:var(--red)}
 .masthead .nav-l a::after,.masthead .nav-r a::after{
   content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1.5px;background:var(--red);transition:right .35s cubic-bezier(.7,.1,.2,1);
@@ -723,6 +723,8 @@ footer .bottom{padding-top:24px;display:flex;justify-content:space-between;font-
 @media (max-width:1100px){
   .wrap{padding:0 28px}
   .masthead .row1,.masthead .row2{padding-left:28px;padding-right:28px}
+  /* six links on the left since the Refer link joined (9 Sep 2026): tighten so nothing wraps */
+  .masthead .nav-l,.masthead .nav-r{gap:20px;font-size:11px;letter-spacing:.14em}
   .hero .grid,.problem .lab,.cases .head-row,.pricing .head-row,.how .head-row,.journal .head-row,.case-grid,.tiers,.steps,.journal-grid,.final .grid,footer .top{grid-template-columns:1fr !important}
   .case{border-right:0;border-bottom:1px solid var(--rule)}
   .tier,.step,.post{border-right:0;border-bottom:1px solid var(--rule)}

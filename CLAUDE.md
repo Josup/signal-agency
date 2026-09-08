@@ -79,15 +79,23 @@ doc, fix the doc.
 
 ## Clients — the hard rule
 
-Signal has **two** publicly nameable clients:
+The runtime rubric (`../signal-seo-machine/context/gate-rubric.md`) is the
+authority; this section summarises it. Signal has **four** nameable clients, in two
+tiers:
+
+**Named with figures** (only figures in the rubric's approved-figures table):
 
 - **Nostrand Optical** — Crown Heights optometry. Four rich-result types **validated** in Google's Rich Results Test on
   launch day — validated, never "served" or "displayed"; Google does not guarantee display. LocalBusiness + MedicalBusiness + FAQPage markup.
 - **Brooklyn BJJ Lessons** — one-page booking site, Person + LocalBusiness schema,
   first ChatGPT citation at 41 days, GBP verified.
 
-StayRnR, Vision Palace Optical and Elmira Décor are live client work but are **not**
-approved for public Signal content until the client agrees in writing to be named.
+**Named, no figures** — StayRnR and Elmira Décor may be named as Signal clients and
+builds; no performance numbers about either until they appear in the approved-figures
+table.
+
+**Vision Palace Optical** is live client work but is **not** approved for public
+Signal content until the client agrees in writing to be named.
 
 **Never write an aggregate client count.** Not "12 clients", not "15 Brooklyn
 clients", not "across the portfolio", not "our clients". Between April and August

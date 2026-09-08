@@ -1,0 +1,37 @@
+{
+  "_about": "Signal's public evidence ledger. One row per dated check. Rendered into evidence.html by tools/render_evidence.py. Never edit a past row; add a new one. A row with no screenshot says so.",
+  "entries": [
+    {
+      "id": "2026-04-nostrand-rrt",
+      "client": "Nostrand Optical",
+      "client_url": "https://www.nostrandoptical.com/",
+      "kind": "structured-data validation",
+      "engine": "Google Rich Results Test",
+      "prompt": "https://www.nostrandoptical.com/ (homepage) and service pages",
+      "checked": "2026-04 (launch day)",
+      "recorded": "2026-04-26",
+      "result": "4 rich-result types valid, 0 errors (MedicalBusiness, FAQPage, BreadcrumbList, Product)",
+      "cited": null,
+      "evidence": "Case study, 26 Apr 2026",
+      "evidence_url": "posts/journal/nostrand-optical-zero-to-rich-results.html",
+      "screenshot": null,
+      "note": "Validated means eligible. Google does not guarantee display, and shows FAQ rich results only to a narrow set of authoritative sites."
+    },
+    {
+      "id": "2026-04-bjj-chatgpt-day41",
+      "client": "Brooklyn BJJ Lessons",
+      "client_url": "https://www.brooklynbjjlessons.com/",
+      "kind": "AI citation check",
+      "engine": "ChatGPT",
+      "prompt": "BJJ private lessons Brooklyn",
+      "checked": "Day 41 after launch (April 2026)",
+      "recorded": "2026-04-26",
+      "result": "Cited first, with the Williamsburg location named",
+      "cited": true,
+      "evidence": "Case study, 26 Apr 2026",
+      "evidence_url": "posts/journal/brooklyn-bjj-lessons-chatgpt-citation-41-days.html",
+      "screenshot": null,
+      "note": "Same prompt was run on Perplexity and Google AI Overviews the same day; only the ChatGPT result was recorded as a citation."
+    }
+  ]
+}

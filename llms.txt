@@ -43,7 +43,7 @@
 
 - Website build: from $2,500
 - Larger builds (multi-location, 12+ pages): up to $5,000
-- Ongoing retainer: $500 per month
+- Ongoing retainer: from $650 per month
 
 ## Clients
 
@@ -81,6 +81,9 @@ from a maintained approved-facts table or from a named, attributed public source
 - https://www.signalai.agency/privacy.html — privacy policy
 - https://www.signalai.agency/audit.html — the free 20-minute AI search audit: what it includes, how it runs, how to book
 - https://www.signalai.agency/what-is-geo.html — what generative engine optimization (GEO) is, GEO vs SEO, and a glossary of AI search terms
+- https://www.signalai.agency/optical.html — AI search and local SEO for independent optometry practices and optical shops; named case Nostrand Optical; build from $2,500, retainer from $650/month
+- https://www.signalai.agency/evidence.html — the public evidence ledger: prompt, engine, date, result, screenshot; two rows to start (Nostrand Optical validation, Brooklyn BJJ Lessons ChatGPT citation)
+- https://www.signalai.agency/referral.html — referral programme: $250 per introduced business that becomes a client
 
 ## Contact
 

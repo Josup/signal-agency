@@ -72,7 +72,7 @@ hairlines flanking a light letterspaced sans `Agency`.
 
 - Build: from **$2,500**
 - Larger builds (multi-location, 12+ pages): up to **$5,000**
-- Retainer: **$500/month**
+- Retainer: **from $650/month** (changed 8 Sep 2026; existing clients grandfathered at what they agreed)
 
 Any older three-tier Basic/Standard/Premium pricing is retired. If you find it in a
 doc, fix the doc.
@@ -81,8 +81,8 @@ doc, fix the doc.
 
 Signal has **two** publicly nameable clients:
 
-- **Nostrand Optical** — Crown Heights optometry. Four valid rich results on launch
-  day. LocalBusiness + MedicalBusiness + FAQPage markup.
+- **Nostrand Optical** — Crown Heights optometry. Four rich-result types **validated** in Google's Rich Results Test on
+  launch day — validated, never "served" or "displayed"; Google does not guarantee display. LocalBusiness + MedicalBusiness + FAQPage markup.
 - **Brooklyn BJJ Lessons** — one-page booking site, Person + LocalBusiness schema,
   first ChatGPT citation at 41 days, GBP verified.
 

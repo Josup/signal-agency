@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Descriptive versus Prescriptive Prompts. Why AI Retrieval Works Differently for Each. — Signal Journal</title>
+<meta name="description" content="Descriptive prompts retrieve broader context. Prescriptive prompts retrieve named businesses. The difference changes which sites get cited." />
+<link rel="canonical" href="https://www.signalai.agency/posts/journal/descriptive-prescriptive-prompts-retrieval.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Descriptive versus Prescriptive Prompts. Why AI Retrieval Works Differently for Each." />
+<meta property="og:description" content="Descriptive prompts retrieve broader context. Prescriptive prompts retrieve named businesses. The difference changes which sites get cited." />
+<meta property="og:url" content="https://www.signalai.agency/posts/journal/descriptive-prescriptive-prompts-retrieval.html" />
+<meta property="og:site_name" content="Signal" />
+<meta property="og:image" content="https://www.signalai.agency/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Signal AI Agency" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.signalai.agency/og-image.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Descriptive versus Prescriptive Prompts. Why AI Retrieval Works Differently for Each.",
+  "description": "Descriptive prompts retrieve broader context. Prescriptive prompts retrieve named businesses. The difference changes which sites get cited.",
+  "url": "https://www.signalai.agency/posts/journal/descriptive-prescriptive-prompts-retrieval.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.signalai.agency/posts/journal/descriptive-prescriptive-prompts-retrieval.html" },
+  "datePublished": "2026-09-06",
+  "dateModified": "2026-09-06",
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "name": "Josh Supitskiy",
+    "url": "https://www.signalai.agency/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Signal AI Agency",
+    "url": "https://www.signalai.agency/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The Signal Journal",
+    "url": "https://www.signalai.agency/journal.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Signal", "item": "https://www.signalai.agency/"},
+    {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://www.signalai.agency/journal.html"},
+    {"@type": "ListItem", "position": 3, "name": "Descriptive versus Prescriptive Prompts. Why AI Retrieval Works Differently for Each.", "item": "https://www.signalai.agency/posts/journal/descriptive-prescriptive-prompts-retrieval.html"}
+  ]
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../signal.css">
+<style>
+.post-hero{padding:80px 0 48px}
+.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
+.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
+.post-body{padding:56px 0 120px;max-width:700px}
+.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
+.post-body blockquote p{margin-bottom:6px;font-size:16px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
+.post-body li{margin-bottom:6px}
+.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
+.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
+.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
+.post-body strong{font-weight:700;color:var(--ink)}
+.post-body a{color:var(--red)}
+.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
+.post-back:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>The Journal</span>
+      <span>Brooklyn, NY</span>
+      <span>Sep 6, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="../../index.html#problem">Problem</a>
+      <a href="../../index.html#work">Work</a>
+      <a href="../../index.html#pricing">Pricing</a>
+      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+      <a href="../../what-is-geo.html">What is GEO?</a>
+    </div>
+    <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="../../index.html#process">Process</a>
+      <a href="../../audit.html" onclick="openAuditModal(); return false;">Audit</a>
+      <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="post-hero">
+      <a href="../../journal.html" class="post-back">← The Journal</a>
+      <div class="eyebrow">AI Search · Prompts</div>
+      <h1>Descriptive versus Prescriptive Prompts. Why AI Retrieval Works Differently for Each.</h1>
+      <div class="byline">Signal · Sep 6, 2026 · 7 min read</div>
+    </div>
+    <div class="post-body">
+      <p>A descriptive prompt asks an engine to explain a category or condition: "What should I look for in a good optometrist?" A prescriptive prompt names a specific outcome: "Find me an optometrist in Crown Heights." The engine retrieves differently for each. One retrieves broad context and methodology. The other retrieves named businesses and their proof.</p>
+<p>A Brooklyn business owner competing in AI search needs to understand which prompt shapes their visibility — because the content that ranks for one will often rank poorly for the other.</p>
+<h2>Descriptive Prompts Retrieve Framework and Principle</h2>
+<p>When a user asks ChatGPT or Perplexity "What makes a good yoga studio?" or "How do I know if my optometrist is reputable?", the engine retrieves content that explains a framework. It wants prose, decision trees, criteria lists, and reasoning.</p>
+<p>A descriptive query pulls from guides, educational content, and pages that teach judgment. It does not pull a business name on the first retrieval pass — it pulls the <em>thinking</em> that precedes a choice. An optometry page that lists "Signs of an ethical practice" or "What to ask an optometrist about your prescription" becomes retrievable. A page that simply says "we are experienced" does not.</p>
+<p>This is where <a href="/what-is-geo.html">we build every client site with LocalBusiness markup</a> — but the markup alone does not satisfy a descriptive prompt. The engine needs semantic content. A section titled "What You Should Know Before Your First Eye Exam" will retrieve for "how to prepare for an optometry appointment." A schema block will not.</p>
+<p>Descriptive prompts reward content depth. They prefer longer form, nested lists, numbered steps, and explicit reasoning over brevity.</p>
+<h2>Prescriptive Prompts Retrieve Named Businesses and Citations</h2>
+<p>A prescriptive prompt is transactional: "Give me a BJJ gym in Williamsburg open tonight" or "Which optometrist in Crown Heights takes my insurance?" The engine retrieves named businesses, verified information, and proof of eligibility.</p>
+<p>For a prescriptive prompt, schema markup becomes critical. The engine needs to answer <em>which business</em>. It retrieves LocalBusiness markup, hours, service areas, insurance fields. It pulls a business name from a sentence only if the sentence is already retrieved — and it gets retrieved because the structured data made the page retrievable in the first place.</p>
+<p>Brooklyn BJJ Lessons was first cited by ChatGPT in 41 days partly because the site carried Person and LocalBusiness markup. That markup made the site retrievable for "where can I train BJJ in Brooklyn?" — a prescriptive prompt. A descriptive prompt about "How to find a good BJJ coach" would have retrieved the site's FAQ content, not its name.</p>
+<p>Prescriptive prompts reward specificity and machine-readability. They care about schema, verified hours, service areas, and location data.</p>
+<h2>The Same Business Needs Both</h2>
+<p>Neither prompt type disappears. A user researching optometry will ask both: first descriptively ("What should I expect?") and then prescriptively ("Who's available in Crown Heights?"). A site that answers only one will be invisible on the other.</p>
+<p>This means your content architecture matters. A single page cannot do both work equally. Descriptive content lives in longer-form explainers, FAQPage markup, and neighborhood guides. Prescriptive visibility lives in LocalBusiness markup, verified GBP data, and service area declarations. They live in different markup, in different prose styles, and in different sections of your site.</p>
+<p>A common mistake is writing a page that tries to be both at once. "We are the best optometrist in Crown Heights because we have 20 years of experience and we take Medicare." That sentence fails as prescriptive retrieval (it's not structured data, it's assertion) and as descriptive retrieval (it does not teach a framework for judgment). Split the work. Make an FAQ page that answers "What should I ask my optometrist?" Make a LocalBusiness block that declares your years in practice and your insurance networks as schema fields.</p>
+<h2>How Prompt Vocabulary Signals Which Type You're Facing</h2>
+<p>A prescriptive prompt usually contains a location, a time constraint, or a specific outcome: "near me," "open now," "in Crown Heights," "tonight," "accept my insurance," "available at 3pm."</p>
+<p>A descriptive prompt contains open-ended language: "what," "how," "what should," "best practices," "signs of," "ways to," "how to tell." It asks for judgment, not a shortlist.</p>
+<p>When you audit your competitor's visibility, check which prompts are actually retrieving them. If Crown Heights optometrists are cited for "optometrist Crown Heights open now," they're winning prescriptive retrieval. If they're cited for "how to choose an eye doctor," they're winning descriptive retrieval. The site that wins one is often weak on the other.</p>
+<h2>What This Means for a Brooklyn Business</h2>
+<p>You cannot optimize for both prompt types simultaneously with the same content. You need to recognize which prompts your business should own — often both, but in different sections of your site.</p>
+<p>If you run a storefront (optometry, BJJ, retail), prescriptive prompts are your primary market. You need LocalBusiness markup, verified hours, and location data. Descriptive content matters for SEO and for the research phase of the customer journey, but the citation happens when someone asks for you by name or location.</p>
+<p>If you run a service-area business or a thought-leadership practice, descriptive prompts are often primary. A consultant teaching "how to audit your own marketing" will get cited for that question long before they get cited by name. Build that content first.</p>
+<p>Start with a <a href="/audit.html">free AI search audit</a> that maps which prompts your site actually retrieves for. You'll see immediately whether you're winning descriptive, prescriptive, or neither. Then build the content and markup for the prompts you're missing.</p>
+<p><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a 20-minute AI audit</a></p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
+      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 20-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+    </div>
+    <a href="../../audit.html" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- RELATED:START -->
+<section class="related">
+  <div class="wrap">
+    <div class="rel-head">Related from The Ledger</div>
+    <div class="rel-grid">
+      <a class="rel-card" href="./how-ai-engines-decide-who-to-cite.html">
+        <span class="rel-eyebrow">AI Search · Signal</span>
+        <span class="rel-title">How AI Engines Decide Who to Cite: The Four Signals That Determine Local Rank</span>
+      </a>
+      <a class="rel-card" href="./rag-local-source-selection.html">
+        <span class="rel-eyebrow">AI Search · Citations</span>
+        <span class="rel-title">How Retrieval-Augmented Generation Actually Selects a Local Source</span>
+      </a>
+      <a class="rel-card" href="./crown-heights-vs-williamsburg-ai-search-gap.html">
+        <span class="rel-eyebrow">Brooklyn · Signal</span>
+        <span class="rel-title">Crown Heights vs. Williamsburg: Why the Same Business Ranks Differently in Each Neighborhood</span>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+.related{border-top:1px solid var(--rule-soft);padding:44px 0 8px}
+.rel-head{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft)}
+.rel-card{display:flex;flex-direction:column;gap:9px;padding:20px 18px;background:var(--paper);text-decoration:none;transition:background .25s cubic-bezier(.25,0,0,1)}
+.rel-card:hover{background:var(--paper-2)}
+.rel-eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.rel-title{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.22;letter-spacing:-.015em;color:var(--ink)}
+.rel-card:hover .rel-title{color:var(--red)}
+@media(max-width:760px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<!-- RELATED:END -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../journal.html">Journal</a></li>
+          <li><a href="../../what-is-geo.html">What is GEO?</a></li>
+          <li><a href="../../index.html#pricing">Pricing</a></li>
+          <li><a href="../../audit.html">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>© MMXXVI Signal AI LLC</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/audit-modal.js" defer></script>
+</body>
+</html>

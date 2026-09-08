@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How Retrieval-Augmented Generation Actually Selects a Local Source — Signal Journal</title>
+<meta name="description" content="RAG pulls from indexed pages, but citation ranking depends on markup quality and content structure. Here's what actually gets selected." />
+<link rel="canonical" href="https://www.signalai.agency/posts/journal/rag-local-source-selection.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How Retrieval-Augmented Generation Actually Selects a Local Source" />
+<meta property="og:description" content="RAG pulls from indexed pages, but citation ranking depends on markup quality and content structure. Here's what actually gets selected." />
+<meta property="og:url" content="https://www.signalai.agency/posts/journal/rag-local-source-selection.html" />
+<meta property="og:site_name" content="Signal" />
+<meta property="og:image" content="https://www.signalai.agency/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Signal AI Agency" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.signalai.agency/og-image.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Retrieval-Augmented Generation Actually Selects a Local Source",
+  "description": "RAG pulls from indexed pages, but citation ranking depends on markup quality and content structure. Here's what actually gets selected.",
+  "url": "https://www.signalai.agency/posts/journal/rag-local-source-selection.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.signalai.agency/posts/journal/rag-local-source-selection.html" },
+  "datePublished": "2026-09-06",
+  "dateModified": "2026-09-06",
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "name": "Josh Supitskiy",
+    "url": "https://www.signalai.agency/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Signal AI Agency",
+    "url": "https://www.signalai.agency/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The Signal Journal",
+    "url": "https://www.signalai.agency/journal.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Signal", "item": "https://www.signalai.agency/"},
+    {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://www.signalai.agency/journal.html"},
+    {"@type": "ListItem", "position": 3, "name": "How Retrieval-Augmented Generation Actually Selects a Local Source", "item": "https://www.signalai.agency/posts/journal/rag-local-source-selection.html"}
+  ]
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3RY60W5Y7D');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../signal.css">
+<style>
+.post-hero{padding:80px 0 48px}
+.post-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:20px}
+.post-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.5vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:800px;margin-bottom:20px}
+.post-hero .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-dim)}
+.post-body{padding:56px 0 120px;max-width:700px}
+.post-body h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--rule-soft)}
+.post-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.post-body blockquote{border-left:3px solid var(--red);margin:28px 0;padding:14px 20px;background:var(--paper-2)}
+.post-body blockquote p{margin-bottom:6px;font-size:16px}
+.post-body ul,.post-body ol{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-2);margin:0 0 18px 22px}
+.post-body li{margin-bottom:6px}
+.post-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:2px 5px;border:1px solid var(--rule-soft)}
+.post-body pre{background:var(--ink);color:var(--paper);padding:20px;overflow-x:auto;margin:20px 0}
+.post-body pre code{background:none;border:none;color:inherit;font-size:12px}
+.post-body strong{font-weight:700;color:var(--ink)}
+.post-body a{color:var(--red)}
+.post-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;display:inline-block;margin-bottom:28px}
+.post-back:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row1">
+    <div class="left">
+      <span>The Journal</span>
+      <span>Brooklyn, NY</span>
+      <span>Sep 6, 2026</span>
+    </div>
+    <div class="right">
+      <span class="red">●</span>
+      <span>Local AI Search Audit · Free this week</span>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="nav-l">
+      <a href="../../index.html#problem">Problem</a>
+      <a href="../../index.html#work">Work</a>
+      <a href="../../index.html#pricing">Pricing</a>
+      <a href="../../journal.html" class="is-active" style="color:var(--red)">Journal</a>
+      <a href="../../what-is-geo.html">What is GEO?</a>
+    </div>
+    <a href="../../index.html" class="wordmark">SIGNAL<sup>/AI</sup></a>
+    <div class="nav-r">
+      <a href="../../index.html#process">Process</a>
+      <a href="../../audit.html" onclick="openAuditModal(); return false;">Audit</a>
+      <a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding:48px 0 80px;border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="post-hero">
+      <a href="../../journal.html" class="post-back">← The Journal</a>
+      <div class="eyebrow">AI Search · Citations</div>
+      <h1>How Retrieval-Augmented Generation Actually Selects a Local Source</h1>
+      <div class="byline">Signal · Sep 6, 2026 · 7 min read</div>
+    </div>
+    <div class="post-body">
+      <p>When you ask ChatGPT or Perplexity for a local recommendation, the engine doesn't search the open web in real time. It runs retrieval-augmented generation: it pulls candidate pages from an index, ranks them by relevance and authority, and hands the top result to the language model to cite. Most Brooklyn businesses have no idea what happens in that ranking step — and it's where nearly all of them lose.</p>
+<p>The retrieval step finds pages. The ranking step decides which page gets cited. They're different mechanisms, and confusing them is why your site shows up in zero AI answers even though it ranks on Google.</p>
+<h2>The Index Has To Exist First</h2>
+<p>RAG can't cite what it hasn't seen. A page has to be crawled, indexed, and tagged with machine-readable metadata before an engine will retrieve it at all.</p>
+<p>This is where most independent businesses fail at the retrieval stage. If your site has no schema markup, no structured data, and no clear content hierarchy, the crawler ingests your pages as plain text. A language model can read plain text. But an engine deciding whether to <em>retrieve</em> your page in response to a specific query needs signals: what service do you offer, what neighborhood are you in, what's your proof of authority in that category.</p>
+<p>We build every client site with structured data rendered server-side — LocalBusiness markup, schema hierarchy, and FAQ blocks — because a client-side render is a coin flip on whether the crawler sees it. If the engine never sees the schema, it can't use it to decide whether to retrieve you.</p>
+<p>The index is the floor. Everything below it is invisible.</p>
+<h2>Relevance Ranking Happens Before Citation</h2>
+<p>Once a page is indexed, RAG ranks it against other indexed pages on relevance to the prompt. "Best optometry in Crown Heights" triggers a search for pages tagged with the Service (optometry), the Location (Crown Heights), and supporting content (reviews, hours, credentials).</p>
+<p>The ranking doesn't just look at what the page <em>says</em>. It looks at what the page <em>declares about itself</em> in schema, what the engine can verify about that declaration (Google Business Profile data, citation directories, review velocity), and how recently the page was updated.</p>
+<p>A page that says "we're an optometry practice in Crown Heights" in plain text loses to a page that declares it in LocalBusiness schema, has a verified GBP listing with current hours, and published a post about a service (like fitting progressive lenses) in the last 30 days.</p>
+<p>This is why Nostrand Optical landed four valid rich results on launch day. The markup was correct, the content was structured, and the GBP was verified and current. The engine had everything it needed to rank that page first for optometry queries in Crown Heights without ambiguity.</p>
+<h2>Citation Quality Depends on Content Structure</h2>
+<p>After ranking, the engine passes the top-ranked page to the language model with a request: cite this source in your answer. The language model then extracts a quotable passage — a sentence, a list, a paragraph — and attributes it to the source.</p>
+<p>The page that gets retrieved is not always the page that <em>gets cited</em>. An engine might retrieve a page, pass it to the model, and the model might fail to extract anything worth citing because the content is too vague, too sales-y, or structured as a wall of prose instead of scannable sections.</p>
+<p>This is where schema type matters. A page with FAQPage markup gives the engine a question-and-answer pair it can quote directly. A prose paragraph on the same topic forces the model to assemble an answer, which is slower and more error-prone. The marked-up page is cheaper to cite — in computational cost and in confidence — so it gets cited more often.</p>
+<p>When we <a href="https://www.signalai.agency/journal.html">write retrieval-grade content</a>, we're optimizing for this extraction step. Short declarative sentences. Lists instead of paragraphs. Named entities instead of pronouns. Schema blocks instead of body copy. Every choice is about making it trivial for a language model to quote the page accurately.</p>
+<h2>Authority Signals Break Ties</h2>
+<p>When two pages rank equally on relevance, the engine looks at authority. An optometry practice in Crown Heights that appears in a local citation directory, has a verified GBP with 40+ reviews, and published recent content about eye care beats one with none of those signals — even if both pages have identical schema markup.</p>
+<p>This is why citation work and GBP optimization are not separate from AI search optimization. They're the same thing. A language model trained on the public web learns that verified, cited, recently-updated sources are more trustworthy. It weights them higher when deciding which page to retrieve and which passage to quote.</p>
+<p>You don't need 100 citations to compete. You need the right ones. A Brooklyn BJJ Lessons appearance in a single fitness directory, with verified GBP and regular content updates, landed its first ChatGPT citation at 41 days. The markup was sound, the authority signals were clean, and the content was structured for extraction. Everything else was unnecessary noise.</p>
+<h2>What Gets Left Behind</h2>
+<p>The ranking step has a hard floor: if your page isn't indexed, it can't be ranked. If it's indexed but has no schema, it's invisible to the relevance algorithm. If it has schema but the content is unstructured prose, it can be retrieved but not easily cited.</p>
+<p>Most Brooklyn independent businesses fail at one of these three gates. They skip schema. They write in paragraphs. They don't maintain their GBP. Each miss compounds. A page that clears all three is extremely rare — which is why <a href="https://www.signalai.agency/audit.html">a free AI search audit</a> usually finds low-hanging fruit within the first 15 minutes.</p>
+<p>What this means: your visibility in AI search isn't decided by luck or by what the engine "feels like" citing. It's decided by a deterministic ranking process that privileges schema clarity, content structure, and verified authority signals. You can control all three. Most competitors don't.</p>
+<p><a href="https://calendar.app.google/jPp55zP1iiFTU7VW9">Book a 20-minute AI audit</a></p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--ink);color:var(--paper);padding:72px 0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.5);margin-bottom:14px">§ Get cited</div>
+      <h3 style="font-family:var(--display);font-weight:900;font-size:48px;line-height:1.0;letter-spacing:-.025em;margin-bottom:14px">When Brooklyn <em style="color:var(--red);font-weight:400;font-style:italic">asks</em> AI,<br/>does it find you?</h3>
+      <p style="font-family:var(--serif);font-size:17px;line-height:1.5;color:rgba(245,242,237,.78);max-width:460px">Free 20-minute audit. We check your Schema.org markup, AI citation status, and tell you exactly what's missing.</p>
+    </div>
+    <a href="../../audit.html" class="btn solid" style="background:#fff;color:var(--ink);white-space:nowrap">Book a free audit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- RELATED:START -->
+<section class="related">
+  <div class="wrap">
+    <div class="rel-head">Related from The Ledger</div>
+    <div class="rel-grid">
+      <a class="rel-card" href="./neighborhood-landing-page-ai-citations.html">
+        <span class="rel-eyebrow">Playbook · Signal</span>
+        <span class="rel-title">How to Write a Neighborhood Landing Page That Gets Cited by AI</span>
+      </a>
+      <a class="rel-card" href="./how-ai-engines-decide-who-to-cite.html">
+        <span class="rel-eyebrow">AI Search · Signal</span>
+        <span class="rel-title">How AI Engines Decide Who to Cite: The Four Signals That Determine Local Rank</span>
+      </a>
+      <a class="rel-card" href="./nostrand-optical-zero-to-rich-results.html">
+        <span class="rel-eyebrow">Case Study · Signal</span>
+        <span class="rel-title">Nostrand Optical: From Zero Citations to Four Rich Results on Launch Day</span>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+.related{border-top:1px solid var(--rule-soft);padding:44px 0 8px}
+.rel-head{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft)}
+.rel-card{display:flex;flex-direction:column;gap:9px;padding:20px 18px;background:var(--paper);text-decoration:none;transition:background .25s cubic-bezier(.25,0,0,1)}
+.rel-card:hover{background:var(--paper-2)}
+.rel-eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.rel-title{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.22;letter-spacing:-.015em;color:var(--ink)}
+.rel-card:hover .rel-title{color:var(--red)}
+@media(max-width:760px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<!-- RELATED:END -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="wm">SIGNAL<sup>/AI</sup></div>
+        <p>Local SEO &amp; AI search for independent businesses. Brooklyn, NY. Built and run by one person, on purpose.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../journal.html">Journal</a></li>
+          <li><a href="../../what-is-geo.html">What is GEO?</a></li>
+          <li><a href="../../index.html#pricing">Pricing</a></li>
+          <li><a href="../../audit.html">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:josh@signalai.agency">josh@signalai.agency</a></li>
+          <li><a href="#">Brooklyn, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>Set in Fraunces &amp; Source Serif 4 · Printed on the open web</span>
+      <span>© MMXXVI Signal AI LLC</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/audit-modal.js" defer></script>
+</body>
+</html>

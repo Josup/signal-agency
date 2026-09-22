@@ -608,6 +608,34 @@
 </section>
 
 <!-- ============ FINAL CTA ============ -->
+<!-- ============ FROM THE JOURNAL — newest five, hand-maintained; the weekly site-health run drafts the refresh ============ -->
+<section class="journal-latest sec" id="journal-latest">
+  <style>
+    .journal-latest{padding:72px 0}
+    .journal-latest .jl-head{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:16px;border-bottom:3px double var(--ink)}
+    .journal-latest .jl-head h3{font-family:var(--display);font-size:30px;font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--ink)}
+    .journal-latest .jl-head a{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red);text-decoration:none}
+    .journal-latest ul{list-style:none;margin:0;padding:0}
+    .journal-latest li{border-bottom:1px solid var(--rule-soft)}
+    .journal-latest li a{display:grid;grid-template-columns:120px 1fr 110px;gap:24px;align-items:baseline;padding:16px 0;text-decoration:none;color:inherit}
+    .journal-latest .jl-cat,.journal-latest .jl-date{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
+    .journal-latest .jl-date{text-align:right}
+    .journal-latest .jl-title{font-family:var(--display);font-size:19px;line-height:1.3;color:var(--ink)}
+    .journal-latest li a:hover .jl-title{color:var(--red)}
+    @media (max-width:760px){.journal-latest li a{grid-template-columns:1fr;gap:4px}.journal-latest .jl-date{text-align:left}}
+  </style>
+  <div class="wrap">
+    <div class="jl-head"><h3>From the journal</h3><a href="journal.html">All entries →</a></div>
+    <ul>
+        <li><a href="posts/journal/ai-search-neighborhood-resolution.html"><span class="jl-cat">Brooklyn</span><span class="jl-title">Why AI Search Answers at Neighborhood Resolution Instead of Borough</span><span class="jl-date">Sep 13, 2026</span></a></li>
+        <li><a href="posts/journal/citation-worth-no-clicks.html"><span class="jl-cat">Field Notes</span><span class="jl-title">What a Citation Is Worth When Nobody Clicks It</span><span class="jl-date">Sep 13, 2026</span></a></li>
+        <li><a href="posts/journal/indexed-retrieved-cited.html"><span class="jl-cat">Field Notes</span><span class="jl-title">Indexed, Retrieved, Cited. Three Different Things.</span><span class="jl-date">Sep 13, 2026</span></a></li>
+        <li><a href="posts/journal/descriptive-prescriptive-prompts-retrieval.html"><span class="jl-cat">AI Search</span><span class="jl-title">Descriptive versus Prescriptive Prompts. Why AI Retrieval Works Differently for Each.</span><span class="jl-date">Sep 6, 2026</span></a></li>
+        <li><a href="posts/journal/rag-local-source-selection.html"><span class="jl-cat">AI Search</span><span class="jl-title">How Retrieval-Augmented Generation Actually Selects a Local Source</span><span class="jl-date">Sep 6, 2026</span></a></li>
+    </ul>
+  </div>
+</section>
+
 <section class="final" id="audit">
   <div class="wrap">
     <div class="grid">

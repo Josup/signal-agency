@@ -107,6 +107,10 @@
     .sp table.ledger{display:block;overflow-x:auto}
   }
 
+  /* 22 Sep 2026: bare-text <li>s in a 28px|1fr grid wrapped one word per line (no ::before to
+     take the first column). Padding + absolute dash, like the .col-r lists. */
+  .not-list li{position:relative;padding-left:28px;line-height:1.6}
+  .not-list li::before{content:"\2014";position:absolute;left:0;top:0;color:var(--red);font-weight:700}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
@@ -193,14 +197,14 @@
         </dl>
 
         <h3 style="margin-top:32px">Pages a practice usually needs</h3>
-        <ul style="list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:10px;font-family:var(--mono);font-size:12px;color:var(--ink);">
-          <li style="display:grid;grid-template-columns:28px 1fr;">Comprehensive eye exams</li>
-          <li style="display:grid;grid-template-columns:28px 1fr;">Contact lens fittings</li>
-          <li style="display:grid;grid-template-columns:28px 1fr;">Pediatric exams &mdash; with the age you actually see</li>
-          <li style="display:grid;grid-template-columns:28px 1fr;">Dry eye, glaucoma &amp; cataract screening</li>
-          <li style="display:grid;grid-template-columns:28px 1fr;">Insurance accepted &mdash; plan by plan</li>
-          <li style="display:grid;grid-template-columns:28px 1fr;">Designer frames &mdash; one page per brand</li>
-          <li style="display:grid;grid-template-columns:28px 1fr;">Same-day glasses, hours, directions</li>
+        <ul class="not-list" style="list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:10px;font-family:var(--mono);font-size:12px;color:var(--ink);">
+          <li>Comprehensive eye exams</li>
+          <li>Contact lens fittings</li>
+          <li>Pediatric exams &mdash; with the age you actually see</li>
+          <li>Dry eye, glaucoma &amp; cataract screening</li>
+          <li>Insurance accepted &mdash; plan by plan</li>
+          <li>Designer frames &mdash; one page per brand</li>
+          <li>Same-day glasses, hours, directions</li>
         </ul>
       </div>
 

@@ -517,8 +517,8 @@ footer .mega.lit .phrase em::after{transform:scaleX(1);transition:transform 1.4s
 .price-block .v{font-family:var(--display);font-weight:900;font-size:36px;letter-spacing:-.02em;line-height:1;font-variation-settings:"WONK" 1}
 .price-block .v .small{font-size:14px;font-family:var(--mono);font-weight:500;color:var(--ink-dim);letter-spacing:.05em;margin-left:6px;text-transform:lowercase}
 .tier .feat{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
-.tier .feat li{font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--ink);display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start}
-.tier .feat li::before{content:"";width:8px;height:8px;background:var(--red);margin-top:8px}
+.tier .feat li{font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--ink);position:relative;padding-left:28px}
+.tier .feat li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;background:var(--red)}
 .tier .pick{
   margin-top:auto;font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
   padding:18px 22px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);
@@ -558,8 +558,8 @@ footer .mega.lit .phrase em::after{transform:scaleX(1);transition:transform 1.4s
 }
 .tier-rebuild .price-block{border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft);padding:20px 0;margin-bottom:24px}
 .tier-rebuild .feat{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
-.tier-rebuild .feat li{font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--ink);display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start}
-.tier-rebuild .feat li::before{content:"";width:8px;height:8px;background:var(--red);margin-top:8px}
+.tier-rebuild .feat li{font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--ink);position:relative;padding-left:28px}
+.tier-rebuild .feat li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;background:var(--red)}
 .rebuild-note{
   font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-dim);
   border-left:2px solid var(--red);padding-left:12px;margin-top:8px;margin-bottom:28px;
@@ -894,22 +894,26 @@ footer .bottom{padding-top:24px;display:flex;justify-content:space-between;font-
   gap: 10px;
 }
 
+/* 22 Sep 2026: these were display:grid with a 28px first column. Any <li> whose text sat in a
+   <span> or started with a link/strong put that element in the first column and wrapped the
+   rest one word per line (privacy, about, evidence, optical, eight journal posts). Padding and
+   an absolutely positioned dash render the same and cannot do that. */
 .about-content ul li,
 .about-content ol li,
 .privacy-content ul li,
 .privacy-content ol li {
-  display: grid;
-  grid-template-columns: 28px 1fr;
-  align-items: start;
+  position: relative;
+  padding-left: 28px;
   word-break: normal;
   white-space: normal;
   overflow-wrap: normal;
-  width: 100%;
-  max-width: 100%;
 }
 
 .about-content ul li::before,
 .privacy-content ul li::before {
   content: '—';
+  position: absolute;
+  left: 0;
+  top: 0;
   color: var(--red);
 }

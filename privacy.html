@@ -53,14 +53,17 @@
   .privacy-body h2:first-child{margin-top:0}
   .privacy-body p{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink);margin:0 0 18px}
   .privacy-body ul{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:10px}
-  .privacy-body li{display:grid;grid-template-columns:28px 1fr;font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink)}
-  .privacy-body li::before{content:"—";color:var(--red);font-weight:700}
+  .privacy-body li{position:relative;padding-left:28px;font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink)}
+  .privacy-body li::before{content:"—";position:absolute;left:0;top:0;color:var(--red);font-weight:700}
   .privacy-body a{color:var(--red);border-bottom:1px solid var(--red);text-decoration:none}
   .privacy-body strong{color:var(--ink);font-weight:700}
 
   @media (max-width:900px){
     .privacy-page h1{font-size:60px}
   }
+  /* 22 Sep 2026: bare-text grid <li>s wrapped one word per line whenever an inline element appeared; padding + absolute dash instead */
+  li.dash{position:relative;padding-left:28px;line-height:1.6}
+  li.dash::before{content:"\2014";position:absolute;left:0;top:0;color:var(--red);font-weight:700}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
@@ -133,19 +136,19 @@
       <h2>What we collect</h2>
       <p>Signal collects only what is needed to run a small client services practice. The categories are:</p>
       <ul style="list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:10px;">
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;"><span><strong>Information you give us</strong> — name, email, business name, website URL, neighborhood, and anything else you submit through forms (including the audit form, contact form, or Google Calendar booking).</span></li>
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;"><span><strong>Email correspondence</strong> — when you email us at <a href="mailto:josh@signalai.agency">josh@signalai.agency</a>, we keep that thread.</span></li>
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;"><span><strong>Analytics &amp; usage data</strong> — pages viewed, referring source, device type, approximate location, and similar non-identifying browsing signals collected through Google Analytics 4.</span></li>
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;"><span><strong>Server logs</strong> — standard hosting logs (IP address, user agent, timestamps) retained by our hosting provider, Vercel, for security and reliability.</span></li>
+        <li class="dash"><span><strong>Information you give us</strong> — name, email, business name, website URL, neighborhood, and anything else you submit through forms (including the audit form, contact form, or Google Calendar booking).</span></li>
+        <li class="dash"><span><strong>Email correspondence</strong> — when you email us at <a href="mailto:josh@signalai.agency">josh@signalai.agency</a>, we keep that thread.</span></li>
+        <li class="dash"><span><strong>Analytics &amp; usage data</strong> — pages viewed, referring source, device type, approximate location, and similar non-identifying browsing signals collected through Google Analytics 4.</span></li>
+        <li class="dash"><span><strong>Server logs</strong> — standard hosting logs (IP address, user agent, timestamps) retained by our hosting provider, Vercel, for security and reliability.</span></li>
       </ul>
       <p>We do not collect payment card information on this site. Invoicing is handled through third-party processors (such as Stripe) under their own privacy terms.</p>
 
       <h2>How we use it</h2>
       <ul style="list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:10px;">
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">To respond to inquiries, deliver the free audit, and follow up on a discovery call.</li>
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">To deliver and improve client work for businesses that engage Signal.</li>
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">To understand which content and pages are useful, so we can publish more of what people read and less of what they don't.</li>
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">To meet basic legal, tax, and accounting obligations.</li>
+        <li class="dash">To respond to inquiries, deliver the free audit, and follow up on a discovery call.</li>
+        <li class="dash">To deliver and improve client work for businesses that engage Signal.</li>
+        <li class="dash">To understand which content and pages are useful, so we can publish more of what people read and less of what they don't.</li>
+        <li class="dash">To meet basic legal, tax, and accounting obligations.</li>
       </ul>
       <p>We do not sell, rent, or trade personal information. We do not use your information to train AI models.</p>
 
@@ -162,11 +165,11 @@
       <h2>Your rights</h2>
       <p>If you are a resident of New York, California, the European Union, the United Kingdom, or another jurisdiction with consumer-data rights, you can request that we:</p>
       <ul style="list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:10px;">
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">Confirm whether we hold information about you.</li>
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">Provide a copy of that information.</li>
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">Correct anything that is wrong.</li>
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">Delete information that we are not legally required to keep.</li>
-        <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">Stop sending you email.</li>
+        <li class="dash">Confirm whether we hold information about you.</li>
+        <li class="dash">Provide a copy of that information.</li>
+        <li class="dash">Correct anything that is wrong.</li>
+        <li class="dash">Delete information that we are not legally required to keep.</li>
+        <li class="dash">Stop sending you email.</li>
       </ul>
       <p>To exercise any of these, email <a href="mailto:josh@signalai.agency">josh@signalai.agency</a> with the subject line "Privacy Request." We will respond within 30 days.</p>
 

@@ -144,6 +144,9 @@
     .about-grid{grid-template-columns:1fr;gap:36px;padding-top:36px}
     .about-grid .col-r h2{font-size:28px}
   }
+  /* 22 Sep 2026: bare-text grid <li>s wrapped one word per line whenever an inline element appeared; padding + absolute dash instead */
+  li.dash{position:relative;padding-left:28px;line-height:1.6}
+  li.dash::before{content:"\2014";position:absolute;left:0;top:0;color:var(--red);font-weight:700}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RY60W5Y7D"></script>
@@ -236,11 +239,11 @@
 
         <h3 style="margin-top:32px">Knows About</h3>
         <ul style="list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:10px;font-family:var(--mono);font-size:12px;color:var(--ink);" itemprop="knowsAbout">
-          <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">Generative Engine Optimization</li>
-          <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">AI search retrieval</li>
-          <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">Local SEO</li>
-          <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">Schema.org structured data</li>
-          <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;">Business Analytics</li>
+          <li class="dash">Generative Engine Optimization</li>
+          <li class="dash">AI search retrieval</li>
+          <li class="dash">Local SEO</li>
+          <li class="dash">Schema.org structured data</li>
+          <li class="dash">Business Analytics</li>
         </ul>
       </div>
 
@@ -257,8 +260,8 @@
         <p>Every site is custom-built in <em>Next.js</em> with TypeScript, deployed on Vercel, and instrumented with full Schema.org markup that AI crawlers can actually parse. Every build, every structured-data implementation and every audit is reviewed and approved by the founder &#8212; no junior handoff, no outsourced support layer.</p>
         <p>Two named case studies are public:</p>
         <ul style="list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:10px;">
-          <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;"><span><a href="posts/journal/nostrand-optical-zero-to-rich-results.html">Nostrand Optical</a> — launched with four rich-result types validated on day one (Google Rich Results Test)</span></li>
-          <li style="display:grid;grid-template-columns:28px 1fr;align-items:start;word-break:normal;white-space:normal;width:100%;max-width:100%;"><span><a href="posts/journal/brooklyn-bjj-lessons-chatgpt-citation-41-days.html">Brooklyn BJJ Lessons</a> — cited first in ChatGPT for "BJJ private lessons Brooklyn" within 41 days</span></li>
+          <li class="dash"><span><a href="posts/journal/nostrand-optical-zero-to-rich-results.html">Nostrand Optical</a> — launched with four rich-result types validated on day one (Google Rich Results Test)</span></li>
+          <li class="dash"><span><a href="posts/journal/brooklyn-bjj-lessons-chatgpt-citation-41-days.html">Brooklyn BJJ Lessons</a> — cited first in ChatGPT for "BJJ private lessons Brooklyn" within 41 days</span></li>
         </ul>
 
         <h2>Solo, on purpose</h2>
